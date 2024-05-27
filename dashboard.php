@@ -231,10 +231,6 @@
                          <h1 class="mx-auto text-center">
                             Toutes les annonces
                          </h1>
-
-                         <button class="btn primary" @click=''>
-                            Nouvelle annonce
-                         </button>
                         <div class="mt-2table-container">
                                 <table>
                                     <thead>
@@ -256,17 +252,7 @@
                                                 <img :src='getImgUrl(detail.pic1)' alt="">
                                             </td>
                                             <td data-label="">
-                                                <button class="btn btn-success" v-if="detail.situation == 'Non disponible'" @click='publish(detail.id)' >
-                                                    Publier
-                                                </button>
-                                                <button class="btn btn-info" v-if="detail.situation == 'Disponible'" @click='pause(detail.id)' >
-                                                    Non disponible
-                                                </button>
-
-                                                <button class="btn btn-danger"  @click='delete(detail.id)' >
-                                                    Supprimer
-                                                </button>
-
+                                               
                                                 <a :href="'property.php?id=' + detail.id">
                                                         <i class="fa fa-trash me-3"></i>
                                                 </a>
