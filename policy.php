@@ -20,8 +20,8 @@
 
             <div id="app">
             <div class="row">
-                    <div class="col-12 text-text-center">
-                        <h1 class="subtitle">
+                    <div class="col-12 col-md-11 mx-auto  text-text-center">
+                        <h1 class="subtitle mt-3">
                             POLITIQUE DE CONFIDENTIALITE
                         </h1>
 

@@ -20,7 +20,7 @@
 
             <div id="app">
                 <div class="row">
-                    <div class="col-12">
+                    <div class="col-11 mx-auto p-5 m-5">
                         <h1 class="subtitle text text-center mx-auto">
                             CONDITIONS GENERALES D'UTILISATION
                         </h1> <br> <br>

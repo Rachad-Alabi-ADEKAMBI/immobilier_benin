@@ -84,7 +84,41 @@
                             </div>
                         </div>
                     </div>
-                   
+                    <!--end list-->
+
+                     <!-- list--> 
+                     <div class='col-sm-12 col-md-8 mt-4 mx-auto data-wow-delay="0.5s"' v-if='showUsers' >
+                         <h1 class="mx-auto text-center">
+                            Utilisateurs
+                         </h1>
+                        
+                         <div class="table-container">
+                               <table>
+                                    <thead>
+                                                            <tr>
+                                                            <th scope="col">Date</th>
+                                                            <th scope="col">Email</th>
+                                                            <th scope="col">Nom complet</th>
+                                                            <th scope='col'>Picture</th>
+                                                            <th scope='col'>Ip</th>
+                                                            </tr>
+                                    </thead>
+                                                        <tbody>
+                                                            <tr v-for='detail in details' :key='detail.id'>
+                                                            <td data-label="Date">{{ formatDate(detail.date_of_insertion) }}</td>
+                                                            <td data-label="Email">{{ detail.email }} {{ detail.last_name}}  </td>
+                                                            
+                                                            <td data-label="Full name">{{ detail.first_name }} {{ detail.last_name}}  </td>
+                                                             <td data-label="Picture">
+                                                            <img :src='getImgUrl(detail.pic)' alt="">
+                                                            </td>
+                                                            <td data-label="Ip">{{ detail.ip }}</td>
+                                                            </tr>
+                                                        </tbody>
+                                </table>
+                        </div>
+                    </div>
+                    <!--end list-->
                 </div>
         </div>
 
@@ -95,7 +129,7 @@
             data: {
                 showAll: true,
                 showUsers: false,
-                details: '',
+                details: [],
             },
             mounted(){
                 this.displayAll();
@@ -115,6 +149,17 @@
                         });
                     
                         this.showAll = true;
+                },
+                displayUsers(){
+                    axios.get('api/script.php?action=users')
+                        .then((response) => {console.log(response.data);
+                            this.details = response.data;
+                        })
+                        .catch((error) => {
+                            console.error(error);
+                            alert('Failed to fetch user data.');
+                        });
+
                 },
 
                 format(num){

@@ -300,10 +300,6 @@ function threeAds(){
 }
 
 
-
-
-
-
 function login()
 {
 
@@ -498,17 +494,14 @@ function updateAccount(){
     } catch (PDOException $e) {
         echo 'Database error: ' . $e->getMessage();
     }
-} else {
-    try {
-        $req = $pdo->prepare('UPDATE users SET featured = ? WHERE id = ?');
-        $req->execute(['no', $user_id]);
-    } catch (PDOException $e) {
-        echo 'Database error: ' . $e->getMessage();
+    } else {
+        try {
+            $req = $pdo->prepare('UPDATE users SET featured = ? WHERE id = ?');
+            $req->execute(['no', $user_id]);
+        } catch (PDOException $e) {
+            echo 'Database error: ' . $e->getMessage();
+        }
     }
-}
-
-
-     
       ?>
       <script>
           alert('Les informations de votre compte ont été modifiées avec succès !');
@@ -517,6 +510,16 @@ function updateAccount(){
     <?php
 
 }
+
+function getUsers(){
+    $pdo = getConnexion();
+        $req = $pdo->prepare('SELECT * FROM users');
+        $req->execute(array());
+        $datas = $req->fetchAll();
+        sendJSON($datas);
+}
+
+
 
 
 

@@ -9,10 +9,10 @@
             </div>
             <div class="col-lg-4 col-md-6">
                 <h5 class="text-white mb-4">Liens</h5>
-                <a class="btn btn-link text-white-50" href="#about">A propos</a>
-                <a class="btn btn-link text-white-50" href="contact.php">Contact</a>
                 <a class="btn btn-link text-white-50" href="terms.php">Conditions générales</a>
                 <a class="btn btn-link text-white-50" href="policy.php">Politique de confidentialité</a>
+                <a class="btn btn-link text-white-50" href="">Télécharger l'application mobile</a>
+                <a class="btn btn-link text-white-50" href="partners/index.php">Partenaire Horizon</a>
             </div>
             <div class="col-lg-4 col-md-6">
                 <h5 class="text-white mb-4">Galerie photo</h5>

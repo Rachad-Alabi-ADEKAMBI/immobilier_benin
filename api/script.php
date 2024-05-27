@@ -55,6 +55,10 @@ if($action == 'updateAccount'){
     updateAccount();
 }
 
+if($action == 'users'){
+    getUsers();
+}
+
 
 
 
