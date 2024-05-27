@@ -47,6 +47,10 @@ if($action == 'threeAds'){
     threeAds();
 }
 
+if($action == 'updateAccount'){
+    updateAccount();
+}
+
 
 
 

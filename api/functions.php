@@ -412,42 +412,83 @@ function updateAccount(){
     $pdo = getConnexion();
     $user_id = $_SESSION['user']['id'];
 
-    $job = verifyInput($_POST['job']);
+    //phone
+    if($_POST['phone'] != ''){
+        $phone = verifyInput($_POST['phone']);
 
-    //update
-    try {
-        $req = $pdo->prepare('UPDATE users SET job = ?, situation = "valid" WHERE id = ?');
-        $req->execute(array($job, $user_id));
+        try {
+            $req = $pdo->prepare('UPDATE users SET phone = ? WHERE id = ?');
+            $req->execute(array($phone, $user_id));
+    
+           
+        } catch (PDOException $e) {
+            echo 'Database error: ' . $e->getMessage();
+        }
 
-       
-    } catch (PDOException $e) {
-        echo 'Database error: ' . $e->getMessage();
+    }
+
+    //password
+    if($_POST['password'] != '' AND $_POST['password_2'] == $_POST['password']){
+        $pass = verifyInput($_POST['password']);
+
+        try {
+            $req = $pdo->prepare('UPDATE users SET pass = ? WHERE id = ?');
+            $req->execute(array($pass, $user_id));
+    
+           
+        } catch (PDOException $e) {
+            echo 'Database error: ' . $e->getMessage();
+        }
+    } else if($_POST['password'] != '' AND $_POST['password_2'] != $_POST['password']){
+        ?>
+            <script>
+                alert('Les mots de passe ne correspondent pas');
+                window.location.replace('../dashboard.php');
+                exit();
+            </script>
+        <?php
+    } else if($_POST['password'] != '' AND $_POST['password_2'] == ''){
+        ?>
+            <script>
+                alert('LVeuillez confirmer le mot de passe');
+                window.location.replace('../dashboard.php');
+                exit();
+            </script>
+        <?php
     }
 
     //insert the picture
-    $picture = time() . '_' . $_FILES['picture']['name'];
+    $picture = time() . '_' . $_FILES['pic']['name'];
     $target = '../img/' . $picture;
 
-    if (move_uploaded_file($_FILES['picture']['tmp_name'], $target)) {
-        $req = $pdo->prepare("UPDATE users SET picture = ? WHERE id = ? ");
+    if (move_uploaded_file($_FILES['pic']['tmp_name'], $target)) {
+        $req = $pdo->prepare("UPDATE users SET pic = ? WHERE id = ? ");
 
         $req->execute([$picture, $user_id]);
     }
 
-      //insert the card
-      $card = time() . '_' . $_FILES['card']['name'];
-      $target = '../img/' . $card;
-  
-      if (move_uploaded_file($_FILES['card']['tmp_name'], $target)) {
-          $req = $pdo->prepare("UPDATE users SET id_card = ? WHERE id = ? ");
-  
-          $req->execute([$card, $user_id]);
-      }
 
+    //the description
+    //phone
+    if($_POST['description'] != ''){
+        $description = verifyInput($_POST['description']);
+
+        try {
+            $req = $pdo->prepare('UPDATE users SET description = ? WHERE id = ?');
+            $req->execute(array($description, $user_id));
+    
+           
+        } catch (PDOException $e) {
+            echo 'Database error: ' . $e->getMessage();
+        }
+
+    }
+
+     
       ?>
       <script>
-          alert('Les informations de votre compte ont été modifiées avec succès !');
-          window.location.replace('../dashboard.php')
+         // alert('Les informations de votre compte ont été modifiées avec succès !');
+        //  window.location.replace('../dashboard.php')
       </script>
     <?php
 

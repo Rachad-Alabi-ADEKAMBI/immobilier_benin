@@ -36,7 +36,7 @@
                                 <div class="col-sm-6 text-center">
                                     <div class="form-floating">
                                         <input type="text" class="form-control" id="phone" placeholder=""
-                                         name="phone" required>
+                                         name="phone" required oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');">
                                         <label for="phone">Numéro</label>
                                     </div>
                                 </div>
