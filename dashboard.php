@@ -40,10 +40,16 @@
                                                 Mes annonces
                                             </button>
 
+                                            <button class="btn btn-primary m-2" @click="displayNeeds()" v-if='!showNeeds'>
+                                                Demandes clients
+                                            </button>
+
 
                                             <button class="btn btn-primary m-2" @click="displayAccount()" v-if='!showAccount'>
                                                 Mon compte
                                             </button>
+
+
                                 </div>
                     </div>
 
@@ -234,7 +240,7 @@
                             Mes annonces ({{ this.details.length}})
                          </h1>
 
-                         <p class="text text-bold text-grey text-center" v-if='details.length > 0'>
+                         <p class="text text-bold text-grey text-center" v-if='details.length > 0 '>
                             Vous n'avez publié aucune annonce pour l'instant
                          </p>
 
@@ -284,6 +290,46 @@
                             </div>
                         </div>
                     </div>
+                    <!-- end list-->
+
+
+                    <!-- needs--> 
+                    <div class='col-sm-12 col-md-8 mt-4 mx-auto data-wow-delay="0.5s"' v-if='showNeeds' >
+                         <h1 class="mx-auto text-center">
+                            Demandes clients ({{ this.details.length}})
+                         </h1>
+
+                         <p class="text text-bold text-grey text-center">
+                            Avez vous des réponses pour ces recherches ? Si oui, vous pouvez contacter les demandeurs
+                         </p>
+
+                        <div class="mt-2table-container" v-if='details.length > 0'>
+                                <table>
+                                    <thead>
+                                        <tr>
+                                            <th>Date</th>
+                                            <th>Catégorie</th>
+                                            <th>Action</th>
+                                            <th>Ville</th>
+                                            <th>Client</th>
+                                            <th>Téléphone</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr v-for='detail in details' :key='detail.id'>
+                                            <td data-label="Date"> {{ formatDate(detail.date_of_insertion) }} </td>
+                                            <td data-label="Catégorie">{{ detail.category}}</td>
+                                            <td data-label="Action">{{ detail.action }} </td>
+                                            <td data-label="Ville"> {{ detail.location }} </td>
+                                            <td data-label="Client">{{ detail.action }} </td>
+                                            <td data-label="Téléphone"> {{ detail.phone }} </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <!--end needs-->
                    
                 </div>
         </div>
@@ -295,7 +341,8 @@
             data: {
                 showNew: false,
                 showAll: true,
-                showAccount: '',
+                showAccount: false,
+                showNeeds: false,
                 category: '',
                 details: '',
                 showLand: false,
@@ -331,16 +378,35 @@
                     
                         this.showAll = true;
                         this.showAccount = false;
+                        this.showNeeds = false;
+                },
+                displayNeeds(){
+                    this.showNew = false;
+                    axios.get('api/script.php?action=needs')
+                        .then((response) => {
+                            console.log(response.data);
+                            this.details = response.data;
+                        })
+                        .catch((error) => {
+                            console.error(error);
+                            alert('Failed to fetch datas');
+                        });
+                    
+                        this.showAll = false;
+                        this.showAccount = false;
+                        this.showNeeds = true;
                 },
                 displayNew(){
                     this.showAll = false;
                     this.showNew = true;
                     this.showAccount = false;
+                    this.showNeeds = false;
                 },
                 displayAccount(){
                     this.showAll = false;
                     this.showNew = false;
                     this.showAccount = true;
+                    this.showNeeds = false;
                 },
                 format(num){
                     let res = new Intl.NumberFormat('fr-FR', { maximumSignificantDigits: 3 }).format(num);

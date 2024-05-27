@@ -360,6 +360,7 @@ function login()
     }
 }
 
+
 function register() {
     $pdo = getConnexion();
 
@@ -404,6 +405,52 @@ function register() {
     } catch (PDOException $e) {
         echo 'Database error: ' . $e->getMessage();
     }
+}
+
+
+function updateAccount(){
+    $pdo = getConnexion();
+    $user_id = $_SESSION['user']['id'];
+
+    $job = verifyInput($_POST['job']);
+
+    //update
+    try {
+        $req = $pdo->prepare('UPDATE users SET job = ?, situation = "valid" WHERE id = ?');
+        $req->execute(array($job, $user_id));
+
+       
+    } catch (PDOException $e) {
+        echo 'Database error: ' . $e->getMessage();
+    }
+
+    //insert the picture
+    $picture = time() . '_' . $_FILES['picture']['name'];
+    $target = '../img/' . $picture;
+
+    if (move_uploaded_file($_FILES['picture']['tmp_name'], $target)) {
+        $req = $pdo->prepare("UPDATE users SET picture = ? WHERE id = ? ");
+
+        $req->execute([$picture, $user_id]);
+    }
+
+      //insert the card
+      $card = time() . '_' . $_FILES['card']['name'];
+      $target = '../img/' . $card;
+  
+      if (move_uploaded_file($_FILES['card']['tmp_name'], $target)) {
+          $req = $pdo->prepare("UPDATE users SET id_card = ? WHERE id = ? ");
+  
+          $req->execute([$card, $user_id]);
+      }
+
+      ?>
+      <script>
+          alert('Les informations de votre compte ont été modifiées avec succès !');
+          window.location.replace('../dashboard.php')
+      </script>
+    <?php
+
 }
 
 
