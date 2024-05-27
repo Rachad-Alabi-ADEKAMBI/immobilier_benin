@@ -309,8 +309,6 @@ function login()
 
     if (!empty($_POST)) {
         $pdo = getConnexion();
-        
-
         $errors = [];
 
         if (

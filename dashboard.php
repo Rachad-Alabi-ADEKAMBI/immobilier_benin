@@ -122,7 +122,8 @@
 
                                     <div class="col-sm-6 col-md-6">
                                         <div class="form-floating">
-                                        <input type="text" class="form-control" required name='price' id="price" placeholder="Prix" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');">
+                                        <input type="text" class="form-control" required name='price' 
+                                        id="price" placeholder="Prix" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');">
 
                                             <label for="price">Prix</label>
                                         </div>
@@ -156,7 +157,7 @@
 
                                     <div class="col-sm-4 col-md-4">
                                         <div class="form-floating">
-                                            <select class="custom-select" name="Location" required>
+                                            <select class="custom-select" name="location" required>
                                                 <option value='Abomey'>Abomey</option>
                                                 <option value='Calavi'>Ville</option>
                                                 <option value='Cotonou'>Cotonou</option>
@@ -165,7 +166,7 @@
                                                 <option value='Bohicon'>Bohicon</option>
 
                                             </select>
-                                            <label for="quartier">Quartier</label>
+                                            <label for="location">Ville</label>
                                         </div>
                                     </div>
                                 </div>
@@ -466,7 +467,7 @@
             },
             watch: {
                     category() {
-                    if (this.category == 'Terrain') {
+                    if (this.category == 'Terrain' || this.category == 'Boutique') {
                         this.showLand = true;
                         this.showHouse = false;
                     } else{

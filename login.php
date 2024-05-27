@@ -28,8 +28,9 @@
                                 <div class="row g-3">
                                     <div class="col-sm-12">
                                         <div class="form-floating">
-                                            <input type="text" class="form-control" required name='username' placeholder="">
-                                            <label for="name">Identifiant</label>
+                                            <input type="text" class="form-control" 
+                                            required name='username' placeholder="">
+                                            <label for="name">Identifiant ou email</label>
                                         </div>
                                     </div>
 

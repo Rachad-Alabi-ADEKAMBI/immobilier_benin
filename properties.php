@@ -20,28 +20,29 @@
                 <div class="container">
                     <!-- Property List Start -->
                     <div class="row g-0 gx-5 align-items-end">
-                        <div class="col-sm-12 ">
+                        <div class="col-sm-6 ">
                             <div class="text-start mx-auto text-center mb-5 wow slideInLeft" data-wow-delay="0.1s">
                                 <h1 class="mx-auto mb-3">Dernières annonces</h1>
-                                <p class="text text-center">Nous publions chaque jour des dizaines d'annonces  la ville de Parakou</p>
+                                <p class="text text-center">Des dizaines d'annonces gratuites chaque jour</p>
                             </div>
                         </div>
-                        <!--
                         <div class="col-lg-6 text-start text-lg-end wow slideInRight" data-wow-delay="0.1s">
                             <ul class="nav nav-pills d-inline-flex justify-content-end mb-5">
                                 <li class="nav-item me-2">
-                                    <a class="btn btn-outline-primary active" data-bs-toggle="pill"
-                                        href="#tab-1">Populaires</a>
+                                    <p class="btn btn-outline-primary active" data-bs-toggle="pill"
+                                       @click="displayAll()">Populaires
+                                    </p>
                                 </li>
                                 <li class="nav-item me-2">
-                                    <a class="btn btn-outline-primary" data-bs-toggle="pill" href="#tab-2">A vendre</a>
+                                    <p class="btn btn-outline-primary"  @click="displayToSell()"
+                                     data-bs-toggle="pill" >A vendre</p>
                                 </li>
                                 <li class="nav-item me-0">
-                                    <a class="btn btn-outline-primary" data-bs-toggle="pill" href="#tab-3">A louer</a>
+                                    <p class="btn btn-outline-primary" data-bs-toggle="pill"
+                                     @click="displayToRent()">A louer</p>
                                 </li>
                             </ul>
                         </div>
-                        -->
                     </div>
                     <div class="tab-content">
                         <div id="tab-1" class="tab-pane fade show p-0 active">
@@ -85,7 +86,10 @@
             new Vue({
                 el: '#app',
                 data: {
-                    details: ''
+                    details: '',
+                    showAll: false,
+                    showToRent: false,
+                    showToSell: false
                 },
                 mounted(){
                     this.displayAll();
@@ -103,7 +107,9 @@
                     },  
                 methods: {
                     displayAll(){
-                        this.showNew = false;
+                        this.showAll = true;
+                        this.showToSell = false;
+                        this.showToRent = false;
                         axios.get('api/script.php?action=availableDatas')
                             .then((response) => {
                                 console.log(response.data);
@@ -113,9 +119,36 @@
                                 console.error(error);
                                 alert('Failed to fetch datas');
                             });
-                        
-                            this.showAll = true;
                     },
+                    displayToRent(){
+                        this.showAll = false;
+                        this.showToSell = false;
+                        this.showToRent = true;
+                        axios.get('api/script.php?action=availableDatas')
+                            .then((response) => {
+                                console.log(response.data);
+                                this.details = response.data;
+                            })
+                            .catch((error) => {
+                                console.error(error);
+                                alert('Failed to fetch datas');
+                            });
+                    },
+                    displayToSell(){
+                        this.showAll = false;
+                        this.showToSell = true;
+                        this.showToRent = false;
+                        axios.get('api/script.php?action=availableDatas')
+                            .then((response) => {
+                                console.log(response.data);
+                                this.details = response.data;
+                            })
+                            .catch((error) => {
+                                console.error(error);
+                                alert('Failed to fetch datas');
+                            });
+                    },
+
                     format(num){
                         let res = new Intl.NumberFormat('fr-FR', { maximumSignificantDigits: 3 }).format(num);
                             return res;

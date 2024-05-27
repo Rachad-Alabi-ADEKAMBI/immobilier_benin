@@ -32,12 +32,16 @@
                     <!--menu-->   
                     <div class="col-sm-12 mt-3 text-center">
                                 <div class="menu">
-                                            <button class="btn btn-primary m-2" @click='displayAll()'>
+                                            <button class="btn btn-primary m-2" @click="displayAll()" v-if='!showAll'>
                                                 Annonces
                                             </button>
 
-                                            <button class="btn btn-primary m-2" @click='displayUsers()'>
+                                            <button class="btn btn-primary m-2" @click="displayUsers()" v-if='!showUsers'>
                                                 Utilisateurs
+                                            </button>
+
+                                            <button class="btn btn-primary m-2" @click="displayNeeds()" v-if='!showNeeds'>
+                                                Demandes
                                             </button>
                                 </div>
                     </div>
@@ -70,19 +74,9 @@
                                             </td>
                                             <td data-label="">
 
-                                                <a :href="'property.php?id=' + detail.id">
-                                                        <i class="fa fa-trash me-3"></i>
-                                                </a>
-
-                                                <a :href="'property.php?id=' + detail.id">
+                                                <a :href="'api/script.php?action=pauseid=' + detail.id">
                                                         <i class="fa fa-pause me-3"></i>
                                                 </a>
-
-                                                <a :href="'property.php?id=' + detail.id">
-                                                        <i class="fa fa-eye me-3"></i>
-                                                </a>
-
-
                                             </td>
                                         </tr>
                                     </tbody>
