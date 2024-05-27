@@ -5,7 +5,7 @@
              <div class="icon p-2 me-2">
                  <img class="img-fluid" src="img/logo.png" alt="Icon" style="width: 30px; height: 30px;">
              </div>
-             <h1 class="m-0 text-primary">Nova Immo</h1>
+             <h1 class="m-0 text-primary">Immobilier Bénin</h1>
          </a>
          <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
              <span class="navbar-toggler-icon"></span>
@@ -24,9 +24,9 @@
                             <a href="logout.php" class="nav-item nav-link">Déconnexion</a>
                         <?php } ?>
 
-                 <a href="https://wa.me/22961069401?text=Bonjour...%20" class="nav-item nav-link">Contact</a>
+                 <a href="index.php#about" class="nav-item nav-link">Contact</a>
              </div>
-             <a href="https://wa.me/22961069401?text=Bonjour...%20" class="btn btn-primary px-3 d-none d-lg-flex">Déposer une annonce</a>
+             <a href="" class="btn btn-primary px-3 d-none d-lg-flex">Déposer une annonce</a>
          </div>
      </nav>
  </div>
