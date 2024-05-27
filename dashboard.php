@@ -32,19 +32,24 @@
                     <!--menu-->   
                     <div class="col-sm-12 mt-3 text-center">
                                 <div class="menu">
-                                            <button class="btn btn-primary m-2" @click='displayNew()'>
+                                            <button class="btn btn-primary m-2" @click="displayNew()" v-if='!showNew'>
                                                 Nouvelle annonce
                                             </button>
 
-                                            <button class="btn btn-primary m-2" @click='displayAll()'>
+                                            <button class="btn btn-primary m-2" @click="displayAll()" v-if='!showAll'>
                                                 Mes annonces
+                                            </button>
+
+
+                                            <button class="btn btn-primary m-2" @click="displayAccount()" v-if='!showAccount'>
+                                                Mon compte
                                             </button>
                                 </div>
                     </div>
 
                     <!--new add-->
                     <div class="col-sm-12 col-md-8 mt-4 mx-auto" v-if='showNew'>
-                        <div class="bg-white border mt-2 rounded p-sm-5 wow fadeInUp" data-wow-delay="0.5s">
+                        <div class="bg-white border mt-2 rounded p-2 wow fadeInUp" data-wow-delay="0.5s">
                             <form action="api/script.php?action=newAd" method="POST" enctype='multipart/form-data'>
                                 <h1 class="mx-auto text-center">Nouvelle annonce</h1>
 
@@ -130,7 +135,6 @@
                                     <div class="col-sm-4 col-md-4">
                                         <div class="form-floating">
                                             <select class="custom-select" name='rooms'>
-                                                <option >Chambres</option>
                                                 <option value="1">1</option>
                                                 <option value="2">2</option>
                                                 <option value="3">3</option>
@@ -143,7 +147,6 @@
                                     <div class="col-sm-4 col-md-4">
                                         <div class="form-floating"> <label for="bathrooms">Douches</label>
                                             <select class="custom-select" name='bathrooms'>
-                                                <option >Douches</option>
                                                 <option value="1">1</option>
                                                 <option value="2">2</option>
                                                 <option value="3">3</option>
@@ -157,7 +160,6 @@
                                         <div class="form-floating">
                                         <label for="people">Ménages</label>
                                             <select class="custom-select" name='people'>
-                                                <option >Ménages</option>
                                                 <option value="1">1</option>
                                                 <option value="2">2</option>
                                                 <option value="3">3</option>
@@ -229,9 +231,14 @@
                     <!-- list--> 
                     <div class='col-sm-12 col-md-8 mt-4 mx-auto data-wow-delay="0.5s"' v-if='showAll' >
                          <h1 class="mx-auto text-center">
-                            Toutes les annonces
+                            Mes annonces ({{ this.details.length}})
                          </h1>
-                        <div class="mt-2table-container">
+
+                         <p class="text text-bold text-grey text-center" v-if='details.length > 0'>
+                            Vous n'avez publié aucune annonce pour l'instant
+                         </p>
+
+                        <div class="mt-2table-container" v-if='details.length > 0'>
                                 <table>
                                     <thead>
                                         <tr>
@@ -254,19 +261,19 @@
                                             <td data-label="">
                                                
                                                 <a :href="'property.php?id=' + detail.id">
-                                                        <i class="fa fa-trash me-3"></i>
+                                                        <i class="fa fa-trash me-3 text-danger"></i>
                                                 </a>
 
                                                 <a :href="'property.php?id=' + detail.id">
-                                                        <i class="fa fa-check me-3"></i>
+                                                        <i class="fa fa-check me-3 text-success"></i>
                                                 </a>
 
                                                 <a :href="'property.php?id=' + detail.id">
-                                                        <i class="fa fa-pen me-3"></i>
+                                                        <i class="fa fa-pen me-3 text-info"></i>
                                                 </a>
 
                                                 <a :href="'property.php?id=' + detail.id">
-                                                        <i class="fa fa-eye me-3"></i>
+                                                        <i class="fa fa-eye me-3 text-primary"></i>
                                                 </a>
 
 
@@ -288,10 +295,12 @@
             data: {
                 showNew: false,
                 showAll: true,
+                showAccount: '',
                 category: '',
                 details: '',
                 showLand: false,
-                showHouse: false
+                showHouse: false,
+
             },
             mounted(){
                 this.displayAll();
@@ -310,9 +319,8 @@
             methods: {
                 displayAll(){
                     this.showNew = false;
-                    axios.get('api/script.php?action=allDatas')
+                    axios.get('api/script.php?action=myAds')
                         .then((response) => {
-                            // Ensure 'this' refers to the Vue component's instance
                             console.log(response.data);
                             this.details = response.data;
                         })
@@ -322,10 +330,17 @@
                         });
                     
                         this.showAll = true;
+                        this.showAccount = false;
                 },
                 displayNew(){
                     this.showAll = false;
                     this.showNew = true;
+                    this.showAccount = false;
+                },
+                displayAccount(){
+                    this.showAll = false;
+                    this.showNew = false;
+                    this.showAccount = true;
                 },
                 format(num){
                     let res = new Intl.NumberFormat('fr-FR', { maximumSignificantDigits: 3 }).format(num);

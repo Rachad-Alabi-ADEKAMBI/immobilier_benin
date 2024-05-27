@@ -22,7 +22,7 @@
                             <a href="login.php" class="nav-item nav-link">Connexion</a>
                         <?php } else { ?>
                             <a href="dashboard.php" class="nav-item nav-link">Tableau de bord</a>
-                            <a href="logout.php" class="nav-item nav-link">Déconnexion</a>
+                            <a href="api/script.php?action=logout" class="nav-item nav-link">Déconnexion</a>
                         <?php } ?>
 
                 

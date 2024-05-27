@@ -15,6 +15,10 @@ if ($action == 'allDatas') {
     getAvailableDatas();
 }
 
+if ($action == 'myAds') {
+    getMyAds();
+}
+
 if($action == 'search'){
     search();
 }

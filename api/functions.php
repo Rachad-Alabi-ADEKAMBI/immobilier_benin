@@ -44,13 +44,16 @@ function newAd(){
     $location = verifyInput($_POST['location']);
     $description = verifyInput($_POST['description']);
 
-    if($category == 'Terrain'){
+    $geolocation ='5466.sf.fsfgs';
+    $user_id = $_SESSION['user']['id'];
+
+    if ($category == 'Terrain' || $category == 'Boutique') {
         $size = verifyInput($_POST['size']);
         $rooms = 0;
         $bathrooms = 0;
         $people = 0;
     } else{
-        $size = '';
+        $size = 0;
         $rooms = verifyInput($_POST['rooms']);
         $bathrooms = verifyInput($_POST['bathrooms']);
         $people = verifyInput($_POST['people']);
@@ -62,9 +65,9 @@ function newAd(){
     try {
         $req = $pdo->prepare('INSERT INTO ads SET name = ?, price = ?, category = ?,
             action = ?, location = ?, description = ?, rooms = ?, bathrooms = ?,
-                people = ?, situation = ?, size = ?');
+                people = ?, situation = ?, size = ?, user_id = ?');
         $req->execute(array($name, $price,  $category, $action, $location,
-            $description, $rooms, $bathrooms, $people, $situation, $size));
+            $description, $rooms, $bathrooms, $people, $situation, $size, $user_id));
 
        
     } catch (PDOException $e) {
@@ -112,6 +115,15 @@ function getAvailableDatas(){
     $pdo = getConnexion();
     $req = $pdo->prepare("SELECT * FROM ads WHERE situation = 'Disponible' ORDER BY id DESC");
     $req->execute();
+    $datas = $req->fetchAll();
+    $req->closeCursor();
+    sendJSON($datas);
+}
+
+function getMyAds(){
+    $pdo = getConnexion();
+    $req = $pdo->prepare("SELECT * FROM ads WHERE user_id = ? ORDER BY id DESC");
+    $req->execute(array($_SESSION['user']['id']));
     $datas = $req->fetchAll();
     $req->closeCursor();
     sendJSON($datas);
@@ -296,7 +308,7 @@ function login()
             isset($_POST['username'], $_POST['password']) &&
             !empty($_POST['username'] && !empty($_POST['password']))
         ) {
-            $sql = 'SELECT * FROM `users` WHERE `username` = ?';
+            $sql = 'SELECT * FROM `users` WHERE `email` = ?';
 
             $query = $pdo->prepare($sql);
 
@@ -310,7 +322,7 @@ function login()
                 $errors['user'] = 'Veuillez vérifier les identifi';
             }
 
-            if ($user['password'] != $pass) {
+            if ($user['pass'] != $pass) {
                 $errors['pass'] = 'Veuillez vérifier les identifiantssss';
             }
             
@@ -330,10 +342,19 @@ function login()
 
             if (empty($errors)) {
                 $_SESSION['user'] = [
-                    'username' => $user['username']
+                    'username' => $user['username'],
+                    'email' => $user['email'],
+                    'role' => $user['role'],
+                    'id' => $user['id']
                 ];
 
+               if($_SESSION['user']['role'] == 'user'){
                 header('Location: ../dashboard.php');
+               } else if($_SESSION['user']['role'] == 'admin'){
+                header('Location: ../dashboard_admin.php');
+               } else{
+                header('Location: ../login.php');
+               }
             }
         }
     }
