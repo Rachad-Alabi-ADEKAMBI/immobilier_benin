@@ -23,6 +23,10 @@ if($action == 'search'){
     search();
 }
 
+if($action == 'needs'){
+    getNeeds();
+}
+
 if($action == 'getProperty'){
     getProperty();
 }

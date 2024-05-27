@@ -210,6 +210,15 @@ function getProperty(){
     }
 }
 
+function getNeeds(){
+    $pdo = getConnexion();
+        $req = $pdo->prepare('SELECT * FROM needs');
+        $req->execute(array());
+        $datas = $req->fetchAll();
+
+        sendJSON($datas);
+}
+
 function pause(){
     $pdo = getConnexion();
     $id = verifyInput($_GET['id']);
@@ -469,7 +478,6 @@ function updateAccount(){
 
 
     //the description
-    //phone
     if($_POST['description'] != ''){
         $description = verifyInput($_POST['description']);
 
@@ -484,11 +492,29 @@ function updateAccount(){
 
     }
 
+     //the description
+    if (isset($_POST['featured']) && $_POST['featured'] == 'on') {
+    try {
+        $req = $pdo->prepare('UPDATE users SET featured = ? WHERE id = ?');
+        $req->execute(['yes', $user_id]);
+    } catch (PDOException $e) {
+        echo 'Database error: ' . $e->getMessage();
+    }
+} else {
+    try {
+        $req = $pdo->prepare('UPDATE users SET featured = ? WHERE id = ?');
+        $req->execute(['no', $user_id]);
+    } catch (PDOException $e) {
+        echo 'Database error: ' . $e->getMessage();
+    }
+}
+
+
      
       ?>
       <script>
-         // alert('Les informations de votre compte ont été modifiées avec succès !');
-        //  window.location.replace('../dashboard.php')
+          alert('Les informations de votre compte ont été modifiées avec succès !');
+          window.location.replace('../dashboard.php')
       </script>
     <?php
 
