@@ -17,6 +17,7 @@
                  <div class="nav-item dropdown">
                      <a href="properties.php" class="nav-link">Annonces</a>
                  </div>
+                 <a href="contact.php" class="nav-item nav-link">Contact</a>
                         <?php if (!isset($_SESSION['user']) || !$_SESSION['user']) { ?>
                             <a href="login.php" class="nav-item nav-link">Connexion</a>
                         <?php } else { ?>
@@ -24,9 +25,8 @@
                             <a href="logout.php" class="nav-item nav-link">Déconnexion</a>
                         <?php } ?>
 
-                 <a href="index.php#about" class="nav-item nav-link">Contact</a>
+                
              </div>
-             <a href="" class="btn btn-primary px-3 d-none d-lg-flex">Déposer une annonce</a>
          </div>
      </nav>
  </div>

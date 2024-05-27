@@ -11,7 +11,7 @@ function getDataFromAPI($url) {
 
 $apiUrl = 'api/script.php?action=availableDatas';
 $datas = getDataFromAPI($apiUrl);
-var_dump($datas);
+//var_dump($datas);
 ?>
 
 
@@ -21,7 +21,7 @@ var_dump($datas);
 <head>
     <?php include 'parts/meta.php'; ?>
 
-    <title>Nova Immobilier Parakou - Accueil</title>
+    <title>Immobilier Bénin - Accueil</title>
 </head>
 
 <body>
@@ -65,7 +65,7 @@ var_dump($datas);
                     </p>
                 </div>
                 <div class="row g-4">
-                    <div class="col-lg-4 col-sm-12 wow fadeInUp" data-wow-delay="0.1s">
+                    <div class="col-lg-3 col-sm-12 wow fadeInUp" data-wow-delay="0.1s">
                         <a class="cat-item d-block bg-light text-center rounded p-3" href="">
                             <div class="rounded p-4">
                                 <div class="icon mb-3">
@@ -77,7 +77,19 @@ var_dump($datas);
                         </a>
                     </div>
 
-                    <div class="col-lg-4 col-sm-12 wow fadeInUp" data-wow-delay="0.5s">
+                    <div class="col-lg-3 col-sm-12 wow fadeInUp" data-wow-delay="0.5s">
+                        <a class="cat-item d-block bg-light text-center rounded p-3" href="">
+                            <div class="rounded p-4">
+                                <div class="icon mb-3">
+                                    <img class="img-fluid" src="img/icon-condominium.png" alt="Icon">
+                                </div>
+                                <h6>Boutiques</h6>
+                                <span>+ 30 annonces</span>
+                            </div>
+                        </a>
+                    </div>
+
+                    <div class="col-lg-3 col-sm-12 wow fadeInUp" data-wow-delay="0.5s">
                         <a class="cat-item d-block bg-light text-center rounded p-3" href="">
                             <div class="rounded p-4">
                                 <div class="icon mb-3">
@@ -89,7 +101,7 @@ var_dump($datas);
                         </a>
                     </div>
 
-                     <div class="col-lg-4 col-sm-12 wow fadeInUp" data-wow-delay="0.5s">
+                    <div class="col-lg-3 col-sm-12 wow fadeInUp" data-wow-delay="0.5s">
                         <a class="cat-item d-block bg-light text-center rounded p-3" href="">
                             <div class="rounded p-4">
                                 <div class="icon mb-3">

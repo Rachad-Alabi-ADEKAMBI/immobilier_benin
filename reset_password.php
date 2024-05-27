@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    <title>Immobilier Bénin - Connexion</title>
+    <title>Immobilier Bénin - Mot de passe oublié</title>
 
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
 
@@ -20,25 +20,16 @@
 
         <div id="app">
         <div class="row g-0 gx-5 align-items-end">
-                    <div class="col-sm-12 col-md-6 mt-4 mx-auto" v-if='showNew'>
+                    <div class="col-sm-12 col-md-6 mt-4 mx-auto" >
                         <div class="bg-white border mt-2 rounded p-sm-5 wow fadeInUp" data-wow-delay="0.5s">
                             <form action="api/script.php?action=login" method="POST" >
-                                <h1 class="mx-auto text-center">Connexion</h1>
+                                <h1 class="mx-auto text-center">Réinitialiser le mot de passe</h1>
 
-                                <div class="row g-3">
+                                <div class="row g-3 mt-3">
                                     <div class="col-sm-12">
                                         <div class="form-floating">
-                                            <input type="text" class="form-control" required name='username' placeholder="">
-                                            <label for="name">Identifiant</label>
-                                        </div>
-                                    </div>
-
-                                    <div class="col-sm-12">
-                                        <div class="form-floating">
-                                        <input type="password" class="form-control" required name='password' id="" 
-                                        placeholder="">
-
-                                            <label for="password">Mot de passe</label>
+                                            <input type="text" class="form-control" required name='email' placeholder="">
+                                            <label for="name">Email</label>
                                         </div>
                                     </div>
                                 </div>
@@ -46,16 +37,8 @@
                                 <div class="row g-3 mt-4">
                                     <div class="col-sm-12 col-md-6 mx-auto text-center">
                                         <button class="btn btn-success w-100 py-3" type="submit">
-                                            Connexion
-                                        </button> <br>
-
-                                        <p class="mt-3">
-                                            Mot de passe oublié ? <a href="reset_password.php">Cliquez ici</a>
-                                        </p>
-
-                                        <p class="mt-3">
-                                            Pas encore de compte ? <a href="register.php">Inscription</a>
-                                        </p>
+                                            Réinitialiser le mot de passe
+                                        </button>
                                     </div>
                                     
                                 </div>

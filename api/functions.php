@@ -23,7 +23,7 @@ function getConnexion()
 {
     try {
         return new PDO(
-            'mysql:host=localhost;dbname=nova_immo;charset=UTF8',
+            'mysql:host=localhost;dbname=immo_benin;charset=UTF8',
             'root',
             ''
         );
@@ -338,6 +338,54 @@ function login()
         }
     }
 }
+
+function register() {
+    $pdo = getConnexion();
+
+    $email = verifyInput($_POST['email']);
+    $phone = verifyInput($_POST['phone']);
+    $first_name = verifyInput($_POST['first_name']);
+    $last_name = verifyInput($_POST['last_name']);
+    $pass = verifyInput($_POST['password']);
+    $password_2 = verifyInput($_POST['password_2']);
+    $ads = 0;
+    $featured = 0;
+
+    if ($pass != $password_2) {
+        echo "<script>
+                alert('Les mots de passe ne correspondent pas !');
+                window.location.replace('../register.php');
+              </script>";
+        exit();
+    }
+
+    $username = $last_name . ' ' . substr($first_name, 0, 3) . rand(10, 99);
+    $ip = $_SERVER['REMOTE_ADDR']; // Get the user's IP address
+
+    try {
+        $stmt = $pdo->prepare("INSERT INTO users (email, phone, first_name, last_name, 
+        pass, username, ip, role, date_of_insertion, ads, featured) VALUES (?, ?, ?, ?, ?, ?, ?, ?, NOW(), 0, ?)");
+
+        $stmt->execute([$email, $phone, $first_name, $last_name, $pass, $username, $ip, 'user', $featured]);
+
+        $_SESSION['user'] = [
+            'email' => $email,
+            'role' => 'user',
+            'id' => $pdo->lastInsertId(),
+            'first_name' => $first_name,
+            'last_name' => $last_name,
+        ];
+
+        echo "<script>
+                alert('Compte créé avec succès !! Bienvenue sur Immobilier Bénin');
+                window.location.replace('../dashboard.php');
+              </script>";
+    } catch (PDOException $e) {
+        echo 'Database error: ' . $e->getMessage();
+    }
+}
+
+
 
 function logout()
 {

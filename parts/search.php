@@ -15,6 +15,7 @@
                         <select class="form-select border-0 py-3" name='category'>
                             <option >Type de bien</option>
                             <option value="Appartement">Appartement</option>
+                            <option value="Boutique">Boutique</option>
                             <option value="Maison">Maison</option>
                             <option value="Terrain">Terrain</option>
                         </select>
@@ -30,25 +31,13 @@
                  
                     <div class="col-md-4">
                     <select class="form-select border-0 py-3"  name="location" required>
-                                                <option value=''>Quartier</option>
-                                                <option value="Arafat">Arafat</option>
-                                                <option value="Albarika">Albarika</option>
-                                                <option value="Banikanni">Banikanni</option>
-                                                <option value="Ganou">Ganou</option>
-                                                <option value="Guema">Guema</option>
-                                                <option value="Gbira">Gbira</option>
-                                                <option value="Ladjifarani">Ladjifarani</option>
-                                                <option value="Nima">Nima</option>
-                                                <option value="Nouveau quartier">Nouveau quartier</option>
-                                                <option value="Oke dama">Oke dama</option>
-                                                <option value="Thian">Thian</option>
-                                                <option value="Titirou">Titirou</option>
-                                                <option value="Tourou">Tourou</option>
-                                                <option value="Tranza">Tranza</option>
-                                                <option value="Yokossi 1">Yokossi 1</option>
-                                                <option value="Yokossi 2">Yokossi 2</option>
-                                                <option value="Zongo 1">Zongo 1</option>
-                                                <option value="Zongo 2">Zongo 2</option>
+                                                <option value=''>Ville</option>
+                                                <option value="Abomey">Abomey</option>
+                                                <option value="Cotonou">Cotonou</option>
+                                                <option value="Bohicon">Bohicon</option>
+                                                <option value="Calavi">Calavi</option>
+                                                <option value="Parakou">Parakou</option>
+                                                <option value="Porto-Novo">Porto-Novo</option>
                                             </select>
                     </div>
                 </div>

@@ -231,13 +231,17 @@
                          <h1 class="mx-auto text-center">
                             Toutes les annonces
                          </h1>
+
+                         <button class="btn primary" @click=''>
+                            Nouvelle annonce
+                         </button>
                         <div class="mt-2table-container">
                                 <table>
                                     <thead>
                                         <tr>
                                             <th>Date</th>
                                             <th>Nom</th>
-                                            <th>Qtier</th>
+                                            <th>Ville</th>
                                             <th>Prix</th>
                                             <th>Image</th>
                                         </tr>
@@ -246,7 +250,7 @@
                                         <tr v-for='detail in details' :key='detail.id'>
                                             <td data-label="Date"> {{ formatDate(detail.date_of_insertion) }} </td>
                                             <td data-label="Nom">{{ detail.name }}</td>
-                                            <td data-label="Qartier">{{ detail.location }} </td>
+                                            <td data-label="Ville">{{ detail.location }} </td>
                                             <td data-label="Prix"> {{ format(detail.price) }} </td>
                                             <td data-label="Image">
                                                 <img :src='getImgUrl(detail.pic1)' alt="">
@@ -264,8 +268,20 @@
                                                 </button>
 
                                                 <a :href="'property.php?id=' + detail.id">
+                                                        <i class="fa fa-trash me-3"></i>
+                                                </a>
+
+                                                <a :href="'property.php?id=' + detail.id">
+                                                        <i class="fa fa-check me-3"></i>
+                                                </a>
+
+                                                <a :href="'property.php?id=' + detail.id">
+                                                        <i class="fa fa-pen me-3"></i>
+                                                </a>
+
+                                                <a :href="'property.php?id=' + detail.id">
                                                         <i class="fa fa-eye me-3"></i>
-                                                        </a>
+                                                </a>
 
 
                                             </td>

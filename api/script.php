@@ -23,6 +23,10 @@ if($action == 'getProperty'){
     getProperty();
 }
 
+if($action == 'register'){
+    register();
+}
+
 if($action == 'pause'){
     pause();
 }
