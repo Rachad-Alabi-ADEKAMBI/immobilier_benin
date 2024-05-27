@@ -63,6 +63,9 @@
                         de maintenance, et que nous ne pouvons être tenus responsables des dommages liés à cette
                         interruption. <br><br>
 
+                        <span>f.</span> Lors de la création de recherche personnalisée, vous acceptez que vos noms et contacts soient partagés afin
+                            que vous soyez recontactés au besoin <br><br>
+
                         <h2 class="subtitle">
                             2- Contenu et responsabilité :
                         </h2> <br>
