@@ -50,7 +50,7 @@
                     <!-- list--> 
                     <div class='col-sm-12 col-md-8 mt-4 mx-auto data-wow-delay="0.5s"' v-if='showAll' >
                          <h1 class="mx-auto text-center">
-                            Toutes les annonces
+                            Toutes les annonces <span>({{ details.length }})</span>
                          </h1>
                         <div class="mt-2table-container">
                                 <table>
@@ -60,6 +60,8 @@
                                             <th>Nom</th>
                                             <th>Ville</th>
                                             <th>Prix</th>
+                                            <th>Statut</th>
+                                            <th>Annonceur</th>
                                             <th>Image</th>
                                         </tr>
                                     </thead>
@@ -69,13 +71,18 @@
                                             <td data-label="Nom">{{ detail.name }}</td>
                                             <td data-label="Ville">{{ detail.location }} </td>
                                             <td data-label="Prix"> {{ format(detail.price) }} </td>
+                                            <td data-label='Statut'> {{ detail.situation }} </td>
+                                            <td data-label='Annonceur'> {{ detail.first_name }} {{ detail.last_name }} </td>
                                             <td data-label="Image">
                                                 <img :src='getImgUrl(detail.pic1)' alt="">
                                             </td>
                                             <td data-label="">
+                                                <a :href="'api/script.php?action=stop&id=' + detail.id" v-if='detail.situatuation != "stopped"'>
+                                                        <i class="fa fa-stop me-3 text-danger"></i>
+                                                </a>
 
-                                                <a :href="'api/script.php?action=pauseid=' + detail.id">
-                                                        <i class="fa fa-pause me-3"></i>
+                                                <a :href="'api/script.php?action=stop&id=' + detail.id" v-if='detail.situatuation == "stopped"'>
+                                                        <i class="fa fa-play me-3 text-success"></i>
                                                 </a>
                                             </td>
                                         </tr>
@@ -86,7 +93,7 @@
                     </div>
                     <!--end list-->
 
-                     <!-- list--> 
+                     <!--users list--> 
                      <div class='col-sm-12 col-md-8 mt-4 mx-auto data-wow-delay="0.5s"' v-if='showUsers' >
                          <h1 class="mx-auto text-center">
                             Utilisateurs
@@ -118,68 +125,123 @@
                                 </table>
                         </div>
                     </div>
-                    <!--end list-->
+                    <!--end users list-->
+
+
+                     <!-- needs--> 
+                     <div class='col-sm-12 col-md-8 mt-4 mx-auto fadeInUp' data-wow-delay="0.5s" v-if='showNeeds' >
+                         <h1 class="mx-auto text-center">
+                            Demandes clients ({{ this.details.length}})
+                         </h1>
+
+                         <p class="text text-bold text-grey text-center">
+                            Avez vous des réponses pour ces recherches ? Si oui, vous pouvez contacter les demandeurs
+                         </p>
+
+                        <div class="mt-2table-container" v-if='details.length > 0'>
+                                <table>
+                                    <thead>
+                                        <tr>
+                                            <th>Date</th>
+                                            <th>Catégorie</th>
+                                            <th>Action</th>
+                                            <th>Ville</th>
+                                            <th>Client</th>
+                                            <th>Téléphone</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr v-for='detail in details' :key='detail.id'>
+                                            <td data-label="Date"> {{ formatDate(detail.date_of_insertion) }} </td>
+                                            <td data-label="Catégorie">{{ detail.category}}</td>
+                                            <td data-label="Action">{{ detail.action }} </td>
+                                            <td data-label="Ville"> {{ detail.location }} </td>
+                                            <td data-label="Client">{{ detail.user_name }} </td>
+                                            <td data-label="Téléphone"> {{ detail.user_phone }} </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <!--end needs-->
                 </div>
         </div>
 
         <?php include 'parts/footer.php'; ?>
         <script>
-        new Vue({
-            el: '#app',
-            data: {
-                showAll: true,
-                showUsers: false,
-                details: [],
-            },
-            mounted(){
-                this.displayAll();
-            },
-            methods: {
-                displayAll(){
-                    this.showUsers= false;
-                    axios.get('api/script.php?action=allDatas')
-                        .then((response) => {
-                            // Ensure 'this' refers to the Vue component's instance
-                            console.log(response.data);
-                            this.details = response.data;
-                        })
-                        .catch((error) => {
-                            console.error(error);
-                            alert('Failed to fetch datas');
-                        });
-                    
+    new Vue({
+        el: '#app',
+        data: {
+            showAll: true,
+            showUsers: false,
+            showNeeds: false,
+            details: [],
+        },
+        mounted() {
+            this.displayAll();
+        },
+        methods: {
+            displayAll() {
+                this.showUsers = false;
+                this.showNeeds = false;
+                axios.get('api/script.php?action=allDatas')
+                    .then((response) => {
+                        console.log(response.data);
+                        this.details = response.data;
                         this.showAll = true;
-                },
-                displayUsers(){
-                    axios.get('api/script.php?action=users')
-                        .then((response) => {console.log(response.data);
-                            this.details = response.data;
-                        })
-                        .catch((error) => {
-                            console.error(error);
-                            alert('Failed to fetch user data.');
-                        });
-
-                },
-
-                format(num){
-                    let res = new Intl.NumberFormat('fr-FR', { maximumSignificantDigits: 3 }).format(num);
-                         return res;
-                },
-                formatDate(da) {
-                    const [datePart, timePart] = da.split(' ');
-                    const [year, month, day] = datePart.split('-');
-                    return `${day}-${month}-${year}`;
-                    },
-                getImgUrl(pic) {
-                    return "img/" + pic;
-                },
-               pause(id){
-                    window.location.replace('api/script.php?action=pause&id='+id);
-               }
+                    })
+                    .catch((error) => {
+                        console.error(error);
+                        alert('Failed to fetch datas');
+                    });
+            },
+            displayUsers() {
+                this.showAll = false;
+                this.showNeeds = false;
+                axios.get('api/script.php?action=users')
+                    .then((response) => {
+                        console.log(response.data);
+                        this.details = response.data;
+                        this.showUsers = true;
+                    })
+                    .catch((error) => {
+                        console.error(error);
+                        alert('Failed to fetch user data.');
+                    });
+            },
+            displayNeeds() {
+                this.showAll = false;
+                this.showUsers = false;
+                axios.get('api/script.php?action=needs')
+                    .then((response) => {
+                        console.log(response.data);
+                        this.details = response.data;
+                        this.showNeeds = true;
+                    })
+                    .catch((error) => {
+                        console.error(error);
+                        alert('Failed to fetch needs data.');
+                    });
+            },
+            format(num) {
+                return new Intl.NumberFormat('fr-FR', { maximumSignificantDigits: 3 }).format(num);
+            },
+            formatDate(da) {
+                const [datePart, timePart] = da.split(' ');
+                const [year, month, day] = datePart.split('-');
+                return `${day}-${month}-${year}`;
+            },
+            getImgUrl(pic) {
+                return "img/" + pic;
+            },
+            pause(id) {
+                window.location.replace('api/script.php?action=pause&id=' + id);
             }
-        });
-    </script>
+        }
+    });
+</script>
+
 
     </div>
 

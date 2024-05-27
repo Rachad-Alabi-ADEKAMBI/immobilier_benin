@@ -1,3 +1,8 @@
+<?php
+session_start();
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -26,7 +31,7 @@
                         </h1> <br> <br>
 
                         <p class="text text-left">
-                            Bienvenue sur <a href="/">www.immobilierbenin.com</a>. En utilisant ce site web,
+                            Bienvenue sur <a href="www.immobilierbenin.com">www.immobilierbenin.com</a>. En utilisant ce site web,
                             vous acceptez les conditions générales d'utilisation
                             et la <a class="link" lhref="/policy">politique de confidentialité</a>. Si
                             vous n'acceptez pas ces
@@ -38,7 +43,7 @@
                         <h2 class="subtitle">
                             1- Utilisation du site :
                         </h2>
-                        Le site www.immobilierbenin.com est destiné à faciliter la recherche, la publication et la
+        <a href="www.immobilierbenin.com">www.immobilierbenin.com</a> est destiné à faciliter la recherche, la publication et la
                         consultation d'annonces de vente et de location de biens immobiliers au Bénin. L'utilisation
                         du site est soumise aux lois en vigueur et aux règles de conduite suivantes : <br>
 
@@ -61,15 +66,15 @@
                         <span>e.</span> Vous reconnaissez que l'accès au site peut être interrompu pour des raisons
                         techniques ou
                         de maintenance, et que nous ne pouvons être tenus responsables des dommages liés à cette
-                        interruption. <br><br>
+                        interruption. <br>
 
                         <span>f.</span> Lors de la création de recherche personnalisée, vous acceptez que vos noms et contacts soient partagés afin
-                            que vous soyez recontactés au besoin <br><br>
+                            que vous soyez recontactés au besoin <br>
 
                         <h2 class="subtitle">
                             2- Contenu et responsabilité :
                         </h2> <br>
-                        <span>a.</span> Les utilisateurs peuvent publier des annonces sur www.immobilierbenin.com pour
+                        <span>a.</span> Les utilisateurs peuvent publier des a<a href="www.immobilierbenin.com">www.immobilierbenin.com</a> pour
                         la vente
                         ou la location de biens immobiliers. Nous ne vérifions pas l'exactitude de ces annonces et
                         ne sommes pas responsables du contenu fourni par les utilisateurs. <br>
@@ -89,7 +94,7 @@
                         </h2> <br>
 
                         <p class="text text-left">
-                            <span>a.</span> Vous acceptez de n'utiliser www.immobilierbenin.com que dans le cadre de la
+                            <span>a.</span> Vous acceptez de<a href="www.immobilierbenin.com">www.immobilierbenin.com</a> que dans le cadre de la
                             recherche, de la publication et de la consultation d'annonces immobilières légitimes et
                             conformes à la loi.
                             <br> <span>b.</span> Vous ne pouvez pas utiliser le site pour effectuer des activités
@@ -106,7 +111,7 @@
                         </h2> <br>
 
                         <p class="text text-left">
-                            <span>a. </span> En publiant du contenu sur www.immobilierbenin.com, vous êtes responsable
+                            <span>a. </span> En publiant du <a href="www.immobilierbenin.com">www.immobilierbenin.com</a>, vous êtes responsable
                             de l'exactitude et de la légalité de ces informations. <br>
                             <span>b. </span> Vous acceptez de ne pas publier de fausses informations, de contenu
                             diffamatoire, offensant, ou de toute autre manière nuisible aux autres utilisateurs du site.
@@ -139,7 +144,7 @@
 
                         <p class="text text-left">
                             Nous nous réservons le droit de modifier, suspendre ou interrompre tout ou partie des
-                            services offerts sur www.immobilierbenin.com à tout moment et sans préavis. Nous ne serons
+                            services <a href="www.immobilierbenin.com">www.immobilierbenin.com</a> à tout moment et sans préavis. Nous ne serons
                             pas tenus responsables envers vous ou tout tiers pour de telles modifications, suspensions
                             ou interruptions.
                         </p> <br><br>
@@ -149,7 +154,7 @@
                         </h2> <br>
 
                         <p class="text text-left">
-                            Vous acceptez d'indemniser et de dégager de toute responsabilité www.immobilierbenin.com,
+                            Vous acceptez d'indemniser et de dégager de toute res<a href="www.immobilierbenin.com">www.immobilierbenin.com</a>,
                             ses administrateurs, employés, partenaires ou fournisseurs, contre toute réclamation,
                             demande, responsabilité, dommages, pertes ou dépenses (y compris les honoraires d'avocat)
                             résultant de ou liés à votre utilisation du site, votre violation des CGU, de la politique
@@ -163,11 +168,9 @@
                         </h2> <br>
 
                         <p class="text text-left">
-                            Le fait pour <a href="/">
-                                www.immobilierbenin.com
+                            Le fait pour <a href="<a href="www.immobilierbenin.com">www.immobilierbenin.com</a>
                             </a> de ne pas exercer ou de retarder l'exercice de tout droit ou recours prévu par les CGU
-                            ne constitue pas une renonciation à ce droit ou recours, et n'affectera pas le droit de
-                            www.immobilierbenin.com d'exercer ultérieurement ledit droit ou recours.
+                            ne constitue pas une renonciation à ce droit ou recours, et n'affectera pas le droit de<a href="www.immobilierbenin.com">www.immobilierbenin.com</a> d'exercer ultérieurement ledit droit ou recours.
 
                         </p> <br><br>
 
@@ -179,9 +182,8 @@
                             <span>a. </span> Si une disposition des présentes CGU est jugée invalide ou inapplicable par
                             une juridiction compétente, cela n'affectera pas la validité ou l'applicabilité des autres
                             dispositions qui resteront en vigueur.
-                            <br> <span>b. </span> Les présentes CGU constituent l'intégralité de l'accord entre vous et
-                            www.immobilierbenin.com concernant l'utilisation du site et remplacent tout accord antérieur
-                            ou actuel entre vous et www.immobilierbenin.com concernant ce sujet.
+                            <br> <span>b. </span> Les présentes CGU constituent l'intégralité de l'accord entre vou<a href="www.immobilierbenin.com">www.immobilierbenin.com</a> concernant l'utilisation du site et remplacent tout accord antérieur
+                            ou actuel en<a href="www.immobilierbenin.com">www.immobilierbenin.com</a> concernant ce sujet.
                         </p>
 
 
