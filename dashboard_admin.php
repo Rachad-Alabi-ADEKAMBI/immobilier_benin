@@ -77,11 +77,11 @@
                                                 <img :src='getImgUrl(detail.pic1)' alt="">
                                             </td>
                                             <td data-label="">
-                                                <a :href="'api/script.php?action=stop&id=' + detail.id" v-if='detail.situatuation != "stopped"'>
+                                                <a :href="'api/script.php?action=stop&id=' + detail.id" v-if='detail.situation != "Stop"'>
                                                         <i class="fa fa-stop me-3 text-danger"></i>
                                                 </a>
 
-                                                <a :href="'api/script.php?action=stop&id=' + detail.id" v-if='detail.situatuation == "stopped"'>
+                                                <a :href="'api/script.php?action=publish&id=' + detail.id" v-if='detail.situation == "Stop"'>
                                                         <i class="fa fa-play me-3 text-success"></i>
                                                 </a>
                                             </td>
@@ -107,6 +107,7 @@
                                                             <th scope="col">Email</th>
                                                             <th scope="col">Nom complet</th>
                                                             <th scope='col'>Picture</th>
+                                                            <th scope='col'>Annonces</th>
                                                             <th scope='col'>Ip</th>
                                                             </tr>
                                     </thead>
@@ -119,6 +120,7 @@
                                                              <td data-label="Picture">
                                                             <img :src='getImgUrl(detail.pic)' alt="">
                                                             </td>
+                                                            <td data-label="='Annonces'" >{{ details.ads }}</td>
                                                             <td data-label="Ip">{{ detail.ip }}</td>
                                                             </tr>
                                                         </tbody>
@@ -234,9 +236,6 @@
             },
             getImgUrl(pic) {
                 return "img/" + pic;
-            },
-            pause(id) {
-                window.location.replace('api/script.php?action=pause&id=' + id);
             }
         }
     });

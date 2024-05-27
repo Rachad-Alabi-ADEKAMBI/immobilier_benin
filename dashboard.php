@@ -268,6 +268,16 @@
                                 </div>
 
                                 <div class="row g-3 mt-4">
+                                    <div class="col-sm-12 col-md-4 mx-auto">
+                                        <input type="checkbox" name="geolocation" v-model='geolocation'>
+                                    </div>
+
+                                    <div class="col-sm-12 col-md-4 mx-auto">
+                                        
+                                    </div>
+                                </div>
+
+                                <div class="row g-3 mt-4">
                                     <div class="col-sm-12 col-md-4 mx-auto text-center">
                                         <button class="btn btn-primary w-100 py-3" type="submit">Ajouter</button>
                                     </div>

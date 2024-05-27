@@ -43,11 +43,11 @@ session_start();
 
                                 <div class="row g-3 mt-4">
                                     <div class="col-sm-12 col-md-6 mx-auto text-center">
-                                        <button class="btn btn-success w-100 py-3" type="submit">
+                                        <button class="btn btn-success w-100 py-3" @click="create()" >
                                            Oui, créer
                                         </button>
 
-                                        <button class="btn btn-success w-100 py-3" type="submit">
+                                        <button class="btn btn-success w-100 py-3" @click="back()" >
                                             Non, merci
                                         </button>
                                     </div>
@@ -61,6 +61,39 @@ session_start();
         </div>
 
         <?php include 'parts/footer.php'; ?>
+
+        <script>
+        new Vue({
+            el: '#app',
+            data: {
+                details: []           },
+            mounted(){
+                this.displayDetails();
+            },
+            methods: {
+                createNeed(){
+                    window.location.replace('api/script.php?action=newNeed')
+                },
+                back(){
+
+                },
+                format(num){
+                    return new Intl.NumberFormat('fr-FR', { maximumSignificantDigits: 3 }).format(num);
+                },
+                formatDate(da) {
+                    const [datePart, timePart] = da.split(' ');
+                    const [year, month, day] = datePart.split('-');
+                    return `${day}-${month}-${year}`;
+                },
+                getImgUrl(pic) {
+                    return "img/" + pic;
+                },
+                goToProperty(id){
+                        window.location.replace('property.php?id='+id);
+                }
+            }
+        });
+    </script>
 
     </div>
 

@@ -27,6 +27,10 @@ if($action == 'needs'){
     getNeeds();
 }
 
+if($action == 'newNeed'){
+    newNeed();
+}
+
 if($action == 'getProperty'){
     getProperty();
 }
@@ -39,12 +43,16 @@ if($action == 'pause'){
     pause();
 }
 
+if($action == 'stop'){
+    stop();
+}
+
 if($action == 'publish'){
     publish();
 }
 
-if($action == 'pause'){
-    delete();
+if($action == 'newAd'){
+    newAd();
 }
 
 if($action == 'threeAds'){

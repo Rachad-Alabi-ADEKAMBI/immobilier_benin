@@ -6,7 +6,7 @@ session_start();
            } else if($_SESSION['user']['role'] == 'admin'){
             header('Location: dashboard_admin.php');
            } else{
-            header('Location: .login.php');
+            header('Location: ../login.php');
            }
     }
 

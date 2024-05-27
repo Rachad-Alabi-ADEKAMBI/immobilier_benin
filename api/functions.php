@@ -92,6 +92,33 @@ function newAd(){
         }
     }
 
+
+    // Exemple d'utilisation
+    $address = "1600 Amphitheatre Parkway, Mountain View, CA";
+    $location = getGeolocation($address);
+
+    if ($location) {
+        echo "Latitude: " . $location['latitude'] . "<br>";
+        echo "Longitude: " . $location['longitude'];
+    } else {
+        echo "Impossible d'obtenir les coordonnées géographiques.";
+    }
+
+
+
+
+
+    //fetch datas user
+    $req = $pdo->prepare('SELECT * FROM users WHERE id = ?');
+    $req->execute(array($user_id));
+    $datas = $req->fetchAll();
+
+    $ads = $datas['ads'];
+
+    //update ads number
+    $req = $pdo->prepare("UPDATE users SET ads = ? WHERE id = ?");
+    $req->execute(array(($ads+1), $user_id));
+
       ?>
      
       <script>
@@ -102,14 +129,107 @@ function newAd(){
 
 }
 
-function getAllDatas(){
+function newNeed(){
     $pdo = getConnexion();
-    $req = $pdo->prepare("SELECT * FROM ads ORDER BY id DESC");
+
+    $category = $_SESSION['nee']
+
+    $geolocation ='5466.sf.fsfgs';
+    $user_id = $_SESSION['user']['id'];
+
+    if ($category == 'Terrain' || $category == 'Boutique') {
+        $size = verifyInput($_POST['size']);
+        $rooms = 0;
+        $bathrooms = 0;
+        $people = 0;
+    } else{
+        $size = 0;
+        $rooms = verifyInput($_POST['rooms']);
+        $bathrooms = verifyInput($_POST['bathrooms']);
+        $people = verifyInput($_POST['people']);
+    }
+
+    $situation = 'Disponible';
+
+    //update
+    try {
+        $req = $pdo->prepare('INSERT INTO ads SET name = ?, price = ?, category = ?,
+            action = ?, location = ?, description = ?, rooms = ?, bathrooms = ?,
+                people = ?, situation = ?, size = ?, user_id = ?');
+        $req->execute(array($name, $price,  $category, $action, $location,
+            $description, $rooms, $bathrooms, $people, $situation, $size, $user_id));
+
+       
+    } catch (PDOException $e) {
+        echo 'Database error: ' . $e->getMessage();
+    }
+
+    $ad_id = $pdo->lastInsertId();
+
+    //pic
+    $pic_fields = ['pic1', 'pic2', 'pic3', 'pic4'];
+    $base_dir = '../img/';
+    
+    foreach ($pic_fields as $pic_field) {
+        if (isset($_FILES[$pic_field]) && $_FILES[$pic_field]['error'] == 0) {
+            $pic_name = time() . '_' . $_FILES[$pic_field]['name'];
+            $target = $base_dir . $pic_name;
+    
+            if (move_uploaded_file($_FILES[$pic_field]['tmp_name'], $target)) {
+                $req = $pdo->prepare("UPDATE ads SET $pic_field = ? WHERE id = ?");
+                $req->execute([$pic_name, $ad_id]);
+            }
+        }
+    }
+
+
+    // Exemple d'utilisation
+    $address = "1600 Amphitheatre Parkway, Mountain View, CA";
+    $location = getGeolocation($address);
+
+    if ($location) {
+        echo "Latitude: " . $location['latitude'] . "<br>";
+        echo "Longitude: " . $location['longitude'];
+    } else {
+        echo "Impossible d'obtenir les coordonnées géographiques.";
+    }
+
+
+
+
+
+    //fetch datas user
+    $req = $pdo->prepare('SELECT * FROM users WHERE id = ?');
+    $req->execute(array($user_id));
+    $datas = $req->fetchAll();
+
+    $ads = $datas['ads'];
+
+    //update ads number
+    $req = $pdo->prepare("UPDATE users SET ads = ? WHERE id = ?");
+    $req->execute(array(($ads+1), $user_id));
+
+      ?>
+     
+      <script>
+     //     alert('Annonce ajoutée avec succès !!');
+      //    window.location.replace('../dashboard.php')
+      </script>
+    <?php
+
+}
+
+function getAllDatas() {
+    $pdo = getConnexion();
+    $req = $pdo->prepare("SELECT ads.*, users.* FROM ads INNER JOIN users ON ads.user_id = users.id ORDER BY ads.id DESC");
+    
     $req->execute();
     $datas = $req->fetchAll();
     $req->closeCursor();
+
     sendJSON($datas);
 }
+
 
 function getAvailableDatas(){
     $pdo = getConnexion();
@@ -137,9 +257,6 @@ function search() {
     $category = verifyInput($_POST['category']);
     $location = verifyInput($_POST['location']);
 
- //   echo $location;
-
-     // Prepare the SQL query with action and location filters
     $req = $pdo->prepare("SELECT * FROM ads WHERE action = ?
      AND location = ? 
      and category = ?
@@ -152,13 +269,7 @@ function search() {
     $req->closeCursor();
     
     if (count($datas) == 0) {
-        ?>
-            <script>
-                alert("Aucun résultat pour cette recherche !!");
-                window.history.back(); // This will navigate back to the previous page
-            </script>
-        <?php
-
+        header('Location: ../newNeed.php');
         exit();
     }
     
@@ -238,6 +349,28 @@ function pause(){
                 header('Location: ../dashboard.php');
             </script>
 
+<?php 
+    }
+}
+
+function stop(){
+    $pdo = getConnexion();
+    $id = verifyInput($_GET['id']);
+
+    if ($id == 0 || $id < 0) { ?>
+        <script>
+            alert('Une erreur est survenue, merci de vérifier cette url');
+        </script>
+        <?php
+        exit(); 
+    } else {
+        $req = $pdo->prepare("UPDATE ads SET situation = 'Stop' WHERE id = ?");
+        $req->execute(array($id));
+        ?>
+            <script>
+                alert("Annonce stopée par l'admin !!");
+           //     window.location.replace('../dashboard_admin.php');
+            </script>
 <?php 
     }
 }
@@ -513,7 +646,7 @@ function updateAccount(){
 
 function getUsers(){
     $pdo = getConnexion();
-        $req = $pdo->prepare('SELECT * FROM users');
+        $req = $pdo->prepare('SELECT * FROM users WHERE id != 1');
         $req->execute(array());
         $datas = $req->fetchAll();
         sendJSON($datas);
@@ -529,6 +662,25 @@ function logout()
 
     header('Location: ../index.php');
 }
+
+function getGeolocation($address) {
+    $apiKey = 'YOUR_GOOGLE_MAPS_API_KEY';  // Remplacez par votre clé API Google Maps
+    $address = urlencode($address);
+    $url = "https://maps.googleapis.com/maps/api/geocode/json?address={$address}&key={$apiKey}";
+
+    $response = file_get_contents($url);
+    $response = json_decode($response, true);
+
+    if ($response['status'] == 'OK') {
+        $latitude = $response['results'][0]['geometry']['location']['lat'];
+        $longitude = $response['results'][0]['geometry']['location']['lng'];
+        return ['latitude' => $latitude, 'longitude' => $longitude];
+    } else {
+        return false;
+    }
+}
+
+
 
 
 function sendJSON($infos)
