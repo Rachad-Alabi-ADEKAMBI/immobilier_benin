@@ -35,24 +35,13 @@
             <div class="container">
                 <div class="text-center mx-auto mb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 600px;">
                     <h1 class="mb-3">Contactez-nous</h1>
-                    <p>Si vous cherchez un appartement, une maison ou encore un terrain à Parakou
-                        vous etes à l'endroit parfait.
+                    <p>Annonces gratuites de vente et location de biens immobiliers
                     </p>
                 </div>
                 <div class="row g-4">
                     <div class="col-12">
                         <div class="row gy-4">
-                            <div class="col-md-6 col-lg-4 wow fadeIn" data-wow-delay="0.1s">
-                                <div class="bg-light rounded p-3">
-                                    <div class="d-flex align-items-center bg-white rounded p-3"
-                                        style="border: 1px dashed rgba(0, 185, 142, .3)">
-                                        <div class="icon me-3" style="width: 45px; height: 45px;">
-                                            <i class="fa fa-map-marker-alt text-primary"></i>
-                                        </div>
-                                        <span>Parakou, Titirou, 721 Lol</span>
-                                    </div>
-                                </div>
-                            </div>
+                            
                             <div class="col-md-6 col-lg-4 wow fadeIn" data-wow-delay="0.3s">
                                 <div class="bg-light rounded p-3">
                                     <div class="d-flex align-items-center bg-white rounded p-3"
@@ -60,7 +49,7 @@
                                         <div class="icon me-3" style="width: 45px; height: 45px;">
                                             <i class="fa fa-envelope-open text-primary"></i>
                                         </div>
-                                        <span>contact@fictiv_immo.com</span>
+                                        <span>contact@immobilierbenin.com</span>
                                     </div>
                                 </div>
                             </div>
@@ -86,7 +75,8 @@
                     <div class="col-md-6">
                         <div class="wow fadeInUp" data-wow-delay="0.5s">
                             <p class="mb-4">
-                                Envoyez-nous simplement un message, nous nous chargeons du reste
+                                Une question ? Un renseignement ? Envoyez nous un message, nous répondons généralement en
+                                24 h 
                             </p>
                             <form>
                                 <div class="row g-3">

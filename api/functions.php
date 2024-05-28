@@ -132,81 +132,48 @@ function newAd(){
 function newNeed(){
     $pdo = getConnexion();
 
-    $category = $_SESSION['need'];
+    $category = $_SESSION['need']['category'];
+    $action = $_SESSION['need']['action'];
+    $location = $_SESSION['need']['location'];
 
     $user_id = $_SESSION['user']['id'];
+    $user_name = $_SESSION['user']['first_name'].' '.$_SESSION['user']['last_name'];
+    $user_phone = $_SESSION['user']['phone'];
 
-    $situation = 'Disponible';
-
-    //update
+    
     try {
         $req = $pdo->prepare('INSERT INTO needs SET  category = ?,
-            action = ?, location = ?');
-      //  $req->execute(array($category, $action, $location));
+            action = ?, location = ?, user_id = ?, user_name = ?, user_phone = ?');
+        $req->execute(array($category, $action, $location, $user_id, $user_name, $user_phone));
+        ?>
+     
+        <script>
+            alert('Nouvelle annonce de recherche personnalisée ajoutée avec succès !!');
+            window.location.replace('../index.php')
+        </script>
+      <?php
 
        
     } catch (PDOException $e) {
         echo 'Database error: ' . $e->getMessage();
     }
-
-    $ad_id = $pdo->lastInsertId();
-
-    //pic
-    $pic_fields = ['pic1', 'pic2', 'pic3', 'pic4'];
-    $base_dir = '../img/';
-    
-    foreach ($pic_fields as $pic_field) {
-        if (isset($_FILES[$pic_field]) && $_FILES[$pic_field]['error'] == 0) {
-            $pic_name = time() . '_' . $_FILES[$pic_field]['name'];
-            $target = $base_dir . $pic_name;
-    
-            if (move_uploaded_file($_FILES[$pic_field]['tmp_name'], $target)) {
-                $req = $pdo->prepare("UPDATE ads SET $pic_field = ? WHERE id = ?");
-                $req->execute([$pic_name, $ad_id]);
-            }
-        }
-    }
-
-
-    // Exemple d'utilisation
-    $address = "1600 Amphitheatre Parkway, Mountain View, CA";
-    $location = getGeolocation($address);
-
-    if ($location) {
-        echo "Latitude: " . $location['latitude'] . "<br>";
-        echo "Longitude: " . $location['longitude'];
-    } else {
-        echo "Impossible d'obtenir les coordonnées géographiques.";
-    }
-
-
-
-
-
-    //fetch datas user
-    $req = $pdo->prepare('SELECT * FROM users WHERE id = ?');
-    $req->execute(array($user_id));
-    $datas = $req->fetchAll();
-
-    $ads = $datas['ads'];
-
-    //update ads number
-    $req = $pdo->prepare("UPDATE users SET ads = ? WHERE id = ?");
-    $req->execute(array(($ads+1), $user_id));
-
-      ?>
-     
-      <script>
-     //     alert('Annonce ajoutée avec succès !!');
-      //    window.location.replace('../dashboard.php')
-      </script>
-    <?php
-
 }
 
 function getAllDatas() {
     $pdo = getConnexion();
     $req = $pdo->prepare("SELECT ads.*, users.* FROM ads INNER JOIN users ON ads.user_id = users.id ORDER BY ads.id DESC");
+    
+    $req->execute();
+    $datas = $req->fetchAll();
+    $req->closeCursor();
+
+    sendJSON($datas);
+}
+
+function getAgents() {
+    $pdo = getConnexion();
+    $req = $pdo->prepare("SELECT * FROM users WHERE featured = 'yes' 
+        ORDER BY id DESC");
     
     $req->execute();
     $datas = $req->fetchAll();
@@ -244,7 +211,7 @@ function search() {
 
     $req = $pdo->prepare("SELECT * FROM ads WHERE action = ?
      AND location = ? 
-     and category = ?
+     AND category = ?
      AND situation = 'Disponible'
      ORDER BY id DESC");
     $req->execute([$action, $location, $category]);
@@ -254,6 +221,14 @@ function search() {
     $req->closeCursor();
     
     if (count($datas) == 0) {
+
+        $_SESSION['need'] = [
+            'category' => $category,
+            'location' => $location,
+            'action' => $action
+        ];
+        
+
         header('Location: ../newNeed.php');
         exit();
     }
@@ -466,7 +441,10 @@ function login()
                     'username' => $user['username'],
                     'email' => $user['email'],
                     'role' => $user['role'],
-                    'id' => $user['id']
+                    'id' => $user['id'],
+                    'phone' => $user['phone'],
+                    'first_name' => $user['first_name'],
+                    'last_name' => $user['last_name']
                 ];
 
                if($_SESSION['user']['role'] == 'user'){

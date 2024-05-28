@@ -106,7 +106,7 @@
                                                             <th scope="col">Date</th>
                                                             <th scope="col">Email</th>
                                                             <th scope="col">Nom complet</th>
-                                                            <th scope='col'>Picture</th>
+                                                            <th scope='col'>Photo</th>
                                                             <th scope='col'>Annonces</th>
                                                             <th scope='col'>Ip</th>
                                                             </tr>
@@ -117,10 +117,10 @@
                                                             <td data-label="Email">{{ detail.email }} {{ detail.last_name}}  </td>
                                                             
                                                             <td data-label="Full name">{{ detail.first_name }} {{ detail.last_name}}  </td>
-                                                             <td data-label="Picture">
+                                                             <td data-label="Photo">
                                                             <img :src='getImgUrl(detail.pic)' alt="">
                                                             </td>
-                                                            <td data-label="='Annonces'" >{{ details.ads }}</td>
+                                                            <td data-label="Annonces" >{{ detail.ads }}</td>
                                                             <td data-label="Ip">{{ detail.ip }}</td>
                                                             </tr>
                                                         </tbody>

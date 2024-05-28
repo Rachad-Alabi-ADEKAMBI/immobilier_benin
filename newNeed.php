@@ -1,7 +1,6 @@
 <?php
 session_start();
 
-
 ?>
 
 <!DOCTYPE html>
@@ -25,15 +24,15 @@ session_start();
         <?php include 'parts/header.php'; ?>
 
         <div id="app">
-        <div class="row g-0 gx-5 align-items-end">
-                    <div class="col-sm-12 col-md-6 mt-4 mx-auto" v-if='showNew'>
-                        <div class="bg-white border mt-2 rounded p-sm-5 wow fadeInUp" data-wow-delay="0.5s">
+        <div class="row g-0 gx-5 align-items-end" id='app'>
+                    <div class="col-sm-12 col-md-6 mt-4 mx-auto">
+                        <div class="bg-white border mt-2 rounded p-sm-3 m-3 p-3 wow fadeInUp" data-wow-delay="0.5s">
                             <form action="api/script.php?action=login" method="POST" >
                                 <h1 class="mx-auto text-center">
                                     Nouvelle recherche personnalisée
                                 </h1>
 
-                                <div class="row g-3">
+                                <div class="row g-3 mt-2">
                                     <p class="text text-grey">
                                         Nous n'avons trouvé aucun résultat pour cette recherche, mais vous pouvez en faire une recherche 
                                         personnalisée, les agents de Immobilier Bénin seront alors informés que vous avez ce besoin. <br>
@@ -42,15 +41,21 @@ session_start();
                                     </p>
                                 </div>
 
-                                <div class="row g-3 mt-4">
-                                    <div class="col-sm-12 col-md-6 mx-auto text-center">
-                                        <button class="btn btn-success w-100 py-3" @click="createNeed()" >
-                                           Oui, créer
-                                        </button>
+                                <div class="row-sm-12 col-md-8 mx-auto text-center">
+                                        <?php if (isset($_SESSION['user']['id'])) { ?>
+                                            <a class="btn btn-success m-2" href="api/script.php?action=newNeed">
+                                                Oui, créer
+                                            </a>
+                                        <?php } else { ?>
+                                            <a class="btn btn-primary m-2" href="register.php">
+                                                Créer mon compte
+                                            </a>
+                                        <?php } ?>
 
-                                        <button class="btn btn-success w-100 py-3" @click="back()" >
+
+                                        <a class="btn btn-danger m-2"  href="api/script.php?action=new" >
                                             Non, merci
-                                        </button>
+                                        </a>
                                     </div>
                                     
                                 </div>
@@ -67,16 +72,17 @@ session_start();
         new Vue({
             el: '#app',
             data: {
-                details: []           },
+                details: []         
+            },
             mounted(){
-                this.displayDetails();
+              //  this.displayDetails();
             },
             methods: {
-                createNeed(){
-                    window.location.replace('api/script.php?action=newNeed')
-                },
                 back(){
-
+                    window.history.back();
+                },
+                register(){
+                    window.location.replace('register.php')
                 },
                 format(num){
                     return new Intl.NumberFormat('fr-FR', { maximumSignificantDigits: 3 }).format(num);

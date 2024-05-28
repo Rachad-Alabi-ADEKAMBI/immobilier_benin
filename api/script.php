@@ -27,6 +27,10 @@ if($action == 'needs'){
     getNeeds();
 }
 
+if($action == 'agents'){
+    getAgents();
+}
+
 if($action == 'newNeed'){
     newNeed();
 }
