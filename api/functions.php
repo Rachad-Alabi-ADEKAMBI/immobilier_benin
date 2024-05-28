@@ -182,6 +182,39 @@ function getAgents() {
     sendJSON($datas);
 }
 
+function getAgent($id) {
+    $id= verifyInput($_GET['id']);
+
+   if($id == 0 OR $id < 0){
+    ?>
+        <script>
+            alert("Merci de vérifier cette url");
+            window.location.replace('../index.php');
+            exit();
+        </script>
+    <?php 
+   } else{
+    $pdo = getConnexion();
+    $req = $pdo->prepare("SELECT * FROM users WHERE id = ? AND featured = 'yes' ");
+    
+    $req->execute(array($id));
+    $datas = $req->fetchAll();
+    $req->closeCursor();
+
+    if(count($datas) > 0){
+        sendJSON($datas);
+    } else{
+        echo
+            '<script>
+            alert("Merci de vérifier cette url");
+            window.location.replace("../index.php");
+            exit();
+            </script>';
+        exit();
+    }
+
+   }
+}
 
 function getAvailableDatas(){
     $pdo = getConnexion();

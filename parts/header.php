@@ -14,9 +14,8 @@
              <div class="navbar-nav ms-auto">
                  <a href="index.php" class="nav-item nav-link active">Accueil</a>
                  <a href="index.php#about" class="nav-item nav-link">A-propos</a>
-                 <div class="nav-item dropdown">
-                     <a href="properties.php" class="nav-link">Annonces</a>
-                 </div>
+                <a href="properties.php" class="nav-item nav-link">Annonces</a>
+                <a href="agents.php" class="nav-item nav-link">Agents</a>
                  <a href="contact.php" class="nav-item nav-link">Contact</a>
                         <?php if (!isset($_SESSION['user']) || !$_SESSION['user']) { ?>
                             <a href="login.php" class="nav-item nav-link">Connexion</a>

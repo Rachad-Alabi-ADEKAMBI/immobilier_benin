@@ -31,6 +31,10 @@ if($action == 'agents'){
     getAgents();
 }
 
+if($action == 'agent'){
+    getAgent($id);
+}
+
 if($action == 'newNeed'){
     newNeed();
 }
