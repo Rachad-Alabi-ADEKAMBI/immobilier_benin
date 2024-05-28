@@ -132,32 +132,17 @@ function newAd(){
 function newNeed(){
     $pdo = getConnexion();
 
-    $category = $_SESSION['nee']
+    $category = $_SESSION['need'];
 
-    $geolocation ='5466.sf.fsfgs';
     $user_id = $_SESSION['user']['id'];
-
-    if ($category == 'Terrain' || $category == 'Boutique') {
-        $size = verifyInput($_POST['size']);
-        $rooms = 0;
-        $bathrooms = 0;
-        $people = 0;
-    } else{
-        $size = 0;
-        $rooms = verifyInput($_POST['rooms']);
-        $bathrooms = verifyInput($_POST['bathrooms']);
-        $people = verifyInput($_POST['people']);
-    }
 
     $situation = 'Disponible';
 
     //update
     try {
-        $req = $pdo->prepare('INSERT INTO ads SET name = ?, price = ?, category = ?,
-            action = ?, location = ?, description = ?, rooms = ?, bathrooms = ?,
-                people = ?, situation = ?, size = ?, user_id = ?');
-        $req->execute(array($name, $price,  $category, $action, $location,
-            $description, $rooms, $bathrooms, $people, $situation, $size, $user_id));
+        $req = $pdo->prepare('INSERT INTO needs SET  category = ?,
+            action = ?, location = ?');
+      //  $req->execute(array($category, $action, $location));
 
        
     } catch (PDOException $e) {

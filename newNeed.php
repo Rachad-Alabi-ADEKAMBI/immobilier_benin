@@ -8,7 +8,7 @@ session_start();
 <html lang="en">
 
 <head>
-    <title>Immobilier Bénin - Nouvelle demande</title>
+    <title>Immobilier Bénin - Nouvelle recherche personalisée</title>
 
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
 
@@ -36,14 +36,15 @@ session_start();
                                 <div class="row g-3">
                                     <p class="text text-grey">
                                         Nous n'avons trouvé aucun résultat pour cette recherche, mais vous pouvez en faire une recherche 
-                                        personnalisée, les agents de Immobilier Bénin seront alors informés que vous avez besoin de cela. Il est nécéssaire de 
+                                        personnalisée, les agents de Immobilier Bénin seront alors informés que vous avez ce besoin. <br>
+                                         Il est nécéssaire de 
                                         posséder un compte gratuit Immobilier Bénin pour cette option.
                                     </p>
                                 </div>
 
                                 <div class="row g-3 mt-4">
                                     <div class="col-sm-12 col-md-6 mx-auto text-center">
-                                        <button class="btn btn-success w-100 py-3" @click="create()" >
+                                        <button class="btn btn-success w-100 py-3" @click="createNeed()" >
                                            Oui, créer
                                         </button>
 
@@ -99,62 +100,6 @@ session_start();
 
     <?php include 'parts/includeJs.php'; ?>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js"></script>
-
-<style>
-          body {
-            font-family: Arial, sans-serif;
-        }
-        .table-container {
-            width: 100%;
-            overflow-x: auto;
-        }
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin: 20px 0;
-        }
-        table, th, td {
-            border: 1px solid #ddd;
-        }
-        th, td {
-            padding: 12px;
-            text-align: left;
-        }
-        th {
-            background-color: #f4f4f4;
-        }
-        @media (max-width: 600px) {
-            table, thead, tbody, th, td, tr {
-                display: block;
-            }
-            thead tr {
-                display: none;
-            }
-            tr {
-                margin-bottom: 15px;
-            }
-            td {
-                position: relative;
-                padding-left: 50%;
-            }
-            td::before {
-                content: attr(data-label);
-                position: absolute;
-                left: 0;
-                width: 50%;
-                padding-left: 15px;
-                font-weight: bold;
-                background-color: #f4f4f4;
-                border-right: 1px solid #ddd;
-                box-sizing: border-box;
-            }
-        }
-
-        img{
-            width: 90px;
-            height: 60px;
-        }
-    </style>
 
 </body>
 
