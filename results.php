@@ -1,5 +1,7 @@
 <?php 
     session_start();
+
+    var_dump($_SESSION['search_results'])
 ?>
 
 <!DOCTYPE html>

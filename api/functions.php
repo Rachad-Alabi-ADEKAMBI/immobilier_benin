@@ -283,9 +283,6 @@ function search() {
         header('Location: ../newNeed.php');
         exit();
     }
-    
-    
-
     // Initialize an empty results array
     $results = [];
 

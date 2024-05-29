@@ -6,6 +6,8 @@
     <title>Horizon - Accueil</title>
 </head>
 <body>
-    gjkjgjhg
+    <p>
+        Site en cours de création
+    </p>
 </body>
 </html>- 

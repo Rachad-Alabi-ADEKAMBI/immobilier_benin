@@ -1,3 +1,17 @@
+<?php
+session_start();
+    if(isset($_SESSION['user'])){
+        if($_SESSION['user']['role'] == 'user'){
+            header('Location: dashboard.php');
+           } else if($_SESSION['user']['role'] == 'admin'){
+            header('Location: dashboard_admin.php');
+           } else{
+            header('Location: ../login.php');
+           }
+    }
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
