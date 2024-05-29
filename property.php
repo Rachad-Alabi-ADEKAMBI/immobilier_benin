@@ -54,7 +54,7 @@ session_start();
                 </div>
 
                 <div class="row">
-                    <div class="col-12">
+                    <div class="col-sm-12">
                         <div class="icon">
                             <div class="d-flex border-top">
                                 <small class="flex-fill text-center border-end py-2">
@@ -68,23 +68,23 @@ session_start();
                                 </small>
                             </div>
                         </div>
+                        
+                        <h5 class="text-primary mt-3 mb-2">{{ format(detail.price) }} F CFA</h5>
+
+                        <ul>
+                            <li><i class="fa fa-map-marker-alt text-primary me-2"></i> {{ detail.location}} </li>
+                            <li><i class="fa fa-user-alt text-primary me-2"></i> {{ detail.user_name}}</li>
+                            <li><i class="fa fa-phone-alt text-primary me-2"></i> {{ detail.user_phone}}</li>
+                        </ul>
                     </div>
-                    
-                    <div class="col-12">
 
-                    <p><i class="fa fa-map-marker-alt text-primary me-2"></i> {{ detail.location}}</p>
-                                        
-                                        <div class="d-flex border-top">
-
-                    <h5 class="text-primary mt-3 mb-2">{{ format(detail.price) }} F CFA</h5>
+                    <div class="col-sm-12 text-left">
+                        <p class="text text-left">
+                            {{ detail.description }}
+                        </p>
                     </div>
                 </div>
 
-                <div class="row mt-4">
-                <div class="col-sm-12 col-md-8 mx-auto text-center">
-        <p class="text text-grey">{{ detail.description }}</p>
-    </div>
-                </div>
                 <div class="row mt-4">
                     <div class="col-sm-12 col-md-8 mx-auto">
                     <div class="col-sm-12 col-md-8 mx-auto text-center">
@@ -159,11 +159,13 @@ session_start();
     li{
         list-style: none;
         padding-left: 30px;
+        display: inline;
+        margin: 10px;
         
     }
 
     i{
-        font-size: 1.7em;
+        font-size: 1.5em;
         font-weight: bold;
         margin: 10px;
     }

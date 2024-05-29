@@ -15,6 +15,14 @@ if ($action == 'allDatas') {
     getAvailableDatas();
 }
 
+if ($action == 'toRent') {
+    getToRent();
+}
+
+if ($action == 'toSell') {
+    getToSell();
+}
+
 if ($action == 'myAds') {
     getMyAds();
 }

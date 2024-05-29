@@ -21,9 +21,27 @@
                     <!-- Property List Start -->
                     <div class="row g-0 gx-5 align-items-end">
                         <div class="col-sm-6 ">
-                            <div class="text-start mx-auto text-center mb-5 wow slideInLeft" data-wow-delay="0.1s">
+                            <div class="text-start mx-auto text-left mb-5 wow slideInLeft" data-wow-delay="0.1s" v-if='showAll'>
                                 <h1 class="mx-auto mb-3">Dernières annonces</h1>
-                                <p class="text text-center">Des dizaines d'annonces gratuites chaque jour</p>
+                                <p class="text text-left">Des dizaines d'annonces gratuites chaque jour</p>
+                            </div>
+
+                            <div class="text-start mx-auto text-left mb-5 wow slideInLeft" data-wow-delay="0.1s" v-if='showToSell'>
+                                <h1 class="mx-auto mb-3">Annonces de vente</h1>
+                                <p class="text text-left">Des dizaines d'annonces gratuites chaque jour</p>
+                            </div>
+
+                            <div class="text-start mx-auto text-left mb-5 wow slideInLeft" data-wow-delay="0.1s" v-if='showToRent'>
+                                <h1 class="mx-auto mb-3">Annonces de location</h1>
+                                <p class="text text-left">Des dizaines d'annonces gratuites chaque jour</p>
+                            </div>
+
+                            <div class="text-start mx-auto text-left mb-5 wow slideInLeft" data-wow-delay="0.1s" v-if='showFiltered'>
+                                <h1 class="mx-auto mb-3">Résultats du tri</h1>
+                                <p class="text text-left">
+                                    Annonces avec un prix inférieur à
+                                    {{ format(rangeValue) }} F CFA
+                                </p>
                             </div>
                         </div>
                         <div class="col-lg-6 text-start text-lg-end wow slideInRight" data-wow-delay="0.1s">
@@ -44,8 +62,79 @@
                             </ul>
                         </div>
                     </div>
+
+                    <div class="row">
+                        <div class="options__item">
+                            <input type="range" class="mt-2"  v-model="rangeValue" min="0"
+                            max="1000000"  @click="filter()">
+                       </div>
+                    </div>
                     <div class="tab-content">
-                        <div id="tab-1" class="tab-pane fade show p-0 active">
+                        <div id="tab-1" class="tab-pane fade show p-0 active" v-if='showAll'>
+                            <div class="row g-4" >
+                                <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s" v-for='detail in details' 
+                                    :key='detail.id'>
+                                    <div class="property-item rounded overflow-hidden" @click='goToProperty(detail.id)'>
+                                        <div class="position-relative overflow-hidden">
+                                                <img class="img-fluid" :src="getImg(detail.pic1)" alt="">
+                                            <div
+                                                class="bg-primary rounded text-white position-absolute start-0 top-0 m-4 py-1 px-3">
+                                                {{ detail.action }}    
+                                            </div>
+                                            <div
+                                                class="bg-white rounded-top text-primary position-absolute start-0 bottom-0 mx-4 pt-1 px-3">
+                                                {{ detail.category }}    
+                                            </div>
+                                        </div>
+                                        <div class="p-4 pb-0">
+                                            <h5 class="text-primary mb-3"> {{ format(detail.price) }} F CFA </h5>
+                                            <a class="d-block h5 mb-2" href=""> {{ detail.description }} </a>
+                                            <p><i class="fa fa-map-marker-alt text-primary me-2"></i> {{ detail.location}}</p>
+                                        </div>
+                                        <div class="d-flex border-top">
+                                            <small class="flex-fill text-center border-end py-2"><i class="fa fa-ruler-combined text-primary me-2"></i>{{detail.people}} ménage{{detail.people > 1 ? 's' : ''}}</small>
+                                            <small class="flex-fill text-center border-end py-2"><i class="fa fa-bed text-primary me-2"></i>{{detail.rooms}} chambre{{detail.rooms > 1 ? 's' : ''}}</small>
+                                            <small class="flex-fill text-center py-2"><i class="fa fa-bath text-primary me-2"></i>{{detail.bathrooms}} douche{{detail.bathrooms > 1 ? 's' : ''}}</small>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div id="tab-2" class="tab-pane fade show p-0 active" v-if='showToSell'>
+                            <div class="row g-4" >
+                                <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s" v-for='detail in details' 
+                                    :key='detail.id'>
+                                    <div class="property-item rounded overflow-hidden" @click='goToProperty(detail.id)'>
+                                        <div class="position-relative overflow-hidden">
+                                                <img class="img-fluid" :src="getImg(detail.pic1)" alt="">
+                                            <div
+                                                class="bg-primary rounded text-white position-absolute start-0 top-0 m-4 py-1 px-3">
+                                                {{ detail.action }}    
+                                            </div>
+                                            <div
+                                                class="bg-white rounded-top text-primary position-absolute start-0 bottom-0 mx-4 pt-1 px-3">
+                                                {{ detail.category }}    
+                                            </div>
+                                        </div>
+                                        <div class="p-4 pb-0">
+                                            <h5 class="text-primary mb-3"> {{ format(detail.price) }} F CFA </h5>
+                                            <a class="d-block h5 mb-2" href=""> {{ detail.description }} </a>
+                                            <p><i class="fa fa-map-marker-alt text-primary me-2"></i> {{ detail.location}}</p>
+                                        </div>
+                                        <div class="d-flex border-top">
+                                            <small class="flex-fill text-center border-end py-2"><i class="fa fa-ruler-combined text-primary me-2"></i>{{detail.people}} ménage{{detail.people > 1 ? 's' : ''}}</small>
+                                            <small class="flex-fill text-center border-end py-2"><i class="fa fa-bed text-primary me-2"></i>{{detail.rooms}} chambre{{detail.rooms > 1 ? 's' : ''}}</small>
+                                            <small class="flex-fill text-center py-2"><i class="fa fa-bath text-primary me-2"></i>{{detail.bathrooms}} douche{{detail.bathrooms > 1 ? 's' : ''}}</small>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div id="tab-3" class="tab-pane fade show p-0 active" v-if='showToRent'>
                             <div class="row g-4" >
                                 <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s" v-for='detail in details' 
                                     :key='detail.id'>
@@ -63,7 +152,7 @@
                                             </div>
                                         </div>
                                         <div class="p-4 pb-0">
-                                            <h5 class="text-primary mb-3"> {{ detail.price }} F CFA </h5>
+                                            <h5 class="text-primary mb-3"> {{ format(detail.price) }} F CFA </h5>
                                             <a class="d-block h5 mb-2" href=""> {{ detail.description }} </a>
                                             <p><i class="fa fa-map-marker-alt text-primary me-2"></i> {{ detail.location}}</p>
                                         </div>
@@ -77,6 +166,39 @@
                                 </div>
                             </div>
                         </div>
+
+                        <div id="tab-0" class="tab-pane fade show p-0 active" v-if='showFiltered'>
+                            <div class="row g-4" >
+                                <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s" v-for='detail in filteredItems' 
+                                    :key='detail.id'>
+                                    <div class="property-item rounded overflow-hidden" @click='goToProperty(detail.id)'>
+                                        <div class="position-relative overflow-hidden">
+                                                <img class="img-fluid" :src="getImg(detail.pic1)" alt="">
+                                            <div
+                                                class="bg-primary rounded text-white position-absolute start-0 top-0 m-4 py-1 px-3">
+                                                {{ detail.action }}    
+                                            </div>
+                                            <div
+                                                class="bg-white rounded-top text-primary position-absolute start-0 bottom-0 mx-4 pt-1 px-3">
+                                                {{ detail.category }}    
+                                            </div>
+                                        </div>
+                                        <div class="p-4 pb-0">
+                                            <h5 class="text-primary mb-3"> {{ format(detail.price) }} F CFA </h5>
+                                            <a class="d-block h5 mb-2" href=""> {{ detail.description }} </a>
+                                            <p><i class="fa fa-map-marker-alt text-primary me-2"></i> {{ detail.location}}</p>
+                                        </div>
+                                        <div class="d-flex border-top">
+                                            <small class="flex-fill text-center border-end py-2"><i class="fa fa-ruler-combined text-primary me-2"></i>{{detail.people}} ménage{{detail.people > 1 ? 's' : ''}}</small>
+                                            <small class="flex-fill text-center border-end py-2"><i class="fa fa-bed text-primary me-2"></i>{{detail.rooms}} chambre{{detail.rooms > 1 ? 's' : ''}}</small>
+                                            <small class="flex-fill text-center py-2"><i class="fa fa-bath text-primary me-2"></i>{{detail.bathrooms}} douche{{detail.bathrooms > 1 ? 's' : ''}}</small>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
                     </div>
                 </div>
             </div>
@@ -89,10 +211,19 @@
                     details: '',
                     showAll: false,
                     showToRent: false,
-                    showToSell: false
+                    showToSell: false,
+                    rangeValue: '', 
+                    showFiltered: false
                 },
                 mounted(){
                     this.displayAll();
+                },
+                computed: {
+                    filteredItems() {
+                        return this.details.filter(detail => {
+                            return detail.price <= this.rangeValue;
+                        });
+                        },
                 },
                 watch: {
                         category() {
@@ -110,6 +241,7 @@
                         this.showAll = true;
                         this.showToSell = false;
                         this.showToRent = false;
+                        this.showFiltered = false;
                         axios.get('api/script.php?action=availableDatas')
                             .then((response) => {
                                 console.log(response.data);
@@ -124,7 +256,8 @@
                         this.showAll = false;
                         this.showToSell = false;
                         this.showToRent = true;
-                        axios.get('api/script.php?action=availableDatas')
+                        this.showFiltered = false;
+                        axios.get('api/script.php?action=toRent')
                             .then((response) => {
                                 console.log(response.data);
                                 this.details = response.data;
@@ -138,7 +271,8 @@
                         this.showAll = false;
                         this.showToSell = true;
                         this.showToRent = false;
-                        axios.get('api/script.php?action=availableDatas')
+                        this.showFiltered = false;
+                        axios.get('api/script.php?action=toSell')
                             .then((response) => {
                                 console.log(response.data);
                                 this.details = response.data;
@@ -147,6 +281,12 @@
                                 console.error(error);
                                 alert('Failed to fetch datas');
                             });
+                    },
+                    filter(){
+                        this.showAll = false;
+                        this.showToSell = false;
+                        this.showToRent = false;
+                        this.showFiltered = true;
                     },
 
                     format(num){

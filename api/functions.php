@@ -225,6 +225,24 @@ function getAvailableDatas(){
     sendJSON($datas);
 }
 
+function getToRent(){
+    $pdo = getConnexion();
+    $req = $pdo->prepare("SELECT * FROM ads WHERE action = ? AND situation = ? ORDER BY id DESC");
+    $req->execute(array('A louer', 'Disponible'));
+    $datas = $req->fetchAll();
+    $req->closeCursor();
+    sendJSON($datas);
+}
+
+function getToSell(){
+    $pdo = getConnexion();
+    $req = $pdo->prepare("SELECT * FROM ads WHERE action = ? AND situation = ? ORDER BY id DESC");
+    $req->execute(array('A vendre', 'Disponible'));
+    $datas = $req->fetchAll();
+    $req->closeCursor();
+    sendJSON($datas);
+}
+
 function getMyAds(){
     $pdo = getConnexion();
     $req = $pdo->prepare("SELECT * FROM ads WHERE user_id = ? ORDER BY id DESC");
