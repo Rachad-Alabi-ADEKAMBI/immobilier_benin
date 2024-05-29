@@ -9,7 +9,7 @@
                     </div>
                     <div class="col-lg-6 wow fadeIn" data-wow-delay="0.5s">
                         <div class="mb-4">
-                            <h1 class="mb-3 pt-5 mt-3">A propos</h1>
+                            <h1 class="mb-3  mt-3">A propos</h1>
 
                             <p>
                             Bienvenue sur immobilierbenin, votre site d'annonces de vente et de location de biens
@@ -24,7 +24,7 @@
                         </div>
 
                         <a href="properties.php" class="btn btn-dark py-3 px-4">
-                            <i class="fa fa-calendar-alt me-2"></i>Voir les annonces</a>
+                            <i class="fa fa-list-alt me-2"></i>Voir les annonces</a>
                     </div>
                 </div>
             </div>

@@ -398,14 +398,14 @@
                                             </td>
                                             <td data-label="">
                                                 <ul>
-                                                    <li><i class="fa fa-trash me-3 text-danger" @lick="delete(detail.id)"></i></li>
+                                                    <li><i class="fa fa-trash me-3 text-danger" @lick="remove(detail.id)"></i></li>
                                                     <li> <i class="fa fa-check me-3 text-success" @lick="publish(detail.id)"></i></li>
                                                     <li><i class="fa fa-pen me-3 text-info" @lick="displayEdit(detail.id)"></i></li>
                                                     <li> <i class="fa fa-eye me-3 text-primary" @lick="goToProperty(detail.id)"></i></li>
                                                 </ul>
 
-                                                <button class="btn btn-primary" @lick="displayEdit(detail.id)">
-                                                    edit
+                                                <button class="btn btn-danger" @click="remove(detail.id)">
+                                                    Delete 
                                                 </button>
                                             </td>
                                         </tr>
@@ -470,7 +470,8 @@
                 details: '',
                 showLand: false,
                 showHouse: false,
-                showEdit: false
+                showEdit: false,
+                geolocation: ''
             },
             mounted(){
                 this.displayAll();
@@ -570,6 +571,10 @@
                 },
                pause(id){
                     window.location.replace('api/script.php?action=pause&id='+id);
+               },
+               remove(id){
+                alert('ok');
+                 window.location.replace('api/script.php?action=delete&id='+id);
                }
             }
         });

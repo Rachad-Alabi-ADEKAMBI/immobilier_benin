@@ -1,17 +1,5 @@
 <?php
 session_start();
-
-function getDataFromAPI($url) {
-    $ch = curl_init($url);
-    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-    $response = curl_exec($ch);
-    curl_close($ch);
-    return json_decode($response, true);
-}
-
-$apiUrl = 'api/script.php?action=availableDatas';
-$datas = getDataFromAPI($apiUrl);
-//var_dump($datas);
 ?>
 
 
@@ -25,13 +13,13 @@ $datas = getDataFromAPI($apiUrl);
 </head>
 
 <body>
-    <div class="container-xxl bg-white p-0">
+    <div class="container-xxl bg-white p-0" id="app">
         <?php include 'parts/spinner.php'; ?>
 
         <?php include 'parts/header.php'; ?>
 
         <!-- Header Start -->
-        <div class="container-fluid header bg-white p-0" id='app'>
+        <div class="container-fluid header bg-white p-0" >
             <div class="row g-0 align-items-center flex-column-reverse
              flex-md-row pt-5">
                 <div class="col-md-6 p-5 mt-lg-5    ">
@@ -151,7 +139,7 @@ $datas = getDataFromAPI($apiUrl);
          About End -->
 
 
-        <div class="container-xxl py-5">
+        <div class="container-xxl py-5" id="app">
             <div class="container">
                 <!-- Property List Start -->
                 <div class="row g-0 gx-5 align-items-end">
@@ -162,22 +150,7 @@ $datas = getDataFromAPI($apiUrl);
                                 autres dans la ville de Parakou</p>
                         </div>
                     </div>
-                    <!--
-                    <div class="col-lg-6 text-start text-lg-end wow slideInRight" data-wow-delay="0.1s">
-                        <ul class="nav nav-pills d-inline-flex justify-content-end mb-5">
-                            <li class="nav-item me-2">
-                                <a class="btn btn-outline-primary active" data-bs-toggle="pill"
-                                    href="#tab-1">Populaires</a>
-                            </li>
-                            <li class="nav-item me-2">
-                                <a class="btn btn-outline-primary" data-bs-toggle="pill" href="#tab-2">A vendre</a>
-                            </li>
-                            <li class="nav-item me-0">
-                                <a class="btn btn-outline-primary" data-bs-toggle="pill" href="#tab-3">A louer</a>
-                            </li>
-                        </ul>
-                    </div>
--->
+   
                 </div>
 
                 <div class="tab-content">
@@ -199,11 +172,10 @@ $datas = getDataFromAPI($apiUrl);
                                             </div>
                                         </div>
                                         <div class="p-4 pb-0">
-                                            <h5 class="text-primary mb-3"> {{ detail.price }} F CFA </h5>
-                                            <a class="d-block h5 mb-2" href=""> {{ detail.description }} </a>
+                                            <h5 class="text-primary mb-3"> {{ format(detail.price) }} F CFA </h5>
                                             <p><i class="fa fa-map-marker-alt text-primary me-2"></i> {{ detail.location}}</p>
                                         </div>
-                                        <div class="d-flex border-top">
+                                        <div class="d-flex border-top" v-if="detail.category != 'Terrain'">
                                             <small class="flex-fill text-center border-end py-2"><i class="fa fa-ruler-combined text-primary me-2"></i>{{detail.people}} ménage{{detail.people > 1 ? 's' : ''}}</small>
                                             <small class="flex-fill text-center border-end py-2"><i class="fa fa-bed text-primary me-2"></i>{{detail.rooms}} chambre{{detail.rooms > 1 ? 's' : ''}}</small>
                                             <small class="flex-fill text-center py-2"><i class="fa fa-bath text-primary me-2"></i>{{detail.bathrooms}} douche{{detail.bathrooms > 1 ? 's' : ''}}</small>
@@ -298,17 +270,23 @@ $datas = getDataFromAPI($apiUrl);
 
         <?php include 'parts/footer.php'; ?>
 
-        <script>
+       
+    </div>
+
+    <?php include 'parts/includeJs.php'; ?>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js"></script>
+
+    <script>
         new Vue({
             el: '#app',
             data: {
-                details: []           },
+                details: ''       
+            },
             mounted(){
                 this.displayDetails();
             },
             methods: {
                 displayDetails(){
-                    console.log(this.id);
                     axios.get('api/script.php?action=availableDatas')
                         .then((response) => {
                             console.log(response.data);
@@ -327,7 +305,7 @@ $datas = getDataFromAPI($apiUrl);
                     const [year, month, day] = datePart.split('-');
                     return `${day}-${month}-${year}`;
                 },
-                getImgUrl(pic) {
+                getImg(pic) {
                     return "img/" + pic;
                 },
                 goToProperty(id){
@@ -336,10 +314,6 @@ $datas = getDataFromAPI($apiUrl);
             }
         });
     </script>
-    </div>
-
-    <?php include 'parts/includeJs.php'; ?>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js"></script>
    
 </body>
 

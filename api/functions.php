@@ -61,7 +61,7 @@ function newAd(){
 
     $situation = 'Disponible';
 
-    //update
+    //insertion
     try {
         $req = $pdo->prepare('INSERT INTO ads SET name = ?, price = ?, category = ?,
             action = ?, location = ?, description = ?, rooms = ?, bathrooms = ?,
@@ -92,7 +92,7 @@ function newAd(){
         }
     }
 
-
+/*
     // Exemple d'utilisation
     $address = "1600 Amphitheatre Parkway, Mountain View, CA";
     $location = getGeolocation($address);
@@ -104,7 +104,7 @@ function newAd(){
         echo "Impossible d'obtenir les coordonnées géographiques.";
     }
 
-
+*/
 
 
 
@@ -122,8 +122,8 @@ function newAd(){
       ?>
      
       <script>
-     //     alert('Annonce ajoutée avec succès !!');
-      //    window.location.replace('../dashboard.php')
+          alert('Annonce ajoutée avec succès !!');
+          window.location.replace('../dashboard.php')
       </script>
     <?php
 
@@ -365,7 +365,8 @@ function stop(){
     $pdo = getConnexion();
     $id = verifyInput($_GET['id']);
 
-    if ($id == 0 || $id < 0) { ?>
+    
+    if (!is_numeric($id) || $id <= 0) { ?>
         <script>
             alert('Une erreur est survenue, merci de vérifier cette url');
         </script>
@@ -376,9 +377,10 @@ function stop(){
         $req->execute(array($id));
         ?>
             <script>
-                alert("Annonce stopée par l'admin !!");
-           //     window.location.replace('../dashboard_admin.php');
+                alert("Annonce mise en Stop par l'admin !!");
+                window.location.replace('../dashboard_admin.php');
             </script>
+
 <?php 
     }
 }
@@ -399,7 +401,7 @@ function publish(){
         ?>
             <script>
                 alert('Annonce publiée !!');
-                header('Location: ../dashboard.php');
+                window.location.replace('../dashboard_admin.php');
             </script>
 
 <?php 
@@ -422,7 +424,7 @@ function delete(){
         ?>
             <script>
                 alert('Annonce supprimée !!');
-                header('Location: ../dashboard.php');
+                window.location.replace('../dashboard.php');
             </script>
 
 <?php 

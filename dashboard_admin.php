@@ -11,7 +11,7 @@
 <html lang="en">
 
 <head>
-    <title>Immobilier Bénin - Tableau de bord</title>
+    <title>Immobilier Bénin - Tableau de bord admin</title>
 
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
 
@@ -172,74 +172,74 @@
 
         <?php include 'parts/footer.php'; ?>
         <script>
-    new Vue({
-        el: '#app',
-        data: {
-            showAll: true,
-            showUsers: false,
-            showNeeds: false,
-            details: [],
-        },
-        mounted() {
-            this.displayAll();
-        },
-        methods: {
-            displayAll() {
-                this.showUsers = false;
-                this.showNeeds = false;
-                axios.get('api/script.php?action=allDatas')
-                    .then((response) => {
-                        console.log(response.data);
-                        this.details = response.data;
-                        this.showAll = true;
-                    })
-                    .catch((error) => {
-                        console.error(error);
-                        alert('Failed to fetch datas');
-                    });
+        new Vue({
+            el: '#app',
+            data: {
+                showAll: true,
+                showUsers: false,
+                showNeeds: false,
+                details: [],
             },
-            displayUsers() {
-                this.showAll = false;
-                this.showNeeds = false;
-                axios.get('api/script.php?action=users')
-                    .then((response) => {
-                        console.log(response.data);
-                        this.details = response.data;
-                        this.showUsers = true;
-                    })
-                    .catch((error) => {
-                        console.error(error);
-                        alert('Failed to fetch user data.');
-                    });
+            mounted() {
+                this.displayAll();
             },
-            displayNeeds() {
-                this.showAll = false;
-                this.showUsers = false;
-                axios.get('api/script.php?action=needs')
-                    .then((response) => {
-                        console.log(response.data);
-                        this.details = response.data;
-                        this.showNeeds = true;
-                    })
-                    .catch((error) => {
-                        console.error(error);
-                        alert('Failed to fetch needs data.');
-                    });
-            },
-            format(num) {
-                return new Intl.NumberFormat('fr-FR', { maximumSignificantDigits: 3 }).format(num);
-            },
-            formatDate(da) {
-                const [datePart, timePart] = da.split(' ');
-                const [year, month, day] = datePart.split('-');
-                return `${day}-${month}-${year}`;
-            },
-            getImgUrl(pic) {
-                return "img/" + pic;
+            methods: {
+                displayAll() {
+                    this.showUsers = false;
+                    this.showNeeds = false;
+                    axios.get('api/script.php?action=allDatas')
+                        .then((response) => {
+                            console.log(response.data);
+                            this.details = response.data;
+                            this.showAll = true;
+                        })
+                        .catch((error) => {
+                            console.error(error);
+                            alert('Failed to fetch datas');
+                        });
+                },
+                displayUsers() {
+                    this.showAll = false;
+                    this.showNeeds = false;
+                    axios.get('api/script.php?action=users')
+                        .then((response) => {
+                            console.log(response.data);
+                            this.details = response.data;
+                            this.showUsers = true;
+                        })
+                        .catch((error) => {
+                            console.error(error);
+                            alert('Failed to fetch user data.');
+                        });
+                },
+                displayNeeds() {
+                    this.showAll = false;
+                    this.showUsers = false;
+                    axios.get('api/script.php?action=needs')
+                        .then((response) => {
+                            console.log(response.data);
+                            this.details = response.data;
+                            this.showNeeds = true;
+                        })
+                        .catch((error) => {
+                            console.error(error);
+                            alert('Failed to fetch needs data.');
+                        });
+                },
+                format(num) {
+                    return new Intl.NumberFormat('fr-FR', { maximumSignificantDigits: 3 }).format(num);
+                },
+                formatDate(da) {
+                    const [datePart, timePart] = da.split(' ');
+                    const [year, month, day] = datePart.split('-');
+                    return `${day}-${month}-${year}`;
+                },
+                getImgUrl(pic) {
+                    return "img/" + pic;
+                }
             }
-        }
-    });
-</script>
+        });
+      </script>
 
 
     </div>

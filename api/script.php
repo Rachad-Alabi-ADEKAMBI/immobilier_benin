@@ -63,6 +63,10 @@ if($action == 'stop'){
     stop();
 }
 
+if($action == 'delete'){
+    delete();
+}
+
 if($action == 'publish'){
     publish();
 }
