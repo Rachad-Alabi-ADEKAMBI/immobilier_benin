@@ -1,4 +1,4 @@
-<?php $title = "Immobilier Bénin - Annonceurs"; ?>
+<?php $title = "Immobilier Bénin - Annonceur"; ?>
 
 <?php ob_start(); ?>
 
@@ -76,7 +76,7 @@
             methods: {
                 displayDetails(){
                     console.log(this.id);
-                    axios.get('api/script.php?action=getAgent&id='+this.id)
+                    axios.get('./api/script.php?action=agent&id=4')
                         .then((response) => {
                             console.log(response.data);
                             this.details = response.data;
@@ -100,58 +100,4 @@
             }
         });
     </script>
-
-        <style>
-             .item{
-            cursor: pointer;
-        }
-
-        .custom-range {
-        -webkit-appearance: none; /* Override default CSS styles */
-        appearance: none;
-        width: 50%; /* Full-width */
-        height: 15px; /* Specified height */
-        background: #ddd; /* Grey background */
-        outline: none; /* Remove outline */
-        opacity: 0.7; /* Set transparency (for mouse-over effects on hover) */
-        transition: opacity .2s; /* 0.2 seconds transition on hover */
-        margin-bottom: 20px;
-        }
-
-        .custom-range::-webkit-slider-thumb {
-        -webkit-appearance: none; /* Override default look */
-        appearance: none;
-        width: 25px; /* Set a specific slider handle width */
-        height: 25px; /* Slider handle height */
-        background: #00B98E; /* Green background */
-        cursor: pointer; /* Cursor on hover */
-        }
-
-        .custom-range::-moz-range-thumb {
-        width: 25px; /* Set a specific slider handle width */
-        height: 25px; /* Slider handle height */
-        background: #00B98E; /* Green background */
-        cursor: pointer; /* Cursor on hover */
-        }
-
-        .custom-range::-webkit-slider-runnable-track {
-        background: linear-gradient(to right, #00B98E 0%, #00B98E var(--range-progress), #ddd var(--range-progress), #ddd 100%);
-        }
-
-        .custom-range::-moz-range-progress {
-        background-color: #00B98E; /* Color of the filled part */
-        }
-
-        .custom-range::-moz-range-track {
-        background-color: #ddd; /* Color of the unfilled part */
-        }
-
-        .custom-range::-ms-fill-lower {
-        background-color: #00B98E; /* Color of the filled part */
-        }
-
-        .custom-range::-ms-fill-upper {
-        background-color: #ddd; /* Color of the unfilled part */
-    }
-        </style>
 
