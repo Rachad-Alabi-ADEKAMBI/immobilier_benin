@@ -70,14 +70,14 @@
                                     </div>
                                 </div> <br>
 
-                                <div class="col-sm-6 ml-0">
+                                <div class="col-sm-7 ml-0">
                                     <div class="form-floating">
-                                        <select class="form-select" id="featured" name="featured" >
+                                        <select class="form-select" id="featured" name="featured">
                                             <option selected>Afficher mon profil sur le site</option>
                                             <option value="yes">Oui</option>
                                             <option value="no">Non</option>
                                         </select>
-                                        <label for="category">Afficher</label>
+                                        <label for="featured">Afficher</label>
                                     </div>
                                 </div>
 
@@ -406,7 +406,9 @@
                                                     <i class="fa fa-trash m1-3 text-white "></i> Supprimer
                                                 </button>
 
-                                                <i class="fa fa-eye me-3 text-primary" @lick="goToProperty(detail.id)"></i></li>
+                                                <span @click="goToProperty(detail.id)">
+                                                <i class="fa fa-eye me-3 text-primary"></i>
+                                                </span>
                                             </td>
                                         </tr>
                                     </tbody>
@@ -576,7 +578,11 @@
                 },
                 remove(id){
                     window.location.replace('./api/script.php?action=delete&id='+id);
+                },
+                goToProperty(id){
+                    window.location.replace('./index.php?action=adPage&id='+id);
                 }
+
                 }
             });
         </script>

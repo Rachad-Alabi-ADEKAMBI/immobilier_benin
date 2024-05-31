@@ -83,6 +83,10 @@
                                             <small class="flex-fill text-center py-2"><i class="fa fa-bath text-primary me-2"></i>{{detail.bathrooms}} douche{{detail.bathrooms > 1 ? 's' : ''}}</small>
                                         </div>
 
+                                        <div class="d-flex border-top" v-if="detail.category == 'Terrain' || detail.category == 'Boutique'">
+                                            <small class="flex-fill text-left border-end py-2"><i class="fa fa-ruler-combined text-primary me-2"></i>{{detail.size}}  m2</small>
+                                        </div>
+
                                     </div>
                                 </div>
                             </div>
@@ -106,15 +110,17 @@
                                         </div>
                                         <div class="p-4 pb-0">
                                             <h5 class="text-primary mb-3"> {{ format(detail.price) }} F CFA </h5>
-                                            <a class="d-block h5 mb-2" href=""> {{ detail.description }} </a>
                                             <p><i class="fa fa-map-marker-alt text-primary me-2"></i> {{ detail.location}}</p>
                                         </div>
-                                        <div class="d-flex border-top">
+                                        <div class="d-flex border-top" v-if="detail.category != 'Terrain' && detail.category != 'Boutique'">
                                             <small class="flex-fill text-center border-end py-2"><i class="fa fa-ruler-combined text-primary me-2"></i>{{detail.people}} ménage{{detail.people > 1 ? 's' : ''}}</small>
                                             <small class="flex-fill text-center border-end py-2"><i class="fa fa-bed text-primary me-2"></i>{{detail.rooms}} chambre{{detail.rooms > 1 ? 's' : ''}}</small>
                                             <small class="flex-fill text-center py-2"><i class="fa fa-bath text-primary me-2"></i>{{detail.bathrooms}} douche{{detail.bathrooms > 1 ? 's' : ''}}</small>
                                         </div>
 
+                                        <div class="d-flex border-top" v-if="detail.category == 'Terrain' || detail.category == 'Boutique'">
+                                            <small class="flex-fill text-left border-end py-2"><i class="fa fa-ruler-combined text-primary me-2"></i>{{detail.size}}  m2</small>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -126,8 +132,7 @@
                                     :key='detail.id'>
                                     <div class="property-item rounded overflow-hidden" @click='goToProperty(detail.id)'>
                                         <div class="position-relative overflow-hidden">
-                                            <a href="">
-                                                <img class="img-fluid" :src="getImg(detail.pic1)" alt=""></a>
+                                                <img class="img-fluid" :src="getImg(detail.pic1)" alt="">
                                             <div
                                                 class="bg-primary rounded text-white position-absolute start-0 top-0 m-4 py-1 px-3">
                                                 {{ detail.action }}    
@@ -142,10 +147,14 @@
                                             <a class="d-block h5 mb-2" href=""> {{ detail.description }} </a>
                                             <p><i class="fa fa-map-marker-alt text-primary me-2"></i> {{ detail.location}}</p>
                                         </div>
-                                        <div class="d-flex border-top">
+                                        <div class="d-flex border-top" v-if="detail.category != 'Terrain' && detail.category != 'Boutique'">
                                             <small class="flex-fill text-center border-end py-2"><i class="fa fa-ruler-combined text-primary me-2"></i>{{detail.people}} ménage{{detail.people > 1 ? 's' : ''}}</small>
                                             <small class="flex-fill text-center border-end py-2"><i class="fa fa-bed text-primary me-2"></i>{{detail.rooms}} chambre{{detail.rooms > 1 ? 's' : ''}}</small>
                                             <small class="flex-fill text-center py-2"><i class="fa fa-bath text-primary me-2"></i>{{detail.bathrooms}} douche{{detail.bathrooms > 1 ? 's' : ''}}</small>
+                                        </div>
+
+                                        <div class="d-flex border-top" v-if="detail.category == 'Terrain' || detail.category == 'Boutique'">
+                                            <small class="flex-fill text-left border-end py-2"><i class="fa fa-ruler-combined text-primary me-2"></i>{{detail.size}}  m2</small>
                                         </div>
 
                                     </div>
@@ -174,10 +183,14 @@
                                             <a class="d-block h5 mb-2" href=""> {{ detail.description }} </a>
                                             <p><i class="fa fa-map-marker-alt text-primary me-2"></i> {{ detail.location}}</p>
                                         </div>
-                                        <div class="d-flex border-top">
+                                        <div class="d-flex border-top" v-if="detail.category != 'Terrain' && detail.category != 'Boutique'">
                                             <small class="flex-fill text-center border-end py-2"><i class="fa fa-ruler-combined text-primary me-2"></i>{{detail.people}} ménage{{detail.people > 1 ? 's' : ''}}</small>
                                             <small class="flex-fill text-center border-end py-2"><i class="fa fa-bed text-primary me-2"></i>{{detail.rooms}} chambre{{detail.rooms > 1 ? 's' : ''}}</small>
                                             <small class="flex-fill text-center py-2"><i class="fa fa-bath text-primary me-2"></i>{{detail.bathrooms}} douche{{detail.bathrooms > 1 ? 's' : ''}}</small>
+                                        </div>
+
+                                        <div class="d-flex border-top" v-if="detail.category == 'Terrain' || detail.category == 'Boutique'">
+                                            <small class="flex-fill text-left border-end py-2"><i class="fa fa-ruler-combined text-primary me-2"></i>{{detail.size}}  m2</small>
                                         </div>
 
                                     </div>
@@ -290,10 +303,10 @@
                         return `${day}-${month}-${year}`;
                         },
                     getImgUrl(pic) {
-                        return "img/" + pic;
+                        return "public/img/" + pic;
                     },
                     getImg(pic) {
-                        return "img/" + pic;
+                        return "public/img/" + pic;
                     },
                     goToProperty(id){
                         window.location.replace('index.php?action=adPage&id='+id);
@@ -353,5 +366,9 @@
 
         .custom-range::-ms-fill-upper {
         background-color: #ddd; /* Color of the unfilled part */
-    }
+        }
+
+        img{
+            width: 320px;
+        }
     </style>

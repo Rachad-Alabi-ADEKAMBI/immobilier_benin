@@ -71,8 +71,15 @@
                     <p class="text text-grey">{{ detail.description }}</p>
                 </div>
                 </div>
-                <div class="row mt-4">
-                    <div class="col-sm-12 col-md-8 mx-auto">
+                <div class="row mt-3">
+                <div class="col-sm-12 col-md-8 mx-auto text-center">
+                        <p>
+                            Annonceur: <strong>{{detail.user_name}}</strong> <br>
+                            Contact: <strong>{{ detail.user_phone}}</strong>
+
+                        </p>
+                        </div>
+                    </div>
                     <div class="col-sm-12 col-md-8 mx-auto text-center">
                         <p>
                             Partager: <br>
@@ -86,7 +93,7 @@
 
                         </p>
                         </div>
-                    </div></div>
+                    </div>
                 </div>
             </div>
         </div>

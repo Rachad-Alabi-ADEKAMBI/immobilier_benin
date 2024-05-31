@@ -121,7 +121,7 @@ function newAd(){
      
       <script>
           alert('Annonce ajoutée avec succès !!');
-        //  window.location.replace('../index.php?action=dashboardPage')
+          window.location.replace('../index.php?action=dashboardPage')
       </script>
     <?php
 
@@ -309,7 +309,7 @@ function search() {
     session_start();
     $_SESSION['search_results'] = $results;
     
-    header("Location: ../results.php", true, 301);  
+    header("Location: ../index.php?action=resultsPage", true, 301);  
 
 }
 
@@ -648,7 +648,7 @@ function updateAccount(){
     } else if($_POST['password'] != '' AND $_POST['password_2'] == ''){
         ?>
             <script>
-                alert('LVeuillez confirmer le mot de passe');
+                alert('Veuillez confirmer le mot de passe');
                 window.location.replace('../index.php?action=dashboardPage');
                 exit();
             </script>
@@ -657,7 +657,7 @@ function updateAccount(){
 
     //insert the picture
     $picture = time() . '_' . $_FILES['pic']['name'];
-    $target = 'public/img' . $picture;
+    $target = '../public/img' . $picture;
 
     if (move_uploaded_file($_FILES['pic']['tmp_name'], $target)) {
         $req = $pdo->prepare("UPDATE users SET pic = ? WHERE id = ? ");
@@ -681,16 +681,16 @@ function updateAccount(){
 
     }
 
-     //featured
-    if (isset($_POST['featured']) ) {
+    if (isset($_POST['featured'])) {
         $featured = verifyInput($_POST['featured']);
-    try {
-        $req = $pdo->prepare('UPDATE users SET featured = ? WHERE id = ?');
-        $req->execute(['yes', $user_id]);
-    } catch (PDOException $e) {
-        echo 'Database error: ' . $e->getMessage();
+        try {
+            $req = $pdo->prepare('UPDATE users SET featured = ? WHERE id = ?');
+            $req->execute([$featured, $user_id]);
+        } catch (PDOException $e) {
+            echo 'Database error: ' . $e->getMessage();
+        }
     }
-    } 
+    
     
       ?>
       <script>
@@ -744,7 +744,7 @@ function updateAd($ad_id){
 
     //pics
     $pic_fields = ['pic1', 'pic2', 'pic3', 'pic4'];
-    $base_dir = '././public/img/';
+    $base_dir = '../public/img/';
     
     foreach ($pic_fields as $pic_field) {
         if (isset($_FILES[$pic_field]) && $_FILES[$pic_field]['error'] == 0) {

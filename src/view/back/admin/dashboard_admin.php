@@ -61,7 +61,7 @@
                                                 </p>   
                                             </td>
 
-
+                                            <!--
                                             <td data-label="">
                                                 <button class="btn btn-danger text-white m-1" @click='stop(detail.id)' 
                                                 v-if="detail.situation =='Disponible'">
@@ -73,6 +73,7 @@
                                                     <i class="fa fa-play me-1 text-white"></i> Valider
                                                 </button>
                                             </td>
+-->
 
                                            
                                         </tr>
@@ -86,7 +87,7 @@
                      <!--users list--> 
                      <div class='col-sm-12 col-md-10 mt-4 mx-auto data-wow-delay="0.5s"' v-if='showUsers' >
                          <h1 class="mx-auto text-center">
-                            Utilisateurs
+                            Utilisateurs ({{details.length}})
                          </h1>
                         
                          <div class="table-container">
@@ -123,7 +124,7 @@
                      <!-- needs--> 
                      <div class='col-sm-12 col-md-10 mt-4 mx-auto fadeInUp' data-wow-delay="0.5s" v-if='showNeeds' >
                          <h1 class="mx-auto text-center">
-                            Demandes clients ({{ this.details.length}})
+                            Demandes clients ({{ details.length}})
                          </h1>
                          
                         <div class="mt-2table-container" v-if='details.length > 0'>
@@ -233,6 +234,12 @@
                 },
                 play(id){
                         window.location.replace('./api/script.php?action=play&id='+id);
+                },
+                pause(id){
+                        window.location.replace('./api/script.php?action=pause&id='+id);
+                },
+                publish(id){
+                        window.location.replace('./api/script.php?action=publish&id='+id);
                 },
             }
         });
