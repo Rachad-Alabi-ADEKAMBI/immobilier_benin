@@ -11,9 +11,10 @@
                     <h1 class="display-5 animated fadeIn mb-4">Trouvez <span class="text-primary">l'appartement
                             parfait</span>
                         pour habiter avec votre famille</h1>
-                    <p class="animated fadeIn mb-4 pb-2">Dites nous juste ce que vous recherchez, nous nous chargeons du
-                        reste</p>
-                    <a href="properties.php" class="btn btn-primary py-3 animated fadeIn">Voir les annonces</a>
+                    <p class="animated fadeIn mb-4 pb-2">
+                        Marketplace d'annonces immobilières gratuites au Bénin
+                        </p>
+                    <a href="index.php?action=adsPage" class="btn btn-primary py-3 animated fadeIn">Voir les annonces</a>
                 </div>
                 <div class="col-md-6 animated fadeIn">
                     <div class="owl-carousel header-carousel">
@@ -35,8 +36,8 @@
             <div class="container">
                 <div class="text-center mx-auto mb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 600px;">
                     <h1 class="mb-3">Types de propriétés</h1>
-                    <p>Nous sommes spécialisés dans la location et 
-                        la vente de biens immobiliers à Parakou et environs
+                    <p>
+                        Vous pouvez déposer des annonces de vente et de location de maisons, appartements, terrains et Boutiques
                     </p>
                 </div>
                 <div class="row g-4">
@@ -44,7 +45,7 @@
                         <a class="cat-item d-block bg-light text-center rounded p-3" href="">
                             <div class="rounded p-4">
                                 <div class="icon mb-3">
-                                    <img class="img-fluid" src="img/icon-apartment.png" alt="Icon">
+                                <i class="fa fa-phone-alt mx-auto icon"></i>
                                 </div>
                                 <h6>Appartements</h6>
                                 <span>+ 40 annonces</span>
@@ -56,19 +57,7 @@
                         <a class="cat-item d-block bg-light text-center rounded p-3" href="">
                             <div class="rounded p-4">
                                 <div class="icon mb-3">
-                                    <img class="img-fluid" src="img/icon-condominium.png" alt="Icon">
-                                </div>
-                                <h6>Boutiques</h6>
-                                <span>+ 30 annonces</span>
-                            </div>
-                        </a>
-                    </div>
-
-                    <div class="col-lg-3 col-sm-12 wow fadeInUp" data-wow-delay="0.5s">
-                        <a class="cat-item d-block bg-light text-center rounded p-3" href="">
-                            <div class="rounded p-4">
-                                <div class="icon mb-3">
-                                    <img class="img-fluid" src="img/icon-house.png" alt="Icon">
+                                <i class="fa fa-phone-alt me-3 icon"></i>
                                 </div>
                                 <h6>Maisons</h6>
                                 <span>+ 20 annonces</span>
@@ -80,7 +69,19 @@
                         <a class="cat-item d-block bg-light text-center rounded p-3" href="">
                             <div class="rounded p-4">
                                 <div class="icon mb-3">
-                                    <img class="img-fluid" src="img/icon-condominium.png" alt="Icon">
+                                <i class="fa fa-phone-alt me-3 icon"></i>
+                                </div>
+                                <h6>Boutiques</h6>
+                                <span>+ 30 annonces</span>
+                            </div>
+                        </a>
+                    </div>
+
+                    <div class="col-lg-3 col-sm-12 wow fadeInUp" data-wow-delay="0.5s">
+                        <a class="cat-item d-block bg-light text-center rounded p-3" href="">
+                            <div class="rounded p-4">
+                                <div class="icon mb-3">
+                                <i class="fa fa-phone-alt me-3 icon"></i>
                                 </div>
                                 <h6>Terrains</h6>
                                 <span>15 annonces</span>

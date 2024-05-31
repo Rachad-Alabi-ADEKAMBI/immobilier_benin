@@ -51,8 +51,11 @@
                             </div>
                         </div>
 
-                        <div class="icon" v-if="detail.category != 'Terrain'">
-                          {{ format(detail.size) }} m2
+                        <div class="icon" v-if="detail.category == 'Terrain' && detail.category == 'Boutique'">
+                            <small class="flex-fill text-left border-end py-2">
+                                    <i class="fa fa-ruler-combined text-left me-2"></i>
+                                    {{ format(detail.size) }} m2
+                                </small>
                         </div>
                     </div>
                     
@@ -134,7 +137,7 @@
                     return `${day}-${month}-${year}`;
                 },
                 getImgUrl(pic) {
-                    return "img/" + pic;
+                    return "public/img/" + pic;
                 },
             }
         });

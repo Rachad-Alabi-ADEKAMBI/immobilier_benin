@@ -13,6 +13,7 @@ require_once 'src/controllers/front/agents.php';
 //require_once 'src/controllers/front/agent.php';
 require_once 'src/controllers/front/reset_password.php';
 require_once 'src/controllers/front/newNeed.php';
+require_once 'src/controllers/front/results.php';
 
 
 require_once 'src/controllers/back/user/dashboard.php';
@@ -80,6 +81,10 @@ if (isset($_GET['action']) && $_GET['action'] !== '') {
 
     elseif ($_GET['action'] === 'agentsPage') {
         agentsPage();
+    } 
+
+    elseif ($_GET['action'] === 'resultsPage') {
+        resultsPage();
     } 
 
     elseif ($_GET['action'] === 'reset_passwordPage') {

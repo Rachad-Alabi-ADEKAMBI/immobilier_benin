@@ -301,7 +301,8 @@ function search() {
             'people' => $data['people'],
             'size' => $data['size'],
             'location' => $data['location'],
-            'price' => $data['price']
+            'price' => $data['price'],
+            'action' => $data['action']
         );
     }
 
