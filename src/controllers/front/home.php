@@ -3,7 +3,7 @@ require_once './src/model/front/home.php';
 
 function home()
 {
-     // $posts = threeAds();
+   // $posts = sixAds();
 
     require './src/view/front/home.php';
 }

@@ -17,7 +17,7 @@
                                     :key='detail.id'>
                                     <div class="property-item rounded overflow-hidden">
                                         <div class="position-relative overflow-hidden">
-                                                <img class="img-fluid" :src="getImg(detail.pic)" alt="">
+                                                <img class="img-fluid image" :src="getImg(detail.pic)" alt="">
                                             
                                         </div>
                                         <div class="p-4 pb-0">
@@ -78,7 +78,7 @@
                         return `${day}-${month}-${year}`;
                         },
                     getImg(pic) {
-                        return "img/" + pic;
+                        return "public/img/" + pic;
                     },
                     goToAgent(id){
                         window.location.replace('./index.php?action=agentPage&id='+id);
@@ -138,6 +138,12 @@
 
         .custom-range::-ms-fill-upper {
         background-color: #ddd; /* Color of the unfilled part */
+    }
+
+    .image{
+        width: 320px;
+        height: 250px;
+        margin: auto;
     }
         </style>
 

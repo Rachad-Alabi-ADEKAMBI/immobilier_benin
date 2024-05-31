@@ -59,7 +59,7 @@
                 <div class="col-md-6 text-center text-md-end">
                     <div class="footer-menu">
                         <a href="index.php">Accueil</a>
-                        <a href="properties.php">Annonces</a>
+                        <a href="index.php?action=adsPage">Annonces</a>
                     </div>
                 </div>
             </div>

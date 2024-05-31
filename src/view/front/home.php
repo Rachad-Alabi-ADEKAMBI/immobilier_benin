@@ -1,14 +1,15 @@
-<?php $title = "Immobilier Bénin - Marketplace d'annonces immobilières au Bénin"; ?>
+<?php $title = "Immobilier Bénin - Marketplace d'annonces immobilières au Bénin";
 
-<?php ob_start(); ?>
+$datas = sixAds();
 
+ ob_start(); ?>
     <section class='section' >
          <!-- Header Start -->
          <div class="container-fluid header bg-white p-0" >
             <div class="row g-0 align-items-center flex-column-reverse
                 flex-md-row pt-5">
                 <div class="col-md-6 p-5 mt-lg-5    ">
-                    <h1 class="display-5 animated fadeIn mb-4">Trouvez <span class="text-primary">l'appartement
+                    <h1 class="display-4 animated fadeIn mb-4">Trouvez <span class="text-primary">l'endroit
                             parfait</span>
                         pour habiter avec votre famille</h1>
                     <p class="animated fadeIn mb-4 pb-2">
@@ -93,14 +94,12 @@
         </div>
         <!-- Category End -->
 
-
-        
         <div class="container-xxl py-5" id='about'>
             <div class="container">
                 <div class="row g-5 align-items-center">
                     <div class="col-lg-6 wow fadeIn" data-wow-delay="0.1s">
                         <div class="about-img position-relative overflow-hidden p-5 pe-0">
-                            <img class="img-fluid w-100" src="img/bureau2.jpg">
+                            <img class="img-fluid w-100" src="public/img/immeuble1.jpg" alt='vendre maison a cotonou'>
                         </div>
                     </div>
 
@@ -110,13 +109,11 @@
 
                                         <p>
                                         Bienvenue sur immobilierbenin, votre marketplace d'annonces de vente et de location de biens
-                                                immobiliers au Bénin. Nous offrons un service gratuit de mise en relation entre annonceurs et clients. <br> <br>
-                                                 Vous pouvez publier vos annonces en quelques
-                                                clics seulement et les mettre à jour à tout moment, vous pouvez également
-                                                 y laisser des annonces personnalisées.
+                                                immobiliers au Bénin. Nous offrons un service gratuit de mise en relation entre annonceurs
+                                                 et clients. 
                                         </p>
                                         <p><i class="fa fa-check text-primary me-3"></i>Annonces gratuites</p>
-                                    <p><i class="fa fa-check text-primary me-3"></i>Recherche personnalisée</p>
+                                    <p><i class="fa fa-check text-primary me-3"></i>Recherches personnalisées</p>
                                     <p><i class="fa fa-check text-primary me-3"></i>Mise en relation entre agents et clients
                                     </p>
                                     </div>
@@ -126,134 +123,101 @@
                                 </div>
                     
                 </div>
-            </div>
+            </div>  
         </div>
 
-        <div class="container-xxl py-5" id='app'>
-                    <div class="container">
-                        <!-- Property List Start -->
-                        <div class="row g-0 gx-5 align-items-end">
-                            <div class="col-lg-6">
+        <div class="container-xxl py-5" id="app">
+            <div class="container">
+                    <!-- Property List Start -->
+                <div class="row g-0 gx-5 align-items-end">
+                        <div class="col-lg-6">
                                 <div class="text-start mx-auto mb-5 wow slideInLeft" data-wow-delay="0.1s">
                                     <h1 class="mb-3">Dernières annonces</h1>
-                                    <p>Nous publions chaque jour des dizaines d'annonces d'appartements, maisons terrains et
-                                        autres dans la ville de Parakou</p>
+                                    <p>Annonces gratuites de vente et location d'appartements, <br> maisons, terrains et
+                                        boutiques</p>
                                 </div>
-                            </div>
                         </div>
+                </div>
 
                 <div class="tab-content" >
                     <div id="tab-1" class="tab-pane fade show p-0 active">
                             <div class="row g-4" >
-                                <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s" v-for='detail in details' :key='detail.id'>
-                                    <div class="property-item rounded overflow-hidden" @click='goToProperty(detail.id)'>
-                                        <div class="position-relative overflow-hidden">
-                                                <img class="img-fluid" :src="getImg(detail.pic1)" alt="">
-                                            <div
-                                                class="bg-primary rounded text-white position-absolute start-0 top-0 m-4 py-1 px-3">
-                                                {{ detail.action }}    
+                            <?php foreach ($datas as $detail): ?>
+                                    <div class="col-sm-12 col-md-4 wow fadeInUp" data-wow-delay="0.1s">
+                                        <a href="index.php?action=adPage&id=<?=$detail['id']?>" style='color: #666565;'>
+                                            <div class="property-item rounded overflow-hidden">
+                                                <div class="position-relative overflow-hidden">
+                                                    <img class="img-fluid" src="public/img/<?= htmlspecialchars($detail['pic1']) ?>" alt="immobilier au Bénin">
+                                                    <div class="bg-primary rounded text-white position-absolute start-0 top-0 m-4 py-1 px-3">
+                                                        <?= htmlspecialchars($detail['action']) ?>
+                                                    </div>
+                                                    <div class="bg-white rounded-top text-primary position-absolute start-0 bottom-0 mx-4 pt-1 px-3">
+                                                        <?= htmlspecialchars($detail['category']) ?>
+                                                    </div>
+                                                </div>
+                                                    <div class="p-4 pb-0">
+                                                    <h5 class="text-primary mb-3"> <?= number_format($detail['price'], 0, '', ' ') ?> F CFA </h5>
+                                                    <p><i class="fa fa-map-marker-alt text-primary me-2"></i><?= htmlspecialchars($detail['location']) ?></p>
+                                                </div>
+                                               <?php
+                                                    if($detail['category'] != 'Terrain' && $detail['category'] != 'Boutique' ){ ?>
+                                                         <div class="d-flex border-top">
+                                                    <small class="flex-fill text-center border-end py-2">
+                                                        <i class="fa fa-ruler-combined text-primary me-2"></i><?= htmlspecialchars($detail['people']) ?> ménage<?= $detail['people'] > 1 ? 's' : '' ?>
+                                                    </small>
+                                                    <small class="flex-fill text-center border-end py-2">
+                                                        <i class="fa fa-bed text-primary me-2"></i><?= htmlspecialchars($detail['rooms']) ?> chambre<?= $detail['rooms'] > 1 ? 's' : '' ?>
+                                                    </small>
+                                                    <small class="flex-fill text-center py-2">
+                                                        <i class="fa fa-bath text-primary me-2"></i><?= htmlspecialchars($detail['bathrooms']) ?> douche<?= $detail['bathrooms'] > 1 ? 's' : '' ?>
+                                                    </small>
+                                                </div>
+                                                    <?php }
+                                                    else{ ?>
+                                                        <small class="flex-fill text-left py-2">
+                                                        <i class="fa fa-ruler-combined text-primary me-2"></i><?= htmlspecialchars($detail['size']) ?> m2
+                                                    </small>
+                                                    <?php }
+                                               ?>
                                             </div>
-                                            <div
-                                                class="bg-white rounded-top text-primary position-absolute start-0 bottom-0 mx-4 pt-1 px-3">
-                                                {{ detail.category }}    
-                                            </div>
-                                        </div>
-                                        <div class="p-4 pb-0">
-                                            <h5 class="text-primary mb-3"> {{ format(detail.price )}} F CFA </h5>
-                                             <p><i class="fa fa-map-marker-alt text-primary me-2"></i> {{ detail.location}}</p>
-                                        </div>
-                                       
-
+                                        </a>
                                     </div>
-                                </div>
+                                <?php endforeach; ?>
                             </div>
-                    </div>
-                </div>
-            </div>
-
-
-        <div class="container-xxl py-5">
-            <div class="container">
-                <!-- Property List Start -->
-                <div class="row g-0 gx-5 align-items-end">
-                    <div class="col-lg-6">
-                        <div class="text-start mx-auto mb-5 wow slideInLeft" data-wow-delay="0.1s">
-                            <h1 class="mb-3">Dernières annonces</h1>
-                            <p>Nous publions chaque jour des dizaines d'annonces d'appartements, maisons terrains et
-                                autres dans la ville de Parakou</p>
-                        </div>
-                    </div>
-   
-                </div>
-
-                <div class="tab-content">
-                    <div id="tab-1" class="tab-pane fade show p-0 active">
-                    <div class="row g-4">
-                    <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s" v-for='detail in details' 
-                                    :key='detail.id'>
-                                    <div class="property-item rounded overflow-hidden" @click='goToProperty(detail.id)'>
-                                        <div class="position-relative overflow-hidden">
-                                            <a href="">
-                                                <img class="img-fluid" :src="getImg(detail.pic1)" alt=""></a>
-                                            <div
-                                                class="bg-primary rounded text-white position-absolute start-0 top-0 m-4 py-1 px-3">
-                                                {{ detail.action }}    
-                                            </div>
-                                            <div
-                                                class="bg-white rounded-top text-primary position-absolute start-0 bottom-0 mx-4 pt-1 px-3">
-                                                {{ detail.category }}    
-                                            </div>
-                                        </div>
-                                        <div class="p-4 pb-0">
-                                            <h5 class="text-primary mb-3"> {{ format(detail.price) }} F CFA </h5>
-                                            <p><i class="fa fa-map-marker-alt text-primary me-2"></i> {{ detail.location}}</p>
-                                        </div>
-                                        <div class="d-flex border-top" v-if="detail.category != 'Terrain'">
-                                            <small class="flex-fill text-center border-end py-2"><i class="fa fa-ruler-combined text-primary me-2"></i>{{detail.people}} ménage{{detail.people > 1 ? 's' : ''}}</small>
-                                            <small class="flex-fill text-center border-end py-2"><i class="fa fa-bed text-primary me-2"></i>{{detail.rooms}} chambre{{detail.rooms > 1 ? 's' : ''}}</small>
-                                            <small class="flex-fill text-center py-2"><i class="fa fa-bath text-primary me-2"></i>{{detail.bathrooms}} douche{{detail.bathrooms > 1 ? 's' : ''}}</small>
-                                        </div>
-
-                                    </div>
-                                </div>
-                        
-                        <div class="col-12 text-center wow fadeInUp" data-wow-delay="0.1s">
-                            <a class="btn btn-primary py-3 px-5" href="properties.php">Voir plus</a>
-                        </div>
-                    </div>
                     </div>
                 </div>
             </div>
         </div>
         <!-- Property List End -->
 
-
-        <div class="container-xxl py-5" id='about'>
+        <div class="container-xxl py-5" id='reasons'>
                 <div class="container">
                     <div class="bg-light rounded p-3">
                         <div class="bg-white rounded" style="border: 1px dashed rgba(0, 185, 142, .3)">
                             <div class="row g-5 align-items-center">
                                 <div class="col-lg-6 pt-5 wow fadeIn" data-wow-delay="0.1s">
-                                    <img class="img-fluid rounded w-100" src="publicimg/logo.jpg" alt="">
+                                    <img class="img-fluid rounded w-100" src="public/img/immeuble2.jpg" alt="">
                                 </div>
                                 <div class="col-lg-6 wow fadeIn" data-wow-delay="0.5s">
                                     <div class="mb-4">
-                                        <h1 class="mb-3  mt-3">A propos</h1>
+                                        <h1 class="mb-3  mt-3">
+                                                Pourquoi utiliser Immobilier Benin ?
+                                        </h1>
 
                                         <p>
-                                        Bienvenue sur immobilierbenin, votre site d'annonces de vente et de location de biens
-                                                immobiliers au Bénin. Nous offrons un service gratuit d'annonces de vente et de location
-                                                de biens immobiliers pour tous les utilisateurs. Vous pouvez publier vos annonces en quelques
-                                                clics seulement et les mettre à jour à tout moment ...
+                                        
+                                            Immobilier Benin est une marketplace d'annonces immobilières gratuites,
+                                             idéale pour toutes vos recherches immobilières. 
+                                             Que vous soyez à la recherche d'un nouveau logement, 
+                                             d'un investissement rentable ou 
+                                             que vous souhaitiez vendre votre propriété,
+                                              Immobilier Benin est la plateforme parfaite. 
                                         </p>
-                                        <p><i class="fa fa-check text-primary me-3"></i>Annonces gratuites</p>
-                                    <p><i class="fa fa-check text-primary me-3"></i>Recherche personnalisée</p>
-                                    <p><i class="fa fa-check text-primary me-3"></i>Mise en relation entre agents et clients
-                                    </p>
+                                        
                                     </div>
 
-                                    <a href="properties.php" class="btn btn-dark py-3 px-4">
-                                        <i class="fa fa-list-alt me-2"></i>Voir les annonces</a>
+                                    <a href="index.php?action=loginPage" class="btn btn-dark py-3 px-4">
+                                        <i class="fa fa-user-alt me-2"></i>Connexion</a>
                                 </div>
                             </div>
                         </div>
@@ -400,12 +364,12 @@
                 displayDetails(){
                     axios.get('api/script.php?action=sixAds')
                         .then((response) => {
-                            console.log(response.data);
+                          //  console.log(response.data);
                             this.details = response.data;
                         })
                         .catch((error) => {
                            // console.error(error);
-                            alert('Failed to fetch data');
+                         //   alert('Failed to fetch data');
                         });
                 }, 
                 format(num){

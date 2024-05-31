@@ -7,7 +7,11 @@
     <div class="container">
       <div class="row g-0 gx-5 align-items-end">
                     <!--menu-->   
-                    <div class="col-sm-12 mt-3 text-center">
+                    <p class="text text-center">
+            Bonjour <strong><?= $_SESSION['user']['first_name'].' '.$_SESSION['user']['last_name']?>
+                    </strong>
+        </p>
+                    <div class="col-sm-12 text-center">
                                 <div class="menu">
                                             <button class="btn btn-primary m-2" @click="displayNew()" v-if='!showNew'>
                                                 Nouvelle annonce

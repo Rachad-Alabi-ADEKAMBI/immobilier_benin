@@ -1,6 +1,12 @@
 <?php
 session_start();
 
+// Set the error reporting level to exclude warnings
+error_reporting(E_ALL & ~E_WARNING);
+
+// Disable displaying errors
+ini_set('display_errors', 0);
+
 require_once 'src/controllers/front/home.php';
 require_once 'src/controllers/front/login.php';
 require_once 'src/controllers/front/register.php';
@@ -21,6 +27,7 @@ require_once 'src/controllers/back/admin/dashboard_admin.php';
 
 
 if (isset($_GET['action']) && $_GET['action'] !== '') {
+    session_start();
     if ($_GET['action'] === 'loginPage') {
         loginPage();
     }
@@ -72,12 +79,22 @@ if (isset($_GET['action']) && $_GET['action'] !== '') {
     } 
     
     elseif ($_GET['action'] === 'dashboardPage') {
+        if (!isset($_SESSION['user']) || $_SESSION['user']['role'] != 'user') {
+            loginPage();
+        } else {
+            dashboardPage();
+        }
         dashboardPage();
-    } 
+    }
 
     elseif ($_GET['action'] === 'dashboard_adminPage') {
-        dashboard_adminPage();
-    } 
+        if (!isset($_SESSION['user']) || $_SESSION['user']['role'] != 'admin') {
+            loginPage();
+        } else {
+            dashboard_adminPage();
+        }
+    }
+    
 
     elseif ($_GET['action'] === 'agentsPage') {
         agentsPage();

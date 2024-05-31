@@ -75,9 +75,6 @@ if($action == 'publish'){
     publish($id);
 }
 
-if($action == 'newAd'){
-    newAd();
-}
 
 if($action == 'sixAds'){
     sixAds();

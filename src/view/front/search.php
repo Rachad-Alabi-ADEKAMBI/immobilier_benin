@@ -12,7 +12,7 @@
 
                    
                     <div class="col-md-4">
-                        <select class="form-select border-0 py-3" name='category'>
+                        <select class="form-select border-0 py-3" name='category' required>
                             <option >Type de bien</option>
                             <option value="Appartement">Appartement</option>
                             <option value="Boutique">Boutique</option>

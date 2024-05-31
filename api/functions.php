@@ -14,7 +14,9 @@ function getConnexion()
         // Handle database connection error
         die("Connection failed: " . $e->getMessage());
     }
-}*/
+}
+*/
+
 
 function getConnexion()
 {
@@ -30,7 +32,8 @@ function getConnexion()
     }
 }
 
-function newAd(){
+
+function newAd() {
     $pdo = getConnexion();
 
     $name = verifyInput($_POST['name']);
@@ -40,7 +43,7 @@ function newAd(){
     $location = verifyInput($_POST['location']);
     $description = verifyInput($_POST['description']);
 
-    $geolocation ='5466.sf.fsfgs';
+    $geolocation = '5466.sf.fsfgs';
     $user_id = $_SESSION['user']['id'];
     $user_phone = $_SESSION['user']['phone'];
     $user_name = $_SESSION['user']['first_name'].' '.$_SESSION['user']['last_name'];
@@ -50,7 +53,7 @@ function newAd(){
         $rooms = 0;
         $bathrooms = 0;
         $people = 0;
-    } else{
+    } else {
         $size = 0;
         $rooms = verifyInput($_POST['rooms']);
         $bathrooms = verifyInput($_POST['bathrooms']);
@@ -59,73 +62,51 @@ function newAd(){
 
     $situation = 'Disponible';
 
-    //insertion
+    // insertion
     try {
-        $req = $pdo->prepare('INSERT INTO ads SET name = ?, price = ?, category = ?,
-            action = ?, location = ?, description = ?, rooms = ?, bathrooms = ?,
-                people = ?, situation = ?, size = ?, user_id = ?, user_name = ?, user_phone = ?');
-        $req->execute(array($name, $price,  $category, $action, $location,
-            $description, $rooms, $bathrooms, $people, $situation, $size, $user_id, $user_name, $user_phone));
+        $req = $pdo->prepare('INSERT INTO ads (name, price, category, action, location, description, rooms, bathrooms, people, situation, size, user_id, user_name, user_phone) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)');
+        $req->execute(array($name, $price, $category, $action, $location, $description, $rooms, $bathrooms, $people, $situation, $size, $user_id, $user_name, $user_phone));
 
-       
+        $ad_id = $pdo->lastInsertId();
+
+        // pic
+        $pic_fields = ['pic1', 'pic2', 'pic3', 'pic4'];
+        $base_dir = '../public/img/';
+
+        foreach ($pic_fields as $pic_field) {
+            if (isset($_FILES[$pic_field]) && $_FILES[$pic_field]['error'] == 0) {
+                $pic_name = time() . '_' . $_FILES[$pic_field]['name'];
+                $target = $base_dir . $pic_name;
+
+                if (move_uploaded_file($_FILES[$pic_field]['tmp_name'], $target)) {
+                    $update_req = $pdo->prepare("UPDATE ads SET $pic_field = ? WHERE id = ?");
+                    $update_req->execute([$pic_name, $ad_id]);
+                }
+            }
+        }
+
+        // fetch user data
+        $user_req = $pdo->prepare('SELECT ads FROM users WHERE id = ?');
+        $user_req->execute(array($user_id));
+        $datas = $user_req->fetch();
+
+        $ads = $datas['ads'];
+
+        // update ads number
+        $update_user_req = $pdo->prepare("UPDATE users SET ads = ? WHERE id = ?");
+        $update_user_req->execute(array(($ads + 1), $user_id));
+
+        ?>
+        <script>
+            alert('Annonce ajoutée avec succès !!');
+            window.location.replace('../index.php?action=dashboardPage');
+        </script>
+        <?php
     } catch (PDOException $e) {
         echo 'Database error: ' . $e->getMessage();
     }
-
-    $ad_id = $pdo->lastInsertId();
-
-    //pic
-    $pic_fields = ['pic1', 'pic2', 'pic3', 'pic4'];
-    $base_dir = '../public/img/';
-    
-    foreach ($pic_fields as $pic_field) {
-        if (isset($_FILES[$pic_field]) && $_FILES[$pic_field]['error'] == 0) {
-            $pic_name = time() . '_' . $_FILES[$pic_field]['name'];
-            $target = $base_dir . $pic_name;
-    
-            if (move_uploaded_file($_FILES[$pic_field]['tmp_name'], $target)) {
-                $req = $pdo->prepare("UPDATE ads SET $pic_field = ? WHERE id = ?");
-                $req->execute([$pic_name, $ad_id]);
-            }
-        }
-    }
-
-/*
-    // Exemple d'utilisation
-    $address = "1600 Amphitheatre Parkway, Mountain View, CA";
-    $location = getGeolocation($address);
-
-    if ($location) {
-        echo "Latitude: " . $location['latitude'] . "<br>";
-        echo "Longitude: " . $location['longitude'];
-    } else {
-        echo "Impossible d'obtenir les coordonnées géographiques.";
-    }
-
-*/
-
-
-
-    //fetch datas user
-    $req = $pdo->prepare('SELECT * FROM users WHERE id = ?');
-    $req->execute(array($user_id));
-    $datas = $req->fetch();
-
-    $ads = $datas['ads'];
-
-    //update ads number
-    $req = $pdo->prepare("UPDATE users SET ads = ? WHERE id = ?");
-    $req->execute(array(($ads+1), $user_id));
-
-      ?>
-     
-      <script>
-          alert('Annonce ajoutée avec succès !!');
-          window.location.replace('../index.php?action=dashboardPage')
-      </script>
-    <?php
-
 }
+
 
 function newNeed(){
     $pdo = getConnexion();
@@ -308,9 +289,14 @@ function search() {
 
     // Start session and store results
     session_start();
-    $_SESSION['search_results'] = $results;
+    $_SESSION['search_results'] = $results; ?>
     
-    header("Location: ../index.php?action=resultsPage", true, 301);  
+    <script>
+    //window.history.back();
+    window.location.replace('../index.php?action=resultsPage');
+</script>  
+
+<?php
 
 }
 
@@ -460,7 +446,7 @@ function delete(){
 
         //update ads number
         $req = $pdo->prepare("UPDATE users SET ads = ? WHERE id = ?");
-        $req->execute(array(($ads+1), $user_id));
+        $req->execute(array(($ads-1), $user_id));
         ?>
             <script>
                 alert('Annonce supprimée !!');
@@ -658,7 +644,7 @@ function updateAccount(){
 
     //insert the picture
     $picture = time() . '_' . $_FILES['pic']['name'];
-    $target = '../public/img' . $picture;
+    $target = '../public/img/' . $picture;
 
     if (move_uploaded_file($_FILES['pic']['tmp_name'], $target)) {
         $req = $pdo->prepare("UPDATE users SET pic = ? WHERE id = ? ");

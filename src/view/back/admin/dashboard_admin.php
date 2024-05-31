@@ -5,8 +5,13 @@
 <section class="section">
     <div class="container">
     <div class="row g-0 gx-5 align-items-end">
+        <p class="text text-center">
+            Bonjour <strong>
+                        admin
+                    </strong>
+        </p>
                     <!--menu-->   
-                    <div class="col-sm-12 mt-3 text-center">
+                    <div class="col-sm-12 mt-1 text-center">
                                 <div class="menu">
                                             <button class="btn btn-primary m-2" @click="displayAll()" v-if='!showAll'>
                                                 Annonces
@@ -59,6 +64,10 @@
                                                 <p class="text-danger" v-if="detail.situation =='Stop'">
                                                         {{ detail.situation }}
                                                 </p>   
+
+                                                <p class="text-warning" v-if="detail.situation =='Non disponible'">
+                                                        {{ detail.situation }}
+                                                </p>   
                                             </td>
 
                                             <!--
@@ -72,8 +81,7 @@
                                                 v-if="detail.situation =='Stop'">
                                                     <i class="fa fa-play me-1 text-white"></i> Valider
                                                 </button>
-                                            </td>
--->
+                                            </td>-->
 
                                            
                                         </tr>
@@ -105,11 +113,14 @@
                                                         <tbody>
                                                             <tr v-for='detail in details' :key='detail.id'>
                                                             <td data-label="Date">{{ formatDate(detail.date_of_insertion) }}</td>
-                                                            <td data-label="Email">{{ detail.email }} {{ detail.last_name}}  </td>
+                                                            <td data-label="Email">{{ detail.email }}  </td>
                                                             
                                                             <td data-label="Full name">{{ detail.first_name }} {{ detail.last_name}}  </td>
                                                              <td data-label="Photo">
-                                                            <img :src='getImgUrl(detail.pic)' alt="">
+                                                            <img :src='getImgUrl(detail.pic)'  v-if="detail.pic != ''" alt="utilisateur immobilier benin">
+                                                            <p class="text-danger" v-if="detail.pic == ''">
+                                                                Non rensigné
+                                                            </p>
                                                             </td>
                                                             <td data-label="Annonces" >{{ detail.ads }}</td>
                                                             <td data-label="Ip">{{ detail.ip }}</td>
@@ -227,7 +238,7 @@
                     return `${day}-${month}-${year}`;
                 },
                 getImgUrl(pic) {
-                    return "img/" + pic;
+                    return "public/img/" + pic;
                 },
                 stop(id){
                         window.location.replace('./api/script.php?action=stop&id='+id);
