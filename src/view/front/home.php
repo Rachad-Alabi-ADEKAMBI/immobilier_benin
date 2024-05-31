@@ -2,7 +2,7 @@
 
 <?php ob_start(); ?>
 
-    <section class='section' id='app'>
+    <section class='section' >
          <!-- Header Start -->
          <div class="container-fluid header bg-white p-0" >
             <div class="row g-0 align-items-center flex-column-reverse
@@ -37,27 +37,15 @@
                 <div class="text-center mx-auto mb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 600px;">
                     <h1 class="mb-3">Types de propriétés</h1>
                     <p>
-                        Vous pouvez déposer des annonces de vente et de location de maisons, appartements, terrains et Boutiques
+                        Annonces de vente et de location de maisons, appartements, terrains et boutiques
                     </p>
                 </div>
                 <div class="row g-4">
-                    <div class="col-lg-3 col-sm-12 wow fadeInUp" data-wow-delay="0.1s">
-                        <a class="cat-item d-block bg-light text-center rounded p-3" href="">
+                <div class="col-lg-3 col-sm-12 wow fadeInUp" data-wow-delay="0.1s">
+                    <a class="cat-item d-block bg-light text-center rounded p-3" href="index.php?action=adsPage">
                             <div class="rounded p-4">
                                 <div class="icon mb-3">
-                                <i class="fa fa-phone-alt mx-auto icon"></i>
-                                </div>
-                                <h6>Appartements</h6>
-                                <span>+ 40 annonces</span>
-                            </div>
-                        </a>
-                    </div>
-
-                    <div class="col-lg-3 col-sm-12 wow fadeInUp" data-wow-delay="0.5s">
-                        <a class="cat-item d-block bg-light text-center rounded p-3" href="">
-                            <div class="rounded p-4">
-                                <div class="icon mb-3">
-                                <i class="fa fa-phone-alt me-3 icon"></i>
+                                <i class="fas fa-building"></i>
                                 </div>
                                 <h6>Maisons</h6>
                                 <span>+ 20 annonces</span>
@@ -65,11 +53,23 @@
                         </a>
                     </div>
 
-                    <div class="col-lg-3 col-sm-12 wow fadeInUp" data-wow-delay="0.5s">
-                        <a class="cat-item d-block bg-light text-center rounded p-3" href="">
+                    <div class="col-lg-3 col-sm-12 wow fadeInUp" data-wow-delay="0.2s">
+                        <a class="cat-item d-block bg-light text-center rounded p-3" href="index.php?action=adsPage">
                             <div class="rounded p-4">
                                 <div class="icon mb-3">
-                                <i class="fa fa-phone-alt me-3 icon"></i>
+                                      <i class="fas fa-landmark"></i>
+                                </div>
+                                <h6>Appartements</h6>
+                                <span>+ 40 annonces</span>
+                            </div>
+                        </a>
+                    </div>
+
+                    <div class="col-lg-3 col-sm-12 wow fadeInUp" data-wow-delay="0.3s">
+                    <a class="cat-item d-block bg-light text-center rounded p-3" href="index.php?action=adsPage">
+                            <div class="rounded p-4">
+                                <div class="icon mb-3">
+                                <i class="fas fa-store mx-auto"></i>
                                 </div>
                                 <h6>Boutiques</h6>
                                 <span>+ 30 annonces</span>
@@ -77,14 +77,14 @@
                         </a>
                     </div>
 
-                    <div class="col-lg-3 col-sm-12 wow fadeInUp" data-wow-delay="0.5s">
-                        <a class="cat-item d-block bg-light text-center rounded p-3" href="">
+                    <div class="col-lg-3 col-sm-12 wow fadeInUp" data-wow-delay="0.4s">
+                        <a class="cat-item d-block bg-light text-center rounded p-3" href="index.php?action=adsPage">
                             <div class="rounded p-4">
                                 <div class="icon mb-3">
-                                <i class="fa fa-phone-alt me-3 icon"></i>
+                                <i class="fa fa-map-marker-alt text-primary mx-auto"></i>
                                 </div>
                                 <h6>Terrains</h6>
-                                <span>15 annonces</span>
+                                <span>+ 15 annonces</span>
                             </div>
                         </a>
                     </div>
@@ -94,7 +94,7 @@
         <!-- Category End -->
 
 
-        <!-- About Start 
+        
         <div class="container-xxl py-5" id='about'>
             <div class="container">
                 <div class="row g-5 align-items-center">
@@ -103,28 +103,73 @@
                             <img class="img-fluid w-100" src="img/bureau2.jpg">
                         </div>
                     </div>
-                    <div class="col-lg-6 wow fadeIn" data-wow-delay="0.5s">
-                        <h1 class="mb-4">#1 le lieu idéal pour trouver votre prochaine propriété</h1>
-                        <p class="mb-4">Nous sommes une agence immobilière présente
-                            à Parakou. Notre équipe est composée d'agents immobiliers chevronnés et la satisfaction de
-                            la clientèle est
-                            notre garantie. Nous vous aidons à gérer
-                            toutes
-                            vos transactions immobilières rapidement et éfficacement. Nos services sont entre autres:
-                        </p>
-                        <p><i class="fa fa-check text-primary me-3"></i>La recherche de biens immobiliers (appartements,
-                            maisons, etc...)</p>
-                        <p><i class="fa fa-check text-primary me-3"></i>Suivi et conseil en gestion immobilière
-                            complète</p>
-                        <p><i class="fa fa-check text-primary me-3"></i>La gestion de vos transactions de vente et achat
-                            de biens immobiliers
-                        </p>
 
-                    </div>
+                    <div class="col-lg-6 wow fadeIn" data-wow-delay="0.3s">
+                                    <div class="mb-4">
+                                        <h1 class="mb-3  mt-3">A propos</h1>
+
+                                        <p>
+                                        Bienvenue sur immobilierbenin, votre marketplace d'annonces de vente et de location de biens
+                                                immobiliers au Bénin. Nous offrons un service gratuit de mise en relation entre annonceurs et clients. <br> <br>
+                                                 Vous pouvez publier vos annonces en quelques
+                                                clics seulement et les mettre à jour à tout moment, vous pouvez également
+                                                 y laisser des annonces personnalisées.
+                                        </p>
+                                        <p><i class="fa fa-check text-primary me-3"></i>Annonces gratuites</p>
+                                    <p><i class="fa fa-check text-primary me-3"></i>Recherche personnalisée</p>
+                                    <p><i class="fa fa-check text-primary me-3"></i>Mise en relation entre agents et clients
+                                    </p>
+                                    </div>
+
+                                    <a href="index.php?action=adsPage" class="btn btn-dark py-3 px-4">
+                                        <i class="fa fa-list-alt me-2"></i>Voir les annonces</a>
+                                </div>
+                    
                 </div>
             </div>
         </div>
-         About End -->
+
+        <div class="container-xxl py-5" id='app'>
+                    <div class="container">
+                        <!-- Property List Start -->
+                        <div class="row g-0 gx-5 align-items-end">
+                            <div class="col-lg-6">
+                                <div class="text-start mx-auto mb-5 wow slideInLeft" data-wow-delay="0.1s">
+                                    <h1 class="mb-3">Dernières annonces</h1>
+                                    <p>Nous publions chaque jour des dizaines d'annonces d'appartements, maisons terrains et
+                                        autres dans la ville de Parakou</p>
+                                </div>
+                            </div>
+                        </div>
+
+                <div class="tab-content" >
+                    <div id="tab-1" class="tab-pane fade show p-0 active">
+                            <div class="row g-4" >
+                                <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s" v-for='detail in details' :key='detail.id'>
+                                    <div class="property-item rounded overflow-hidden" @click='goToProperty(detail.id)'>
+                                        <div class="position-relative overflow-hidden">
+                                                <img class="img-fluid" :src="getImg(detail.pic1)" alt="">
+                                            <div
+                                                class="bg-primary rounded text-white position-absolute start-0 top-0 m-4 py-1 px-3">
+                                                {{ detail.action }}    
+                                            </div>
+                                            <div
+                                                class="bg-white rounded-top text-primary position-absolute start-0 bottom-0 mx-4 pt-1 px-3">
+                                                {{ detail.category }}    
+                                            </div>
+                                        </div>
+                                        <div class="p-4 pb-0">
+                                            <h5 class="text-primary mb-3"> {{ format(detail.price )}} F CFA </h5>
+                                             <p><i class="fa fa-map-marker-alt text-primary me-2"></i> {{ detail.location}}</p>
+                                        </div>
+                                       
+
+                                    </div>
+                                </div>
+                            </div>
+                    </div>
+                </div>
+            </div>
 
 
         <div class="container-xxl py-5">
@@ -189,7 +234,7 @@
                         <div class="bg-white rounded" style="border: 1px dashed rgba(0, 185, 142, .3)">
                             <div class="row g-5 align-items-center">
                                 <div class="col-lg-6 pt-5 wow fadeIn" data-wow-delay="0.1s">
-                                    <img class="img-fluid rounded w-100" src="img/logo.jpg" alt="">
+                                    <img class="img-fluid rounded w-100" src="publicimg/logo.jpg" alt="">
                                 </div>
                                 <div class="col-lg-6 wow fadeIn" data-wow-delay="0.5s">
                                     <div class="mb-4">
@@ -293,7 +338,7 @@
                     <div class="testimonial-item bg-light rounded p-3">
                         <div class="bg-white border rounded p-4">
                             <p>Site web rapide et facile à utiliser, je pensais que cela prendrait plus de
-                                temps, je recommanden vivement, en plus c'est gratuit</p>
+                                temps, je recommande vivement, en plus c'est gratuit</p>
                             <div class="d-flex align-items-center">
                                 <img class="img-fluid flex-shrink-0
                                  rounded" src="public/img/marie.jpg" style="width: 45px; height: 45px;">
