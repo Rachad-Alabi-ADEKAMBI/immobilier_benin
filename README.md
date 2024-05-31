@@ -6,15 +6,16 @@ Developer
 
   =>  Developer name  : Codeur creatif
 
+  =>  About: Marketplace for real estate business ads
+
   =>  Developer Website   : https://rachad-alabi-adekambi.github.io/portfolio
 
-  =>  About: Marketplace for real estate business ads
 
 
 How to run the project on your local machine ?
   => Clone the project first from github to your computer
 
-  => Start your server ('/opt/lampp/lampp start' for LAMP linux or whatever for mac and windows)
+  => Start your server ('/opt/lampp/lampp start' for XAMPP linux or whatever for mac and windows)
 
   =>Create a database and import the sql file present in the database directory
 
@@ -22,4 +23,4 @@ How to run the project on your local machine ?
 
   It should works !!!
 
-You can also fork the project and make some changes if you have some ideas. Feel free to notice any found bug 
+You can also fork the project and make some changes if you have some ideas. Feel free to notice any found bug.

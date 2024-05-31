@@ -14,8 +14,8 @@
                         <div id="tab-1" class="tab-pane fade show p-0 active">
                             <div class="row g-2" >
                                 <div class="col-lg-4 col-md-6 wow fadeInUp item" data-wow-delay="0.1s" v-for='detail in details' 
-                                    :key='detail.id'>
-                                    <div class="property-item rounded overflow-hidden" @click='goToAgent(detail.id)'>
+                                    :key='detail.id'  @click='goToAgent(detail.id)'>
+                                    <div class="property-item rounded overflow-hidden">
                                         <div class="position-relative overflow-hidden">
                                                 <img class="img-fluid" :src="getImg(detail.pic)" alt="">
                                             
@@ -25,6 +25,9 @@
                                             <a class="d-block h5 mb-2" href="">
                                                 {{ detail.ads }} annonce{{ detail.ads > 0 ? 's' : '' }}
                                             </a>
+                                            <p>
+                                            <i class="fa fa-phone-alt me-1"></i> {{ detail.phone }} 
+                                            </p>
                                         </div>
 
                                     </div>

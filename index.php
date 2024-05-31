@@ -10,7 +10,7 @@ require_once 'src/controllers/front/ad.php';
 require_once 'src/controllers/front/policy.php';
 require_once 'src/controllers/front/terms.php';
 require_once 'src/controllers/front/agents.php';
-require_once 'src/controllers/front/agent.php';
+//require_once 'src/controllers/front/agent.php';
 require_once 'src/controllers/front/reset_password.php';
 require_once 'src/controllers/front/newNeed.php';
 
@@ -34,12 +34,8 @@ if (isset($_GET['action']) && $_GET['action'] !== '') {
     }
 
     elseif ($_GET['action'] === 'agentPage') {
-        if (isset($_GET['id']) && $_GET['id'] > 0) {
-            agentPage($_GET['id']);
-        } else {
-            echo "Erreur : aucun identifiant d'annonce envoyé";
-            die;
-        }
+            echo 'ok';
+            agentPage();
     }
     
     elseif ($_GET['action'] === 'registerPage') {
@@ -99,7 +95,7 @@ if (isset($_GET['action']) && $_GET['action'] !== '') {
     }
     
     else {
-        echo 'Error 404 : Page not found.';
+        echo 'Error 404 : Aucune page trouvée !.';
     }
 } else {
     home();

@@ -16,7 +16,7 @@
                  <a href="index.php" class="nav-item nav-link active">Accueil</a>
                  <a href="index.php#about" class="nav-item nav-link">A-propos</a>
                 <a href="index.php?action=adsPage" class="nav-item nav-link">Annonces</a>
-                <a href="index.php?action=agentsPage" class="nav-item nav-link">Agents</a>
+                <a href="index.php?action=agentsPage" class="nav-item nav-link">Annonceurs</a>
                  <a href="index.php?action=contactPage" class="nav-item nav-link">Contact</a>
                         <?php if (!isset($_SESSION['user']) || !$_SESSION['user']) { ?>
                             <a href="index.php?action=loginPage" class="nav-item nav-link">Connexion</a>

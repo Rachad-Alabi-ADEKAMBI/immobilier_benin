@@ -196,7 +196,7 @@ function getAgent($id) {
     $req = $pdo->prepare("SELECT * FROM users WHERE id = ? AND featured = 'yes' ");
     
     $req->execute(array($id));
-    $datas = $req->fetch();
+    $datas = $req->fetchAll();
     $req->closeCursor();
 
     if(count($datas) > 0){
