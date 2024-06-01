@@ -75,7 +75,10 @@
                 </div>
                 </div>
                 <div class="row mt-3">
-                <div class="col-sm-12 col-md-8 mx-auto text-center">
+                    <div class="col-sm-12">
+                        Warning
+                    </div>
+                    <div class="col-sm-12 col-md-8 mx-auto text-center">
                         <p>
                             Annonceur: <strong>{{detail.user_name}}</strong> <br>
                             Contact: <strong>{{ detail.user_phone}}</strong>
