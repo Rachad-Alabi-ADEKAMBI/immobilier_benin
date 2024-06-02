@@ -1,9 +1,15 @@
 /********** Template CSS **********/
 :root {
-    --primary: #00B98E;
+  /*  --primary: #00B98E;
     --secondary: #FF6922;
     --light: #EFFDF5;
     --dark: #0E2E50;
+*/
+
+     --primary: #8755F1;
+    --secondary: #778CFD;
+    --light: blue;
+    --dark: #03404b;
 }
 
 .back-to-top {
@@ -440,5 +446,5 @@
 }
 
 img{
-    border-radius: 15px;
+    border-radius: 10px;
 }

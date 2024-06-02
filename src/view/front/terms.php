@@ -5,8 +5,12 @@
 <section class="section">
     <div class="container">
     <div class="row">
-                    <div class="col-11 mx-auto p-1">
-                        <h1 class="subtitle text text-center mx-auto">
+    <div class="col text-center">
+                <img src="public/img/logo-orizon-removebg-preview.png" alt="" style="width: 250px; margin: auto; text-align: center;">
+                </div>
+                <div class="col-11 mx-auto p-1">
+                        
+                        <h1 class="subtitle text text-center mx-auto mt-3">
                             CONDITIONS GENERALES D'UTILISATION
                         </h1> <br>
 
@@ -172,8 +176,14 @@
                 </div> 
     </div>
 </section>
+<style>
+    img{
+        margin: auto;
+    }
+</style>
 
 
 <?php $content = ob_get_clean(); ?>
 
 <?php require './src/view/layout.php'; ?>
+

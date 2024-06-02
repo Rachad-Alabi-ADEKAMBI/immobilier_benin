@@ -34,16 +34,16 @@
                         <div class="col-lg-6 text-start text-lg-end wow slideInRight" data-wow-delay="0.1s">
                             <ul class="nav nav-pills d-inline-flex justify-content-end mb-5">
                                 <li class="nav-item me-2">
-                                    <p class="btn btn-outline-primary active" data-bs-toggle="pill"
+                                    <p class="btn btn-blue active" data-bs-toggle="pill"
                                        @click="displayAll()">Populaires
                                     </p>
                                 </li>
                                 <li class="nav-item me-2">
-                                    <p class="btn btn-outline-primary"  @click="displayToSell()"
+                                    <p class="btn btn-blue"  @click="displayToSell()"
                                      data-bs-toggle="pill" >A vendre</p>
                                 </li>
                                 <li class="nav-item me-0">
-                                    <p class="btn btn-outline-primary" data-bs-toggle="pill"
+                                    <p class="btn btn-blue" data-bs-toggle="pill"
                                      @click="displayToRent()">A louer</p>
                                 </li>
                             </ul>
@@ -53,7 +53,7 @@
                     <div class="row mb-2">
                         <div class="options__item">
                             <input type="range" class="mt-2 custom-range"  v-model="rangeValue" min="0"
-                            max="10000000"  @click="filter()" style='color: #00B98E;'>
+                            max="10000000"  @click="filter()" style='color: #8755F1'>
                        </div>
                     </div>
                     <div class="tab-content">
@@ -65,26 +65,26 @@
                                         <div class="position-relative overflow-hidden">
                                                 <img class="img-fluid" :src="getImg(detail.pic1)" alt="">
                                             <div
-                                                class="bg-primary rounded text-white position-absolute start-0 top-0 m-4 py-1 px-3">
+                                                class="bg-blue rounded text-white position-absolute start-0 top-0 m-4 py-1 px-3">
                                                 {{ detail.action }}    
                                             </div>
                                             <div
-                                                class="bg-white rounded-top text-primary position-absolute start-0 bottom-0 mx-4 pt-1 px-3">
+                                                class="bg-white rounded-top text-blue position-absolute start-0 bottom-0 mx-4 pt-1 px-3">
                                                 {{ detail.category }}    
                                             </div>
                                         </div>
                                         <div class="p-4 pb-0">
-                                            <h5 class="text-primary mb-3"> {{ format(detail.price) }} F CFA </h5>
-                                            <p><i class="fa fa-map-marker-alt text-primary me-2"></i> {{ detail.location}}</p>
+                                            <h5 class="text-blue mb-3"> {{ format(detail.price) }} F CFA </h5>
+                                            <p><i class="fa fa-map-marker-alt text-blue me-2"></i> {{ detail.location}}</p>
                                         </div>
                                         <div class="d-flex border-top" v-if="detail.category != 'Terrain' && detail.category != 'Boutique'">
-                                            <small class="flex-fill text-center border-end py-2"><i class="fa fa-ruler-combined text-primary me-2"></i>{{detail.people}} ménage{{detail.people > 1 ? 's' : ''}}</small>
-                                            <small class="flex-fill text-center border-end py-2"><i class="fa fa-bed text-primary me-2"></i>{{detail.rooms}} chambre{{detail.rooms > 1 ? 's' : ''}}</small>
-                                            <small class="flex-fill text-center py-2"><i class="fa fa-bath text-primary me-2"></i>{{detail.bathrooms}} douche{{detail.bathrooms > 1 ? 's' : ''}}</small>
+                                            <small class="flex-fill text-center border-end py-2"><i class="fa fa-ruler-combined text-blue me-2"></i>{{detail.people}} ménage{{detail.people > 1 ? 's' : ''}}</small>
+                                            <small class="flex-fill text-center border-end py-2"><i class="fa fa-bed text-blue me-2"></i>{{detail.rooms}} chambre{{detail.rooms > 1 ? 's' : ''}}</small>
+                                            <small class="flex-fill text-center py-2"><i class="fa fa-bath text-blue me-2"></i>{{detail.bathrooms}} douche{{detail.bathrooms > 1 ? 's' : ''}}</small>
                                         </div>
 
                                         <div class="d-flex border-top" v-if="detail.category == 'Terrain' || detail.category == 'Boutique'">
-                                            <small class="flex-fill text-left border-end py-2"><i class="fa fa-ruler-combined text-primary me-2"></i>{{detail.size}}  m2</small>
+                                            <small class="flex-fill text-left border-end py-2"><i class="fa fa-ruler-combined text-blue me-2"></i>{{detail.size}}  m2</small>
                                         </div>
 
                                     </div>
@@ -100,26 +100,26 @@
                                         <div class="position-relative overflow-hidden">
                                                 <img class="img-fluid" :src="getImg(detail.pic1)" alt="">
                                             <div
-                                                class="bg-primary rounded text-white position-absolute start-0 top-0 m-4 py-1 px-3">
+                                                class="bg-blue rounded text-white position-absolute start-0 top-0 m-4 py-1 px-3">
                                                 {{ detail.action }}    
                                             </div>
                                             <div
-                                                class="bg-white rounded-top text-primary position-absolute start-0 bottom-0 mx-4 pt-1 px-3">
+                                                class="bg-white rounded-top text-blue position-absolute start-0 bottom-0 mx-4 pt-1 px-3">
                                                 {{ detail.category }}    
                                             </div>
                                         </div>
                                         <div class="p-4 pb-0">
-                                            <h5 class="text-primary mb-3"> {{ format(detail.price) }} F CFA </h5>
-                                            <p><i class="fa fa-map-marker-alt text-primary me-2"></i> {{ detail.location}}</p>
+                                            <h5 class="text-blue mb-3"> {{ format(detail.price) }} F CFA </h5>
+                                            <p><i class="fa fa-map-marker-alt text-blue me-2"></i> {{ detail.location}}</p>
                                         </div>
                                         <div class="d-flex border-top" v-if="detail.category != 'Terrain' && detail.category != 'Boutique'">
-                                            <small class="flex-fill text-center border-end py-2"><i class="fa fa-ruler-combined text-primary me-2"></i>{{detail.people}} ménage{{detail.people > 1 ? 's' : ''}}</small>
-                                            <small class="flex-fill text-center border-end py-2"><i class="fa fa-bed text-primary me-2"></i>{{detail.rooms}} chambre{{detail.rooms > 1 ? 's' : ''}}</small>
-                                            <small class="flex-fill text-center py-2"><i class="fa fa-bath text-primary me-2"></i>{{detail.bathrooms}} douche{{detail.bathrooms > 1 ? 's' : ''}}</small>
+                                            <small class="flex-fill text-center border-end py-2"><i class="fa fa-ruler-combined text-blue me-2"></i>{{detail.people}} ménage{{detail.people > 1 ? 's' : ''}}</small>
+                                            <small class="flex-fill text-center border-end py-2"><i class="fa fa-bed text-blue me-2"></i>{{detail.rooms}} chambre{{detail.rooms > 1 ? 's' : ''}}</small>
+                                            <small class="flex-fill text-center py-2"><i class="fa fa-bath text-blue me-2"></i>{{detail.bathrooms}} douche{{detail.bathrooms > 1 ? 's' : ''}}</small>
                                         </div>
 
                                         <div class="d-flex border-top" v-if="detail.category == 'Terrain' || detail.category == 'Boutique'">
-                                            <small class="flex-fill text-left border-end py-2"><i class="fa fa-ruler-combined text-primary me-2"></i>{{detail.size}}  m2</small>
+                                            <small class="flex-fill text-left border-end py-2"><i class="fa fa-ruler-combined text-blue me-2"></i>{{detail.size}}  m2</small>
                                         </div>
                                     </div>
                                 </div>
@@ -134,27 +134,27 @@
                                         <div class="position-relative overflow-hidden">
                                                 <img class="img-fluid" :src="getImg(detail.pic1)" alt="">
                                             <div
-                                                class="bg-primary rounded text-white position-absolute start-0 top-0 m-4 py-1 px-3">
+                                                class="bg-blue rounded text-white position-absolute start-0 top-0 m-4 py-1 px-3">
                                                 {{ detail.action }}    
                                             </div>
                                             <div
-                                                class="bg-white rounded-top text-primary position-absolute start-0 bottom-0 mx-4 pt-1 px-3">
+                                                class="bg-white rounded-top text-blue position-absolute start-0 bottom-0 mx-4 pt-1 px-3">
                                                 {{ detail.category }}    
                                             </div>
                                         </div>
                                         <div class="p-4 pb-0">
-                                            <h5 class="text-primary mb-3"> {{ format(detail.price) }} F CFA </h5>
+                                            <h5 class="text-blue mb-3"> {{ format(detail.price) }} F CFA </h5>
                                             <a class="d-block h5 mb-2" href=""> {{ detail.description }} </a>
-                                            <p><i class="fa fa-map-marker-alt text-primary me-2"></i> {{ detail.location}}</p>
+                                            <p><i class="fa fa-map-marker-alt text-blue me-2"></i> {{ detail.location}}</p>
                                         </div>
                                         <div class="d-flex border-top" v-if="detail.category != 'Terrain' && detail.category != 'Boutique'">
-                                            <small class="flex-fill text-center border-end py-2"><i class="fa fa-ruler-combined text-primary me-2"></i>{{detail.people}} ménage{{detail.people > 1 ? 's' : ''}}</small>
-                                            <small class="flex-fill text-center border-end py-2"><i class="fa fa-bed text-primary me-2"></i>{{detail.rooms}} chambre{{detail.rooms > 1 ? 's' : ''}}</small>
-                                            <small class="flex-fill text-center py-2"><i class="fa fa-bath text-primary me-2"></i>{{detail.bathrooms}} douche{{detail.bathrooms > 1 ? 's' : ''}}</small>
+                                            <small class="flex-fill text-center border-end py-2"><i class="fa fa-ruler-combined text-blue me-2"></i>{{detail.people}} ménage{{detail.people > 1 ? 's' : ''}}</small>
+                                            <small class="flex-fill text-center border-end py-2"><i class="fa fa-bed text-blue me-2"></i>{{detail.rooms}} chambre{{detail.rooms > 1 ? 's' : ''}}</small>
+                                            <small class="flex-fill text-center py-2"><i class="fa fa-bath text-blue me-2"></i>{{detail.bathrooms}} douche{{detail.bathrooms > 1 ? 's' : ''}}</small>
                                         </div>
 
                                         <div class="d-flex border-top" v-if="detail.category == 'Terrain' || detail.category == 'Boutique'">
-                                            <small class="flex-fill text-left border-end py-2"><i class="fa fa-ruler-combined text-primary me-2"></i>{{detail.size}}  m2</small>
+                                            <small class="flex-fill text-left border-end py-2"><i class="fa fa-ruler-combined text-blue me-2"></i>{{detail.size}}  m2</small>
                                         </div>
 
                                     </div>
@@ -170,27 +170,27 @@
                                         <div class="position-relative overflow-hidden">
                                                 <img class="img-fluid" :src="getImg(detail.pic1)" alt="">
                                             <div
-                                                class="bg-primary rounded text-white position-absolute start-0 top-0 m-4 py-1 px-3">
+                                                class="bg-blue rounded text-white position-absolute start-0 top-0 m-4 py-1 px-3">
                                                 {{ detail.action }}    
                                             </div>
                                             <div
-                                                class="bg-white rounded-top text-primary position-absolute start-0 bottom-0 mx-4 pt-1 px-3">
+                                                class="bg-white rounded-top text-blue position-absolute start-0 bottom-0 mx-4 pt-1 px-3">
                                                 {{ detail.category }}    
                                             </div>
                                         </div>
                                         <div class="p-4 pb-0">
-                                            <h5 class="text-primary mb-3"> {{ format(detail.price) }} F CFA </h5>
+                                            <h5 class="text-blue mb-3"> {{ format(detail.price) }} F CFA </h5>
                                             <a class="d-block h5 mb-2" href=""> {{ detail.description }} </a>
-                                            <p><i class="fa fa-map-marker-alt text-primary me-2"></i> {{ detail.location}}</p>
+                                            <p><i class="fa fa-map-marker-alt text-blue me-2"></i> {{ detail.location}}</p>
                                         </div>
                                         <div class="d-flex border-top" v-if="detail.category != 'Terrain' && detail.category != 'Boutique'">
-                                            <small class="flex-fill text-center border-end py-2"><i class="fa fa-ruler-combined text-primary me-2"></i>{{detail.people}} ménage{{detail.people > 1 ? 's' : ''}}</small>
-                                            <small class="flex-fill text-center border-end py-2"><i class="fa fa-bed text-primary me-2"></i>{{detail.rooms}} chambre{{detail.rooms > 1 ? 's' : ''}}</small>
-                                            <small class="flex-fill text-center py-2"><i class="fa fa-bath text-primary me-2"></i>{{detail.bathrooms}} douche{{detail.bathrooms > 1 ? 's' : ''}}</small>
+                                            <small class="flex-fill text-center border-end py-2"><i class="fa fa-ruler-combined text-blue me-2"></i>{{detail.people}} ménage{{detail.people > 1 ? 's' : ''}}</small>
+                                            <small class="flex-fill text-center border-end py-2"><i class="fa fa-bed text-blue me-2"></i>{{detail.rooms}} chambre{{detail.rooms > 1 ? 's' : ''}}</small>
+                                            <small class="flex-fill text-center py-2"><i class="fa fa-bath text-blue me-2"></i>{{detail.bathrooms}} douche{{detail.bathrooms > 1 ? 's' : ''}}</small>
                                         </div>
 
                                         <div class="d-flex border-top" v-if="detail.category == 'Terrain' || detail.category == 'Boutique'">
-                                            <small class="flex-fill text-left border-end py-2"><i class="fa fa-ruler-combined text-primary me-2"></i>{{detail.size}}  m2</small>
+                                            <small class="flex-fill text-left border-end py-2"><i class="fa fa-ruler-combined text-blue me-2"></i>{{detail.size}}  m2</small>
                                         </div>
 
                                     </div>
@@ -316,6 +316,11 @@
     </script>
 
     <style>
+        .btn-blue{
+            a{
+                color: white;
+            }
+        }
     .item{
             cursor: pointer;
         }
@@ -337,23 +342,23 @@
         appearance: none;
         width: 25px; /* Set a specific slider handle width */
         height: 25px; /* Slider handle height */
-        background: #00B98E; /* Green background */
+        background: #8755F1; /* Green background */
         cursor: pointer; /* Cursor on hover */
         }
 
         .custom-range::-moz-range-thumb {
         width: 25px; /* Set a specific slider handle width */
         height: 25px; /* Slider handle height */
-        background: #00B98E; /* Green background */
+        background: #8755F1; /* Green background */
         cursor: pointer; /* Cursor on hover */
         }
 
         .custom-range::-webkit-slider-runnable-track {
-        background: linear-gradient(to right, #00B98E 0%, #00B98E var(--range-progress), #ddd var(--range-progress), #ddd 100%);
+        background: linear-gradient(to right, #8755F1 0%, #8755F1 var(--range-progress), #ddd var(--range-progress), #ddd 100%);
         }
 
         .custom-range::-moz-range-progress {
-        background-color: #00B98E; /* Color of the filled part */
+        background-color: #8755F1; /* Color of the filled part */
         }
 
         .custom-range::-moz-range-track {
@@ -361,7 +366,7 @@
         }
 
         .custom-range::-ms-fill-lower {
-        background-color: #00B98E; /* Color of the filled part */
+        background-color: #8755F1; /* Color of the filled part */
         }
 
         .custom-range::-ms-fill-upper {

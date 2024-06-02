@@ -3,7 +3,7 @@
 <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
 <!-- Favicon -->
-<link href="public/img/favicon.ico" rel="icon">
+<link href="public/img/logo-immo.ico" rel="icon">
 
 <!-- Google Web Fonts -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -19,11 +19,19 @@
 <link href="public/lib/animate/animate.min.css" rel="stylesheet">
 <link href="public/lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
 
+
+
 <!-- Customized Bootstrap Stylesheet -->
 <link href="public/css/bootstrap.min.css" rel="stylesheet">
 
+
 <!-- Template Stylesheet -->
 <link href="public/css/style.css" rel="stylesheet">
+
+
+<!-- more Stylesheet -->
+<link href="public/css/more_style.css" rel="stylesheet">
+
 <meta name="robots" content="index, follow" />
 <meta name="description" content="Marketplace pour annonces immobilières">
 <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>

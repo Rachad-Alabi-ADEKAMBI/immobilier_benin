@@ -5,6 +5,10 @@
 <section class="section">
     <div class="container">
     <div class="row">
+
+    <div class="col text-center">
+                <img src="public/img/logo-orizon-removebg-preview.png" alt="" style="width: 250px; margin: auto; text-align: center;">
+                </div>
                     <div class="col-12 col-md-11 mx-auto  text-text-center">
                         <h1 class="subtitle mt-3">
                             POLITIQUE DE CONFIDENTIALITE

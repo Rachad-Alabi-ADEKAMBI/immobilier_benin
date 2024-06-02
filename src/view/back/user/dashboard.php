@@ -8,26 +8,26 @@
       <div class="row g-0 gx-5 align-items-end">
                     <!--menu-->   
                     <p class="text text-center">
-            Bonjour <strong><?= $_SESSION['user']['first_name'].' '.$_SESSION['user']['last_name']?>
-                    </strong>
-        </p>
+                        Bonjour <strong><?= $_SESSION['user']['first_name'].' '.$_SESSION['user']['last_name']?>
+                                </strong>
+                    </p>
                     <div class="col-sm-12 text-center">
                                 <div class="menu">
-                                            <button class="btn btn-primary m-2" @click="displayNew()" v-if='!showNew'>
+                                            <button class="btn btn-blue m-2" @click="displayNew()" v-if='!showNew'>
                                                 Nouvelle annonce
                                             </button>
 
-                                            <button class="btn btn-primary m-2" @click="displayAll()" v-if="!showAll && !showEdit">
+                                            <button class="btn btn-blue m-2" @click="displayAll()" v-if="!showAll && !showEdit">
                                                 Mes annonces
                                             </button>
 
 
-                                            <button class="btn btn-primary m-2" @click="displayNeeds()" v-if='!showNeeds'>
+                                            <button class="btn btn-blue m-2" @click="displayNeeds()" v-if='!showNeeds'>
                                                 Demandes clients
                                             </button>
 
 
-                                            <button class="btn btn-primary m-2" @click="displayAccount()" v-if='!showAccount'>
+                                            <button class="btn btn-blue m-2" @click="displayAccount()" v-if='!showAccount'>
                                                 Mon compte
                                             </button>
 
@@ -86,7 +86,7 @@
                                 </div>
 
                                 <div class="col-sm-12 col-md-6 mx-auto text-center">
-                                    <button class="btn btn-success w-100 py-3" type="submit">Valider</button>
+                                    <button class="btn btn-blue w-100 py-3" type="submit">Valider</button>
                                 </div>
                             </div>
                         </form>
@@ -99,7 +99,7 @@
                             <div class="bg-white border mt-2 rounded p-2 wow fadeInUp" data-wow-delay="0.5s">
                                 <form action="api/script.php?action=newAd" method="POST" enctype='multipart/form-data'>
                                 <span class="ml-0" @click="displayAll()">
-                                    <i class="fa fa-times me-3 text-primary"></i>
+                                    <i class="fa fa-times me-3 text-blue"></i>
                                     </span>
 
                                     <h1 class="mx-auto text-center">Nouvelle annonce</h1>
@@ -128,6 +128,7 @@
                                             <select class="form-select" id="category" name="category" v-model="category" required>
                                                 <option selected>Catégorie</option>
                                                 <option value="Appartement">Appartement</option>
+                                                <option value="Appartement meublé">Appartement meublé</option>
                                                 <option value="Boutique">Boutique</option>
                                                 <option value="Maison">Maison</option>
                                                 <option value="Terrain">Terrain</option>
@@ -150,12 +151,14 @@
                                 <div class="col-sm-4 col-md-4">
                                     <div class="form-floating">
                                         <select class="form-select" id="location" name="location" required>
-                                            <option value="Abomey">Abomey</option>
-                                            <option value="Calavi">Calavi</option>
-                                            <option value="Cotonou">Cotonou</option>
-                                            <option value="Porto-Novo">Porto-Novo</option>
-                                            <option value="Parakou">Parakou</option>
-                                            <option value="Bohicon">Bohicon</option>
+                                                <option value=''>Ville</option>
+                                                <option value="Abomey">Abomey</option>
+                                                <option value="Cotonou">Cotonou</option>
+                                                <option value="Bohicon">Bohicon</option>
+                                                <option value="Calavi">Calavi</option>
+                                                <option value="Ouidah">Ouidah</option>
+                                                <option value="Parakou">Parakou</option>
+                                                <option value="Porto-Novo">Porto-Novo</option>
                                         </select>
                                         <label for="location">Ville</label>
                                     </div>
@@ -260,7 +263,7 @@
 
                                 <div class="row g-3 mt-4">
                                     <div class="col-sm-12 col-md-4 mx-auto text-center">
-                                        <button class="btn btn-primary w-100 py-3" type="submit">Ajouter</button>
+                                        <button class="btn btn-blue w-100 py-3" type="submit">Ajouter</button>
                                     </div>
                                 </div>
                             </form>
@@ -273,7 +276,7 @@
                         <div class="bg-white border mt-2 rounded p-2 wow fadeInUp" data-wow-delay="0.5s"  v-for="detail in details" :key='detail.id'>
                             <form  :action="'api/script.php?action=updateAd&id=' + detail.id" method="POST" enctype='multipart/form-data'>
                                 <span class="ml-0" @click="displayAll()">
-                                <i class="fa fa-times me-3 text-primary"></i>
+                                <i class="fa fa-times me-3 text-blue"></i>
                                 </span>
                                 <h1 class="mx-auto text-center">Modifier annonce</h1>
                                 <div class="row g-3">
@@ -340,7 +343,7 @@
 
                                 <div class="row g-3 mt-4">
                                     <div class="col-sm-12 col-md-4 mx-auto text-center">
-                                        <button class="btn btn-primary w-100 py-3" type="submit">Valider</button>
+                                        <button class="btn btn-blue w-100 py-3" type="submit">Valider</button>
                                     </div>
                                 </div>
                             </form>
@@ -411,7 +414,7 @@
                                                 </button>
 
                                                 <span @click="goToProperty(detail.id)">
-                                                <i class="fa fa-eye me-3 text-primary"></i>
+                                                <i class="fa fa-eye me-3 text-blue"></i>
                                                 </span>
                                             </td>
                                         </tr>

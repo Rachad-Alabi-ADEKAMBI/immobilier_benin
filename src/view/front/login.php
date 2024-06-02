@@ -32,16 +32,16 @@
 
                                 <div class="row g-3 mt-4">
                                     <div class="col-sm-12 col-md-6 mx-auto text-center">
-                                        <button class="btn btn-success w-100 py-3" type="submit">
+                                        <button class="btn btn-blue w-100 py-3" type="submit">
                                             Connexion
                                         </button> <br>
 
                                         <p class="mt-3">
-                                            Mot de passe oublié ? <a href="index.php?action=reset_passwordPage">Cliquez ici</a>
+                                            Mot de passe oublié ? <a href="index.php?action=reset_passwordPage" class="text-blue">Cliquez ici</a>
                                         </p>
 
                                         <p class="mt-3">
-                                            Pas encore de compte ? <a href="index.php?action=registerPage">Inscription</a>
+                                            Pas encore de compte ? <a href="index.php?action=registerPage" class="text-blue">Inscription</a>
                                         </p>
                                     </div>
                                     

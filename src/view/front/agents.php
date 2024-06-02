@@ -21,7 +21,7 @@
                                             
                                         </div>
                                         <div class="p-4 pb-0">
-                                            <h5 class="text-primary mb-3">  {{ detail.first_name }}    {{ detail.last_name }}   </h5>
+                                            <h5 class="text-blue mb-3">  {{ detail.first_name }}    {{ detail.last_name }}   </h5>
                                             <p class="d-block h5 mb-2" href="">
                                                 {{ detail.ads }} annonce{{ detail.ads > 0 ? 's' : '' }}
                                             </a>

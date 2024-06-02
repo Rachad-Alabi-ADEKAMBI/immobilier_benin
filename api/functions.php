@@ -32,7 +32,6 @@ function getConnexion()
     }
 }
 
-
 function newAd() {
     $pdo = getConnexion();
 

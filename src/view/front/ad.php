@@ -40,13 +40,13 @@
                         <div class="icon"  v-if="detail.category != 'Terrain' && detail.category != 'Boutique'">
                             <div class="d-flex border-top">
                                 <small class="flex-fill text-center border-end py-2">
-                                    <i class="fa fa-ruler-combined text-primary me-2"></i>{{detail.people}} ménage{{detail.people > 1 ? 's' : ''}}
+                                    <i class="fa fa-ruler-combined text-blue me-2"></i>{{detail.people}} ménage{{detail.people > 1 ? 's' : ''}}
                                 </small>
                                 <small class="flex-fill text-center border-end py-2">
-                                    <i class="fa fa-bed text-primary me-2"></i>{{detail.rooms}} chambre{{detail.rooms > 1 ? 's' : ''}}
+                                    <i class="fa fa-bed text-blue me-2"></i>{{detail.rooms}} chambre{{detail.rooms > 1 ? 's' : ''}}
                                 </small>
                                 <small class="flex-fill text-center py-2">
-                                    <i class="fa fa-bath text-primary me-2"></i>{{detail.bathrooms}} douche{{detail.bathrooms > 1 ? 's' : ''}}
+                                    <i class="fa fa-bath text-blue me-2"></i>{{detail.bathrooms}} douche{{detail.bathrooms > 1 ? 's' : ''}}
                                 </small>
                             </div>
                         </div>
@@ -61,11 +61,11 @@
                     
                     <div class="col-12">
 
-                    <p><i class="fa fa-map-marker-alt text-primary me-2"></i> {{ detail.location}}</p>
+                    <p><i class="fa fa-map-marker-alt text-blue me-2"></i> {{ detail.location}}</p>
                                         
                                         <div class="d-flex border-top">
 
-                    <h5 class="text-primary mt-3 mb-2">{{ format(detail.price) }} F CFA</h5>
+                    <h5 class="text-blue mt-3 mb-2">{{ format(detail.price) }} F CFA</h5>
                     </div>
                 </div>
 
@@ -76,7 +76,12 @@
                 </div>
                 <div class="row mt-3">
                     <div class="col-sm-12">
-                        Warning
+                        <p class="text-left">
+                        <i class="fas fa-exclamation text-danger"></i> Faites toujours attention lors des rencontres <br>
+                        <i class="fas fa-exclamation text-danger"></i> Assurez vous que le bien appartient au vendeur <br>
+                        <i class="fas fa-exclamation text-danger"></i> Contactez-nous au besoin
+                        </p>
+                        
                     </div>
                     <div class="col-sm-12 col-md-8 mx-auto text-center">
                         <p>
@@ -90,11 +95,11 @@
                         <p>
                             Partager: <br>
                                 <a href="https://wa.me/?text=https://immobilier_benin.000webhostapp.com/property.php?id=<?=$_GET['id']?>)">
-                                <i class="fab fa-whatsapp"></i>
+                                <i class="fab fa-whatsapp text-blue"></i>
                                 </a>
-
                                 <a href="https://www.facebook.com/share.php?u=https:/nova-immobilier.000webhostapp.com/property.php?id=<?=$_GET['id']?>" target="_blank">
-                                <i class="fab fa-facebook"></i>
+
+                                <i class="fab fa-facebook text-blue"></i>
                                 </a>
 
                         </p>

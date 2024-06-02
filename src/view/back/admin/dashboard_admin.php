@@ -13,15 +13,15 @@
                     <!--menu-->   
                     <div class="col-sm-12 mt-1 text-center">
                                 <div class="menu">
-                                            <button class="btn btn-primary m-2" @click="displayAll()" v-if='!showAll'>
+                                            <button class="btn btn-blue m-2" @click="displayAll()" v-if='!showAll'>
                                                 Annonces
                                             </button>
 
-                                            <button class="btn btn-primary m-2" @click="displayUsers()" v-if='!showUsers'>
+                                            <button class="btn btn-blue m-2" @click="displayUsers()" v-if='!showUsers'>
                                                 Utilisateurs
                                             </button>
 
-                                            <button class="btn btn-primary m-2" @click="displayNeeds()" v-if='!showNeeds'>
+                                            <button class="btn btn-blue m-2" @click="displayNeeds()" v-if='!showNeeds'>
                                                 Demandes
                                             </button>
                                 </div>

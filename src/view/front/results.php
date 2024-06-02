@@ -44,34 +44,34 @@ $datas = $_SESSION['search_results'];
                                             <div class="property-item rounded overflow-hidden">
                                                 <div class="position-relative overflow-hidden">
                                                     <img class="img-fluid" src="public/img/<?= htmlspecialchars($detail['pic1']) ?>" alt="">
-                                                    <div class="bg-primary rounded text-white position-absolute start-0 top-0 m-4 py-1 px-3">
+                                                    <div class="bg-blue rounded text-white position-absolute start-0 top-0 m-4 py-1 px-3">
                                                         <?= htmlspecialchars($detail['action']) ?>
                                                     </div>
-                                                    <div class="bg-white rounded-top text-primary position-absolute start-0 bottom-0 mx-4 pt-1 px-3">
+                                                    <div class="bg-white rounded-top text-blue position-absolute start-0 bottom-0 mx-4 pt-1 px-3">
                                                         <?= htmlspecialchars($detail['category']) ?>
                                                     </div>
                                                 </div>
                                                     <div class="p-4 pb-0">
-                                                    <h5 class="text-primary mb-3"> <?= number_format($detail['price'], 0, '', ' ') ?> F CFA </h5>
-                                                    <p><i class="fa fa-map-marker-alt text-primary me-2"></i><?= htmlspecialchars($detail['location']) ?></p>
+                                                    <h5 class="text-blue mb-3"> <?= number_format($detail['price'], 0, '', ' ') ?> F CFA </h5>
+                                                    <p class="text-blue"><i class="fa fa-map-marker-alt text-blue me-2"></i><?= htmlspecialchars($detail['location']) ?></p>
                                                 </div>
                                                <?php
                                                     if($detail['category'] != 'Terrain' && $detail['category'] != 'Boutique' ){ ?>
                                                          <div class="d-flex border-top">
-                                                    <small class="flex-fill text-center border-end py-2">
-                                                        <i class="fa fa-ruler-combined text-primary me-2"></i><?= htmlspecialchars($detail['people']) ?> ménage<?= $detail['people'] > 1 ? 's' : '' ?>
+                                                    <small class="flex-fill text-center text-dark border-end py-2">
+                                                        <i class="fa fa-ruler-combined text-blue me-2"></i><?= htmlspecialchars($detail['people']) ?> ménage<?= $detail['people'] > 1 ? 's' : '' ?>
                                                     </small>
-                                                    <small class="flex-fill text-center border-end py-2">
-                                                        <i class="fa fa-bed text-primary me-2"></i><?= htmlspecialchars($detail['rooms']) ?> chambre<?= $detail['rooms'] > 1 ? 's' : '' ?>
+                                                    <small class="flex-fill text-center text-dark border-end py-2">
+                                                        <i class="fa fa-bed text-blue me-2"></i><?= htmlspecialchars($detail['rooms']) ?> chambre<?= $detail['rooms'] > 1 ? 's' : '' ?>
                                                     </small>
-                                                    <small class="flex-fill text-center py-2">
-                                                        <i class="fa fa-bath text-primary me-2"></i><?= htmlspecialchars($detail['bathrooms']) ?> douche<?= $detail['bathrooms'] > 1 ? 's' : '' ?>
+                                                    <small class="flex-fill text-center text-dark py-2">
+                                                        <i class="fa fa-bath text-blue me-2"></i><?= htmlspecialchars($detail['bathrooms']) ?> douche<?= $detail['bathrooms'] > 1 ? 's' : '' ?>
                                                     </small>
                                                 </div>
                                                     <?php }
                                                     else{ ?>
-                                                        <small class="flex-fill text-left py-2">
-                                                        <i class="fa fa-ruler-combined text-primary me-2"></i><?= htmlspecialchars($detail['size']) ?> m2
+                                                        <small class="flex-fill text-left text-dark py-2">
+                                                        <i class="fa fa-ruler-combined text-blue me-2"></i><?= htmlspecialchars($detail['size']) ?> m2
                                                     </small>
                                                     <?php }
                                                ?>
