@@ -20,6 +20,7 @@ require_once 'src/controllers/front/agents.php';
 require_once 'src/controllers/front/reset_password.php';
 require_once 'src/controllers/front/newNeed.php';
 require_once 'src/controllers/front/results.php';
+require_once 'src/controllers/front/blog.php';
 
 
 require_once 'src/controllers/back/user/dashboard.php';

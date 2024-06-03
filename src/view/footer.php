@@ -11,8 +11,8 @@
                 <h5 class="text-white mb-4">Liens</h5>
                 <a class="btn btn-link text-white-50" href="index.php?action=termsPage">Conditions générales</a>
                 <a class="btn btn-link text-white-50" href="index.php?action=policyPage">Politique de confidentialité</a>
-                <a href="/app.apk" download="nom_du_fichier.apk" class="btn btn-link text-white-50" >
-                         Télécharger l'application mobile
+                <a class="btn btn-link text-white-50"  href="index.php?action=blogPage">
+                         Blog
                 </a>
 
             </div>
