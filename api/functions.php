@@ -467,6 +467,30 @@ function sixAds(){
    // var_dump($datas);
 }
 
+function getThreePosts(){
+    $pdo = getConnexion();
+    $req = $pdo->prepare("SELECT * FROM articles
+     ORDER BY id DESC LIMIT 3");
+    $req->execute();
+    $datas = $req->fetchAll();
+    $req->closeCursor();
+    sendJSON($datas);
+    return $datas;
+   // var_dump($datas);
+}
+
+function getPosts(){
+    $pdo = getConnexion();
+    $req = $pdo->prepare("SELECT * FROM articles
+     ORDER BY id DESC");
+    $req->execute();
+    $datas = $req->fetchAll();
+    $req->closeCursor();
+    sendJSON($datas);
+    return $datas;
+   // var_dump($datas);
+}
+
 
 function login()
 {

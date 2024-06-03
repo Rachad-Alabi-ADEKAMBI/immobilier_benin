@@ -92,6 +92,14 @@ if($action == 'users'){
     getUsers();
 }
 
+if($action == 'posts'){
+    getPosts();
+}
+
+if($action == 'threePosts'){
+    getThreePosts();
+}
+
 
 
 
