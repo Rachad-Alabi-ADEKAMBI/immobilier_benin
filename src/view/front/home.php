@@ -278,37 +278,37 @@ $datas = sixAds();
         </div>
 
         <!--Blog-->
-        <div class="container-xxl py-5">
+        <div class="container-xxl py-2">
             <div class="container">
-            <div class="row g-5 align-items-center">
-                <div class="col-sm-12 col-md-4 p-3 wow fadeInUp" data-wow-delay="0.1s" 
-                 v-for="detail in articles" :key='detail.id' @click='goToArticle(detail.id)'>
-                     <img class="img-fluid" :src="getImg(detail.image)" alt="">
-                    <h4>
-                        {{detail.name}}
-                    </h4>
+                <div class="row g-2 align-items-center">
+                    <div class="col-sm-12 col-md-4 p-3 wow fadeInUp" data-wow-delay="0.1s" 
+                    v-for="detail in articles" :key='detail.id' @click='goToArticle(detail.id)'>
+                        <img class="img-fluid" :src="getImg(detail.image)" alt="">
+                        <h4>
+                            {{detail.name}}
+                        </h4>
 
-                    <p>
+                        <p>
 
-                    </p>
+                        </p>
 
-                    <div class="details">
-                        <div class="date">
-                        {{ detail.date }}
-                        </div>
+                        <div class="details">
+                            <div class="date">
+                            {{ detail.date }}
+                            </div>
 
-                        <div class="views">
-                            {{ detail.views }}
+                            <div class="views">
+                                {{ detail.views }}
+                            </div>
                         </div>
                     </div>
-                </div>
 
-                <div class="col-sm-12 text-center">
-                    <a href="index.php?action=blogPage" class="btn btn-blue">
-                        Voir blog
-                    </a>
+                    <div class="col-sm-12 text-center">
+                        <a href="index.php?action=blogPage" class="btn btn-blue">
+                            Voir blog
+                        </a>
+                    </div>
                 </div>
-            </div>
             </div>
          </div>
     </section>

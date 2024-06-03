@@ -2,10 +2,36 @@
      
  ob_start(); ?>
 
-    <div class="container" id="ap">
-        <div class="row">
-            .col
-        </div>
+    <div class="app" id="app">
+            <!--Blog-->
+    <div class="container-xxl py-2">
+            <div class="container">
+                <div class="row g-2 align-items-center">
+                    <div class="col-sm-12 col-md-4 p-3 wow fadeInUp" data-wow-delay="0.1s" 
+                    v-for="detail in details" :key='detail.id' @click='goToArticle(detail.id)'>
+                        <img class="img-fluid" :src="getImg(detail.image)" alt="">
+                        <h4>
+                            {{detail.name}}
+                        </h4>
+
+                        <p>
+
+                        </p>
+
+                        <div class="details">
+                            <div class="date">
+                            {{ detail.date }}
+                            </div>
+
+                            <div class="views">
+                                {{ detail.views }}
+                            </div>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+    </div>
     </div>
 
 <?php $content = ob_get_clean(); ?>
@@ -14,7 +40,7 @@
 
 <script>
             new Vue({
-                el: '#ap',
+                el: '#app',
                 data: {
                     details: ''
                 },
@@ -32,7 +58,7 @@
                     displayAll(){
                         this.showAll = true;
                         this.showFiltered = false;
-                        axios.get('api/script.php?action=articles')
+                        axios.get('api/script.php?action=posts')
                             .then((response) => {
                                 console.log(response.data);
                                 this.details = response.data;

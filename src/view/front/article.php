@@ -1,10 +1,12 @@
 <?php $title = "Immobilier Bénin - Article" ?>
 
+<?= $_GET['id']?>
 <?php ob_start(); ?>
 
 <div class="container-xxl p" id="app">
     article
 </div>
+hk
 
 <?php $content = ob_get_clean(); ?>
            
