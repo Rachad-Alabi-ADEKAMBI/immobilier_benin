@@ -4,7 +4,7 @@
 
     <div class="container" id="ap">
         <div class="row">
-            Blog
+            .col
         </div>
     </div>
 
@@ -32,7 +32,7 @@
                     displayAll(){
                         this.showAll = true;
                         this.showFiltered = false;
-                        axios.get('api/script.php?action=availableDatas')
+                        axios.get('api/script.php?action=articles')
                             .then((response) => {
                                 console.log(response.data);
                                 this.details = response.data;

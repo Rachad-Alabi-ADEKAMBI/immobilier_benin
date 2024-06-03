@@ -279,9 +279,11 @@ $datas = sixAds();
 
         <!--Blog-->
         <div class="container-xxl py-5">
-            <div class="row">
-                <div class="col-sm-12 col-md-4" v-for="detail in articles" :key='detail.id'>
-                    <img src="" alt="">
+            <div class="container">
+            <div class="row g-5 align-items-center">
+                <div class="col-sm-12 col-md-4 p-3 wow fadeInUp" data-wow-delay="0.1s" 
+                 v-for="detail in articles" :key='detail.id' @click='goToArticle(detail.id)'>
+                     <img class="img-fluid" :src="getImg(detail.image)" alt="">
                     <h4>
                         {{detail.name}}
                     </h4>
@@ -300,8 +302,14 @@ $datas = sixAds();
                         </div>
                     </div>
                 </div>
+
+                <div class="col-sm-12 text-center">
+                    <a href="index.php?action=blogPage" class="btn btn-blue">
+                        Voir blog
+                    </a>
+                </div>
             </div>
-        </div>
+            </div>
          </div>
     </section>
 
@@ -355,6 +363,9 @@ $datas = sixAds();
                 },
                 goToProperty(id){
                         window.location.replace('property.php?id='+id);
+                },
+                goToArticle(id){
+                    window.location.replace('index.php?action=articlePage&id='+id);
                 }
             }
         });
