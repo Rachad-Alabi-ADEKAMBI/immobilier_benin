@@ -6,7 +6,8 @@
                  <img class="img-fluid"  alt="Icon" style="width: 30px; height: 30px;">
              </div>
 -->
-             <h1 class="m-0 text-blue">Immobilier Bénin</h1>
+             <h1 class="m-0 text-blue text-left">Immobilier <br>
+              Bénin</h1>
          </a>
          <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
              <span class="navbar-toggler-icon"></span>

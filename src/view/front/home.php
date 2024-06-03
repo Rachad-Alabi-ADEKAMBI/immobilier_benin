@@ -18,7 +18,8 @@ $datas = sixAds();
                     <p class="animated fadeIn mb-4 pb-2">
                         Marketplace d'annonces immobilières gratuites au Bénin
                         </p>
-                    <a href="index.php?action=adsPage" class="btn btn-blue py-3 animated fadeIn">Voir les annonces</a>
+                    <a href="index.php?action=adsPage" class="btn btn-blue py-3 animated fadeIn">
+                    <i class="fas fa-list me-3"></i> Voir les annonces</a>
                 </div>
                 <div class="col-md-6 animated fadeIn">
                     <div class="owl-carousel header-carousel">
@@ -115,12 +116,12 @@ $datas = sixAds();
                                         <p><i class="fa fa-check text-blue me-3"></i>Mise en relation entre agents et clients</p>
                                         <p><i class="fa fa-check text-blue me-3"></i>Gestion juridique, fiscale et sociale</p>
                                         <p><i class="fa fa-check text-blue me-3"></i>Gestion de patrimoine</p>
-                                        <p><i class="fa fa-check text-blue me-3"></i>Conseiller en investissement</p>
+                                        <p><i class="fa fa-check text-blue me-3"></i>Conseils en investissement</p>
                                     </p>
                                     </div>
 
                                     <a href="index.php?action=contactPage" class="btn btn-blue py-3 px-4">
-                                    <i class="fas fa-envelope-open me-3"></i>Contact</a>
+                                    <i class="fas fa-envelope me-3"></i>Contact</a>
                                 </div>
                     
                 </div>
@@ -304,8 +305,8 @@ $datas = sixAds();
                     </div>
 
                     <div class="col-sm-12 text-center">
-                        <a href="index.php?action=blogPage" class="btn btn-blue">
-                            Voir blog
+                        <a   href="index.php?action=blogPage" class="btn btn-blue me-3 ">
+                            <i class="fas fa-list me-3"></i> Voir blog
                         </a>
                     </div>
                 </div>
