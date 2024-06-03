@@ -3,9 +3,7 @@
     <div class="container py-5">
         <div class="row g-5">
             <div class="col-lg-4 col-md-6">
-                <h5 class="text-white mb-4">
-                    <img src="public/img/logo-orizon-removebg-preview.png" alt="">
-                </h5>
+                <h5 class="text-white mb-4">Contactez-nous</h5>
                 <p class="mb-2"><i class="fa fa-phone-alt me-3 text-blue"></i>+229 96 66 36 44</p>
                 <p class="mb-2"><i class="fa fa-envelope me-3 text-blue" ></i> contact@immobilierbenin.com</p>
             </div>
@@ -13,6 +11,10 @@
                 <h5 class="text-white mb-4">Liens</h5>
                 <a class="btn btn-link text-white-50" href="index.php?action=termsPage">Conditions générales</a>
                 <a class="btn btn-link text-white-50" href="index.php?action=policyPage">Politique de confidentialité</a>
+                <a href="/app.apk" download="nom_du_fichier.apk" class="btn btn-link text-white-50" >
+                         Télécharger l'application mobile
+                </a>
+
             </div>
             <div class="col-lg-4 col-md-6">
                 <h5 class="text-white mb-4">Galerie photo</h5>

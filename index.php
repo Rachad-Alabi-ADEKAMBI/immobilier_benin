@@ -111,6 +111,10 @@ if (isset($_GET['action']) && $_GET['action'] !== '') {
     elseif ($_GET['action'] === 'newNeedPage') {
         newNeedPage();
     } 
+
+    elseif ($_GET['action'] === 'blogPage') {
+        blogPage();
+    } 
     
     elseif ($_GET['action'] === 'home') {
         home();
