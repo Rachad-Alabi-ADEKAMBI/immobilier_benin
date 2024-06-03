@@ -2,9 +2,12 @@
 
 $datas = sixAds();
 
+// $articles
+
  ob_start(); ?>
     <section class='section' >
-         <!-- Header Start -->
+         <div class="app" id="app">
+            <!-- Header Start -->
          <div class="container-fluid header bg-white p-0" >
             <div class="row g-0 align-items-center flex-column-reverse
                 flex-md-row pt-5">
@@ -124,7 +127,7 @@ $datas = sixAds();
             </div>  
         </div>
 
-        <div class="container-xxl py-5" id="app">
+        <div class="container-xxl py-5" id="">
             <div class="container">
                     <!-- Property List Start -->
                 <div class="row g-0 gx-5 align-items-end">
@@ -188,6 +191,7 @@ $datas = sixAds();
         </div>
         <!-- Property List End -->
 
+        <!--about-->
         <div class="container-xxl py-5" id='about'>
             <div class="container">
                 <div class="row g-5 align-items-center">
@@ -272,6 +276,33 @@ $datas = sixAds();
                 </div>
             </div>
         </div>
+
+        <!--Blog-->
+        <div class="container-xxl py-5">
+            <div class="row">
+                <div class="col-sm-12 col-md-4" v-for="detail in articles" :key='detail.id'>
+                    <img src="" alt="">
+                    <h4>
+                        {{detail.name}}
+                    </h4>
+
+                    <p>
+
+                    </p>
+
+                    <div class="details">
+                        <div class="date">
+                        {{ detail.date }}
+                        </div>
+
+                        <div class="views">
+                            {{ detail.views }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+         </div>
     </section>
 
 <?php $content = ob_get_clean(); ?>
@@ -283,7 +314,8 @@ $datas = sixAds();
         new Vue({
             el: '#app',
             data: {
-                details: ''       
+                details: '',
+                articles: ''       
             },
             mounted(){
                 this.displayDetails();
@@ -299,7 +331,17 @@ $datas = sixAds();
                            // console.error(error);
                          //   alert('Failed to fetch data');
                         });
-                }, 
+                    
+                    axios.get('api/script.php?action=threePosts')
+                        .then((response) => {
+                            console.log(response.data);
+                            this.articles = response.data;
+                        })
+                        .catch((error) => {
+                           // console.error(error);
+                         //   alert('Failed to fetch data');
+                        });
+                },
                 format(num){
                     return new Intl.NumberFormat('fr-FR', { maximumSignificantDigits: 3 }).format(num);
                 },
