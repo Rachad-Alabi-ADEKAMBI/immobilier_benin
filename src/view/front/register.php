@@ -14,20 +14,21 @@
                                 <div class="col-sm-6">
                                     <div class="form-floating">
                                         <input type="email" class="form-control" id="email" 
-                                        placeholder="" name="email"  value="<?=$_SESSION['register']?>"  required>
+                                        placeholder="" name="email"  value="<?=$_SESSION['register']['email']?>"  required>
                                         <label for="email">Email</label>
                                     </div>
                                 </div>
                                 <div class="col-sm-6 text-center">
                                     <div class="form-floating">
                                         <input type="text" class="form-control" id="phone" placeholder=""
-                                         name="phone" required oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');">
+                                         name="phone" required  value="<?=$_SESSION['register']['phone']?>" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');">
                                         <label for="phone">Numéro</label>
                                     </div>
                                 </div>
                                 <div class="col-sm-6">
                                     <div class="form-floating">
-                                        <input type="text" class="form-control" id="first_name" 
+                                        <input type="text" class="form-control"
+                                         id="first_name"  value="<?=$_SESSION['register']['first_name']?>" 
                                         placeholder="e" name="first_name" required>
                                         <label for="first_name">Prénom</label>
                                     </div>
@@ -35,7 +36,7 @@
                                 <div class="col-sm-6 text-center">
                                     <div class="form-floating">
                                         <input type="text" class="form-control" id="last_name"
-                                         placeholder="" required name="last_name">
+                                         placeholder="" required   value="<?=$_SESSION['register']['last_name']?>" name="last_name">
                                         <label for="last_name">Nom</label>
                                     </div>
                                 </div>

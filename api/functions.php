@@ -582,11 +582,11 @@ function register() {
     $featured = 0;
 
     if ($pass != $password_2) {
-        $_SESSION['login'] = [
+        $_SESSION['register'] = [
             'email' => $email,
-            'role' => 'user',
-            'id' => $pdo->lastInsertId(),
+            'phone' => $phone,
             'first_name' => $first_name,
+            'last_name' => $last_name,
             'last_name' => $last_name,
         ];
 
