@@ -14,7 +14,7 @@
                                 <div class="col-sm-6">
                                     <div class="form-floating">
                                         <input type="email" class="form-control" id="email" 
-                                        placeholder="" name="email" required>
+                                        placeholder="" name="email"  value="<?=$_SESSION['register']?>"  required>
                                         <label for="email">Email</label>
                                     </div>
                                 </div>

@@ -582,6 +582,14 @@ function register() {
     $featured = 0;
 
     if ($pass != $password_2) {
+        $_SESSION['login'] = [
+            'email' => $email,
+            'role' => 'user',
+            'id' => $pdo->lastInsertId(),
+            'first_name' => $first_name,
+            'last_name' => $last_name,
+        ];
+
         echo "<script>
                 alert('Les mots de passe ne correspondent pas !');
                 window.location.replace('../index.php?action=loginPage');
