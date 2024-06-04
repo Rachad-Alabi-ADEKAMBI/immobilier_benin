@@ -49,7 +49,7 @@
                                     <tbody>
                                         <tr v-for='detail in details' :key='detail.id'>
                                             <td data-label="Date"> {{ formatDate(detail.date_of_insertion) }} </td>
-                                            <td data-label="Nom">{{ detail.name }}</td>
+                                            <td data-label="Nom">{{ detail.id }} {{ detail.name }}</td>
                                             <td data-label="Ville">{{ detail.location }} </td>
                                             <td data-label="Prix"> {{ format(detail.price) }} </td>
                                             <td data-label='Annonceur'> {{ detail.first_name }} {{ detail.last_name }} </td>
@@ -69,21 +69,17 @@
                                                         {{ detail.situation }}
                                                 </p>   
                                             </td>
-
-                                            <!--
                                             <td data-label="">
                                                 <button class="btn btn-danger text-white m-1" @click='stop(detail.id)' 
                                                 v-if="detail.situation =='Disponible'">
                                                     <i class="fa fa-stop m-1 text-white"></i> Stop
                                                 </button>
 
-                                                <button class="btn btn-success text-white m-1" @click='play(detail.id)'
+                                                <button class="btn btn-success text-white m-1" @click='publish(detail.id)'
                                                 v-if="detail.situation =='Stop'">
                                                     <i class="fa fa-play me-1 text-white"></i> Valider
                                                 </button>
-                                            </td>-->
-
-                                           
+                                            </td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -130,7 +126,6 @@
                         </div>
                     </div>
                     <!--end users list-->
-
 
                      <!-- needs--> 
                      <div class='col-sm-12 col-md-10 mt-4 mx-auto fadeInUp' data-wow-delay="0.5s" v-if='showNeeds' >
@@ -242,12 +237,6 @@
                 },
                 stop(id){
                         window.location.replace('./api/script.php?action=stop&id='+id);
-                },
-                play(id){
-                        window.location.replace('./api/script.php?action=play&id='+id);
-                },
-                pause(id){
-                        window.location.replace('./api/script.php?action=pause&id='+id);
                 },
                 publish(id){
                         window.location.replace('./api/script.php?action=publish&id='+id);

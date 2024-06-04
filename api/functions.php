@@ -139,7 +139,7 @@ function newNeed(){
 
 function getAllDatas() {
     $pdo = getConnexion();
-    $req = $pdo->prepare("SELECT ads.*, users.* FROM ads INNER JOIN users ON ads.user_id = users.id ORDER BY ads.id DESC");
+    $req = $pdo->prepare("SELECT * FROM ads ORDER BY id DESC");
     
     $req->execute();
     $datas = $req->fetchAll();
@@ -362,15 +362,30 @@ function stop(){
         <?php
         exit(); 
     } else {
-        $req = $pdo->prepare("UPDATE ads SET situation = 'Stop' WHERE id = ?");
-        $req->execute(array($id));
-        ?>
+       
+
+        try {
+            $req = $pdo->prepare("UPDATE ads SET situation = 'Stop' WHERE id = ?");
+            $req->execute(array($id));
+            echo $id;
+             ?>
+            
             <script>
                 alert("Annonce mise en stop !");
                 window.location.replace('../index.php?action=dashboard_adminPage');
             </script>
 
-<?php 
+            <?php 
+        } catch (PDOException $e) {
+            echo 'Database error: ' . $e->getMessage();
+            ?>
+                <script>
+                    alert('Une erreur est survenue, merci de reéssayer ou de nous contacter si elle persiste');
+                    window.location.replace('../index.php?action=dashboard_adminPage');
+                    exit();
+                </script>
+            <?php
+        }
     }
 }
 
@@ -414,7 +429,7 @@ function publish(){
         ?>
             <script>
                  alert('Annonce publiée !');
-                window.location.replace('../index.php?action=dashboardPage');
+                window.location.replace('../index.php?action=dashboard_adminPage');
             </script>
 
 <?php 
@@ -592,7 +607,7 @@ function register() {
     //check for the same user
     $req = $pdo->prepare('SELECT * FROM users WHERE email = ?');
     $req->execute(array($email));
-    $datas = $req->fetchAll();
+    $datas = $req->fetcH();
 
     if ($pass != $password_2) {
         $_SESSION['register'] = [
