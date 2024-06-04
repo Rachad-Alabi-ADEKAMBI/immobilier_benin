@@ -565,6 +565,14 @@ function login()
                }
             }
         }
+    } else{
+        ?>
+            <script>
+                alert('Merci de remplir le formulaire !!');
+                window.history.back();
+                exit();
+            </script>
+        <?php
     }
 }
 
@@ -581,46 +589,73 @@ function register() {
     $ads = 0;
     $featured = 0;
 
+    //check for the same user
+    $req = $pdo->prepare('SELECT * FROM users WHERE email = ?');
+    $req->execute(array($email));
+    $datas = $req->fetchAll();
+
     if ($pass != $password_2) {
         $_SESSION['register'] = [
             'email' => $email,
             'phone' => $phone,
             'first_name' => $first_name,
-            'last_name' => $last_name,
-            'last_name' => $last_name,
+            'last_name' => $last_name
         ];
-
-        echo "<script>
-                alert('Les mots de passe ne correspondent pas !');
-                window.location.replace('../index.php?action=loginPage');
-              </script>";
-        exit();
+    
+     ?>
+        <script>
+            alert('Les mots de passe ne correspondent pas !');
+            window.location.replace('../index.php?action=registerPage');
+        </script>"
+        
+    <?php 
     }
 
-    $username = $last_name . ' ' . substr($first_name, 0, 3) . rand(10, 99);
-    $ip = $_SERVER['REMOTE_ADDR']; // Get the user's IP address
-
-    try {
-        $stmt = $pdo->prepare("INSERT INTO users (email, phone, first_name, last_name, 
-        pass, username, ip, role, date_of_insertion, ads, featured) VALUES (?, ?, ?, ?, ?, ?, ?, ?, NOW(), 0, ?)");
-
-        $stmt->execute([$email, $phone, $first_name, $last_name, $pass, $username, $ip, 'user', $featured]);
-
-        $_SESSION['user'] = [
-            'email' => $email,
-            'role' => 'user',
-            'id' => $pdo->lastInsertId(),
-            'first_name' => $first_name,
-            'last_name' => $last_name,
-        ];
-
-        echo "<script>
-                alert('Compte créé avec succès !! Bienvenue sur Immobilier Bénin');
-                window.location.replace('../index.php?action=dashboardPage');
-              </script>";
-    } catch (PDOException $e) {
-        echo 'Database error: ' . $e->getMessage();
+    else if($datas != '' ){ ?>
+             <script>
+            alert('Cet email est déjà enregistré, merci de changer ou de faire une demande de réinitialisation de mot de passe si nécéssaire');
+            window.location.replace('../index.php?action=registerPage');
+        </script>"
+        <?php
     }
+
+    else{
+        $username = $last_name . ' ' . substr($first_name, 0, 3) . rand(10, 99);
+        $ip = $_SERVER['REMOTE_ADDR']; // Get the user's IP address
+
+        try {
+            $stmt = $pdo->prepare("INSERT INTO users (email, phone, first_name, last_name, 
+            pass, username, ip, role, date_of_insertion, ads, featured) VALUES (?, ?, ?, ?, ?, ?, ?, ?, NOW(), 0, ?)");
+
+            $stmt->execute([$email, $phone, $first_name, $last_name, $pass, $username, $ip, 'user', $featured]);
+
+            $_SESSION['user'] = [
+                'email' => $email,
+                'role' => 'user',
+                'id' => $pdo->lastInsertId(),
+                'first_name' => $first_name,
+                'last_name' => $last_name,
+            ];
+
+            ?>
+            
+            <script>
+                    alert('Compte creé avec succès !! Bienvenue sur Immobilier Bénin');
+                    window.location.replace('../index.php?action=dashboardPage');
+            </script>
+
+            <?php
+        } catch (PDOException $e) {
+            echo 'Database error: ' . $e->getMessage();
+            ?>
+                <script>
+                    alert('Une erreur est survenue, merci de reéssayer ou de nous contacter si elle persiste');
+                    window.location.replace('../index.php?action=registerPage');
+                    exit();
+                </script>
+            <?php
+        }
+    }   
 }
 
 
