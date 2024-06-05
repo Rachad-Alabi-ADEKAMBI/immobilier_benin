@@ -124,7 +124,8 @@
 
                                 <div class="col-sm-4 col-md-4">
                                     <div class="form-floating">
-                                        <select class="form-select" id="location" name="location" required>
+                                        <select class="form-select" id="location" name="location" 
+                                            v-model='location' required>
                                                 <option value=''>Ville</option>
                                                 <option value="Abomey">Abomey</option>
                                                 <option value="Cotonou">Cotonou</option>
@@ -133,6 +134,7 @@
                                                 <option value="Ouidah">Ouidah</option>
                                                 <option value="Parakou">Parakou</option>
                                                 <option value="Porto-Novo">Porto-Novo</option>
+                                                <option value="other">Autre</option>
                                         </select>
                                         <label for="location">Ville</label>
                                     </div>
@@ -156,6 +158,8 @@
                                                 <option value="2">2</option>
                                                 <option value="3">3</option>
                                                 <option value="4">4</option>
+                                                <option value="5">5</option>
+                                                <option value="6">6</option>
                                             </select>
                                             <label for="rooms">Chambres</label>
                                         </div>
