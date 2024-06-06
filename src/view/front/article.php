@@ -14,19 +14,16 @@
             </div>
             <div class="row">
                 <div class="col-sm-12 col-md-12 mx-auto text-center">
-                    <img :src="getImgUrl(detail.pic1)" alt="">
+                    <img :src="getImgUrl(detail.image)" alt="acheter ou louer au benin">
                 </div>
             </div>
 
             <div class="row mt-4">
-            <div class="col-sm-12 col-md-8 mx-auto text-center">
-                <p class="text text-grey">{{ detail.content }}</p>
+            <div class="col-sm-12 col-md-8 mx-auto text-justify">
+                <p class="text text-grey text-justify">{{ detail.content }}</p>
             </div>
             </div>
             <div class="row mt-3">
-                <div class="col-sm-12 col-md-8 mx-auto text-center">
-                    </div>
-                </div>
                 <div class="col-sm-12 col-md-8 mx-auto text-center">
                     <p>
                         Partager: <br>
@@ -40,6 +37,12 @@
 
                     </p>
                     </div>
+                </div>
+
+                <div class="col-sm-12 col-md-8 mx-auto text-center">
+                    <a class="btn btn-blue" href="index.php?action=blogPage">
+                        Retour aux articles
+                    </a>
                 </div>
             </div>
         </div>

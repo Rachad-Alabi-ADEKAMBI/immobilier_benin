@@ -120,8 +120,7 @@ $datas = sixAds();
                                     </p>
                                     </div>
 
-                                    <a href="index.php?action=contactPage" class="btn btn-blue py-3 px-4">
-                                    <i class="fas fa-envelope me-3"></i>Contact</a>
+                                   
                                 </div>
                     
                 </div>
@@ -208,9 +207,8 @@ $datas = sixAds();
                                         </p>
                                     </div>
 
-                                    <a href="index.php?action=adsPage" class="btn btn-blue py-3 px-4">
-                                        <i class="fa fa-list-alt me-2"></i>Voir les annonces
-                                    </a>
+                                    <a href="index.php?action=contactPage" class="btn btn-blue py-3 px-4">
+                                    <i class="fas fa-envelope me-3"></i>Contact</a>
                     </div>
 
                     <div class="col-lg-6 wow fadeIn" data-wow-delay="0.1s">

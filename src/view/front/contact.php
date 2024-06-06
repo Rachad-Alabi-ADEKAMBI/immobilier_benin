@@ -6,7 +6,7 @@
             <div class="container">
                 <div class="text-center mx-auto mb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 600px;">
                     <h1 class="mb-3">Contactez-nous</h1>
-                    <p>Annonces gratuites de vente et location de biens immobiliers
+                    <p>Immobilier Bénin, un service du groupe <strong>Orizon+</strong>
                     </p>
                 </div>
                 <div class="row g-4">
@@ -18,7 +18,7 @@
                                     <div class="d-flex align-items-center bg-white rounded p-3"
                                         style="border: 1px dashed rgba(0, 185, 142, .3)">
                                         <div class="icon me-3" style="width: 45px; height: 45px;">
-                                            <i class="fa fa-envelope-open text-blue"></i>
+                                            <i class="fa fa-envelope text-blue"></i>
                                         </div>
                                         <span>contact@immobilierbenin.com</span>
                                     </div>
