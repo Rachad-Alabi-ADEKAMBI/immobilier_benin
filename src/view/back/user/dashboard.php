@@ -111,32 +111,24 @@
                                         </div>
                                     </div>
 
-                            <div class="col-sm-4 col-md-4">
-                                <div class="form-floating">
-                            <select class="form-select" id="action" name="action" required>
-                            <option selected>Action</option>
-                            <option value="A louer">A louer</option>
-                            <option value="A vendre">A vendre</option>
-                            </select>
-                            <label for="action">Action</label>
-                                    </div>
+                                    <div class="col-sm-4 col-md-4">
+                                        <div class="form-floating">
+                                    <select class="form-select" id="action" name="action" required>
+                                    <option selected>Action</option>
+                                    <option value="A louer">A louer</option>
+                                    <option value="A vendre">A vendre</option>
+                                    </select>
+                                    <label for="action">Action</label>
+                                            </div>
                                 </div>
 
-                                <div class="col-sm-4 col-md-4">
-                                    <div class="form-floating">
-                                        <select class="form-select" id="location" name="location" 
-                                            v-model='location' required>
-                                                <option value=''>Ville</option>
-                                                <option value="Abomey">Abomey</option>
-                                                <option value="Cotonou">Cotonou</option>
-                                                <option value="Bohicon">Bohicon</option>
-                                                <option value="Calavi">Calavi</option>
-                                                <option value="Ouidah">Ouidah</option>
-                                                <option value="Parakou">Parakou</option>
-                                                <option value="Porto-Novo">Porto-Novo</option>
-                                                <option value="other">Autre</option>
-                                        </select>
-                                        <label for="location">Ville</label>
+                                <!--oter city-->
+                                <div class="row g-3 mt-3">
+                                <div class="col-sm-6 col-md-6">
+                                        <div class="form-floating">
+                                            <input type="text"  oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');" class="form-control" name='size' id="size" placeholder="Superficie">
+                                            <label for="size">Superficie</label>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -461,7 +453,9 @@
                     showLand: false,
                     showHouse: false,
                     showEdit: false,
-                    geolocation: ''
+                    geolocation: '',
+                    showmoreLocation: false,
+                    location: ''
                 },
                 mounted(){
                     this.displayAll();
@@ -474,6 +468,13 @@
                         } else{
                             this.showLand = false;
                             this.showHouse = true;
+                        }
+                        },
+                        location() {
+                        if (this.location == 'other') {
+                            this.showmoreLocation = true;
+                        } else{
+                            this.showmoreLocation = false;
                         }
                         }
                     },  
