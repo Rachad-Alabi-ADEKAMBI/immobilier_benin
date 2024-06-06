@@ -22,10 +22,13 @@ require_once 'src/controllers/front/newNeed.php';
 require_once 'src/controllers/front/results.php';
 require_once 'src/controllers/front/blog.php';
 require_once 'src/controllers/front/article.php';
-
+require_once 'src/controllers/front/error.php';
+require_once 'src/controllers/front/faq.php';
 
 require_once 'src/controllers/back/user/dashboard.php';
 require_once 'src/controllers/back/admin/dashboard_admin.php';
+
+
 
 
 if (isset($_GET['action']) && $_GET['action'] !== '') {
@@ -118,6 +121,10 @@ if (isset($_GET['action']) && $_GET['action'] !== '') {
         blogPage();
     } 
 
+    elseif ($_GET['action'] === 'faqPage') {
+        faqPage();
+    } 
+
     elseif ($_GET['action'] === 'articlePage') {
         articlePage();
     } 
@@ -127,7 +134,8 @@ if (isset($_GET['action']) && $_GET['action'] !== '') {
     }
     
     else {
-        echo 'Error 404 : Aucune page trouvée !.';
+        errorPage();
+      // echo 'error';
     }
 } else {
     home();
