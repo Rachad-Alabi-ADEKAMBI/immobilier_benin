@@ -77,21 +77,25 @@
                                     </span>
 
                                     <h1 class="mx-auto text-center">Nouvelle annonce</h1>
-
+                                        <p class="text-center">
+                                            Si vous avez des questions concernant le formulaire <br> vous pouvez
+                                            consulter <a href="index.php?action=faq">la FAQ</a>
+                                        </p>
                                     <div class="row g-3">
                                         <div class="col-sm-6 col-md-6">
                                             <div class="form-floating">
                                                 <input type="text" class="form-control" required name='name' placeholder="Nom">
-                                                <label for="name">Nom</label>
+                                                <label for="name">Nom <span class="red">*</span> </label>
                                             </div>
                                         </div>
 
                                         <div class="col-sm-6 col-md-6">
                                             <div class="form-floating">
                                             <input type="text" class="form-control" required name='price' 
-                                            id="price" placeholder="Prix" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');">
+                                            id="price" placeholder="Prix" maxlength="5"
+                                             oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');">
 
-                                                <label for="price">Prix</label>
+                                                <label for="price">Prix <span class="red">*</span></label>
                                             </div>
                                         </div>
                                     </div>
@@ -107,37 +111,53 @@
                                                 <option value="Maison">Maison</option>
                                                 <option value="Terrain">Terrain</option>
                                             </select>
-                                            <label for="category">Catégorie</label>
+                                            <label for="category">Catégorie <span class="red">*</span></label>
                                         </div>
                                     </div>
 
                                     <div class="col-sm-4 col-md-4">
                                         <div class="form-floating">
-                                    <select class="form-select" id="action" name="action" required>
-                                    <option selected>Action</option>
-                                    <option value="A louer">A louer</option>
-                                    <option value="A vendre">A vendre</option>
-                                    </select>
-                                    <label for="action">Action</label>
-                                            </div>
-                                </div>
-
-                                <!--oter city-->
-                                <div class="row g-3 mt-3">
-                                <div class="col-sm-6 col-md-6">
-                                        <div class="form-floating">
-                                            <input type="text"  oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');" class="form-control" name='size' id="size" placeholder="Superficie">
-                                            <label for="size">Superficie</label>
+                                            <select class="form-select" id="action" name="action" required>
+                                            <option selected>Action</option>
+                                            <option value="A louer">A louer</option>
+                                            <option value="A vendre">A vendre</option>
+                                            </select>
+                                            <label for="action">Action <span class="red">*</span></label>
                                         </div>
                                     </div>
-                                </div>
-                            </div>
 
-                                <div class="row g-3 mt-3" v-if='showLand'>
-                                    <div class="col-sm-6 col-md-6">
+                                    <div class="col-sm-4 col-md-4">
+                                    <div class="form-floating">
+                                        <select class="form-select" id="location" name="location" 
+                                            v-model='location' required>
+                                                <option value=''>Ville</option>
+                                                <option value="Abomey">Abomey</option>
+                                                <option value="Cotonou">Cotonou</option>
+                                                <option value="Bohicon">Bohicon</option>
+                                                <option value="Calavi">Calavi</option>
+                                                <option value="Ouidah">Ouidah</option>
+                                                <option value="Parakou">Parakou</option>
+                                                <option value="Porto-Novo">Porto-Novo</option>
+                                                <option value="other">Autre</option>
+                                        </select>
+                                        <label for="location">Ville <span class="red">*</span></label>
+                                    </div>
+                                </div>
+                                </div>
+
+                                <div class="row g-3 mt-3" >
+                                    <div class="col-sm-6 col-md-6" v-if='showMoreLocation'>
+                                        <div class="form-floating">
+                                            <input type="text"  class="form-control" name='more_location' id="more_location" 
+                                            placeholder="Ville">
+                                            <label for="more_location">Ville <span class="red">*</span></label>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-sm-6 col-md-6" v-if='showLand'>
                                         <div class="form-floating">
                                             <input type="number"  oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');" class="form-control" name='size' id="size" placeholder="Superficie">
-                                            <label for="size">Superficie</label>
+                                            <label for="size">Superficie <span class="red">*</span></label>
                                         </div>
                                     </div>
                                 </div>
@@ -153,12 +173,12 @@
                                                 <option value="5">5</option>
                                                 <option value="6">6</option>
                                             </select>
-                                            <label for="rooms">Chambres</label>
+                                            <label for="rooms">Chambres <span class="red">*</span></label>
                                         </div>
                                     </div>
 
                                     <div class="col-sm-4 col-md-4">
-                                        <div class="form-floating"> <label for="bathrooms">Douches</label>
+                                        <div class="form-floating"> <label for="bathrooms">Douches <span class="red">*</span></label>
                                             <select class="form-select" name='bathrooms'>
                                                 <option value="1">1</option>
                                                 <option value="2">2</option>
@@ -171,7 +191,7 @@
 
                                     <div class="col-sm-4 col-md-4">
                                         <div class="form-floating">
-                                        <label for="people">Ménages</label>
+                                        <label for="people">Ménages <span class="red">*</span></label>
                                             <select class="form-select" name='people'>
                                                 <option value="1">1</option>
                                                 <option value="2">2</option>
@@ -192,7 +212,7 @@
                                         <div class="form-floating">
                                             <textarea class="form-control" name='description' 
                                             required id="description" placeholder="Description"></textarea>
-                                            <label for="description">Description</label>
+                                            <label for="description">Description <span class="red">*</span></label>
                                         </div>
                                     </div>
                                 </div>
@@ -202,7 +222,7 @@
                                         <div class="form-floating">
                                             <input type="file" class="form-control"  accept=".jpg, .jpeg, .png, image/*"
                                             name='pic1' id="pic1" placeholder="Photo1" required>
-                                            <label for="pic1">Photo 1</label>
+                                            <label for="pic1">Photo 1 <span class="red">*</span></label>
                                         </div>
                                     </div>
 
@@ -454,7 +474,7 @@
                     showHouse: false,
                     showEdit: false,
                     geolocation: '',
-                    showmoreLocation: false,
+                    showMoreLocation: true,
                     location: ''
                 },
                 mounted(){
@@ -472,9 +492,9 @@
                         },
                         location() {
                         if (this.location == 'other') {
-                            this.showmoreLocation = true;
+                            this.showMoreLocation = true;
                         } else{
-                            this.showmoreLocation = false;
+                            this.showMoreLocation = false;
                         }
                         }
                     },  
@@ -638,6 +658,11 @@
         }
 
         li i:hover{
+            font-weight: bold;
+        }
+        
+        .red{
+            color: red;
             font-weight: bold;
         }
     </style>

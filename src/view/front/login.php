@@ -16,7 +16,7 @@
                                         <div class="form-floating">
                                             <input type="text" class="form-control" 
                                             required name='username' value="<?= $_SESSION['login']['username'] ?>"  placeholder="">
-                                            <label for="name">Identifiant ou email</label>
+                                            <label for="name">Identifiant ou email <span class="red">*</span></label>
                                         </div>
                                     </div>
 
@@ -25,7 +25,7 @@
                                         <input type="password" class="form-control" required name='password' id="" 
                                         placeholder="">
 
-                                            <label for="password">Mot de passe</label>
+                                            <label for="password">Mot de passe <span class="red">*</span></label>
                                         </div>
                                     </div>
                                 </div>
@@ -56,3 +56,10 @@
 <?php $content = ob_get_clean(); ?>
 
 <?php require './src/view/layout.php'; ?>
+
+<style>
+    .red{
+        color: red;
+        font-weight: bold;
+    }
+</style>

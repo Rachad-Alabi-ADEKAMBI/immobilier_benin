@@ -59,6 +59,10 @@ function newAd() {
         $people = verifyInput($_POST['people']);
     }
 
+    if($location == 'other'){
+        $location = verifyInput($_POST['more_location']);
+    }
+
     $situation = 'Disponible';
 
     // insertion

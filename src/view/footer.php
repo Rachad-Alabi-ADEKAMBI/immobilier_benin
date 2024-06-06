@@ -9,11 +9,15 @@
             </div>
             <div class="col-lg-4 col-md-6">
                 <h5 class="text-white mb-4">Liens</h5>
-                <a class="btn btn-link text-white-50" href="index.php?action=termsPage">Conditions générales</a>
-                <a class="btn btn-link text-white-50" href="index.php?action=policyPage">Politique de confidentialité</a>
                 <a class="btn btn-link text-white-50"  href="index.php?action=blogPage">
                          Blog
                 </a>
+                <a class="btn btn-link text-white-50"  href="index.php?action=faqPage">
+                         FAQ
+                </a>
+                <a class="btn btn-link text-white-50" href="index.php?action=termsPage">Conditions générales</a>
+                <a class="btn btn-link text-white-50" href="index.php?action=policyPage">Politique de confidentialité</a>
+               
 
             </div>
             <div class="col-lg-4 col-md-6">

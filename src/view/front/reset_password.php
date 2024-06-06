@@ -12,7 +12,7 @@
                                     <div class="col-sm-12">
                                         <div class="form-floating">
                                             <input type="text" class="form-control" required name='email' placeholder="">
-                                            <label for="name">Email</label>
+                                            <label for="name">Email <span class="red">*</span></label>
                                         </div>
                                     </div>
                                 </div>
@@ -35,3 +35,10 @@
 <?php $content = ob_get_clean(); ?>
 
 <?php require './src/view/layout.php'; ?>
+
+<style>
+    .red{
+        color: red;
+        font-weight: bold;
+    }
+</style>

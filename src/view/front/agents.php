@@ -17,7 +17,11 @@
                                     :key='detail.id'>
                                     <div class="property-item rounded overflow-hidden">
                                         <div class="position-relative overflow-hidden">
-                                                <img class="img-fluid image" :src="getImg(detail.pic)" alt="">
+                                                <img class="img-fluid image" :src="getImg(detail.pic)" alt="" 
+                                                    v-if="detail.pic!=''">
+                                                
+                                                <img class="img-fluid image" src="public/img/logo-orizon.png" alt="" 
+                                                    v-if="detail.pic==''">
                                             
                                         </div>
                                         <div class="p-4 pb-0">
