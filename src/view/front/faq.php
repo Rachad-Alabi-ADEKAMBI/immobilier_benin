@@ -13,7 +13,7 @@
 
                         <p class="text text-center mt-4">
                             Vous n'avez pas trouvé de réponses ci dessus ? <br>
-                            <a href="index.php?action=contact">Envoyez-nous un message</a>
+                            <a href="index.php?action=contactPage">Envoyez-nous un message</a>
                         </p> 
                     </div>
                 </div>

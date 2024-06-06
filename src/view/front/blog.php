@@ -92,8 +92,8 @@
                     getImg(pic) {
                         return "public/img/" + pic;
                     },
-                    goToProperty(id){
-                        window.location.replace('index.php?action=adPage&id='+id);
+                    goToArticle(id){
+                        window.location.replace('index.php?action=articlePage&id='+id);
                     }
                 }
             });

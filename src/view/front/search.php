@@ -53,3 +53,10 @@
     </div>
 </div>
 <!-- Search End -->
+
+<style>
+    .bold{
+        font-weight: bold;
+        font-size: larger;
+    }
+</style>

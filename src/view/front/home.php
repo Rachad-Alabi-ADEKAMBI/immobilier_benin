@@ -371,3 +371,10 @@ $datas = sixAds();
             }
         });
     </script>
+
+    <style>
+        .img-fluid{
+            width: 320px;
+            height: auto;
+        }
+    </style>

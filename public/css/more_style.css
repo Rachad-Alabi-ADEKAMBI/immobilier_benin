@@ -56,3 +56,8 @@
         color: #8755F1;
     }
   }
+
+  .img-fluid{
+    width: 320px;
+    height: auto;
+}

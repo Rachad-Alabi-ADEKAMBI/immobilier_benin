@@ -318,7 +318,16 @@ function getProperty(){
         $req->execute(array($id));
         $datas = $req->fetchAll();
 
-        sendJSON($datas);
+        if(count($datas) == ''){
+            ?>
+                <script>
+                    alert("Aucune annonce trouvée, veuillez vérifier l'url");
+                    window.history.back();
+                </script>
+            <?php
+        } else{
+            sendJSON($datas);
+        }
     }
 }
 
@@ -510,6 +519,34 @@ function getPosts(){
    // var_dump($datas);
 }
 
+function getPost(){
+    $pdo = getConnexion();
+    $id = verifyInput($_GET['id']);
+
+    if ($id == 0 || $id < 0) { ?>
+        <script>
+            alert('Une erreur est survenue, merci de vérifier cette url');
+            window.history.back();
+        </script>
+        <?php
+        exit(); 
+    } else {
+        $req = $pdo->prepare('SELECT * FROM articles WHERE id = ?');
+        $req->execute(array($id));
+        $datas = $req->fetchAll();
+
+        if(count($datas) == ''){
+            ?>
+                <script>
+                    alert("Aucun post trouvé, veuillez vérifier l'url");
+                    window.history.back();
+                </script>
+            <?php
+        } else{
+            sendJSON($datas);
+        }
+    }
+}
 
 function login()
 {

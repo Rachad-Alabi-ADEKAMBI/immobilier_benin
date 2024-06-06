@@ -79,7 +79,7 @@
                         <p class="text-left">
                         <i class="fas fa-exclamation text-danger"></i> Faites toujours attention lors des rencontres <br>
                         <i class="fas fa-exclamation text-danger"></i> Assurez vous que le bien appartient au vendeur <br>
-                        <i class="fas fa-exclamation text-danger"></i> Contactez-nous au besoin
+                        <i class="fas fa-exclamation text-danger"></i> Contactez notre équipe au besoin
                         </p>
                         
                     </div>
@@ -97,7 +97,7 @@
                                 <a href="https://wa.me/?text=https://immobilier_benin.000webhostapp.com/property.php?id=<?=$_GET['id']?>)">
                                 <i class="fab fa-whatsapp text-blue"></i>
                                 </a>
-                                <a href="https://www.facebook.com/share.php?u=https:/nova-immobilier.000webhostapp.com/property.php?id=<?=$_GET['id']?>" target="_blank">
+                                <a href="https://www.facebook.com/share.php?u=https:/immobilier_benin.000webhostapp.com/property.php?id=<?=$_GET['id']?>" target="_blank">
 
                                 <i class="fab fa-facebook text-blue"></i>
                                 </a>

@@ -58,8 +58,8 @@
                     &copy; <a class="text-white" href="#">Immobilier Bénin</a>, 2024, Tous droits réservés
 
                     <!--/*** This template is free as long as you keep the footer author’s credit link/attribution link/backlink. If you'd like to use the template without the footer author’s credit link/attribution link/backlink, you can purchase the Credit Removal License from "https://htmlcodex.com/credit-removal". Thank you for your support. ***/-->
-                 <br>Made with blood, sweat and tears by  <a
-                        class="border-bottom name" style="color: #8755F1; font-weight: bold"
+                 <br>Built with blood, sweat and tears by  <a
+                        class="border-bottom name" style="color: #8755F1; font-weight: bold;"
                         href="https://rachad-alabi-adekambi.github.io/portfolio/">  <i class="fa fa-heart me-1"></i>Codeur Créatif</a>
                 </div>  
                 <div class="col-md-6 text-center text-md-end">

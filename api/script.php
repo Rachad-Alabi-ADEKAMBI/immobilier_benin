@@ -96,6 +96,10 @@ if($action == 'posts'){
     getPosts();
 }
 
+if($action == 'post'){
+    getPost($id);
+}
+
 if($action == 'threePosts'){
     getThreePosts();
 }
