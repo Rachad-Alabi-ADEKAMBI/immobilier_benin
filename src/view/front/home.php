@@ -276,7 +276,7 @@ $datas = sixAds();
             </div>
         </div>
 
-        <!--Blog-->
+        <!--Blog
         <div class="container-xxl py-2">
             <div class="container">
                 <div class="row g-2 align-items-center">
@@ -293,7 +293,7 @@ $datas = sixAds();
 
                         <div class="details">
                             <div class="date">
-                            {{ detail.date }}
+                            <i class="bi bi-clock"></i> {{ detail.date }}
                             </div>
 
                             <div class="views">
@@ -310,6 +310,7 @@ $datas = sixAds();
                 </div>
             </div>
          </div>
+                                                    -->
     </section>
 
 <?php $content = ob_get_clean(); ?>
@@ -374,5 +375,15 @@ $datas = sixAds();
         .img-fluid{
             width: 320px;
             height: auto;
+        }
+
+        .details .date{
+            background-color:  #8755F1;
+            width: 250px;
+            border-radius: 5px;
+        }
+
+        .details .date i{
+            color: white;
         }
     </style>

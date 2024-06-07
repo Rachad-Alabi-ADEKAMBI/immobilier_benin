@@ -2,12 +2,11 @@
  <div class="container-fluid nav-bar bg-transparent">
      <nav class="navbar navbar-expand-lg bg-white navbar-light py-0 px-4">
          <a href="index.php" class="navbar-brand d-flex align-items-center text-center">
-             <!--<div class="icon p-2 me-2">
-                 <img class="img-fluid"  alt="Icon" style="width: 30px; height: 30px;">
+             <div class="icon p-2 me-2">
+                 <img  src="public/img/logo-immo-remove.png" 
+                    alt="agence immobiliere au Bénin" style="width: 130px; height: auto;">
              </div>
--->
-             <h1 class="m-0 text-blue text-left">Immobilier <br>
-              Bénin</h1>
+             
          </a>
          <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
              <span class="navbar-toggler-icon"></span>

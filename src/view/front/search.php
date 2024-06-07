@@ -46,7 +46,7 @@
             </div>
             <div class="col-md-2">
                 <button type="submit" class="btn btn-dark border-0 w-100 py-3">
-                <i class="fas fa-glass me-3"></i> Chercher
+                <i class="bi bi-search"></i> Chercher
                 </button>
             </div>
         </div>
