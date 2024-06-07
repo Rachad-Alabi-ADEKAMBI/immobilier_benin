@@ -21,16 +21,17 @@
                 </div>
 
                 <div class="row mt-4">
-                    <div class="col-sm-12 col-md-4 mx-auto text-center">
+                    <div class="col-sm-12 col-md-4 mx-auto text-center" v-if="detail.pic2">
                         <img :src="getImgUrl(detail.pic2)" alt="appartements et terrains au Bénin">
                     </div>
-                    <div class="col-sm-12 col-md-4 mx-auto text-center">
+                    <div class="col-sm-12 col-md-4 mx-auto text-center" v-if="detail.pic3">
                         <img :src="getImgUrl(detail.pic3)" alt="annonces de vente et location au Bénin">
                     </div>
-                    <div class="col-sm-12 col-md-4 mx-auto text-center">
+                    <div class="col-sm-12 col-md-4 mx-auto text-center" v-if="detail.pic4">
                         <img :src="getImgUrl(detail.pic4)" alt="Immobilier Bénin">
                     </div>
                 </div>
+
 
                 <div class="row">
                     <div class="col-12">
@@ -58,7 +59,11 @@
                     
                     <div class="col-12">
 
-                    <p><i class="fa fa-map-marker-alt text-blue me-2"></i> {{ detail.location}}</p>
+                    <p><i class="fa fa-map-marker-alt text-blue me-2"></i> 
+                    {{ detail.location}}, {{ detail.action }} <br>
+                    <i class="far fa-clock text-blue"></i>
+                    {{ formatDate(detail.date_of_insertion)}}
+                </p>
                                         
                                         <div class="d-flex border-top">
 
@@ -119,6 +124,7 @@
             },
             mounted(){
                 this.displayDetails();
+                
             },
             methods: {
                 displayDetails(){
@@ -126,23 +132,22 @@
                     .then((response) => {
                         console.log(response.data);
                         this.details = response.data;
-                    })
-                    .catch((error) => {
-                        console.error(error);
-                       // alert('Échec de la récupération des données');
-                    
-                       if (this.details.length != 0) {
+
+                        if (this.details.length == 0) {
                             alert('Aucune annonce trouvée, veuillez vérifier l\'URL');
                             window.history.back();
                         }
-    });
-
+                    })
+                    .catch((error) => {
+                        console.error(error);
+                      
+                    });
                 }, 
                 format(num){
                     return new Intl.NumberFormat('fr-FR', { maximumSignificantDigits: 3 }).format(num);
                 },
-                formatDate(da) {
-                    const [datePart, timePart] = da.split(' ');
+                formatDate(date) {
+                    const [datePart, timePart] = date.split(' ');
                     const [year, month, day] = datePart.split('-');
                     return `${day}-${month}-${year}`;
                 },

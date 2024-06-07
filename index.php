@@ -41,7 +41,7 @@ if (isset($_GET['action']) && $_GET['action'] !== '') {
         if (isset($_GET['id']) && $_GET['id'] > 0) {
             adPage($_GET['id']);
         } else {
-            echo "Erreur : aucun identifiant d'annonce envoyé";
+            errorPage();
             die;
         }
     }

@@ -322,16 +322,7 @@ function getProperty() {
         $req = $pdo->prepare('SELECT * FROM ads WHERE id = ?');
         $req->execute([$id]);
         $datas = $req->fetchAll(PDO::FETCH_ASSOC);
-
-        if (empty($datas)) {
-            echo "<script>
-                alert('Aucune annonce trouvée, veuillez vérifier l\'URL');
-                window.history.back();
-            </script>";
-            exit();
-        } else {
-            sendJSON($datas);
-        }
+        sendJSON($datas);
     }
 }
 

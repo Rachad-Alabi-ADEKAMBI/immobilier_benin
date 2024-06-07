@@ -5,21 +5,21 @@
                     <div class="col-sm-12 text-center">
                                 <div class="menu">
                                             <button class="btn btn-blue m-2" @click="displayNew()" v-if='!showNew'>
-                                                Nouvelle annonce
+                                            <i class="fas fa-plus   "></i> Nouvelle annonce
                                             </button>
 
                                             <button class="btn btn-blue m-2" @click="displayAll()" v-if="!showAll && !showEdit">
-                                                Mes annonces
+                                            <i class="fas fa-list"></i> Mes annonces
                                             </button>
 
 
                                             <button class="btn btn-blue m-2" @click="displayNeeds()" v-if='!showNeeds'>
-                                                Demandes clients
+                                            <i class="fas fa-question"></i> Demandes clients
                                             </button>
 
 
                                             <button class="btn btn-blue m-2" @click="displayAccount()" v-if='!showAccount'>
-                                                Mon compte
+                                            <i class="fas fa-user"></i> Mon compte
                                             </button>
 
 
