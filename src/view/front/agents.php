@@ -20,7 +20,7 @@
                                                 <img class="img-fluid image" :src="getImg(detail.pic)" alt="" 
                                                     v-if="detail.pic!=''">
                                                 
-                                                <img class="img-fluid image" src="public/img/logo-orizon.png" alt="" 
+                                                <img class="img-fluid image" src="public/img/logo-immo.png" alt="" 
                                                     v-if="detail.pic==''">
                                             
                                         </div>

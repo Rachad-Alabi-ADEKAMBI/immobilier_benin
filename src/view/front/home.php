@@ -233,7 +233,7 @@ $datas = sixAds();
                     <div class="testimonial-item bg-light rounded p-3">
                         <div class="bg-white border rounded p-4">
                             <p>Site web rapide et facile à utiliser, je pensais que cela prendrait plus de
-                                temps, je recommande vivement, en plus c'est gratuit</p>
+                                temps, je recommande vivement, en plus c'est gratuit.</p>
                             <div class="d-flex align-items-center">
                                 <img class="img-fluid flex-shrink-0
                                  rounded" src="public/img/marie.jpg" style="width: 45px; height: 45px;">
