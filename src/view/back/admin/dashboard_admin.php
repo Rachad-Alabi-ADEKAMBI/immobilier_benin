@@ -104,6 +104,7 @@
                                                             <th scope="col">Nom complet</th>
                                                             <th scope='col'>Photo</th>
                                                             <th scope='col'>Annonces</th>
+                                                            <th scope='col'>Statut</th>
                                                             </tr>
                                     </thead>
                                                         <tbody>
@@ -119,6 +120,15 @@
                                                             </p>
                                                             </td>
                                                             <td data-label="Annonces" >{{ detail.ads }}</td>
+                                                            <td data-label="Statut" > 
+                                                                    <p class="text-success" v-if="detail.situation =='Disponible'">
+                                                                            Validé
+                                                                    </p>   
+                                                                    
+                                                                    <p class="text-warning" v-if="detail.situation =='Non disponible'">
+                                                                           En pause
+                                                                    </p>   
+                                                                </td>
                                                             <td data-label="">
 
                                                 <button class="btn btn-warning m-1 text-white" @click="pauseUser(detail.id)" 
@@ -246,11 +256,11 @@
                 getImgUrl(pic) {
                     return "public/img/" + pic;
                 },
-                stop(id){
-                        window.location.replace('./api/script.php?action=stop&id='+id);
+                pauseUser(id){
+                        window.location.replace('./api/script.php?action=pauseUser&id='+id);
                 },
-                publish(id){
-                        window.location.replace('./api/script.php?action=publish&id='+id);
+                authorizeUser(id){
+                        window.location.replace('./api/script.php?action=authorizeUser&id='+id);
                 },
             }
         });
@@ -259,6 +269,14 @@
 <style>
           body {
             font-family: Arial, sans-serif;
+        }
+
+        .btn-success{
+            background: green;;
+        }
+
+        .text-success{
+            color: green;
         }
         .table-container {
             width: 100%;

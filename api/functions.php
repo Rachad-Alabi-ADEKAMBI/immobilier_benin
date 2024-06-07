@@ -303,29 +303,33 @@ function search() {
 
 }
 
-function getProperty(){
+function getProperty() {
     $pdo = getConnexion();
-    $id = verifyInput($_GET['id']);
+    $id = isset($_GET['id']) ? (int) verifyInput($_GET['id']) : 0;
 
-    if ($id == 0 || $id < 0) { ?>
+    if ($id <= 0) {
+        ?>
+        
         <script>
-            alert('Une erreur est survenue, merci de vérifier cette url');
+            alert('Une erreur est survenue, merci de vérifier cette URL');
+            window.history.back();
+            exit();
         </script>
+
         <?php
-        exit(); 
+        
     } else {
         $req = $pdo->prepare('SELECT * FROM ads WHERE id = ?');
-        $req->execute(array($id));
-        $datas = $req->fetchAll();
+        $req->execute([$id]);
+        $datas = $req->fetchAll(PDO::FETCH_ASSOC);
 
-        if(count($datas) == ''){
-            ?>
-                <script>
-                    alert("Aucune annonce trouvée, veuillez vérifier l'url");
-                    window.history.back();
-                </script>
-            <?php
-        } else{
+        if (empty($datas)) {
+            echo "<script>
+                alert('Aucune annonce trouvée, veuillez vérifier l\'URL');
+                window.history.back();
+            </script>";
+            exit();
+        } else {
             sendJSON($datas);
         }
     }
@@ -883,6 +887,85 @@ function getUsers(){
         $req->execute(array());
         $datas = $req->fetchAll();
         sendJSON($datas);
+}
+
+
+function pauseUser(){
+    $pdo = getConnexion();
+    $id = verifyInput($_GET['id']);
+
+    
+    if (!is_numeric($id) || $id <= 0) { ?>
+        <script>
+            alert('Une erreur est survenue, merci de vérifier cette url');
+        </script>
+        <?php
+        exit(); 
+    } else {
+       
+
+        try {
+            $req = $pdo->prepare("UPDATE users SET situation = 'Non disponible' WHERE id = ?");
+            $req->execute(array($id));
+            echo $id;
+             ?>
+            
+            <script>
+                alert("Profil utilisateur mis en pause !");
+                window.location.replace('../index.php?action=dashboard_adminPage');
+            </script>
+
+            <?php 
+        } catch (PDOException $e) {
+            echo 'Database error: ' . $e->getMessage();
+            ?>
+                <script>
+                    alert('Une erreur est survenue, merci de reéssayer ou de nous contacter si elle persiste');
+                    window.location.replace('../index.php?action=dashboard_adminPage');
+                    exit();
+                </script>
+            <?php
+        }
+    }
+}
+
+function authorizeUser(){
+    $pdo = getConnexion();
+    $id = verifyInput($_GET['id']);
+
+    
+    if (!is_numeric($id) || $id <= 0) { ?>
+        <script>
+            alert('Une erreur est survenue, merci de vérifier cette url');
+        </script>
+        <?php
+        exit(); 
+    } else {
+       
+
+        try {
+            $req = $pdo->prepare("UPDATE users SET situation = 'Disponible' WHERE id = ?");
+            $req->execute(array($id));
+            echo $id;
+             ?>
+            
+            <script>
+                alert("Profil utilisateur validé !");
+                window.location.replace('../index.php?action=dashboard_adminPage');
+            </script>
+
+            <?php 
+        } catch (PDOException $e) {
+            echo 'Database error: ' . $e->getMessage();
+            ?>
+                <script>
+                    alert('Une erreur est survenue, merci de reéssayer ou de nous contacter si elle persiste');
+                    window.location.replace('../index.php?action=dashboard_adminPage');
+                    exit();
+                </script>
+            <?php
+        }
+    }
 }
 
 

@@ -104,6 +104,14 @@ if($action == 'threePosts'){
     getThreePosts();
 }
 
+if($action == 'pauseUser'){
+    pauseUser($id);
+}
+
+if($action == 'authorizeUser'){
+    authorizeUser($id);
+}
+
 
 
 

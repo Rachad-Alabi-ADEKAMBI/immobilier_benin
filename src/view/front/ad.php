@@ -16,22 +16,19 @@
                 </div>
                 <div class="row">
                     <div class="col-sm-12 col-md-12 mx-auto text-center">
-                        <img :src="getImgUrl(detail.pic1)" alt="">
+                        <img :src="getImgUrl(detail.pic1)" alt="appartements et terrains au Bénin">
                     </div>
                 </div>
 
-            
-    
-
                 <div class="row mt-4">
                     <div class="col-sm-12 col-md-4 mx-auto text-center">
-                        <img :src="getImgUrl(detail.pic2)" alt="">
+                        <img :src="getImgUrl(detail.pic2)" alt="appartements et terrains au Bénin">
                     </div>
                     <div class="col-sm-12 col-md-4 mx-auto text-center">
-                        <img :src="getImgUrl(detail.pic3)" alt="">
+                        <img :src="getImgUrl(detail.pic3)" alt="annonces de vente et location au Bénin">
                     </div>
                     <div class="col-sm-12 col-md-4 mx-auto text-center">
-                        <img :src="getImgUrl(detail.pic4)" alt="">
+                        <img :src="getImgUrl(detail.pic4)" alt="Immobilier Bénin">
                     </div>
                 </div>
 
@@ -125,16 +122,21 @@
             },
             methods: {
                 displayDetails(){
-                    console.log(this.id);
-                    axios.get('api/script.php?action=getProperty&id='+this.id)
-                        .then((response) => {
-                            console.log(response.data);
-                            this.details = response.data;
-                        })
-                        .catch((error) => {
-                            console.error(error);
-                            alert('Failed to fetch data');
-                        });
+                    axios.get('api/script.php?action=getProperty&id=' + this.id)
+                    .then((response) => {
+                        console.log(response.data);
+                        this.details = response.data;
+                    })
+                    .catch((error) => {
+                        console.error(error);
+                       // alert('Échec de la récupération des données');
+                    
+                       if (this.details.length != 0) {
+                            alert('Aucune annonce trouvée, veuillez vérifier l\'URL');
+                            window.history.back();
+                        }
+    });
+
                 }, 
                 format(num){
                     return new Intl.NumberFormat('fr-FR', { maximumSignificantDigits: 3 }).format(num);
