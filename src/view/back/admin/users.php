@@ -25,7 +25,7 @@
                                                              <td data-label="Photo">
                                                             <img :src='getImgUrl(detail.pic)'  v-if="detail.pic" alt="utilisateur immobilier benin">
                                                             <p class="text-danger" v-if="!detail.pic">
-                                                                Non rensigné
+                                                                Non renseigné
                                                             </p>
                                                             </td>
                                                             <td data-label="Annonces" >{{ detail.ads }}</td>
