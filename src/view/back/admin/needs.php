@@ -1,12 +1,8 @@
 <div class='col-sm-12 col-md-10 mt-4 mx-auto fadeInUp' data-wow-delay="0.5s" v-if='showNeeds' >
                          <h1 class="mx-auto text-center">
-                            Demandes clients ({{ this.details.length}})
+                            Demandes clients ({{ details.length}})
                          </h1>
-
-                         <p class="text text-bold text-grey text-center">
-                            Avez vous des réponses pour ces recherches ? Si oui, vous pouvez contacter les demandeurs
-                         </p>
-
+                         
                         <div class="mt-2table-container" v-if='details.length > 0'>
                                 <table>
                                     <thead>

@@ -59,7 +59,9 @@
                     
                     <div class="col-12">
 
-                    <p><i class="fa fa-map-marker-alt text-blue me-2"></i> 
+                    <p><i class="fa fa-list-alt text-blue me-2"></i> 
+                    {{ detail.category}} <br>
+                    <i class="fa fa-map-marker-alt text-blue me-2"></i> 
                     {{ detail.location}}, {{ detail.action }} <br>
                     <i class="far fa-clock text-blue"></i>
                     {{ formatDate(detail.date_of_insertion)}}

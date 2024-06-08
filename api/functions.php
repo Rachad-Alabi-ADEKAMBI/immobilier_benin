@@ -413,8 +413,8 @@ function play(){
         $req->execute(array($id));
         ?>
             <script>
-                alert("Annonce validée !");
-                window.location.replace('../index.php?action=dashboard_adminPage');
+                alert("Annonce publié !");
+                window.location.replace('../index.php?action=dashboardPage');
             </script>
 
 <?php 
@@ -874,7 +874,7 @@ function updateAd($ad_id){
 
 function getUsers(){
     $pdo = getConnexion();
-        $req = $pdo->prepare('SELECT * FROM users WHERE id != 1');
+        $req = $pdo->prepare('SELECT * FROM users WHERE id != 1 ORDER BY id DESC');
         $req->execute(array());
         $datas = $req->fetchAll();
         sendJSON($datas);
@@ -898,7 +898,6 @@ function pauseUser(){
         try {
             $req = $pdo->prepare("UPDATE users SET situation = 'Non disponible' WHERE id = ?");
             $req->execute(array($id));
-          //  echo $id;
              ?>
             
             <script>
@@ -908,7 +907,7 @@ function pauseUser(){
 
             <?php 
         } catch (PDOException $e) {
-            echo 'Database error: ' . $e->getMessage();
+           // echo 'Database error: ' . $e->getMessage();
             ?>
                 <script>
                     alert('Une erreur est survenue, merci de reéssayer ou de nous contacter si elle persiste');
@@ -947,7 +946,7 @@ function authorizeUser(){
 
             <?php 
         } catch (PDOException $e) {
-            echo 'Database error: ' . $e->getMessage();
+            // echo 'Database error: ' . $e->getMessage();
             ?>
                 <script>
                     alert('Une erreur est survenue, merci de reéssayer ou de nous contacter si elle persiste');

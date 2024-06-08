@@ -1,8 +1,13 @@
-<div class='col-sm-12 col-md-12 mt-4 mx-auto data-wow-delay="0.5s"' v-if='showAll' >
+<div class='col-sm-12 col-md-12  mt-4 mx-auto' data-wow-delay="0.5s" v-if='showAll' >
                          <h1 class="mx-auto text-center">
-                            Toutes les annonces <span>({{ details.length }})</span>
+                            Mes annonces ({{ this.details.length}})
                          </h1>
-                        <div class="mt-2table-container">
+
+                         <p class="text text-bold text-grey text-center" v-if='details.length == 0 '>
+                            Vous n'avez publié aucune annonce pour l'instant
+                         </p>
+
+                        <div class="mt-2table-container" v-if='details.length > 0'>
                                 <table>
                                     <thead>
                                         <tr>
@@ -17,7 +22,7 @@
                                     <tbody>
                                         <tr v-for='detail in paginatedData' :key='detail.id'>
                                             <td data-label="Date"> {{ formatDate(detail.date_of_insertion) }} </td>
-                                            <td data-label="Nom"> {{ detail.name }}</td>
+                                            <td data-label="Nom">{{ detail.name }}</td>
                                             <td data-label="Ville">{{ detail.location }} </td>
                                             <td data-label="Prix"> {{ format(detail.price) }} </td>
                                             <td data-label="Image">
@@ -26,26 +31,41 @@
                                             <td data-label="Statut" > 
                                                 <p class="text-success" v-if="detail.situation =='Disponible'">
                                                         {{ detail.situation }}
-                                                </p>   
+                                                </p>  
                                                 
                                                 <p class="text-danger" v-if="detail.situation =='Stop'">
-                                                        {{ detail.situation }}
-                                                </p>   
-
+                                                        Désactivé par l'administrateur
+                                                </p> 
+                                                
                                                 <p class="text-warning" v-if="detail.situation =='Non disponible'">
                                                         {{ detail.situation }}
                                                 </p>   
                                             </td>
+                                           
                                             <td data-label="">
-                                                <button class="btn btn-danger text-white m-1" @click='stop(detail.id)' 
-                                                v-if="detail.situation =='Disponible'">
-                                                    <i class="fa fa-stop m-1 text-white"></i> Stop
+
+                                                <button class="btn btn-warning m-1 text-white" @click="pause(detail.id)" 
+                                                    v-if="detail.situation == 'Disponible'">
+                                                    <i class="fa fa-pause m1-3 text-white "></i> Pause
                                                 </button>
 
-                                                <button class="btn btn-success text-white m-1" @click='publish(detail.id)'
-                                                v-if="detail.situation =='Stop'">
-                                                    <i class="fa fa-play me-1 text-white"></i> Valider
+                                                <button class="btn btn-success  m-1" @click="play(detail.id)"
+                                                      v-if="detail.situation == 'Non disponible'" >
+                                                      <i class="fa fa-play m1-3 text-white "></i> Publier
                                                 </button>
+
+                                                <button class="btn btn-info m-1 text-white" @click="displayEdit(detail.id)">
+                                                <i class="fa fa-pen m1-3 text-white "></i> Modifier
+                                                </button>
+
+
+                                                <button class="btn btn-danger m-1" @click="remove(detail.id)" >
+                                                    <i class="fa fa-trash m1-3 text-white "></i> Supprimer
+                                                </button>
+
+                                                <span @click="goToProperty(detail.id)">
+                                                <i class="fa fa-eye me-3 text-blue"></i>
+                                                </span>
                                             </td>
                                         </tr>
                                     </tbody>

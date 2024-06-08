@@ -4,7 +4,7 @@
                         </p> <br>
                         <?php if($_SESSION['user']['situation'] != 'Disponible'){ ?>
                         <p class="text text-danger text-center">
-                                Votre profil a été temporairement désactivé par l'adminisrateur du site, <br>
+                                Votre profil a été temporairement désactivé par l'administrateur du site, <br>
                                 Un email descriptif vous a été envoyé, merci de régulariser votre compte.
                         </p>
                         <?php } ?>
@@ -22,7 +22,7 @@
 
 
                                             <button class="btn btn-blue m-2" @click="displayNeeds()" v-if='!showNeeds'>
-                                            <i class="fas fa-user"></i> Demandes clients
+                                            <i class="fas fa-question"></i> Demandes clients
                                             </button>
 
 

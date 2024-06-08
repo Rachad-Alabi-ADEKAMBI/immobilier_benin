@@ -177,7 +177,7 @@ $datas = sixAds();
                                                     <?php }
                                                     else{ ?>
                                                         <small class="flex-fill text-left py-2">
-                                                        <i class="fa fa-ruler-combined text-blue me-2"></i><?= htmlspecialchars($detail['size']) ?> m2
+                                                        <i class="fa fa-ruler-combined text-blue me-2 ml-2"></i><?= htmlspecialchars($detail['size']) ?> m2
                                                     </small>
                                                     <?php }
                                                ?>
