@@ -5,12 +5,10 @@
                                     <i class="fa fa-times me-3 text-blue"></i>
                                     </span>
 
-                                    {{ location }}
-
                                     <h1 class="mx-auto text-center">Nouvelle annonce</h1>
                                         <p class="text-center">
                                             Si vous avez des questions concernant le formulaire <br> vous pouvez
-                                            consulter <a href="index.php?action=faq">la FAQ</a>
+                                            consulter <a href="index.php?action=faqPage">la FAQ</a>
                                         </p>
                                     <div class="row g-3">
                                         <div class="col-sm-6 col-md-6">
@@ -63,12 +61,20 @@
                                             v-model='location' required>
                                                 <option value=''>Ville</option>
                                                 <option value="Abomey">Abomey</option>
+                                                <option value="Abomey-Calavi">Abomey-Calavi</option>
                                                 <option value="Cotonou">Cotonou</option>
                                                 <option value="Bohicon">Bohicon</option>
-                                                <option value="Calavi">Calavi</option>
+                                                <option value="Grand-popo">Grand-popo</option>
+                                                <option value="Malanville">Malanville</option>
+                                                <option value="Natitingou">Natitingou</option>
+                                                <option value="N'dali">N'dali</option>
+                                                <option value="Nikki">Nikki</option>
                                                 <option value="Ouidah">Ouidah</option>
                                                 <option value="Parakou">Parakou</option>
                                                 <option value="Porto-Novo">Porto-Novo</option>
+                                                <option value="Sakété">Sakété</option>
+                                                <option value="Savè">Savè</option>
+                                                <option value="Sèmè">Sèmè</option>
                                                 <option value="other">Autre</option>
                                         </select>
                                         <label for="location">Ville <span class="red">*</span></label>

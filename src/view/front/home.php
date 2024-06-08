@@ -158,6 +158,7 @@ $datas = sixAds();
                                                 </div>
                                                     <div class="p-4 pb-0">
                                                     <h5 class="text-blue mb-3"> <?= number_format($detail['price'], 0, '', ' ') ?> F CFA </h5>
+                                                    <a class="d-block h5 mb-2" href=""> <?=$detail['name']?> </a>
                                                     <p><i class="fa fa-map-marker-alt text-blue me-2"></i><?= htmlspecialchars($detail['location']) ?></p>
                                                 </div>
                                                <?php

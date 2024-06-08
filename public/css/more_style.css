@@ -61,3 +61,26 @@
     width: 320px;
     height: auto;
 }
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+}
+.pagination button {
+  margin: 0 5px;
+}
+
+.page-item.active .page-link {
+  background-color: #8755F1;
+  border-color: #8755F1;
+}
+
+.page-link{
+  color: #666565;
+}
+
+.page-link:hover{
+  color:  #8755F1;
+}

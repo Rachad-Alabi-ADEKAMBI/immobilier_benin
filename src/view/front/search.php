@@ -34,12 +34,20 @@
                     <select class="form-select border-0 py-3"  name="location" required>
                                                 <option value=''>Ville</option>
                                                 <option value="Abomey">Abomey</option>
+                                                <option value="Abomey-Calavi">Abomey-Calavi</option>
                                                 <option value="Cotonou">Cotonou</option>
                                                 <option value="Bohicon">Bohicon</option>
-                                                <option value="Calavi">Calavi</option>
+                                                <option value="Grand-popo">Grand-popo</option>
+                                                <option value="Malanville">Malanville</option>
+                                                <option value="Natitingou">Natitingou</option>
+                                                <option value="N'dali">N'dali</option>
+                                                <option value="Nikki">Nikki</option>
                                                 <option value="Ouidah">Ouidah</option>
                                                 <option value="Parakou">Parakou</option>
                                                 <option value="Porto-Novo">Porto-Novo</option>
+                                                <option value="Sakété">Sakété</option>
+                                                <option value="Savè">Savè</option>
+                                                <option value="Sèmè">Sèmè</option>
                                             </select>
                     </div>
                 </div>

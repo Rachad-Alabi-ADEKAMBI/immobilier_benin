@@ -27,7 +27,7 @@
                                 <h1 class="mx-auto mb-3">Résultats du tri</h1>
                                 <p class="text text-left">
                                     Annonces avec un prix inférieur à
-                                    {{ format(rangeValue) }} F CFA
+                                    <strong>{{ format(rangeValue) }} F CFA</strong>
                                 </p>
                             </div>
                         </div>
@@ -53,13 +53,13 @@
                     <div class="row mb-2">
                         <div class="options__item">
                             <input type="range" class="mt-2 custom-range"  v-model="rangeValue" min="0"
-                            max="10000000"  @click="filter()" style='color: #8755F1'>
+                            max="5000000"  @click="filter()" style='color: #8755F1'>
                        </div>
                     </div>
                     <div class="tab-content">
                         <div id="tab-1" class="tab-pane fade show p-0  active" v-if='showAll'>
                             <div class="row g-4" >
-                                <div class="col-lg-4 col-md-6 wow fadeInUp item" data-wow-delay="0.1s " v-for='detail in details' 
+                                <div class="col-lg-4 col-md-6 wow fadeInUp item" data-wow-delay="0.1s " v-for="detail in paginatedData"
                                     :key='detail.id'>
                                     <div class="property-item rounded overflow-hidden" @click='goToProperty(detail.id)'>
                                         <div class="position-relative overflow-hidden">
@@ -75,6 +75,7 @@
                                         </div>
                                         <div class="p-4 pb-0">
                                             <h5 class="text-blue mb-3"> {{ format(detail.price) }} F CFA </h5>
+                                            <a class="d-block h5 mb-2" href=""> {{ detail.name }} </a>
                                             <p><i class="fa fa-map-marker-alt text-blue me-2"></i> {{ detail.location}}</p>
                                         </div>
                                         <div class="d-flex border-top" v-if="detail.category != 'Terrain' && detail.category != 'Boutique'">
@@ -90,7 +91,26 @@
                                     </div>
                                 </div>
                             </div>
+
+                            <div class="row mt">
+                                <div class="col-12 text-center">
+                                    <nav aria-label="Page navigation mx-auto">
+                                        <ul class="pagination">
+                                            <li class="page-item" :class="{ 'disabled': currentPage === 1 }">
+                                            <a class="page-link" href="#" @click.prevent="previousPage">Previous</a>
+                                            </li>
+                                            <li class="page-item" v-for="page in totalPages" :key="page" :class="{ 'active': page === currentPage }">
+                                            <a class="page-link" href="#" @click.prevent="gotoPage(page)">{{ page }}</a>
+                                            </li>
+                                            <li class="page-item" :class="{ 'disabled': currentPage === totalPages }">
+                                            <a class="page-link" href="#" @click.prevent="nextPage">Next</a>
+                                            </li>
+                                        </ul>
+                                    </nav>
+                                </div>
+                            </div>
                         </div>
+                        
 
                         <div id="tab-2" class="tab-pane fade show p-0 active " v-if='showToSell'>
                             <div class="row g-4" >
@@ -110,6 +130,7 @@
                                         </div>
                                         <div class="p-4 pb-0">
                                             <h5 class="text-blue mb-3"> {{ format(detail.price) }} F CFA </h5>
+                                            <a class="d-block h5 mb-2" href=""> {{ detail.name }} </a>
                                             <p><i class="fa fa-map-marker-alt text-blue me-2"></i> {{ detail.location}}</p>
                                         </div>
                                         <div class="d-flex border-top" v-if="detail.category != 'Terrain' && detail.category != 'Boutique'">
@@ -124,11 +145,29 @@
                                     </div>
                                 </div>
                             </div>
+
+                            <div class="row">
+                                <div class="col-12 text-center">
+                                    <nav aria-label="Page navigation mx-auto">
+                                        <ul class="pagination">
+                                            <li class="page-item" :class="{ 'disabled': currentPage === 1 }">
+                                            <a class="page-link" href="#" @click.prevent="previousPage">Previous</a>
+                                            </li>
+                                            <li class="page-item" v-for="page in totalPages" :key="page" :class="{ 'active': page === currentPage }">
+                                            <a class="page-link" href="#" @click.prevent="gotoPage(page)">{{ page }}</a>
+                                            </li>
+                                            <li class="page-item" :class="{ 'disabled': currentPage === totalPages }">
+                                            <a class="page-link" href="#" @click.prevent="nextPage">Next</a>
+                                            </li>
+                                        </ul>
+                                    </nav>
+                                </div>
+                            </div>
                         </div>
 
                         <div id="tab-3" class="tab-pane fade show p-0 active" v-if='showToRent'>
                             <div class="row g-4" >
-                                <div class="col-lg-4 col-md-6 wow fadeInUp item" data-wow-delay="0.1s" v-for='detail in details' 
+                                <div class="col-lg-4 col-md-6 wow fadeInUp item" data-wow-delay="0.1s" v-for="detail in paginatedData"
                                     :key='detail.id'>
                                     <div class="property-item rounded overflow-hidden" @click='goToProperty(detail.id)'>
                                         <div class="position-relative overflow-hidden">
@@ -144,7 +183,7 @@
                                         </div>
                                         <div class="p-4 pb-0">
                                             <h5 class="text-blue mb-3"> {{ format(detail.price) }} F CFA </h5>
-                                            <a class="d-block h5 mb-2" href=""> {{ detail.description }} </a>
+                                            <a class="d-block h5 mb-2" href=""> {{ detail.name }} </a>
                                             <p><i class="fa fa-map-marker-alt text-blue me-2"></i> {{ detail.location}}</p>
                                         </div>
                                         <div class="d-flex border-top" v-if="detail.category != 'Terrain' && detail.category != 'Boutique'">
@@ -158,6 +197,24 @@
                                         </div>
 
                                     </div>
+                                </div>
+                            </div>
+
+                            <div class="row mt">
+                                <div class="col-12 text-center">
+                                    <nav aria-label="Page navigation mx-auto">
+                                        <ul class="pagination">
+                                            <li class="page-item" :class="{ 'disabled': currentPage === 1 }">
+                                            <a class="page-link" href="#" @click.prevent="previousPage">Previous</a>
+                                            </li>
+                                            <li class="page-item" v-for="page in totalPages" :key="page" :class="{ 'active': page === currentPage }">
+                                            <a class="page-link" href="#" @click.prevent="gotoPage(page)">{{ page }}</a>
+                                            </li>
+                                            <li class="page-item" :class="{ 'disabled': currentPage === totalPages }">
+                                            <a class="page-link" href="#" @click.prevent="nextPage">Next</a>
+                                            </li>
+                                        </ul>
+                                    </nav>
                                 </div>
                             </div>
                         </div>
@@ -196,6 +253,8 @@
                                     </div>
                                 </div>
                             </div>
+
+                            
                         </div>
                     </div>
                 </div>
@@ -217,7 +276,9 @@
                     showToRent: false,
                     showToSell: false,
                     rangeValue: '', 
-                    showFiltered: false
+                    showFiltered: false,
+                    currentPage: 1,
+                    itemsPerPage: 2,
                 },
                 mounted(){
                     this.displayAll();
@@ -228,6 +289,14 @@
                             return detail.price <= this.rangeValue;
                         });
                         },
+                    totalPages() {
+                            return Math.ceil(this.details.length / this.itemsPerPage);
+                            },
+                    paginatedData() {
+                            const start = (this.currentPage - 1) * this.itemsPerPage;
+                            const end = start + this.itemsPerPage;
+                            return this.details.slice(start, end);
+                            }
                 },
                 watch: {
                         category() {
@@ -310,7 +379,20 @@
                     },
                     goToProperty(id){
                         window.location.replace('index.php?action=adPage&id='+id);
-                    }
+                    },
+                    previousPage() {
+                        if (this.currentPage > 1) {
+                            this.currentPage--;
+                        }
+                        },
+                    nextPage() {
+                        if (this.currentPage < this.totalPages) {
+                            this.currentPage++;
+                        }
+                    },
+                    gotoPage(page) {
+                    this.currentPage = page;
+                },
                 }
             });
     </script>

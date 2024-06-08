@@ -55,9 +55,13 @@
                                             <td data-label="Statut" > 
                                                 <p class="text-success" v-if="detail.situation =='Disponible'">
                                                         {{ detail.situation }}
-                                                </p>   
+                                                </p>  
                                                 
-                                                <p class="text-danger" v-if="detail.situation =='Non disponible'">
+                                                <p class="text-danger" v-if="detail.situation =='Stop'">
+                                                        Désactivé par l'administrateur
+                                                </p> 
+                                                
+                                                <p class="text-warning" v-if="detail.situation =='Non disponible'">
                                                         {{ detail.situation }}
                                                 </p>   
                                             </td>
@@ -124,8 +128,7 @@
                     location: ''
                 },
                 mounted(){
-                    //this.displayAll();
-                    this.displayNew();
+                    this.displayAll();
                 },
                 watch: {
                         category() {

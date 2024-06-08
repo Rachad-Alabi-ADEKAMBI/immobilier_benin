@@ -545,7 +545,6 @@ function getPost(){
 
 function login()
 {
-
     if (!empty($_POST)) {
         $pdo = getConnexion();
         $errors = [];
@@ -594,7 +593,8 @@ function login()
                     'id' => $user['id'],
                     'phone' => $user['phone'],
                     'first_name' => $user['first_name'],
-                    'last_name' => $user['last_name']
+                    'last_name' => $user['last_name'],
+                    'situation' => $user['situation']
                 ];
 
                if($_SESSION['user']['role'] == 'user'){
