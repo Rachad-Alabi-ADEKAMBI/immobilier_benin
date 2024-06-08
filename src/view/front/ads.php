@@ -89,22 +89,6 @@
 
                                     </div>
                                 </div>
-
-                                <div class="col-lg-4 col-md-6">
-                                    <nav aria-label="Page navigation mx-auto">
-                                        <ul class="pagination">
-                                            <li class="page-item" :class="{ 'disabled': currentPage === 1 }">
-                                            <a class="page-link" href="#" @click.prevent="prevPage">Previous</a>
-                                            </li>
-                                            <li class="page-item" v-for="page in totalPages" :key="page" :class="{ 'active': page === currentPage }">
-                                            <a class="page-link" href="#" @click.prevent="gotoPage(page)">{{ page }}</a>
-                                            </li>
-                                            <li class="page-item" :class="{ 'disabled': currentPage === totalPages }">
-                                            <a class="page-link" href="#" @click.prevent="nextPage">Next</a>
-                                            </li>
-                                        </ul>
-                                    </nav>
-                                </div>
                             </div>
                         </div>
 
@@ -233,10 +217,7 @@
                     showToRent: false,
                     showToSell: false,
                     rangeValue: '', 
-                    showFiltered: false,
-                    length: 0,
-                    currentPage: 1,
-                    pageSize: 3, // Number of items per page
+                    showFiltered: false
                 },
                 mounted(){
                     this.displayAll();
@@ -246,15 +227,7 @@
                         return this.details.filter(detail => {
                             return detail.price <= this.rangeValue;
                         });
-                    },
-                    paginatedData() {
-                    const startIndex = (this.currentPage - 1) * this.pageSize;
-                    const endIndex = startIndex + this.pageSize;
-                    return this.details.slice(startIndex, endIndex);
-                    },
-                    totalPages() {
-                        return Math.ceil(this.details.length / this.pageSize);
-                    },
+                        },
                 },
                 watch: {
                         category() {
@@ -337,21 +310,8 @@
                     },
                     goToProperty(id){
                         window.location.replace('index.php?action=adPage&id='+id);
-                    },
-                    prevPage() {
-                    if (this.currentPage > 1) {
-                        this.currentPage--;
                     }
-                        },
-                        nextPage() {
-                            if (this.currentPage < this.totalPages) {
-                                this.currentPage++;
-                            }
-                        },
-                        gotoPage(page) {
-                            this.currentPage = page;
-                        },
-                        }
+                }
             });
     </script>
 

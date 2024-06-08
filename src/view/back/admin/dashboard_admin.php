@@ -41,7 +41,6 @@
                                             <th>Nom</th>
                                             <th>Ville</th>
                                             <th>Prix</th>
-                                            <th>Annonceur</th>
                                             <th>Image</th>
                                             <th>Statut</th>
                                         </tr>
@@ -52,7 +51,6 @@
                                             <td data-label="Nom">{{ detail.id }} {{ detail.name }}</td>
                                             <td data-label="Ville">{{ detail.location }} </td>
                                             <td data-label="Prix"> {{ format(detail.price) }} </td>
-                                            <td data-label='Annonceur'> {{ detail.first_name }} {{ detail.last_name }} </td>
                                             <td data-label="Image">
                                                 <img :src='getImgUrl(detail.pic1)' alt="">
                                             </td>
@@ -114,8 +112,8 @@
                                                             <td data-label="Phone">{{ detail.phone }}  </td>
                                                             <td data-label="Full name">{{ detail.first_name }} {{ detail.last_name}}  </td>
                                                              <td data-label="Photo">
-                                                            <img :src='getImgUrl(detail.pic)'  v-if="detail.pic != ''" alt="utilisateur immobilier benin">
-                                                            <p class="text-danger" v-if="detail.pic == ''">
+                                                            <img :src='getImgUrl(detail.pic)'  v-if="detail.pic" alt="utilisateur immobilier benin">
+                                                            <p class="text-danger" v-if="!detail.pic">
                                                                 Non rensigné
                                                             </p>
                                                             </td>
@@ -261,6 +259,12 @@
                 },
                 authorizeUser(id){
                         window.location.replace('./api/script.php?action=authorizeUser&id='+id);
+                },
+                stop(id){
+                        window.location.replace('./api/script.php?action=stop&id='+id);
+                },
+                publish(id){
+                        window.location.replace('./api/script.php?action=publish&id='+id);
                 },
             }
         });

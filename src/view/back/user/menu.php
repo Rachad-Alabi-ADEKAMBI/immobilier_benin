@@ -14,7 +14,7 @@
 
 
                                             <button class="btn btn-blue m-2" @click="displayNeeds()" v-if='!showNeeds'>
-                                            <i class="fas fa-question"></i> Demandes clients
+                                            <i class="fas fa-user"></i> Demandes clients
                                             </button>
 
 

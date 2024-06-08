@@ -375,7 +375,7 @@ function stop(){
         try {
             $req = $pdo->prepare("UPDATE ads SET situation = 'Stop' WHERE id = ?");
             $req->execute(array($id));
-            echo $id;
+           // echo $id;
              ?>
             
             <script>
@@ -898,7 +898,7 @@ function pauseUser(){
         try {
             $req = $pdo->prepare("UPDATE users SET situation = 'Non disponible' WHERE id = ?");
             $req->execute(array($id));
-            echo $id;
+          //  echo $id;
              ?>
             
             <script>
@@ -937,7 +937,7 @@ function authorizeUser(){
         try {
             $req = $pdo->prepare("UPDATE users SET situation = 'Disponible' WHERE id = ?");
             $req->execute(array($id));
-            echo $id;
+          //  echo $id;
              ?>
             
             <script>

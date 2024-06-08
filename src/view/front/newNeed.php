@@ -28,7 +28,7 @@
                                                 Oui, créer
                                             </a>
                                         <?php } else { ?>
-                                            <a class="btn btn-primary m-2" href="index.php?action=registerPage">
+                                            <a class="btn btn-blue m-2" href="index.php?action=registerPage">
                                                 Créer mon compte
                                             </a>
                                         <?php } ?>

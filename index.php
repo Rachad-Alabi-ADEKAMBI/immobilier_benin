@@ -89,8 +89,8 @@ if (isset($_GET['action']) && $_GET['action'] !== '') {
         } else {
             dashboardPage();
         }
-        dashboardPage();
     }
+    
 
     elseif ($_GET['action'] === 'dashboard_adminPage') {
         if (!isset($_SESSION['user']) || $_SESSION['user']['role'] != 'admin') {
