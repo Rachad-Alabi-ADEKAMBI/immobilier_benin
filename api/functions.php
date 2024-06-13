@@ -639,6 +639,7 @@ function register() {
     $password_2 = verifyInput($_POST['password_2']);
     $ads = 0;
     $featured = 0;
+    $situation = 'Disponible';
 
     //check for the same user
     $req = $pdo->prepare('SELECT * FROM users WHERE email = ?');
@@ -676,9 +677,9 @@ function register() {
 
         try {
             $stmt = $pdo->prepare("INSERT INTO users (email, phone, first_name, last_name, 
-            pass, username, ip, role, date_of_insertion, ads, featured) VALUES (?, ?, ?, ?, ?, ?, ?, ?, NOW(), 0, ?)");
+            pass, username, ip, role, date_of_insertion, ads, featured, situation) VALUES (?, ?, ?, ?, ?, ?, ?, ?, NOW(), 0, ?, ?)");
 
-            $stmt->execute([$email, $phone, $first_name, $last_name, $pass, $username, $ip, 'user', $featured]);
+            $stmt->execute([$email, $phone, $first_name, $last_name, $pass, $username, $ip, 'user', $featured, $situation]);
 
             $_SESSION['user'] = [
                 'email' => $email,
@@ -686,6 +687,7 @@ function register() {
                 'id' => $pdo->lastInsertId(),
                 'first_name' => $first_name,
                 'last_name' => $last_name,
+                'situation' => 'Disponible'
             ];
 
             ?>
