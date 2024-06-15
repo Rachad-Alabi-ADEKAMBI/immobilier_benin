@@ -9,10 +9,6 @@
                     <!--menu-->   
                     <?php include 'menu.php'; ?>
 
-                       <!-- Show account -->
-                            <?php include 'account.php'; ?>
-                        <!-- End account -->
-
                     <!--new add-->
                    <div class="col-sm-12 col-md-8 mt-4 mx-auto" v-if='showNew'>
                             <div class="bg-white border mt-2 rounded p-2 wow fadeInUp" data-wow-delay="0.5s">
@@ -211,25 +207,8 @@
                                 </div>
                             </form>
                         </div>
-    </div>
-                    <!--new add-->
-
-                    <!--update ad-->
-                    <?php include 'updateAd.php'; ?>
-                    <!--end edit ad-->
-
-                    <!-- list--> 
-                    <?php include 'myAds.php'; ?>
-                    <!-- end list-->
-
-                    <!-- needs--> 
-                    <?php include 'needs.php'; ?>
-                    <!--end needs-->
-
-                    <!--pagination-->
-                    <?php include 'pagination.php'; ?>
-                    <!--end pagination-->
-            </div>
+                    </div>
+                    </div>
     </div>
 </section>
 
