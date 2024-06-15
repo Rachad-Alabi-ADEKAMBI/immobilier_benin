@@ -1,26 +1,43 @@
-# immobilier_benin
-Developer
-  =>  Wesbite name    : Immobilier  Benin
+## Immobilier Benin
 
-  =>  Website url    : https://immobilierbenin.com
+### Developer Information
+- **Website Name**: Immobilier Benin
+- **Website URL**: [https://immobilierbenin.com](https://immobilierbenin.com)
+- **About**: Marketplace for real estate business ads
+- **Developer Name**: Codeur Creatif
+- **Developer Website**: [https://rachad-alabi-adekambi.github.io/portfolio](https://rachad-alabi-adekambi.github.io/portfolio)
 
-  =>  Developer name  : Codeur creatif
+### How to Run the Project Locally
 
-  =>  About: Marketplace for real estate business ads
+1. **Clone the Project**:
+   ```bash
+   git clone https://github.com/your-username/immobilier_benin.git
+   cd immobilier_benin
+   ```
 
-  =>  Developer Website   : https://rachad-alabi-adekambi.github.io/portfolio
+2. **Start Your Server**:
+   - **For XAMPP on Linux**:
+     ```bash
+     sudo /opt/lampp/lampp start
+     ```
+   - **For MAMP on macOS**:
+     - Open MAMP application.
+     - Click on "Start Servers."
+   - **For XAMPP on Windows**:
+     - Open XAMPP Control Panel.
+     - Click on "Start" next to Apache and MySQL.
 
+3. **Create a Database and Import SQL File**:
+   - Create a new database using phpMyAdmin or a similar tool.
+   - Import the SQL file located in the `database` directory.
 
+4. **Access the Project**:
+   - Open your browser and go to [https://127.0.0.1/immobilier_benin](https://127.0.0.1/immobilier_benin).
 
-How to run the project on your local machine ?
-  => Clone the project first from github to your computer
+The project should now be running!
 
-  => Start your server ('/opt/lampp/lampp start' for XAMPP linux or whatever for mac and windows)
+### Contributing
 
-  =>Create a database and import the sql file present in the database directory
+You can also fork the project and make changes if you have ideas. Feel free to report any bugs you find.
 
-  =>Go to your localhost ('https://127.0.0.1/immobilier_benin')
-
-  It should works !!!
-
-You can also fork the project and make some changes if you have some ideas. Feel free to notice any found bug.
+---
