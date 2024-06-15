@@ -12,7 +12,7 @@
              <span class="navbar-toggler-icon"></span>
          </button>
          <div class="collapse navbar-collapse" id="navbarCollapse">
-             <div class="navbar-nav ms-auto">
+             <div class="navbar-nav mx-auto">
                  <a href="index.php" class="nav-item nav-link active">Accueil</a>
                  <a href="index.php#about" class="nav-item nav-link">A-propos</a>
                 <a href="index.php?action=adsPage" class="nav-item nav-link">Annonces</a>
@@ -20,14 +20,23 @@
                  <a href="index.php?action=contactPage" class="nav-item nav-link">Contact</a>
                         <?php if (!isset($_SESSION['user']) || !$_SESSION['user']) { ?>
                             <a href="index.php?action=loginPage" class="nav-item nav-link">Connexion</a>
-                        <?php } else { ?>
-                            <a href="index.php?action=dashboardPage" class="nav-item nav-link">Tableau de bord</a>
+                        <?php } else {  
+                                if($_SESSION['user']['role'] == 'admin') { ?>
+                                    <a href="index.php?action=dashboard_adminPage" class="nav-item nav-link">Tableau de bord</a>
+                               <?php } else{ ?>
+                                    <a href="index.php?action=dashboardPage" class="nav-item nav-link">Tableau de bord</a>
+                                <?php } ?>
+
                             <a href="api/script.php?action=logout" class="nav-item nav-link">Déconnexion</a>
                         <?php } ?>
 
                 
              </div>
          </div>
+
+         <a class="btn btn-primary mr-0">
+            Poster une annonce
+        </a>
      </nav>
  </div>
  <!-- Navbar End -->

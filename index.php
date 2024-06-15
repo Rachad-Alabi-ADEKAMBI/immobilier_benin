@@ -26,6 +26,7 @@ require_once 'src/controllers/front/error.php';
 require_once 'src/controllers/front/faq.php';
 
 require_once 'src/controllers/back/user/dashboard.php';
+require_once 'src/controllers/back/user/newAd.php';
 require_once 'src/controllers/back/admin/dashboard_admin.php';
 
 
@@ -97,6 +98,14 @@ if (isset($_GET['action']) && $_GET['action'] !== '') {
             loginPage();
         } else {
             dashboard_adminPage();
+        }
+    }
+
+    elseif ($_GET['action'] === 'newAdPage') {
+        if (!isset($_SESSION['user']) || $_SESSION['user']['role'] != 'user') {
+            loginPage();
+        } else {
+            newAdPage();
         }
     }
     
