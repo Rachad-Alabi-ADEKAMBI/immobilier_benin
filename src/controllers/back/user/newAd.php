@@ -1,5 +1,5 @@
 <?php
-function dashboardPage()
+function newAdPage()
 {
-    require './src/view/back/user/dashboard.php';
+    require './src/view/back/user/newAd.php';
 }

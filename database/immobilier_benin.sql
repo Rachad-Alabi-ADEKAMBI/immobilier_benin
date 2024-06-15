@@ -146,14 +146,7 @@ CREATE TABLE `users` (
 
 INSERT INTO `users` (`id`, `username`, `pass`, `date_of_insertion`, `first_name`, `last_name`, `email`, `phone`, `role`, `ads`, `featured`, `pic`, `ip`, `description`, `situation`) VALUES
 (1, 'admin', '123', '2024-05-27 09:02:17', '', '', 'admin@immobilierbenin.com', 0, 'admin', 0, '0', NULL, '', NULL, 'Disponible'),
-(4, 'Liota92i', '123', '2024-05-27 11:32:53', 'rachad', 'ADEKAMBI', 'adekambirachad@gmail.com', 9622, 'user', 17, 'yes', '1717162309_user6.jpg', '127.0.0.1', 'BONJOUR A TOUS', 'Disponible'),
-(5, 'ADEKAMBI rac27', '123', '2024-05-27 11:32:54', 'ray', 'liota', 'rayliota90@gmail.com', 658, 'user', 2, 'yes', '', '127.0.0.1', 'bonjour ', 'Disponible'),
-(7, 'manager new78', '000', '2024-05-30 17:03:54', 'newtwork', 'manager', 'xnetwork32@gmail.com', 547, 'user', 5, 'no', NULL, '127.0.0.1', 'OKLM', 'Disponible'),
-(8, 'Izi ray64', '123', '2024-05-31 11:23:21', 'ray', 'Izi', 'raywebsites90@gmail.com', 962547896, 'user', 0, 'yes', NULL, '127.0.0.1', NULL, 'Disponible'),
-(9, 'lioo ray65', '123', '2024-06-04 12:28:55', 'rayy', 'lioo', 'test@test.fr', 123, 'user', 0, '0', NULL, '127.0.0.1', NULL, 'Disponible'),
-(10, 'hghgh hgh58', '123', '2024-06-04 12:30:14', 'hgh', 'hghgh', 'test@test.com', 122, 'user', 0, '0', NULL, '127.0.0.1', NULL, 'Disponible'),
-(11, 'yyy ray58', '123', '2024-06-04 12:36:24', 'ray', 'yyy', 'test2@test.fr', 123, 'user', 0, '0', NULL, '127.0.0.1', NULL, 'Disponible'),
-(12, 'yyy ray62', '123', '2024-06-04 13:16:26', 'ray', 'yyy', 'test20@test.fr', 123, 'user', 0, '0', NULL, '127.0.0.1', NULL, 'Non disponible');
+(2, 'Liota92i', '123', '2024-05-27 11:32:53', 'rachad', 'ADEKAMBI', 'adekambirachad@gmail.com', 9622, 'user', 17, 'yes', '1717162309_user6.jpg', '127.0.0.1', 'BONJOUR A TOUS', 'Disponible'),
 
 --
 -- Indexes for dumped tables
