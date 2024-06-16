@@ -157,8 +157,8 @@ $datas = sixAds();
                                                     </div>
                                                 </div>
                                                     <div class="p-4 pb-0">
-                                                    <h5 class="text-blue mb-3"> <?= number_format($detail['price'], 0, '', ' ') ?> F CFA </h5>
-                                                    <a class="d-block h5 mb-2" href=""> <?=$detail['name']?> </a>
+                                                    <h5 class="text-blue mb-3"> <?= number_format($detail['price'], 0, '', ' ') ?> XOF </h5>
+                                                    <a class="d-block h5 mb-2" href=""> <?=ucfirst($detail['name']);?> </a>
                                                     <p><i class="fa fa-map-marker-alt text-blue me-2"></i><?= htmlspecialchars($detail['location']) ?></p>
                                                 </div>
                                                <?php
@@ -201,7 +201,7 @@ $datas = sixAds();
                                         <h1 class="mb-3  mt-3">A propos</h1>
 
                                         <p>
-                                                Immobilier Bénin est un service du groupe <span>Orizon +</span>. Nous intervenons à tous 
+                                                Immobilier Bénin est un service du groupe <strong>Orizon +</strong>. Nous intervenons à toutes 
                                                 les étapes de votre projet d'entreprise et d'investissement. Notre plus grande réussite se 
                                                 trouve au niveau des membres de la diaspora que nous accompagnons à concrétiser leurs projets
                                                 d'investissement grâce à notre équipe d'experts en gestion juridique, fiscale et sociale.
