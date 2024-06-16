@@ -26,9 +26,9 @@
                                             </a>
 
 
-                                            <button class="btn btn-blue m-2" href="index.php?action=accountPage" >
+                                            <a class="btn btn-blue m-2" href="index.php?action=accountPage" >
                                             <i class="fas fa-user"></i> Mon compte
-                                            </button>
+                                            </a>
 
 
                                 </div>

@@ -10,7 +10,7 @@
                 <div class="row">
                     <div class="col">
                         <h1 class="text-center">
-                            {{ detail.name }}
+                            {{ capitalizeFirstLetter(detail.name) }}
                         </h1>
                     </div>
                 </div>
@@ -98,12 +98,12 @@
                     <div class="col-sm-12 col-md-8 mx-auto text-center">
                         <p>
                             Partager: <br>
-                                <a href="https://wa.me/?text=https://immobilier_benin.000webhostapp.com/property.php?id=<?=$_GET['id']?>)">
-                                <i class="fab fa-whatsapp text-blue"></i>
+                                <a href="https://wa.me/?text=https://immobilier_benin.000webhostapp.com/property.php?id=<?=$_GET['id']?>">
+                                <i class="fab fa-whatsapp text-whatsapp"></i>
                                 </a>
                                 <a href="https://www.facebook.com/share.php?u=https:/immobilier_benin.000webhostapp.com/property.php?id=<?=$_GET['id']?>" target="_blank">
 
-                                <i class="fab fa-facebook text-blue"></i>
+                                <i class="fab fa-facebook text-facebook"></i>
                                 </a>
 
                         </p>
@@ -156,6 +156,10 @@
                 getImgUrl(pic) {
                     return "public/img/" + pic;
                 },
+                capitalizeFirstLetter(word) {
+                    if (!word) return '';
+                    return word.charAt(0).toUpperCase() + word.slice(1);
+                }
             }
         });
     </script>
@@ -180,6 +184,14 @@
         font-size: 1.5em;
         font-weight: bold;
         margin: 10px;
+    }
+   
+    .text-facebook{
+        color: #0866FF;
+    }
+
+    .text-whatsapp{
+        color: #27D045;
     }
 </style>
 

@@ -28,6 +28,7 @@ require_once 'src/controllers/front/faq.php';
 require_once 'src/controllers/back/user/dashboard.php';
 require_once 'src/controllers/back/user/newAd.php';
 require_once 'src/controllers/back/user/needs.php';
+require_once 'src/controllers/back/user/account.php';
 require_once 'src/controllers/back/admin/dashboard_admin.php';
 
 
@@ -118,6 +119,16 @@ if (isset($_GET['action']) && $_GET['action'] !== '') {
         }
     } 
     
+
+    elseif ($_GET['action'] === 'accountPage') {
+        if (!isset($_SESSION['user']) || $_SESSION['user']['role'] != 'user') {
+            loginPage();
+        } else {
+            accountPage();
+        }
+    } 
+    
+
 
     elseif ($_GET['action'] === 'agentsPage') {
         agentsPage();

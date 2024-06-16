@@ -9,6 +9,12 @@
             </div>
             <div class="col-lg-4 col-md-6">
                 <h5 class="text-white mb-4">Liens</h5>
+                <a class="btn btn-link text-white-50"  href="index.php?action=dashboardPage">
+                         Tableau de bord
+                </a>
+                <a class="btn btn-link text-white-50"  href="index.php?action=accountPage">
+                         Mon compte
+                </a>
                 <a class="btn btn-link text-white-50"  href="index.php?action=faqPage">
                          FAQ
                 </a>
@@ -48,7 +54,7 @@
             </div>
         </div>
     </div>
-    <div class="container">
+    <div class="container"><a href="index.php?action=adsPage" class="text-white">Annonces</a>
         <div class="copyright">
             <div class="row">
                 <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
@@ -63,6 +69,7 @@
                     <div class="footer-menu">
                         <a href="index.php" class="text-white">Accueil</a>
                         <a href="index.php?action=adsPage" class="text-white">Annonces</a>
+                        <a href="index.php?action=newAdPage" class="text-white">Nouvelle annonce</a>
                     </div>
                 </div>
             </div>

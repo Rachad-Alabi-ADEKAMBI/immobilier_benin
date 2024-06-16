@@ -27,7 +27,7 @@
                                 <h1 class="mx-auto mb-3">Résultats du tri</h1>
                                 <p class="text text-left">
                                     Annonces avec un prix inférieur à
-                                    <strong>{{ format(rangeValue) }} F CFA</strong>
+                                    <strong>{{ format(rangeValue) }} XOF</strong>
                                 </p>
                             </div>
                         </div>
@@ -74,8 +74,8 @@
                                             </div>
                                         </div>
                                         <div class="p-4 pb-0">
-                                            <h5 class="text-blue mb-3"> {{ format(detail.price) }} F CFA </h5>
-                                            <a class="d-block h5 mb-2" href=""> {{ detail.name }} </a>
+                                            <h5 class="text-blue mb-3"> {{ format(detail.price) }} XOF </h5>
+                                            <a class="d-block h5 mb-2" href=""> {{ capitalizeFirstLetter(detail.name) }} </a>
                                             <p><i class="fa fa-map-marker-alt text-blue me-2"></i> {{ detail.location}}</p>
                                         </div>
                                         <div class="d-flex border-top" v-if="detail.category != 'Terrain' && detail.category != 'Boutique'">
@@ -129,8 +129,8 @@
                                             </div>
                                         </div>
                                         <div class="p-4 pb-0">
-                                            <h5 class="text-blue mb-3"> {{ format(detail.price) }} F CFA </h5>
-                                            <a class="d-block h5 mb-2" href=""> {{ detail.name }} </a>
+                                            <h5 class="text-blue mb-3"> {{ format(detail.price) }} XOF </h5>
+                                            <a class="d-block h5 mb-2" href=""> {{ capitalizeFirstLetter(detail.name) }} </a>
                                             <p><i class="fa fa-map-marker-alt text-blue me-2"></i> {{ detail.location}}</p>
                                         </div>
                                         <div class="d-flex border-top" v-if="detail.category != 'Terrain' && detail.category != 'Boutique'">
@@ -182,8 +182,8 @@
                                             </div>
                                         </div>
                                         <div class="p-4 pb-0">
-                                            <h5 class="text-blue mb-3"> {{ format(detail.price) }} F CFA </h5>
-                                            <a class="d-block h5 mb-2" href=""> {{ detail.name }} </a>
+                                            <h5 class="text-blue mb-3"> {{ format(detail.price) }} XOF </h5>
+                                            <a class="d-block h5 mb-2" href=""> {{ capitalizeFirstLetter(detail.name) }} </a>
                                             <p><i class="fa fa-map-marker-alt text-blue me-2"></i> {{ detail.location}}</p>
                                         </div>
                                         <div class="d-flex border-top" v-if="detail.category != 'Terrain' && detail.category != 'Boutique'">
@@ -236,8 +236,8 @@
                                             </div>
                                         </div>
                                         <div class="p-4 pb-0">
-                                            <h5 class="text-blue mb-3"> {{ format(detail.price) }} F CFA </h5>
-                                            <a class="d-block h5 mb-2" href=""> {{ detail.description }} </a>
+                                            <h5 class="text-blue mb-3"> {{ format(detail.price) }} XOF </h5>
+                                            <a class="d-block h5 mb-2" href=""> {{ capitalizeFirstLetter(detail.name) }} </a>
                                             <p><i class="fa fa-map-marker-alt text-blue me-2"></i> {{ detail.location}}</p>
                                         </div>
                                         <div class="d-flex border-top" v-if="detail.category != 'Terrain' && detail.category != 'Boutique'">
@@ -392,7 +392,11 @@
                     },
                     gotoPage(page) {
                     this.currentPage = page;
-                },
+                    },
+                    capitalizeFirstLetter(word) {
+                    if (!word) return '';
+                    return word.charAt(0).toUpperCase() + word.slice(1);
+                }
                 }
             });
     </script>
