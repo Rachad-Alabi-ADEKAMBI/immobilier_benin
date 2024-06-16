@@ -11,22 +11,22 @@
                     <div class="col-sm-12 text-center">
                                 <div class="menu">
                                             <?php if($_SESSION['user']['situation'] == 'Disponible'){ ?>
-                                                <button class="btn btn-blue m-2" @click="displayNew()" v-if='!showNew'>
+                                                <a class="btn btn-blue m-2"  href="index.php?action=newAdPage">
                                                 <i class="fas fa-plus   "></i> Nouvelle annonce
-                                                </button>
+                                            </a>
                                             <?php } ?>
 
-                                            <button class="btn btn-blue m-2" @click="displayAll()" v-if="!showAll && !showEdit">
+                                            <a class="btn btn-blue m-2" href="index.php?action=dashboardPage" >
                                             <i class="fas fa-list"></i> Mes annonces
-                                            </button>
+                                            </a>
 
 
-                                            <button class="btn btn-blue m-2" @click="displayNeeds()" v-if='!showNeeds'>
+                                            <a class="btn btn-blue m-2" href="index.php?action=needsPage">
                                             <i class="fas fa-question"></i> Demandes clients
-                                            </button>
+                                            </a>
 
 
-                                            <button class="btn btn-blue m-2" @click="displayAccount()" v-if='!showAccount'>
+                                            <button class="btn btn-blue m-2" href="index.php?action=accountPage" >
                                             <i class="fas fa-user"></i> Mon compte
                                             </button>
 

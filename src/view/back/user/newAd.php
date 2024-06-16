@@ -10,8 +10,8 @@
                     <?php include 'menu.php'; ?>
 
                     <!--new add-->
-                   <div class="col-sm-12 col-md-8 mt-4 mx-auto" v-if='showNew'>
-                            <div class="bg-white border mt-2 rounded p-2 wow fadeInUp" data-wow-delay="0.5s">
+                   <div class="col-sm-12 col-md-8 mt-4 mx-auto">
+                            <div class="bg-white border mt-2 rounded p-2 wow">
                                 <form action="api/script.php?action=newAd" method="POST" enctype='multipart/form-data'>
                                 <span class="ml-0" @click="displayAll()">
                                     <i class="fa fa-times me-3 text-blue"></i>

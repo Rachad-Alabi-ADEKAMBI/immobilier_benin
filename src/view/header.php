@@ -34,7 +34,7 @@
              </div>
          </div>
 
-         <a class="btn btn-primary mr-0">
+         <a class="btn btn-primary mr-0" href="index.php?action=newAdPage">
             Poster une annonce
         </a>
      </nav>

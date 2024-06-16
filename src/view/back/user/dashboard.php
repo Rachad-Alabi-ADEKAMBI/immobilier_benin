@@ -9,14 +9,6 @@
                     <!--menu-->   
                     <?php include 'menu.php'; ?>
 
-                       <!-- Show account -->
-                            <?php include 'account.php'; ?>
-                        <!-- End account -->
-
-                    <!--new add-->
-                    <?php include 'newAd.php'; ?>
-                    <!--new add-->
-
                     <!--update ad-->
                     <?php include 'updateAd.php'; ?>
                     <!--end edit ad-->
@@ -24,11 +16,7 @@
                     <!-- list--> 
                     <?php include 'myAds.php'; ?>
                     <!-- end list-->
-
-                    <!-- needs--> 
-                    <?php include 'needs.php'; ?>
-                    <!--end needs-->
-
+                    
                     <!--pagination-->
                     <?php include 'pagination.php'; ?>
                     <!--end pagination-->
