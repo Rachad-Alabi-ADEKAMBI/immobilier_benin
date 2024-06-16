@@ -108,6 +108,10 @@ if($action == 'pauseUser'){
     pauseUser($id);
 }
 
+if($action == 'deleteUser'){
+    deleteUser($id);
+}
+
 if($action == 'authorizeUser'){
     authorizeUser($id);
 }

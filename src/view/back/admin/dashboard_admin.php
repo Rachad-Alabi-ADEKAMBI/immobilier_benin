@@ -49,7 +49,8 @@
                 itemsPerPage: 5,
             },
             mounted() {
-                this.displayAll();
+               // this.displayAll();
+               this.displayUsers();
             },
             computed: {
                     filteredItems() {
@@ -122,6 +123,9 @@
                 },
                 pauseUser(id){
                         window.location.replace('./api/script.php?action=pauseUser&id='+id);
+                },
+                deleteUser(id){
+                        window.location.replace('./api/script.php?action=deleteUser&id='+id);
                 },
                 authorizeUser(id){
                         window.location.replace('./api/script.php?action=authorizeUser&id='+id);

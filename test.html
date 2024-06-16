@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upload and Crop Image</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.12/cropper.min.css" rel="stylesheet">
+    <style>
+        img {
+            display: block;
+            max-width: 100%;
+        }
+        .preview {
+            overflow: hidden;
+            width: 160px;
+            height: 160px;
+            border-radius: 50%;
+        }
+    </style>
+</head>
+<body>
+<div class="container mt-5">
+    <h1>Upload and Crop Image</h1>
+    <form id="uploadForm" action="upload.php" method="POST" enctype="multipart/form-data">
+        <div class="form-group">
+            <label for="name">Name:</label>
+            <input type="text" class="form-control" id="name" name="name" required>
+        </div>
+        <div class="form-group">
+            <label for="image">Select Image:</label>
+            <input type="file" class="form-control" id="image" name="image" accept="image/*" required>
+        </div>
+        <div class="form-group">
+            <div class="img-container" style="width: 300px; height: 300px; margin: 10px auto;">
+                <img id="imageToCrop" style="display: none;">
+            </div>
+        </div>
+        <div class="form-group">
+            <button type="button" class="btn btn-primary" id="cropButton">Rogner image</button>
+        </div>
+        <div class="form-group preview" id="preview"></div>
+        <input type="hidden" name="croppedImage" id="croppedImage">
+        <button type="submit" class="btn btn-success">Enregistrer</button>
+    </form>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.12/cropper.min.js"></script>
+<script>
+    let cropper;
+    document.getElementById('image').addEventListener('change', function (e) {
+        const file = e.target.files[0];
+        if (file) {
+            const reader = new FileReader();
+            reader.onload = function (event) {
+                const img = document.getElementById('imageToCrop');
+                img.src = event.target.result;
+                img.style.display = 'block';
+                cropper = new Cropper(img, {
+                    aspectRatio: 1,
+                    viewMode: 3,
+                    preview: '.preview'
+                });
+            };
+            reader.readAsDataURL(file);
+        }
+    });
+
+    document.getElementById('cropButton').addEventListener('click', function () {
+        if (cropper) {
+            const canvas = cropper.getCroppedCanvas({
+                width: 160,
+                height: 160
+            });
+            document.getElementById('croppedImage').value = canvas.toDataURL('image/png');
+            document.getElementById('preview').innerHTML = '';
+            document.getElementById('preview').appendChild(canvas);
+        }
+    });
+</script>
+</body>
+</html>

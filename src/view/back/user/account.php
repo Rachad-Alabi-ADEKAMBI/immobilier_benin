@@ -1,74 +1,85 @@
-<?php $title = 'Immobilier Bénin - Demandes'; 
+<?php $title = 'Immobilier Bénin - Mon compte'; 
 
 
  ob_start(); ?>
 
+<link href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.12/cropper.min.css" rel="stylesheet">
+  
 <section class="section">
     <div class="container">
       <div class="row g-0 gx-5 align-items-end">
-            <!--menu-->   
-            <?php include 'menu.php'; ?>
+                    <!--menu-->   
+                    <?php include 'menu.php'; ?>
 
-            <div class="col-sm-12 col-md-8 mt-4 mx-auto">
-                    <div class="bg-white border mt-2 rounded p-2 wow">
-                        <form action="api/script.php?action=updateAccount" method="POST" enctype="multipart/form-data">
-                            <h1 class="mx-auto text-center">Mon compte</h1>
-                            <div class="row g-3">
-                                <div class="col-sm-6">
-                                    <div class="form-floating">
-                                        <input type="text" class="form-control" id="phone" name="phone" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');">
-                                        <label for="phone">Numéro</label>
+                    <div class="col-sm-12 col-md-8 mt-4 mx-auto">
+                        <div class="bg-white border mt-2 rounded p-2">
+                            <form action="api/script.php?action=updateAccount" method="POST" enctype="multipart/form-data">
+                                <h1 class="mx-auto text-center">Mon compte</h1>
+                                <div class="row g-3">
+                                    <div class="col-sm-6">
+                                        <div class="form-floating">
+                                            <input type="text" class="form-control" id="phone" name="phone" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');">
+                                            <label for="phone">Numéro</label>
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="col-sm-6">
-                                    <div class="form-floating">
-                                        <input type="file" class="form-control" id="pic" name="pic">
-                                        <label for="pic">Photo</label>
+                                    <div class="col-sm-6">
+                                        <div class="form-floating">
+                                            <input type="file" class="form-control" id="image" name="pic" accept="image/*">
+                                            <label for="pic">Photo</label>
+                                        </div>
                                     </div>
-                                </div>
 
-                                <div class="col-sm-12">
-                                    <div class="form-floating">
-                                        <textarea class="form-control" id="description"  name="description"></textarea>
-                                        <label for="pic">Message à afficher sur votre profil</label>
+                                    <div class="col-sm-12">
+                                        <div class="form-floating">
+                                            <textarea class="form-control" id="description"  name="description"></textarea>
+                                            <label for="pic">Message à afficher sur votre profil</label>
+                                        </div>
                                     </div>
-                                </div>
 
-                                <div class="col-sm-6">
-                                    <div class="form-floating">
-                                        <input type="password" class="form-control" id="password" name="password" >
-                                        <label for="password">Nouveau mot de passe</label>
+                                    <div class="col-sm-6">
+                                        <div class="form-floating">
+                                            <input type="password" class="form-control" id="password" name="password" >
+                                            <label for="password">Nouveau mot de passe</label>
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="col-sm-6">
-                                    <div class="form-floating">
-                                        <input type="password" class="form-control" id="password_2" name="password_2">
-                                        <label for="password_2">Confirmez le mot de passe</label>
-                                    </div>
-                                </div> <br>
+                                    <div class="col-sm-6">
+                                        <div class="form-floating">
+                                            <input type="password" class="form-control" id="password_2" name="password_2">
+                                            <label for="password_2">Confirmez le mot de passe</label>
+                                        </div>
+                                    </div> <br>
 
-                                <div class="col-sm-7 ml-0">
-                                    <div class="form-floating">
-                                        <select class="form-select" id="featured" name="featured">
-                                            <option selected>Afficher mon profil sur le site</option>
-                                            <option value="yes">Oui</option>
-                                            <option value="no">Non</option>
-                                        </select>
-                                        <label for="featured">Afficher</label>
+                                    <div class="col-sm-7 ml-0">
+                                        <div class="form-floating">
+                                            <select class="form-select" id="featured" name="featured">
+                                                <option selected>Afficher mon profil sur le site</option>
+                                                <option value="yes">Oui</option>
+                                                <option value="no">Non</option>
+                                            </select>
+                                            <label for="featured">Afficher</label>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                    <div class="img-container" style="width: 300px; height: 300px; margin: 10px auto;">
+                                        <img id="imageToCrop" style="display: none;">
+                                    </div>
+                                                </div>
+                        <div class="form-group">
+                            <button type="button" class="btn btn-primary" id="cropButton">Rogner image</button>
+                        </div>
+                        <div class="form-group preview" id="preview"></div>
+                        <input type="hidden" name="croppedImage" id="croppedImage">
+                                    <div class="col-sm-12 col-md-6 mx-auto text-center">
+                                        <button class="btn btn-blue w-100 py-3" type="submit">Valider</button>
                                     </div>
                                 </div>
-
-                                <div class="col-sm-12 col-md-6 mx-auto text-center">
-                                    <button class="btn btn-blue w-100 py-3" type="submit">Valider</button>
-                                </div>
-                            </div>
-                        </form>
+                            </form>
+                        </div>
                     </div>
-            </div>
+                </div>
 
-           
-
-      </div>
+        </div>
     </div>
 </section>
 
@@ -80,141 +91,48 @@
             new Vue({
                 el: '#app',
                 data: {
-                    category: '',
-                    details: '',
-                    currentPage: 1,
-                    itemsPerPage: 5,
                 },
                 mounted(){
-                    this.displayAll();
+                   // this.displayAll();
                 },
                 computed: {
-                    filteredItems() {
-                        return this.details.filter(detail => {
-                            return detail.price <= this.rangeValue;
-                        });
-                        },
-                    totalPages() {
-                            return Math.ceil(this.details.length / this.itemsPerPage);
-                            },
-                    paginatedData() {
-                            const start = (this.currentPage - 1) * this.itemsPerPage;
-                            const end = start + this.itemsPerPage;
-                            return this.details.slice(start, end);
-                            }
+                   
             },
+                watch: {
+                        category() {
+                        if (this.category == 'Terrain' || this.category == 'Boutique') {
+                            this.showLand = true;
+                            this.showHouse = false;
+                        } else{
+                            this.showLand = false;
+                            this.showHouse = true;
+                        }
+                        },
+                        location() {
+                        if (this.location == 'other') {
+                            this.showMoreLocation = true;
+                        } else{
+                            this.showMoreLocation = false;
+                        }
+                        }
+                    },  
                 methods: {
-                    displayAll(){
-                        axios.get('api/script.php?action=needs')
-                            .then((response) => {
-                                console.log(response.data);
-                                this.details = response.data;
-                            })
-                            .catch((error) => {
-                                console.error(error);
-                                alert('Failed to fetch datas');
-                            });
-                    },
-                    format(num){
-                        let res = new Intl.NumberFormat('fr-FR', { maximumSignificantDigits: 3 }).format(num);
-                            return res;
-                    },
-                    formatDate(da) {
-                        const [datePart, timePart] = da.split(' ');
-                        const [year, month, day] = datePart.split('-');
-                        return `${day}-${month}-${year}`;
-                        },
-                    getImgUrl(pic) {
-                        return "public/img/" + pic;
-                    },
-                previousPage() {
-                        if (this.currentPage > 1) {
-                            this.currentPage--;
-                        }
-                        },
-                nextPage() {
-                        if (this.currentPage < this.totalPages) {
-                            this.currentPage++;
-                        }
-                    },
-                gotoPage(page) {
-                    this.currentPage = page;
-                },
-
+                   
                 }
             });
         </script>
 
 <style>
-          body {
-            font-family: Arial, sans-serif;
-        }
-        .table-container {
-            width: 100%;
-            overflow-x: auto;
-        }
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin: 20px 0;
-        }
-        table, th, td {
-            border: 1px solid #ddd;
-        }
-        th, td {
-            padding: 12px;
-            text-align: left;
-        }
-        th {
-            background-color: #f4f4f4;
-        }
-        @media (max-width: 600px) {
-            table, thead, tbody, th, td, tr {
-                display: block;
-            }
-            thead tr {
-                display: none;
-            }
-            tr {
-                margin-bottom: 15px;
-            }
-            td {
-                position: relative;
-                padding-left: 50%;
-            }
-            td::before {
-                content: attr(data-label);
-                position: absolute;
-                left: 0;
-                width: 50%;
-                padding-left: 15px;
-                font-weight: bold;
-                background-color: #f4f4f4;
-                border-right: 1px solid #ddd;
-                box-sizing: border-box;
-            }
-        }
-
-        img{
-            width: 90px;
-            height: 60px;
-        }
-
-        ul li{
-            display: inline;
-            list-style: none;
-        }
-
-        li i{
-            cursor: pointer;
-        }
-
-        li i:hover{
-            font-weight: bold;
-        }
         
-        .red{
-            color: red;
-            font-weight: bold;
+
+        img {
+            display: block;
+            max-width: 100%;
+        }
+        .preview {
+            overflow: hidden;
+            width: 160px;
+            height: 160px;
+            border-radius: 50%;
         }
     </style>

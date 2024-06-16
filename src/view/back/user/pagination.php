@@ -1,4 +1,4 @@
-<div class="col-12 text-center">
+<div class="col-12 text-center" v-if='details.length > 0'>
                                     <nav aria-label="Page navigation mx-auto text-center">
                                         <ul class="pagination">
                                             <li class="page-item" :class="{ 'disabled': currentPage === 1 }">

@@ -49,6 +49,10 @@
                                                       v-if="detail.situation == 'Non disponible'" >
                                                       <i class="fa fa-play m1-3 text-white "></i> Autoriser
                                                 </button>
+
+                                                <button class="btn btn-danger m-1 text-white" @click="deleteUser(detail.id)">
+                                                    <i class="fa fa-trash m1-3 text-white "></i> Supprimer
+                                                </button>
                                             </td>
                                                             </tr>
                                                         </tbody>

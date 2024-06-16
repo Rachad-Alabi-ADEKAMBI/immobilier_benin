@@ -7,7 +7,7 @@
     <div class="container">
     <div class="row g-0 gx-5 align-items-end">
                     <div class="col-sm-12 col-md-7 mt-4 mx-auto" v-if='showNew'>
-                        <div class="bg-white border mt-2 rounded p-sm-5 wow fadeInUp" data-wow-delay="0.5s">
+                        <div class="bg-white border mt-2 rounded p-sm-5 wow">
                             <form action="api/script.php?action=login" method="POST" >
                                 <h1 class="mx-auto text-center">Connexion</h1>
 

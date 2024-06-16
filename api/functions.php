@@ -597,6 +597,14 @@ function login()
                     'situation' => $user['situation']
                 ];
 
+                if($user['situation'] == 'Deleted'){ ?>
+                    <script>
+                         alert("Votre compte a été banni, merci de nous contcter si vous pensez qu'il s'agit d'une erreur !!");
+                        window.history.back();
+                        exit();
+                    </script>
+                <?php } 
+
                if($_SESSION['user']['role'] == 'user'){
                 ?>
                     <script>
@@ -800,8 +808,8 @@ function updateAccount(){
     
       ?>
       <script>
-          alert('Les informations de votre compte ont été modifiées avec succès !');
-          window.location.replace('../index.php?action=dashboardPage')
+       //   alert('Les informations de votre compte ont été modifiées avec succès !');
+         // window.location.replace('../index.php?action=dashboardPage')
       </script>
     <?php
 
@@ -876,7 +884,7 @@ function updateAd($ad_id){
 
 function getUsers(){
     $pdo = getConnexion();
-        $req = $pdo->prepare('SELECT * FROM users WHERE id != 1 ORDER BY id DESC');
+        $req = $pdo->prepare("SELECT * FROM users WHERE id != 1  AND situation != 'Deleted' ORDER BY id DESC");
         $req->execute(array());
         $datas = $req->fetchAll();
         sendJSON($datas);
@@ -914,6 +922,50 @@ function pauseUser(){
                 <script>
                     alert('Une erreur est survenue, merci de reéssayer ou de nous contacter si elle persiste');
                     window.location.replace('../index.php?action=dashboard_adminPage');
+                    exit();
+                </script>
+            <?php
+        }
+    }
+}
+
+function deleteUser(){
+    $pdo = getConnexion();
+    $id = verifyInput($_GET['id']);
+
+    
+    if (!is_numeric($id) || $id <= 0) { ?>
+        <script>
+            alert('Une erreur est survenue, merci de vérifier cette url');
+        </script>
+        <?php
+        exit(); 
+    } else {
+       
+
+        try {
+            // Update user's situation to 'Deleted'
+            $reqUpdateUser = $pdo->prepare("UPDATE users SET situation = 'Deleted' WHERE id = ?");
+            $reqUpdateUser->execute(array($id));
+
+            // Delete ads associated with the user
+            $reqDeleteAds = $pdo->prepare('DELETE FROM ads WHERE user_id = ?');
+            $reqDeleteAds->execute(array($id));
+
+             ?>
+            
+            <script>
+                alert("Compte supprimé et email banni !");
+                window.location.replace('../index.php?action=dashboard_adminPage');
+            </script>
+
+            <?php 
+        } catch (PDOException $e) {
+             echo 'Database error: ' . $e->getMessage();
+            ?>
+                <script>
+                  //  alert('Une erreur est survenue, merci de reéssayer ou de nous contacter si elle persiste');
+                   // window.location.replace('../index.php?action=dashboard_adminPage');
                     exit();
                 </script>
             <?php
