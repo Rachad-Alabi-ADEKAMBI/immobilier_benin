@@ -16,7 +16,9 @@
 
                                     <div class="col-sm-6 col-md-6">
                                         <div class="form-floating">
-                                        <input type="text" class="form-control"  name='price' id="price" placeholder="Prix" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');">
+                                        <input type="text" class="form-control"  
+                                        name='price' id="price" placeholder="Prix"
+                                         oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');">
 
                                             <label for="price">Prix</label>
                                         </div>

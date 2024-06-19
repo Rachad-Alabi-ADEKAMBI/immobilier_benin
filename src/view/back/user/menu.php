@@ -9,27 +9,33 @@
                         </p>
                         <?php } ?>
                     <div class="col-sm-12 text-center">
-                                <div class="menu">
-                                            <?php if($_SESSION['user']['situation'] == 'Disponible'){ ?>
-                                                <a class="btn btn-blue m-2"  href="index.php?action=newAdPage">
-                                                <i class="fas fa-plus   "></i> Nouvelle annonce
-                                            </a>
-                                            <?php } ?>
+                    <div class="menu">
+    <?php 
+        $currentAction = isset($_GET['action']) ? $_GET['action'] : '';
 
-                                            <a class="btn btn-blue m-2" href="index.php?action=dashboardPage" >
-                                            <i class="fas fa-list"></i> Mes annonces
-                                            </a>
+        if ($_SESSION['user']['situation'] == 'Disponible' && $currentAction != 'newAdPage') { ?>
+            <a class="btn btn-blue m-2" href="index.php?action=newAdPage">
+                <i class="fas fa-plus"></i> Nouvelle annonce
+            </a>
+    <?php } ?>
 
+    <?php if ($currentAction != 'dashboardPage') { ?>
+        <a class="btn btn-blue m-2" href="index.php?action=dashboardPage">
+            <i class="fas fa-list"></i> Mes annonces
+        </a>
+    <?php } ?>
 
-                                            <a class="btn btn-blue m-2" href="index.php?action=needsPage">
-                                            <i class="fas fa-question"></i> Demandes clients
-                                            </a>
+    <?php if ($currentAction != 'needsPage') { ?>
+        <a class="btn btn-blue m-2" href="index.php?action=needsPage">
+            <i class="fas fa-question"></i> Demandes clients
+        </a>
+    <?php } ?>
 
+    <?php if ($currentAction != 'accountPage') { ?>
+        <a class="btn btn-blue m-2" href="index.php?action=accountPage">
+            <i class="bi bi-gear"></i> Paramètres
+        </a>
+    <?php } ?>
+</div>
 
-                                            <a class="btn btn-blue m-2" href="index.php?action=accountPage" >
-                                            <i class="fas fa-user"></i> Mon compte
-                                            </a>
-
-
-                                </div>
                     </div>
