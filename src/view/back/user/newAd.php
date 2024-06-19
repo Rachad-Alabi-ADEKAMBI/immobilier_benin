@@ -33,7 +33,7 @@
                                         <div class="col-sm-6 col-md-6">
                                             <div class="form-floating">
                                             <input type="text" class="form-control" required name='price' 
-                                            id="price" placeholder="Prix" maxlength="5"
+                                            id="price" placeholder="Prix"
                                              oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');">
 
                                                 <label for="price">Prix <span class="red">*</span></label>
