@@ -599,7 +599,7 @@ function login()
 
                 if($user['situation'] == 'Deleted'){ ?>
                     <script>
-                         alert("Votre compte a été banni, merci de nous contcter si vous pensez qu'il s'agit d'une erreur !!");
+                         alert("Votre compte a été banni ou supprimé, merci de nous contacter si vous pensez qu'il s'agit d'une erreur !!");
                         window.history.back();
                         exit();
                     </script>
@@ -769,17 +769,6 @@ function updateAccount(){
         <?php
     }
 
-    //insert the picture
-    $picture = time() . '_' . $_FILES['pic']['name'];
-    $target = '../public/img/' . $picture;
-
-    if (move_uploaded_file($_FILES['pic']['tmp_name'], $target)) {
-        $req = $pdo->prepare("UPDATE users SET pic = ? WHERE id = ? ");
-
-        $req->execute([$picture, $user_id]);
-    }
-
-
     //the description
     if($_POST['description'] != ''){
         $description = verifyInput($_POST['description']);
@@ -808,8 +797,8 @@ function updateAccount(){
     
       ?>
       <script>
-       //   alert('Les informations de votre compte ont été modifiées avec succès !');
-         // window.location.replace('../index.php?action=dashboardPage')
+          alert('Les informations de votre compte ont été modifiées avec succès !');
+          window.location.replace('../index.php?action=dashboardPage')
       </script>
     <?php
 
@@ -952,6 +941,10 @@ function deleteUser(){
             $reqDeleteAds = $pdo->prepare('DELETE FROM ads WHERE user_id = ?');
             $reqDeleteAds->execute(array($id));
 
+            //delete needs
+            $reqDeleteAds = $pdo->prepare('DELETE FROM needs WHERE user_id = ?');
+            $reqDeleteAds->execute(array($id));
+
              ?>
             
             <script>
@@ -1089,6 +1082,44 @@ function uploadImage(){
         } else {
             echo "No cropped image received.";
         }
+    }
+}
+
+function deleteMyAccount(){
+    $pdo = getConnexion();
+    $id = $_SESSION['user']['session'];
+
+        try {
+            // Update user's situation to 'Deleted'
+            $reqUpdateUser = $pdo->prepare("UPDATE users SET situation = 'Deleted' WHERE id = ?");
+            $reqUpdateUser->execute(array($id));
+
+            // Delete ads associated with the user
+            $reqDeleteAds = $pdo->prepare('DELETE FROM ads WHERE user_id = ?');
+            $reqDeleteAds->execute(array($id));
+
+            //delete needs
+            $reqDeleteAds = $pdo->prepare('DELETE FROM needs WHERE user_id = ?');
+            $reqDeleteAds->execute(array($id));
+
+
+             ?>
+            
+            <script>
+                alert("Compte supprimé !");
+                window.location.replace('../index.php');
+            </script>
+
+            <?php 
+        } catch (PDOException $e) {
+             echo 'Database error: ' . $e->getMessage();
+            ?>
+                <script>
+                    alert("Une erreur est survenue, merci de reéssayer ou de contacter l'équipe technique si elle persiste");
+                    window.location.replace('../index.php?action=dashboardPage');
+                    exit();
+                </script>
+            <?php
     }
 }
 

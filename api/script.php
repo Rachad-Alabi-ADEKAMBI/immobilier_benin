@@ -120,6 +120,10 @@ if($action == 'uploadImage'){
     uploadImage();
 }
 
+if($action == 'deleteMyAccount'){
+    deleteMyAccount();
+}
+
 
 
 
