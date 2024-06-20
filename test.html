@@ -22,11 +22,7 @@
 <body>
 <div class="container mt-5">
     <h1>Upload and Crop Image</h1>
-    <form id="uploadForm" action="upload.php" method="POST" enctype="multipart/form-data">
-        <div class="form-group">
-            <label for="name">Name:</label>
-            <input type="text" class="form-control" id="name" name="name" required>
-        </div>
+    <form id="uploadForm" action="index.php?action=uploadImage" method="POST" enctype="multipart/form-data">
         <div class="form-group">
             <label for="image">Select Image:</label>
             <input type="file" class="form-control" id="image" name="image" accept="image/*" required>
@@ -41,7 +37,7 @@
         </div>
         <div class="form-group preview" id="preview"></div>
         <input type="hidden" name="croppedImage" id="croppedImage">
-        <button type="submit" class="btn btn-success">Enregistrer</button>
+        <button type="submit" class="btn btn-success" id="submitButton">Enregistrer</button>
     </form>
 </div>
 
@@ -77,6 +73,16 @@
             document.getElementById('croppedImage').value = canvas.toDataURL('image/png');
             document.getElementById('preview').innerHTML = '';
             document.getElementById('preview').appendChild(canvas);
+        } else {
+            alert("Veuillez choisir d'abord une image.");
+        }
+    });
+
+    document.getElementById('uploadForm').addEventListener('submit', function (e) {
+        const croppedImage = document.getElementById('croppedImage').value;
+        if (!croppedImage) {
+            e.preventDefault();
+            alert("Veuillez rogner l'image avant de soumettre.");
         }
     });
 </script>

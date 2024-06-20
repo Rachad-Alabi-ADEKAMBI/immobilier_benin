@@ -1040,6 +1040,59 @@ function getGeolocation($address) {
     }
 }
 
+function uploadImage(){
+    $pdo = getConnexion();
+    $user_id = $_SESSION['user']['id'];
+    if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+        $croppedImage = $_POST['croppedImage'];
+    
+        if ($croppedImage) {
+            $croppedImage = str_replace('data:image/png;base64,', '', $croppedImage);
+            $croppedImage = str_replace(' ', '+', $croppedImage);
+            $imageData = base64_decode($croppedImage);
+    
+            $fileName = uniqid() . '.png';
+            $filePath = '../public/img/' . $fileName; // Corrected file path
+    
+            // Check if the directory exists, create it if not
+            if (!is_dir('../public/img/')) {
+                mkdir('../public/img/', 0755, true);
+            }
+    
+            // Create image from string
+            $image = imagecreatefromstring($imageData);
+            if ($image !== false) {
+                // Save the image as PNG
+                if (imagepng($image, $filePath)) {
+                    imagedestroy($image);
+
+                    $req = $pdo->prepare("UPDATE users SET pic = ? WHERE id = ? ");
+
+                    $req->execute([$fileName, $user_id]); 
+    
+                    if ($req->rowCount()) {
+                        ?>
+                            <script>
+                                alert('Image enregistrée avec succès !');
+                                window.location.replace('../index.php?action=dashboardPage');
+                            </script>
+                        <?php
+                    } else {
+                        echo "Error: Failed to insert record.";
+                    }
+                } else {
+                    echo "Failed to save the image.";
+                }
+            } else {
+                echo "Failed to create image from base64 string.";
+            }
+        } else {
+            echo "No cropped image received.";
+        }
+    }
+}
+
+
 
 
 

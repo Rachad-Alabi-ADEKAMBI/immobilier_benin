@@ -116,6 +116,10 @@ if($action == 'authorizeUser'){
     authorizeUser($id);
 }
 
+if($action == 'uploadImage'){
+    uploadImage();
+}
+
 
 
 

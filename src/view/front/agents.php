@@ -16,11 +16,11 @@
                                 <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s" v-for='detail in details' 
                                     :key='detail.id'>
                                     <div class="property-item rounded overflow-hidden">
-                                        <div class="position-relative overflow-hidden">
-                                                <img class="img-fluid image" :src="getImg(detail.pic)" alt="" 
+                                        <div class="position-relative overflow-hidden text-center">
+                                                <img class="img-fluid image" :src="getImg(detail.pic)" alt="annonces immobilieres au Benin" 
                                                     v-if="detail.pic!=''">
                                                 
-                                                <img class="img-fluid image" src="public/img/logo-immo.png" alt="" 
+                                                <img class="img-fluid image" src="public/img/logo-immo.png" alt="annonces immobilieres au Benin" 
                                                     v-if="detail.pic==''">
                                             
                                         </div>
@@ -145,9 +145,10 @@
     }
 
     .image{
-        width: 320px;
+        width: 250px;
         height: 250px;
-        margin: auto;
+        margin: 10px auto;
+        border-radius: 150px;
     }
         </style>
 
