@@ -104,8 +104,31 @@ ob_start();
                     </form> 
 
                     <hr>
-                    
+
+                    <h3>
+                        Suppresion de compte
+                    </h3>
+
+                    <form action="">
+                        <button onclick=''>Supprimer mon compte</button>
+                    </form>
+                     
                 </div>
+            </div>
+
+            <div class="col-sm-12 col-md-8 mt-4 mx-auto">
+                <p>
+                    Cette action est irréversible, etes vous sur de vous ? <br>
+                    <div class="options">
+                        <a class="text text-danger" class='btn btn-danger' href='api/script=deleteUser' > 
+                            Oui, supprimer mon compte
+                        </a>
+
+                        <button class="text text-danger" onclick=""> 
+                            Non
+                        </button>
+                    </div>
+                </p>
             </div>
         </div>
     </div>
