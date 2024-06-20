@@ -1087,7 +1087,7 @@ function uploadImage(){
 
 function deleteMyAccount(){
     $pdo = getConnexion();
-    $id = $_SESSION['user']['session'];
+    $id = $_SESSION['user']['id'];
 
         try {
             // Update user's situation to 'Deleted'
@@ -1102,6 +1102,8 @@ function deleteMyAccount(){
             $reqDeleteAds = $pdo->prepare('DELETE FROM needs WHERE user_id = ?');
             $reqDeleteAds->execute(array($id));
 
+            //delete session
+            unset($_SESSION['user']);
 
              ?>
             
