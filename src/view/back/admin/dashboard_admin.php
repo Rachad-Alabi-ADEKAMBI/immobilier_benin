@@ -49,8 +49,7 @@
                 itemsPerPage: 5,
             },
             mounted() {
-               // this.displayAll();
-               this.displayUsers();
+                this.displayAll();
             },
             computed: {
                     filteredItems() {

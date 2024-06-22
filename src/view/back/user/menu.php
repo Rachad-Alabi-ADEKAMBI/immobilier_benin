@@ -15,19 +15,19 @@
 
         if ($_SESSION['user']['situation'] == 'Disponible' && $currentAction != 'newAdPage') { ?>
             <a class="btn btn-blue m-2" href="index.php?action=newAdPage">
-                <i class="fas fa-plus"></i> Nouvelle annonce
+            <i class="bi bi-plus-circle"></i> Nouvelle annonce
             </a>
     <?php } ?>
 
     <?php if ($currentAction != 'dashboardPage') { ?>
         <a class="btn btn-blue m-2" href="index.php?action=dashboardPage">
-            <i class="fas fa-list"></i> Mes annonces
+        <i class="bi bi-card-list"></i> Mes annonces
         </a>
     <?php } ?>
 
     <?php if ($currentAction != 'needsPage') { ?>
         <a class="btn btn-blue m-2" href="index.php?action=needsPage">
-            <i class="fas fa-question"></i> Demandes clients
+        <i class="bi bi-question-circle-fill"></i> Demandes clients
         </a>
     <?php } ?>
 

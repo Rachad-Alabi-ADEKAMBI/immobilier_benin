@@ -26,8 +26,8 @@ ob_start();
 <body>
 
 <section class="section">
-    <div class="container">
-        <div class="row g-0 gx-5 align-items-end">
+    <div class="container" id='app'>
+        <div class="row g-0 gx-5 align-items-end" id='app'>
             <!-- Menu -->
             <?php include 'menu.php'; ?>
 
@@ -43,13 +43,8 @@ ob_start();
                                     <input type="text" class="form-control" id="phone" name="phone" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');">
                                     <label for="phone">Numéro</label>
                                 </div>
-                            </div>
-                            <div class="col-sm-6">
-                                <div class="form-floating">
-                                    <input type="file" class="form-control" id="image" name="pic" accept="image/*">
-                                    <label for="pic">Photo</label>
-                                </div>
-                            </div>
+                            </div> <br>
+
                             <div class="col-sm-12">
                                 <div class="form-floating">
                                     <textarea class="form-control" id="description" name="description"></textarea>
@@ -89,9 +84,9 @@ ob_start();
                     <form id="uploadForm" action="api/script.php?action=uploadImage" method="POST" enctype="multipart/form-data">
                         <div class="form-group">
                             <label for="profileImage">
-                                1- Selectionner l'image: <br>
-                                2- Rogner l'image et cliquez sur <strong>"Rogner image"</strong> <br>
-                                3- Enregistrer l'image en cliquant sur <strong>"Enregistrer"</strong> <br>
+                                1- Selectionnez l'image: <br>
+                                2- Rognez l'image et cliquez sur <strong>"Rogner image"</strong> <br>
+                                3- Enregistrez l'image en cliquant sur <strong>"Enregistrer"</strong> <br>
                             </label>
 
                             <input type="file" class="form-control mt-3" id="profileImage" 
@@ -105,9 +100,9 @@ ob_start();
                         <div class="form-group">
                             <button type="button" class="btn btn-primary" id="cropButton">Rogner image</button>
                         </div>
-                        <div class="form-group preview" id="preview"></div>
+                        <div class="form-group preview" id="preview mt-3"></div>
                         <input type="hidden" name="croppedImage" id="croppedImage">
-                        <button type="submit" class="btn btn-blue w-45 py-3" id="submitButton">Enregistrer</button>
+                        <button type="submit" class="btn btn-blue w-45 py-3 mt-3" id="submitButton">Enregistrer</button>
                     </form> 
 
                     <hr class="mt-5">
@@ -126,7 +121,7 @@ ob_start();
                 <p>
                     Cette action est irréversible, êtes vous sûr sur de vous ? <br>
                     <div class="options">
-                        <a class="btn  btn-danger m-2" href='api/script.php?action=deletmyAccount' > 
+                        <a class="btn  btn-danger m-2" href='api/script.php?action=deleteMyAccount' > 
                             Oui, supprimer mon compte
                         </a>
 
@@ -193,10 +188,14 @@ ob_start();
     let deleteBtn = document.getElementById('deleteBtn');
     let backToMainBtn = document.getElementById('backToMainBtn');
 
-    deleteBtn.addEventListener('click', function() {
+    deleteBtn.addEventListener('click', function(event) {
         deleteBox.style.display = 'block';
-        main.style.display = 'none';
+         main.style.display = 'none';
+         window.location.replace('index.php?action=accountPage#app');
+        // alert('ok');
+        event.preventDefault();
     });
+
 
     backToMainBtn.addEventListener('click', function() {
         deleteBox.style.display = 'none';

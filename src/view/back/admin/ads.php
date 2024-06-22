@@ -19,7 +19,7 @@
                                             <td data-label="Date"> {{ formatDate(detail.date_of_insertion) }} </td>
                                             <td data-label="Nom"> {{ detail.name }}</td>
                                             <td data-label="Ville">{{ detail.location }} </td>
-                                            <td data-label="Prix"> {{ format(detail.price) }} </td>
+                                            <td data-label="Prix"> {{ format(detail.price) }} XOF </td>
                                             <td data-label="Image">
                                                 <img :src='getImgUrl(detail.pic1)' alt="">
                                             </td>
