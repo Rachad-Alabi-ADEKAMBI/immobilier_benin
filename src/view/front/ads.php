@@ -59,7 +59,7 @@
                     <div class="tab-content">
                         <div id="tab-1" class="tab-pane fade show p-0  active" v-if='showAll'>
                             <div class="row g-4" >
-                                <div class="col-lg-4 col-md-6 wow fadeInUp item" data-wow-delay="0.1s " v-for="detail in paginatedData"
+                                <div class="col-lg-4 col-md-6 wow fadeInUp item ad" data-wow-delay="0.1s " v-for="detail in paginatedData"
                                     :key='detail.id'>
                                     <div class="property-item rounded overflow-hidden" @click='goToProperty(detail.id)'>
                                         <div class="position-relative overflow-hidden">
@@ -114,7 +114,7 @@
 
                         <div id="tab-2" class="tab-pane fade show p-0 active " v-if='showToSell'>
                             <div class="row g-4" >
-                                <div class="col-lg-4 col-md-6 wow fadeInUp item" data-wow-delay="0.1s" v-for='detail in details' 
+                                <div class="col-lg-4 col-md-6 wow fadeInUp item ad" data-wow-delay="0.1s" v-for='detail in details' 
                                     :key='detail.id'>
                                     <div class="property-item rounded overflow-hidden" @click='goToProperty(detail.id)'>
                                         <div class="position-relative overflow-hidden">
@@ -167,7 +167,7 @@
 
                         <div id="tab-3" class="tab-pane fade show p-0 active" v-if='showToRent'>
                             <div class="row g-4" >
-                                <div class="col-lg-4 col-md-6 wow fadeInUp item" data-wow-delay="0.1s" v-for="detail in paginatedData"
+                                <div class="col-lg-4 col-md-6 wow fadeInUp item ad" data-wow-delay="0.1s" v-for="detail in paginatedData"
                                     :key='detail.id'>
                                     <div class="property-item rounded overflow-hidden" @click='goToProperty(detail.id)'>
                                         <div class="position-relative overflow-hidden">
@@ -221,7 +221,7 @@
 
                         <div id="tab-0" class="tab-pane fade show p-0 active" v-if='showFiltered'>
                             <div class="row g-4" >
-                                <div class="col-lg-4 col-md-6 wow fadeInUp item" data-wow-delay="0.1s" v-for='detail in filteredItems' 
+                                <div class="col-lg-4 col-md-6 wow fadeInUp item ad" data-wow-delay="0.1s" v-for='detail in filteredItems' 
                                     :key='detail.id'>
                                     <div class="property-item rounded overflow-hidden" @click='goToProperty(detail.id)'>
                                         <div class="position-relative overflow-hidden">

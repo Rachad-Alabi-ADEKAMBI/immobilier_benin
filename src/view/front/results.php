@@ -39,7 +39,7 @@ $datas = $_SESSION['search_results'];
                         <div id="tab-1" class="tab-pane fade show p-0  active" v-if='showAll'>
                             <div class="row">
                             <?php foreach ($datas as $detail): ?>
-                                    <div class="col-sm-12 col-md-4 wow fadeInUp" data-wow-delay="0.1s">
+                                    <div class="col-sm-12 col-md-4 wow fadeInUp ad" data-wow-delay="0.1s">
                                         <a href="index.php?action=adPage&id=<?=$detail['id']?>">
                                             <div class="property-item rounded overflow-hidden">
                                                 <div class="position-relative overflow-hidden">

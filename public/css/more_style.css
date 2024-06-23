@@ -84,3 +84,10 @@
 .page-link:hover{
   color:  #8755F1;
 }
+
+.ad img{
+  height: 250px;
+  width: 85%;
+  margin: auto;
+  
+}

@@ -15,19 +15,19 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-sm-12 col-md-12 mx-auto text-center">
+                    <div class="col-sm-12 col-md-12 mx-auto text-center main-img">
                         <img :src="getImgUrl(detail.pic1)" alt="appartements et terrains au Bénin">
                     </div>
                 </div>
 
                 <div class="row mt-4">
-                    <div class="col-sm-12 col-md-4 mx-auto text-center" v-if="detail.pic2">
+                    <div class="col-sm-12 col-md-4 mx-auto text-center image" v-if="detail.pic2">
                         <img :src="getImgUrl(detail.pic2)" alt="appartements et terrains au Bénin">
                     </div>
-                    <div class="col-sm-12 col-md-4 mx-auto text-center" v-if="detail.pic3">
+                    <div class="col-sm-12 col-md-4 mx-auto text-center image" v-if="detail.pic3">
                         <img :src="getImgUrl(detail.pic3)" alt="annonces de vente et location au Bénin">
                     </div>
-                    <div class="col-sm-12 col-md-4 mx-auto text-center" v-if="detail.pic4">
+                    <div class="col-sm-12 col-md-4 mx-auto text-center image" v-if="detail.pic4">
                         <img :src="getImgUrl(detail.pic4)" alt="Immobilier Bénin">
                     </div>
                 </div>
@@ -192,6 +192,10 @@
 
     .text-whatsapp{
         color: #27D045;
+    }
+
+    .image img {
+        height: 230px;
     }
 </style>
 
