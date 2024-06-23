@@ -106,11 +106,6 @@ $datas = sixAds();
                     <div class="col-lg-6 wow fadeIn" data-wow-delay="0.3s">
                                     <div class="mb-4">
                                         <h1 class="mb-3  mt-3">Nos services</h1>
-
-                                        <p>
-                                        Bienvenue sur immobilierbenin, votre marketplace d'annonces de vente et de location de biens
-                                                immobiliers au Bénin. Nous offrons les services suivants:
-                                        </p>
                                         <p><i class="fa fa-check text-blue me-3"></i>Annonces gratuites</p>
                                         <p><i class="fa fa-check text-blue me-3"></i>Recherches personnalisées</p>
                                         <p><i class="fa fa-check text-blue me-3"></i>Mise en relation entre agents et clients</p>

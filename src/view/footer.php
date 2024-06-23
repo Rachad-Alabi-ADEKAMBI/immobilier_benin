@@ -14,6 +14,10 @@
                          Mon compte
                 </a>
              
+                <a class="btn btn-link text-white-50"  href="index.php?action=aboutPage">
+                         Qui sommes nous ?
+                </a>
+
                 <a class="btn btn-link text-white-50"  href="index.php?action=contactPage">
                          Contact
                 </a>

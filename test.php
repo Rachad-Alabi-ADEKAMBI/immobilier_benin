@@ -9,7 +9,7 @@
     $textColor = imagecolorallocate($image, 229, 85, 78);
 
     //font
-    $fontPath = 'Heebo-Medium.ttf';
+    $fontPath = 'Heebo-Medium';
 
     //function that write image on text
     imagettftext($image, 90, 7, 575, 850, $textColor, $fontPath, $text);

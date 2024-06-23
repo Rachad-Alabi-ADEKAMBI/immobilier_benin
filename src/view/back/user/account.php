@@ -100,7 +100,7 @@ ob_start();
                         <div class="form-group">
                             <button type="button" class="btn btn-primary" id="cropButton">Rogner image</button>
                         </div>
-                        <div class="form-group preview" id="preview mt-3"></div>
+                        <div class="form-group preview" id="preview mt-5"></div>
                         <input type="hidden" name="croppedImage" id="croppedImage">
                         <button type="submit" class="btn btn-blue w-45 py-3 mt-3" id="submitButton">Enregistrer</button>
                     </form> 
@@ -161,6 +161,7 @@ ob_start();
     });
 
     document.getElementById('cropButton').addEventListener('click', function () {
+
         if (cropper) {
             const canvas = cropper.getCroppedCanvas({
                 width: 160,

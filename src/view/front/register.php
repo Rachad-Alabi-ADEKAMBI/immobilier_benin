@@ -20,8 +20,9 @@
                                 </div>
                                 <div class="col-sm-6 text-center">
                                     <div class="form-floating">
-                                        <input type="text" class="form-control" id="phone" placeholder=""
-                                         name="phone" required  value="<?=$_SESSION['register']['phone']?>" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');">
+                                        <input type="number" class="form-control" id="phone" placeholder=""
+                                         name="phone" required  value="<?=$_SESSION['register']['phone']?>" 
+                                         oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');">
                                         <label for="phone">Numéro <span class="red">*</span></label>
                                     </div>
                                 </div>

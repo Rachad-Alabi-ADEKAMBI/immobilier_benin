@@ -24,6 +24,7 @@ require_once 'src/controllers/front/blog.php';
 require_once 'src/controllers/front/article.php';
 require_once 'src/controllers/front/error.php';
 require_once 'src/controllers/front/faq.php';
+require_once 'src/controllers/front/about.php';
 
 require_once 'src/controllers/back/user/dashboard.php';
 require_once 'src/controllers/back/user/newAd.php';
@@ -158,8 +159,13 @@ if (isset($_GET['action']) && $_GET['action'] !== '') {
         articlePage();
     } 
     
-    elseif ($_GET['action'] === 'home') {
-        home();
+    elseif ($_GET['action'] === 'articlePage') {
+        articlePage();
+    } 
+    
+
+    elseif ($_GET['action'] === 'aboutPage') {
+        aboutPage();
     }
     
     else {
