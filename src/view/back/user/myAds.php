@@ -44,14 +44,9 @@
                                            
                                             <td data-label="">
 
-                                                <button class="btn btn-warning m-1 text-white" @click="pause(detail.id)" 
+                                                <button class="btn btn-warning m-1 text-white" @click="manage(detail.id)" 
                                                     v-if="detail.situation == 'Disponible'">
-                                                    <i class="fa fa-pause m1-3 text-white "></i> Pause
-                                                </button>
-
-                                                <button class="btn btn-success  m-1" @click="play(detail.id)"
-                                                      v-if="detail.situation == 'Non disponible'" >
-                                                      <i class="fa fa-play m1-3 text-white "></i> Publier
+                                                    <i class="fa fa-pause m1-3 text-white "></i> Gérer
                                                 </button>
 
                                                 <button class="btn btn-info m-1 text-white" @click="displayEdit(detail.id)">

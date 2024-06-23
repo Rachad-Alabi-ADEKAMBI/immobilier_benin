@@ -30,7 +30,10 @@ require_once 'src/controllers/back/user/dashboard.php';
 require_once 'src/controllers/back/user/newAd.php';
 require_once 'src/controllers/back/user/needs.php';
 require_once 'src/controllers/back/user/account.php';
+require_once 'src/controllers/back/user/management.php';
+
 require_once 'src/controllers/back/admin/dashboard_admin.php';
+
 
 
 
@@ -165,6 +168,10 @@ if (isset($_GET['action']) && $_GET['action'] !== '') {
     
 
     elseif ($_GET['action'] === 'aboutPage') {
+        aboutPage();
+    }
+
+    elseif ($_GET['action'] === 'mangePage') {
         aboutPage();
     }
     
