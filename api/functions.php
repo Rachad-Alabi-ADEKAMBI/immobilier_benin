@@ -977,7 +977,7 @@ function authorizeUser(){
 }
 
 
-function managementPage($id){
+function manageProperty($id){
     $pdo = getConnexion();
     $ad_id = verifyInput($_GET['id']);
 
@@ -988,7 +988,7 @@ function managementPage($id){
 
    if($datas['user_id'] != $_SESSION['user']['id']){ ?>
     <script>
-        alert("Action impossible, si vous pensez qu'il s'agit d'une erreur vous pouvez nous contacter");
+        alert("Action impossible, si vous pensez qu'il s'agit d'une erreur vous pouvez nous contacter.");
          window.history.back();
     </script>
    <?php }

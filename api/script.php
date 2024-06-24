@@ -124,8 +124,8 @@ if($action == 'deleteMyAccount'){
     deleteMyAccount();
 }
 
-if($action == 'managementPage'){
-    managementPage($id);
+if($action == 'manageProperty'){
+    manageProperty($id);
 }
 
 

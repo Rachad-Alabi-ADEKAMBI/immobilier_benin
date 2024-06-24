@@ -3,6 +3,11 @@
                             Utilisateurs ({{details.length}})
                          </h1>
                         
+                         <div class="search">
+                            <label for="">
+                                <input type="search">
+                            </label>
+                         </div>
                          <div class="table-container">
                                <table>
                                     <thead>
