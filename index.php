@@ -30,7 +30,7 @@ require_once 'src/controllers/back/user/dashboard.php';
 require_once 'src/controllers/back/user/newAd.php';
 require_once 'src/controllers/back/user/needs.php';
 require_once 'src/controllers/back/user/account.php';
-require_once 'src/controllers/back/user/management.php';
+require_once 'src/controllers/back/user/manage.php';
 
 require_once 'src/controllers/back/admin/dashboard_admin.php';
 
@@ -105,13 +105,19 @@ if (isset($_GET['action']) && $_GET['action'] !== '') {
         }
     }
 
-    elseif ($_GET['action'] === 'managementPage') {
+    
+    elseif ($_GET['action'] === 'managePage') {
         if (!isset($_SESSION['user']) || $_SESSION['user']['role'] != 'user') {
             loginPage();
         } else {
-            //check id
+            if (isset($_GET['id']) && $_GET['id'] > 0) {
+                $id = $_GET['id'];
 
-            managementPagePage();
+             managePage($id);
+             
+            } else{
+                errorPage();
+            }
         }
     }
     
@@ -186,10 +192,6 @@ if (isset($_GET['action']) && $_GET['action'] !== '') {
 
     elseif ($_GET['action'] === 'aboutPage') {
         aboutPage();
-    }
-
-    elseif ($_GET['action'] === 'managementPage') {
-        managementPage();
     }
     
     else {

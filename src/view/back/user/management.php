@@ -1,17 +1,17 @@
-<?php $title = 'Immobilier Bénin - Demandes'; 
+<?php $title = 'Immobilier Bénin - Gestion de propriété'; 
 
 
  ob_start(); ?>
 
-<section class="section">
+<section class="section" id='app'>
     <div class="container">
       <div class="row g-0 gx-5 align-items-end">
             <!--menu-->   
             <?php include 'menu.php'; ?>
 
-            <div class='col-sm-12 col-md-10 mt-4 mx-auto' v-for='detail in details' :key='detail.id'>
+            <div class='col-sm-12 col-md-10 mt-4 mx-auto'>
                          <h1 class="mx-auto text-center">
-                            Gestion de  ({{ detail.name }})
+                            Gestion de  
                          </h1>
 
                         <div class="mt-2table-container" >
@@ -41,7 +41,7 @@
                 },
                 methods: {
                     displayDetails(){
-                        axios.get('api/script.php?action=managePorperty&id='+id)
+                        axios.get('api/script.php?action=manageProperty&id='+id)
                             .then((response) => {
                                 console.log(response.data);
                                 this.details = response.data;

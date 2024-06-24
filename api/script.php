@@ -124,6 +124,10 @@ if($action == 'deleteMyAccount'){
     deleteMyAccount();
 }
 
+if($action == 'managementPage'){
+    managementPage($id);
+}
+
 
 
 

@@ -13,7 +13,6 @@
                                         <tr>
                                             <th>Date</th>
                                             <th>Nom</th>
-                                            <th>Ville</th>
                                             <th>Prix</th>
                                             <th>Image</th>
                                             <th>Statut</th>
@@ -23,7 +22,6 @@
                                         <tr v-for='detail in paginatedData' :key='detail.id'>
                                             <td data-label="Date"> {{ formatDate(detail.date_of_insertion) }} </td>
                                             <td data-label="Nom">{{ capitalizeFirstLetter(detail.name) }}</td>
-                                            <td data-label="Ville">{{ detail.location }} </td>
                                             <td data-label="Prix"> {{ format(detail.price) }} XOF </td>
                                             <td data-label="Image">
                                                 <img :src='getImgUrl(detail.pic1)' alt="">
@@ -51,11 +49,6 @@
 
                                                 <button class="btn btn-info m-1 text-white" @click="displayEdit(detail.id)">
                                                 <i class="fa fa-pen m1-3 text-white "></i> Modifier
-                                                </button>
-
-
-                                                <button class="btn btn-danger m-1" @click="remove(detail.id)" >
-                                                    <i class="fa fa-trash m1-3 text-white "></i> Supprimer
                                                 </button>
 
                                                 <span @click="goToProperty(detail.id)">
