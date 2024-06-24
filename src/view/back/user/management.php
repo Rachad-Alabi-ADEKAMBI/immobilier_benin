@@ -1,6 +1,6 @@
 <div class='col-sm-12 col-md-12  mt-4 mx-auto' data-wow-delay="0.5s" v-if='showAll' >
                          <h1 class="mx-auto text-center">
-                            Gestion ({{ this.details.length}})
+                            Gestion 
                          </h1>
                         <div class="mt-2table-container" v-if='details.length > 0'>
                                 <table>
