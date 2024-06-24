@@ -161,38 +161,38 @@
                     getImgUrl(pic) {
                         return "public/img/" + pic;
                     },
-                pause(id){
-                        window.location.replace('./api/script.php?action=pause&id='+id);
-                },
-                play(id){
-                        window.location.replace('./api/script.php?action=play&id='+id);
-                },
-                remove(id){
-                    window.location.replace('./api/script.php?action=delete&id='+id);
-                },
-                goToProperty(id){
-                    window.location.replace('./index.php?action=adPage&id='+id);
-                },
-                previousPage() {
-                        if (this.currentPage > 1) {
-                            this.currentPage--;
-                        }
-                        },
-                nextPage() {
-                        if (this.currentPage < this.totalPages) {
-                            this.currentPage++;
-                        }
+                    pause(id){
+                            window.location.replace('./api/script.php?action=pause&id='+id);
                     },
-                gotoPage(page) {
-                    this.currentPage = page;
-                },
-                capitalizeFirstLetter(word) {
-                    if (!word) return '';
-                    return word.charAt(0).toUpperCase() + word.slice(1);
-                },
-                manage(id){
-                    window.location.replace('managementPage.php'+id);
-                }
+                    play(id){
+                            window.location.replace('./api/script.php?action=play&id='+id);
+                    },
+                    remove(id){
+                        window.location.replace('./api/script.php?action=delete&id='+id);
+                    },
+                    goToProperty(id){
+                        window.location.replace('./index.php?action=adPage&id='+id);
+                    },
+                    previousPage() {
+                            if (this.currentPage > 1) {
+                                this.currentPage--;
+                            }
+                            },
+                    nextPage() {
+                            if (this.currentPage < this.totalPages) {
+                                this.currentPage++;
+                            }
+                        },
+                    gotoPage(page) {
+                        this.currentPage = page;
+                    },
+                    capitalizeFirstLetter(word) {
+                        if (!word) return '';
+                        return word.charAt(0).toUpperCase() + word.slice(1);
+                    },
+                    manage(id){
+                        window.location.replace('managementPage.php'+id);
+                    }
 
                 }
             });

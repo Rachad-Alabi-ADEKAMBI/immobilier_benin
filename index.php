@@ -39,7 +39,7 @@ require_once 'src/controllers/back/admin/dashboard_admin.php';
 
 
 if (isset($_GET['action']) && $_GET['action'] !== '') {
-    session_start();
+
     if ($_GET['action'] === 'loginPage') {
         if (isset($_SESSION['user']) && $_SESSION['user']['role'] === 'user') {
             dashboardPage();
@@ -102,6 +102,16 @@ if (isset($_GET['action']) && $_GET['action'] !== '') {
             loginPage();
         } else {
             dashboardPage();
+        }
+    }
+
+    elseif ($_GET['action'] === 'managementPage') {
+        if (!isset($_SESSION['user']) || $_SESSION['user']['role'] != 'user') {
+            loginPage();
+        } else {
+            //check id
+
+            managementPagePage();
         }
     }
     
