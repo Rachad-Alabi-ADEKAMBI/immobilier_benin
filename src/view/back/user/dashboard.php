@@ -191,7 +191,7 @@
                         return word.charAt(0).toUpperCase() + word.slice(1);
                     },
                     manage(id){
-                        window.location.replace('api/script.php?action=managePage&id='+id);
+                        window.location.replace('index.php?action=managePage&id='+id);
                     }
 
                 }

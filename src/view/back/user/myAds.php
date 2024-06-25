@@ -44,7 +44,7 @@
 
                                                 <button class="btn btn-warning m-1 text-white" @click="manage(detail.id)" 
                                                     v-if="detail.situation == 'Disponible'">
-                                                    <i class="fa fa-pause m1-3 text-white "></i> Gérer
+                                                    <i class="bi bi-building"></i> Gérer
                                                 </button>
 
                                                 <button class="btn btn-info m-1 text-white" @click="displayEdit(detail.id)">

@@ -6,12 +6,12 @@
 <section class="section" id='app'>
     <div class="container">
       <div class="row g-0 gx-5 align-items-end">
-            <!--menu-->   
+            <!--menu--> 
             <?php include 'menu.php'; ?>
 
             <div class='col-sm-12 col-md-10 mt-4 mx-auto'>
                          <h1 class="mx-auto text-center">
-                            Gestion de  
+                            Gestion de 
                          </h1>
 
                         <div class="mt-2table-container" >
@@ -34,14 +34,15 @@
             new Vue({
                 el: '#app',
                 data: {
-                    details: []
+                    details: [],
+                    id: <?= json_encode($_GET['id']) ?>
                 },
                 mounted(){
                     this.displayDetails();
                 },
                 methods: {
                     displayDetails(){
-                        axios.get('api/script.php?action=manageProperty&id='+id)
+                        axios.get('api/script.php?action=manageProperty&id='+this.id)
                             .then((response) => {
                                 console.log(response.data);
                                 this.details = response.data;
