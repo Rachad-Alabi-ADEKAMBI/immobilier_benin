@@ -977,26 +977,46 @@ function authorizeUser(){
 }
 
 
-function manageProperty($id){
+function manageProperty($id) {
     $pdo = getConnexion();
+    
+    // Vérifier si 'id' est défini dans $_GET
+    if (!isset($_GET['id'])) {
+        echo '<script>
+                alert("ID non défini.");
+                window.history.back();
+              </script>';
+        exit();
+    }
+
+    // Échapper l'entrée utilisateur
     $ad_id = verifyInput($_GET['id']);
 
-   $req = $pdo->prepare('SELECT * FROM ads WHERE id = ?');
-   $req->execute(array($_SESSION['user']['id']));
-   $datas = $req->fetch();
-   $req->closeCursor();
+    // Préparer et exécuter la requête
+    $req = $pdo->prepare('SELECT * FROM ads WHERE id = ?');
+    $req->execute([$ad_id]);
+    $data = $req->fetch(); // Utiliser fetch() au lieu de fetchAll() pour un seul résultat
+    $req->closeCursor();
 
-   if($datas['user_id'] != $_SESSION['user']['id']){ ?>
-    <script>
-        alert("Action impossible, si vous pensez qu'il s'agit d'une erreur vous pouvez nous contacter.");
-         window.history.back();
-    </script>
-   <?php }
-   else{
-        sendJSON($datas);
-   }
+    // Vérifier si la propriété existe et si l'utilisateur a les droits
+    if (!$data) {
+        echo '<script>
+                alert("Propriété non trouvée.");
+                window.history.back();
+              </script>';
+        exit();
+    }
 
+    if ($data['user_id'] != $_SESSION['user']['id']) {
+        echo '<script>
+                alert("Action impossible, si vous pensez qu\'il s\'agit d\'une erreur vous pouvez nous contacter.");
+                window.history.back();
+              </script>';
+    } else {
+        sendJSON($data);
+    }
 }
+
 
 function getGeolocation($address) {
     $apiKey = 'YOUR_GOOGLE_MAPS_API_KEY';  // Remplacez par votre clé API Google Maps

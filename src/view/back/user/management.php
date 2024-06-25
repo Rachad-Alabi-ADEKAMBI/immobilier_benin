@@ -9,17 +9,19 @@
             <!--menu--> 
             <?php include 'menu.php'; ?>
 
-            <div class='col-sm-12 col-md-10 mt-4 mx-auto'>
-                         <h1 class="mx-auto text-center">
-                            Gestion de 
+            <div class='col-sm-12 col-md-10 mt-4 mx-auto' >
+                <div class="" v-for="detail in details" :key='detail.id'>
+                <h1 class="mx-auto text-center">
+                            Gestion de {{ detail.id }}
                          </h1>
 
-                        <div class="mt-2table-container" >
+                        <div class="mt-2 table-container" >
                                 <div class="details">
                                     oklm
                                 </div>
                             </div>
                         </div>
+                </div>
             </div>
 
       </div>
@@ -34,8 +36,8 @@
             new Vue({
                 el: '#app',
                 data: {
-                    details: [],
-                    id: <?= json_encode($_GET['id']) ?>
+                    id: <?= json_encode($_GET['id']) ?>,
+                    details: '',
                 },
                 mounted(){
                     this.displayDetails();
