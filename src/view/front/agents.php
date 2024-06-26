@@ -13,9 +13,9 @@
                     <div class="tab-content">
                         <div id="tab-1" class="tab-pane fade show p-0 active">
                             <div class="row g-2" >
-                                <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s" v-for='detail in details' 
+                                <div class="col-lg-4 col-md-6 wow fadeInUp"   data-wow-delay="0.1s" v-for='detail in details' 
                                     :key='detail.id'>
-                                    <div class="property-item rounded overflow-hidden">
+                                    <div class="property-item rounded overflow-hidden" @click="goToAdvertiserPage(detail.id)" >
                                         <div class="position-relative overflow-hidden text-center">
                                                 <img class="img-fluid image" :src="getImg(detail.pic)" alt="annonces immobilieres au Benin" 
                                                     v-if="detail.pic!=''">
@@ -84,8 +84,8 @@
                     getImg(pic) {
                         return "public/img/" + pic;
                     },
-                    goToAgent(id){
-                        window.location.replace('./index.php?action=agentPage&id='+id);
+                    goToAdvertiserPage(id){
+                        window.location.replace('./index.php?action=advertiserPage&id='+id);
                     }
                 }
             });

@@ -3,6 +3,7 @@
 <?php ob_start(); ?>
 
 <div class="container-xxl p">
+    <!--
             <div class="container" v-for='detail in details' :key='detail.id'>
 
                 <div class="row">
@@ -56,6 +57,7 @@
                     </div></div>
                 </div>
             </div>
+    -->
         </div>
 
 <?php $content = ob_get_clean(); ?>

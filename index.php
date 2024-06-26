@@ -16,7 +16,7 @@ require_once 'src/controllers/front/ad.php';
 require_once 'src/controllers/front/policy.php';
 require_once 'src/controllers/front/terms.php';
 require_once 'src/controllers/front/agents.php';
-//require_once 'src/controllers/front/agent.php';
+require_once 'src/controllers/front/advertiser.php';
 require_once 'src/controllers/front/reset_password.php';
 require_once 'src/controllers/front/newNeed.php';
 require_once 'src/controllers/front/results.php';
@@ -60,9 +60,8 @@ if (isset($_GET['action']) && $_GET['action'] !== '') {
         }
     }
 
-    elseif ($_GET['action'] === 'agentPage') {
-            echo 'ok';
-            agentPage();
+    elseif ($_GET['action'] === 'advertiserPage') {
+            advertiserPage();
     }
     
     elseif ($_GET['action'] === 'registerPage') {
