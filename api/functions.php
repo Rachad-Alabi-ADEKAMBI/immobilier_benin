@@ -123,7 +123,7 @@ function getAllDatas() {
     sendJSON($datas);
 }
 
-function getAgents() {
+function getAdvertisers() {
     $pdo = getConnexion();
     $req = $pdo->prepare("SELECT * FROM users WHERE featured = 'yes' 
         ORDER BY id DESC");
@@ -135,7 +135,7 @@ function getAgents() {
     sendJSON($datas);
 }
 
-function getAgent($id) {
+function getAdvertiser($id) {
     $id= verifyInput($_GET['id']);
 
    if($id == 0 OR $id < 0){

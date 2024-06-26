@@ -35,12 +35,12 @@ if($action == 'needs'){
     getNeeds();
 }
 
-if($action == 'agents'){
-    getAgents();
+if($action == 'advertisers'){
+    getAdvertisers();
 }
 
-if($action == 'agent'){
-    getAgent($id);
+if($action == 'advertiser'){
+    getAdvertiser($id);
 }
 
 if($action == 'newNeed'){

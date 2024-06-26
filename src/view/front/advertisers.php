@@ -62,7 +62,7 @@
                         this.showAll = true;
                         this.showToSell = false;
                         this.showToRent = false;
-                        axios.get('api/script.php?action=agents')
+                        axios.get('api/script.php?action=advertisers')
                             .then((response) => {
                                 console.log(response.data);
                                 this.details = response.data;
