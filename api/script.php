@@ -15,6 +15,10 @@ if ($action == 'allDatas') {
     getAvailableDatas();
 }
 
+if ($action == 'availableDatasOfAdvertiser') {
+    getAvailableDatasOfAdvertiser();
+}
+
 if ($action == 'toRent') {
     getToRent();
 }

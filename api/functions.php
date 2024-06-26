@@ -154,18 +154,7 @@ function getAdvertiser($id) {
     $datas = $req->fetchAll();
     $req->closeCursor();
 
-    if(count($datas) > 0){
-        sendJSON($datas);
-    } else{
-        echo
-            '<script>
-            alert("Merci de vérifier cette url");
-            window.location.replace("../index.php");
-            exit();
-            </script>';
-        exit();
-    }
-
+    sendJSON($datas);
    }
 }
 
@@ -173,6 +162,18 @@ function getAvailableDatas(){
     $pdo = getConnexion();
     $req = $pdo->prepare("SELECT * FROM ads WHERE situation = 'Disponible' ORDER BY id DESC");
     $req->execute();
+    $datas = $req->fetchAll();
+    $req->closeCursor();
+    sendJSON($datas);
+}
+
+
+function getAvailableDatasOfAdvertiser(){
+
+    $user_id = verifyInput($_GET['id']);
+    $pdo = getConnexion();
+    $req = $pdo->prepare("SELECT * FROM ads WHERE situation = 'Disponible' AND user_id = ? ORDER BY id DESC");
+    $req->execute(array($user_id));
     $datas = $req->fetchAll();
     $req->closeCursor();
     sendJSON($datas);

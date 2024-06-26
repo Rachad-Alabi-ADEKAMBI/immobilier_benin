@@ -75,6 +75,7 @@
                     <div class="footer-menu">
                         <a href="index.php" class="text-white">Accueil</a>
                         <a href="index.php?action=adsPage" class="text-white">Annonces</a>
+                        <a href="index.php?action=advertisersPage" class="text-white">Annonceurs</a>
                         <a href="index.php?action=newAdPage" class="text-white">Nouvelle annonce</a>
                     </div>
                 </div>
