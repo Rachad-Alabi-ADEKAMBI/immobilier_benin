@@ -78,7 +78,7 @@
             methods: {
                 displayDetails(){
                     console.log(this.id);
-                    axios.get('./api/script.php?action=agent&id=4')
+                    axios.get('./api/script.php?action=advertiser&id='+this.id)
                         .then((response) => {
                             console.log(response.data);
                             this.details = response.data;
@@ -87,6 +87,10 @@
                             console.error(error);
                             alert('Failed to fetch data');
                         });
+                    if(this.details.length == 0){
+                        alert("Adresse incorrecte, merci de vérifier cette url ou de nous contacter si vous pensez qu'il s'agit d'une erreur.");
+                        window.history.back();
+                    }
                 }, 
                 format(num){
                     return new Intl.NumberFormat('fr-FR', { maximumSignificantDigits: 3 }).format(num);

@@ -13,7 +13,7 @@
                     <div class="tab-content">
                         <div id="tab-1" class="tab-pane fade show p-0 active">
                             <div class="row g-2" >
-                                <div class="col-lg-4 col-md-6 wow fadeInUp"   data-wow-delay="0.1s" v-for='detail in details' 
+                                <div class="col-lg-4 col-md-4 wow fadeInUp advertiser"   data-wow-delay="0.1s" v-for='detail in details' 
                                     :key='detail.id'>
                                     <div class="property-item rounded overflow-hidden" @click="goToAdvertiserPage(detail.id)" >
                                         <div class="position-relative overflow-hidden text-center">
@@ -149,6 +149,10 @@
         height: 250px;
         margin: 10px auto;
         border-radius: 150px;
+    }
+
+    .advertiser{
+        cursor: pointer;
     }
         </style>
 
