@@ -11,9 +11,9 @@
 
             <div class='col-sm-12 col-md-10 mt-4 mx-auto' >
                 <div class="" v-for="detail in details" :key='detail.id'>
-                <h1 class="mx-auto text-center">
+                    <h1 class="mx-auto text-center">
                             Gestion de 
-                         </h1>
+                    </h1>
 
                         <div class="mt-2 table-container" >
                                 <div class="details">
@@ -37,7 +37,7 @@
                 el: '#app',
                 data: {
                     id: <?= json_encode($_GET['id']) ?>,
-                    details: '',
+                    details: [],
                 },
                 mounted(){
                     this.displayDetails();
