@@ -14,7 +14,7 @@
             <div class="navbar-nav mx-auto">
                 <a href="index.php" class="nav-item nav-link active">Accueil</a>
                 <a href="index.php?action=adsPage" class="nav-item nav-link">Annonces</a>
-                <a href="index.php?action=agentsPage" class="nav-item nav-link">Annonceurs</a>
+                <a href="index.php?action=advertisersPage" class="nav-item nav-link">Annonceurs</a>
 
                 <a href="index.php?action=aboutPage" class="nav-item nav-link">Qui sommes-nous ?</a>
                 <?php if (!isset($_SESSION['user']) || !$_SESSION['user']) { ?>
