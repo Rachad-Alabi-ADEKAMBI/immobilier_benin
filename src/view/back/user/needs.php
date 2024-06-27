@@ -14,8 +14,9 @@
                             Demandes clients ({{ this.details.length}})
                          </h1>
 
-                         <p class="text text-bold text-grey text-center">
-                            Avez vous des propositions pour ces recherches personnalisées ? Si oui, vous pouvez contacter les demandeurs
+                         <p class="text text-bold text-grey text-center" v-if='details.length > 0'>
+                            Avez vous des propositions pour ces recherches personnalisées ?  <br>
+                            Si oui, vous pouvez contacter les demandeurs.
                          </p>
 
                         <div class="mt-2table-container" v-if='details.length > 0'>
@@ -38,9 +39,9 @@
                                             <td data-label="Ville"> {{ detail.location }} </td>
                                             <td data-label="Client">{{ detail.user_name }} </td>
                                             <td data-label="Téléphone"> {{ detail.user_phone }} </td>
-                                            <td v-if='detail.user_id == this.user_id'>
+                                            <td v-if="1>0">
                                                     <button class="btn btn-danger" @click='deleteMyNeed(detail.id)'>
-                                                        Supprimer
+                                                    <i class="fa fa-trash m1-3 text-white "> Supprimer
                                                     </button>
                                             </td>
                                         </tr>

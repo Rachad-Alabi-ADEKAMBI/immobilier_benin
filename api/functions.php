@@ -300,7 +300,7 @@ function getProperty() {
 
 function getNeeds(){
     $pdo = getConnexion();
-        $req = $pdo->prepare('SELECT * FROM needs');
+        $req = $pdo->prepare('SELECT * FROM needs ORDER BY id DESC');
         $req->execute(array());
         $datas = $req->fetchAll();
 
@@ -1139,7 +1139,7 @@ function deleteMyNeed(){
         ?>
             <script>
                 alert('Demande personnalisée supprimée avec succès !');
-                window.history.back();
+                window.location.replace('../index.php?action=needsPage');
             </script>
         <?php
          
@@ -1148,7 +1148,7 @@ function deleteMyNeed(){
         ?>
             <script>
                 alert("Une erreur est survenue, merci de reéssayer ou de contacter l'équipe technique si elle persiste");
-                window.history.back();
+                window.location.replace('../index.php?action=needsPage');
             </script>
         <?php
     }
