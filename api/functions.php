@@ -743,7 +743,7 @@ function updateAccount(){
         ?>
             <script>
                 alert('Veuillez confirmer le mot de passe');
-                window.location.replace('../index.php?action=dashboardPage');
+                window.location.replace('../index.php?action=accountPage');
                 exit();
             </script>
         <?php
@@ -778,7 +778,7 @@ function updateAccount(){
       ?>
       <script>
           alert('Les informations de votre compte ont été modifiées avec succès !');
-          window.location.replace('../index.php?action=dashboardPage')
+          window.location.replace('../index.php?action=accountPage')
       </script>
     <?php
 
