@@ -10,9 +10,9 @@
             <?php include 'menu.php'; ?>
 
             <div class='col-sm-12 col-md-10 mt-4 mx-auto' >
-                <div class="" v-for="detail in details" :key='detail.id'>
+                <div class="">
                     <h1 class="mx-auto text-center">
-                            Gestion de 
+
                     </h1>
 
                         <div class="mt-2 table-container" >
@@ -23,6 +23,12 @@
                         </div>
                 </div>
             </div>
+
+            <ul>
+                <li  v-for="detail in details" :key='detail.id'>
+                    {{ detail.id }}
+                </li>
+            </ul>
 
       </div>
     </div>

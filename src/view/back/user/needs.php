@@ -38,6 +38,11 @@
                                             <td data-label="Ville"> {{ detail.location }} </td>
                                             <td data-label="Client">{{ detail.user_name }} </td>
                                             <td data-label="Téléphone"> {{ detail.user_phone }} </td>
+                                            <td v-if='detail.user_id == this.user_id'>
+                                                    <button class="btn btn-danger" @click='deleteMyNeed(detail.id)'>
+                                                        Supprimer
+                                                    </button>
+                                            </td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -63,6 +68,7 @@
                     details: '',
                     currentPage: 1,
                     itemsPerPage: 5,
+                    user_id: <?= json_encode($_SESSION['user']['id']) ?>
                 },
                 mounted(){
                     this.displayAll();
@@ -105,6 +111,9 @@
                         },
                     getImgUrl(pic) {
                         return "public/img/" + pic;
+                    },
+                    deleteMyNeed(id){
+                        window.location.replace('api/script.php?action=deleteMyNeed&id='+id)
                     },
                 previousPage() {
                         if (this.currentPage > 1) {

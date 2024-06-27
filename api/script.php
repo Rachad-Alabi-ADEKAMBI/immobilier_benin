@@ -132,6 +132,10 @@ if($action == 'manageProperty'){
     manageProperty($id);
 }
 
+if($action == 'deleteMyNeed'){
+    deleteMyNeed();
+}
+
 
 
 

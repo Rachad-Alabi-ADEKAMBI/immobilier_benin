@@ -1128,6 +1128,32 @@ function deleteMyAccount(){
     }
 }
 
+function deleteMyNeed(){
+    $pdo = getConnexion();
+    $need_id = verifyInput($_GET['id']);
+
+    try {
+        $req = $pdo->prepare('DELETE FROM needs WHERE id = ?');
+        $req->execute(array($need_id));
+
+        ?>
+            <script>
+                alert('Demande personnalisée supprimée avec succès !');
+                window.history.back();
+            </script>
+        <?php
+         
+    } catch (PDOException $e) {
+         echo 'Database error: ' . $e->getMessage();
+        ?>
+            <script>
+                alert("Une erreur est survenue, merci de reéssayer ou de contacter l'équipe technique si elle persiste");
+                window.history.back();
+            </script>
+        <?php
+    }
+}
+
 
 function logout()
 {
