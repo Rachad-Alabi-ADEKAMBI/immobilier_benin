@@ -81,15 +81,15 @@
                 <div class="row mt-3">
                     <div class="col-sm-12">
                         <p class="text-left">
-                        <i class="fas fa-exclamation text-danger"></i> Faites toujours attention lors des rencontres <br>
-                        <i class="fas fa-exclamation text-danger"></i> Assurez vous que le bien appartient au vendeur <br>
-                        <i class="fas fa-exclamation text-danger"></i> Contactez notre équipe au besoin
+                        <i class="fas fa-exclamation text-danger"></i> N'envoyez jamais de l'argent à une personne que vous n'avez jamais vue.<br>
+                        <i class="fas fa-exclamation text-danger"></i> Assurez vous que le bien appartient réellement au vendeur lors d'un achat.<br>
+                        <i class="fas fa-exclamation text-danger"></i> <a href="index.php?action=contactPage">Contactez-nous </a> si vous ne savez pas comment procéder.
                         </p>
                         
                     </div>
                     <div class="col-sm-12 col-md-8 mx-auto text-center">
                         <p>
-                            Annonceur: <strong>{{detail.user_name}}</strong> <br>
+                            Annonceur: <strong>{{ capitalizeFirstLetter(detail.user_name) }}</strong> <br>
                             Contact: <strong>{{ detail.user_phone}}</strong>
 
                         </p>

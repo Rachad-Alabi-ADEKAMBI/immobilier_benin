@@ -16,16 +16,19 @@
                                 <div class="row g-3 mt-2">
                                     <p class="text text-grey">
                                         Malheureusement nous n'avons trouvé aucun résultat pour cette recherche, mais vous pouvez en faire une recherche 
-                                        personnalisée, les annonceurs de Immobilier Bénin seront alors informés que vous avez ce besoin. <br>
-                                         Il est nécéssaire de 
-                                        posséder un compte gratuit Immobilier Bénin pour cette option.
+                                        personnalisée, les annonceurs de Immobilier Bénin seront alors
+                                         informés que vous avez ce besoin. <br>
+                                        <span class="text text-danger">*</span> Il est nécéssaire de 
+                                        posséder un compte gratuit Immobilier Bénin pour cette option. <br>
+                                        <span class="text text-danger">*</span> Votre numéro de téléphone
+                                        sera partagé afin que vous soyez contacté.
                                     </p>
                                 </div>
 
                                 <div class="row-sm-12 col-md-8 mx-auto text-center">
                                         <?php if (isset($_SESSION['user']['id'])) { ?>
                                             <a class="btn btn-success m-2" href="api/script.php?action=newNeed">
-                                                Oui, créer
+                                                Oui, créer la demande
                                             </a>
                                         <?php } else { ?>
                                             <a class="btn btn-blue m-2" href="index.php?action=registerPage">

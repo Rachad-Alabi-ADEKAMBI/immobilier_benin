@@ -703,6 +703,14 @@ function updateAccount(){
         try {
             $req = $pdo->prepare('UPDATE users SET phone = ? WHERE id = ?');
             $req->execute(array($phone, $user_id));
+
+            //change phone on all ads
+            $req = $pdo->prepare('UPDATE ads SET user_phone = ? WHERE user_id = ?');
+            $req->execute(array($phone, $user_id));
+
+              //change phone on all needs
+              $req = $pdo->prepare('UPDATE needs SET user_phone = ? WHERE user_id = ?');
+              $req->execute(array($phone, $user_id));
     
            
         } catch (PDOException $e) {
