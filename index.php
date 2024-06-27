@@ -61,7 +61,13 @@ if (isset($_GET['action']) && $_GET['action'] !== '') {
     }
 
     elseif ($_GET['action'] === 'advertiserPage') {
-            advertiserPage();
+        if (isset($_GET['id']) && $_GET['id'] > 0) {
+            advertiserPage($_GET['id']);
+        } else {
+            errorPage();
+            die;
+        }   
+        
     }
     
     elseif ($_GET['action'] === 'registerPage') {

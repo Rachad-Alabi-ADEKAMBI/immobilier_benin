@@ -75,11 +75,11 @@
                         <p>
                             Partager: <br>
                                 <a href="https://wa.me/?text=bitly.com?action=advertiserPage&id=<?=$_GET['id']?>)">
-                                <i class="fab fa-whatsapp text-whatsapp"></i>
+                                <i class="fab fa-whatsapp text-whatsapp m-1"></i>
                                 </a>
 
                                 <a href="https://www.facebook.com/share.php?u=bitly.com?action=advertiserPage&id=<?=$_GET['id']?>" target="_blank">
-                                <i class="fab fa-facebook text-facebook"></i>
+                                <i class="fab fa-facebook text-facebook m-1"></i>
                                 </a>
 
                         </p>
@@ -144,6 +144,9 @@
                 getImgUrl(pic) {
                     return "./public/img/" + pic;
                 },
+                goToProperty(id){
+                        window.location.replace('index.php?action=adPage&id='+id);
+                    },
                 capitalizeFirstLetter(word) {
                     if (!word) return '';
                     return word.charAt(0).toUpperCase() + word.slice(1);
@@ -153,6 +156,9 @@
     </script>
 
     <style>
+        .item{
+            cursor: pointer;
+        }
            .image{
         width: 250px;
         height: 250px;

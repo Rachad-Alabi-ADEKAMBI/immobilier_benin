@@ -298,6 +298,26 @@ function getProperty() {
     }
 }
 
+function getSimilarProperties($id) {
+    $pdo = getConnexion();
+    $id = isset($_GET['id']) ? (int) verifyInput($_GET['id']) : 0;
+
+    $req = $pdo->prepare('SELECT * FROM ads WHERE id = ?');
+    $req->execute([$id]);
+    $datas = $req->fetchAll(PDO::FETCH_ASSOC);
+
+    $category = $datas['category'];
+    $location = $datas['location'];
+    $action = $datas['action'];
+
+    $req = $pdo->prepare('SELECT * FROM ads WHERE category = ? AND location = ? AND action = ?
+        AND id != ? ORDER BY id DESC LIMIT 3 ');
+    $req->execute(array($category, $location, $action, $id));
+
+    $datas = $req->fetchAll(PDO::FETCH_ASSOC);
+    sendJSON($datas);
+}
+
 function getNeeds(){
     $pdo = getConnexion();
         $req = $pdo->prepare('SELECT * FROM needs ORDER BY id DESC');

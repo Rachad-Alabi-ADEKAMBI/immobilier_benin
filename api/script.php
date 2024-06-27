@@ -55,6 +55,10 @@ if($action == 'getProperty'){
     getProperty();
 }
 
+if($action == 'getSimilarProperties'){
+    getSimilarProperties($id);
+}
+
 if($action == 'register'){
     register();
 }

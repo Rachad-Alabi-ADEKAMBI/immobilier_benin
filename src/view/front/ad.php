@@ -110,6 +110,50 @@
                         </div>
                     </div>
                 </div>
+
+                <div class="row mt-">
+                    <div class="col-12 text-center">
+                        <h2 class="text-center">
+                            Annonces similaires
+                        </h2>
+                    </div>
+                </div>
+
+                <div class="row content mt-1" >
+                                <div class="col-lg-4 col-md-6 wow fadeInUp item ad" data-wow-delay="0.1s " v-for="detail in ads"
+                                    :key='detail.id'>
+                                    <div class="property-item rounded overflow-hidden" @click='goToProperty(detail.id)'>
+                                        <div class="position-relative overflow-hidden">
+                                                <img class="img-fluid" :src="getImgUrl(detail.pic1)" alt="">
+                                            <div
+                                                class="bg-blue rounded text-white position-absolute start-0 top-0 m-4 py-1 px-3">
+                                                {{ detail.action }}    
+                                            </div>
+                                            <div
+                                                class="bg-white rounded-top text-blue position-absolute start-0 bottom-0 mx-4 pt-1 px-3">
+                                                {{ detail.category }}    
+                                            </div>
+                                        </div>
+                                        <div class="p-4 pb-0">
+                                            <h5 class="text-blue mb-3"> {{ format(detail.price) }} XOF </h5>
+                                            <a class="d-block h5 mb-2" href=""> {{ capitalizeFirstLetter(detail.name) }} </a>
+                                            <p><i class="fa fa-map-marker-alt text-blue me-2"></i> {{ detail.location}}</p>
+                                        </div>
+                                        <div class="d-flex border-top" v-if="detail.category != 'Terrain' && detail.category != 'Boutique'">
+                                            <small class="flex-fill text-center border-end py-2"><i class="fa fa-ruler-combined text-blue me-2"></i>{{detail.people}} ménage{{detail.people > 1 ? 's' : ''}}</small>
+                                            <small class="flex-fill text-center border-end py-2"><i class="fa fa-bed text-blue me-2"></i>{{detail.rooms}} chambre{{detail.rooms > 1 ? 's' : ''}}</small>
+                                            <small class="flex-fill text-center py-2"><i class="fa fa-bath text-blue me-2"></i>{{detail.bathrooms}} douche{{detail.bathrooms > 1 ? 's' : ''}}</small>
+                                        </div>
+
+                                        <div class="d-flex border-top" v-if="detail.category == 'Terrain' || detail.category == 'Boutique'">
+                                            <small class="flex-fill text-left border-end py-2"><i class="fa fa-ruler-combined text-blue me-2"></i>{{detail.size}}  m2</small>
+                                        </div>
+
+                                    </div>
+                                </div>
+                </div>
+
+
             </div>
         </div>
 
@@ -122,7 +166,8 @@
             el: '#app',
             data: {
                 details: [],
-                id: <?= json_encode($_GET['id']) ?>
+                id: <?= json_encode($_GET['id']) ?>,
+                ads: []
             },
             mounted(){
                 this.displayDetails();
@@ -132,7 +177,6 @@
                 displayDetails(){
                     axios.get('api/script.php?action=getProperty&id=' + this.id)
                     .then((response) => {
-                        console.log(response.data);
                         this.details = response.data;
 
                         if (this.details.length == 0) {
@@ -144,6 +188,16 @@
                         console.error(error);
                       
                     });
+
+                    axios.get('api/script.php?action=availableDatas')
+                            .then((response) => {
+                                console.log(response.data);
+                                this.ads = response.data;
+                            })
+                            .catch((error) => {
+                                console.error(error);
+                                alert('Failed to fetch datas');
+                            });
                 }, 
                 format(num){
                     return new Intl.NumberFormat('fr-FR', { maximumSignificantDigits: 3 }).format(num);
@@ -156,6 +210,9 @@
                 getImgUrl(pic) {
                     return "public/img/" + pic;
                 },
+                goToProperty(id){
+                        window.location.replace('index.php?action=adPage&id='+id);
+                    },
                 capitalizeFirstLetter(word) {
                     if (!word) return '';
                     return word.charAt(0).toUpperCase() + word.slice(1);
@@ -166,6 +223,9 @@
 </body>
 
 <style>
+    .item{
+        cursor: pointer;
+    }
     img{
         width: 80%;
         height: auto;
@@ -196,6 +256,11 @@
 
     .image img {
         height: 230px;
+    }
+
+    .content{
+        width: 95%;
+        margin: auto;
     }
 </style>
 
