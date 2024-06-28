@@ -6,7 +6,8 @@
                 <h5 class="text-white mb-4">Contactez-nous</h5>
                 <p class="mb-2"><i class="bi bi-telephone me-3 text-blue"></i>+229 96 66 36 44</p>
                 <p class="mb-2"><i class="bi bi-whatsapp me-3 text-blue"></i>+229 96 66 36 44</p>
-                <p class="mb-2"><i class="bi bi-envelope me-3 text-blue"></i> contact@immobilierbenin.com</p>
+                <p class="mb-2"><i class="bi bi-envelope me-3 text-blue"></i>contact@immobilierbenin.com</p>
+                <p class="mb-2"><i class="bi bi-facebook me-3 text-blue"></i>Immobilier Bénin</p>
             </div>
             <div class="col-lg-4 col-md-6">
                 <h5 class="text-white mb-4">Liens</h5>
