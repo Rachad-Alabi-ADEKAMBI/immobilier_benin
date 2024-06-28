@@ -31,7 +31,7 @@
                                             </a>
                                             <p>
                                                 {{ detail.description }} 
-                                                <br> <i class="fa fa-phone-alt me-1"></i> {{ detail.phone }} 
+                                                <br> <i class="bi bi-phone text-blue me-1"></i></i> {{ detail.phone }} 
                                             </p>
                                         </div>
 

@@ -18,7 +18,7 @@
                                     <div class="d-flex align-items-center bg-white rounded p-3"
                                         style="border: 1px dashed rgba(0, 185, 142, .3)">
                                         <div class="icon me-3" style="width: 45px; height: 45px;">
-                                            <i class="fa fa-envelope text-blue"></i>
+                                        <i class="bi bi-envelope text-blue"></i>
                                         </div>
                                         <span>contact@immobilierbenin.com</span>
                                     </div>
@@ -29,19 +29,19 @@
                                     <div class="d-flex align-items-center bg-white rounded p-3"
                                         style="border: 1px dashed rgba(0, 185, 142, .3)">
                                         <div class="icon me-3" style="width: 45px; height: 45px;">
-                                            <i class="fa fa-phone-alt text-blue"></i>
+                                            <i class="bi bi-phone text-blue"></i>    
                                         </div>
                                         <span>+229 96 66 36 44</span>
                                     </div>
                                 </div>
                             </div>
 
-                            <div class="col-md-6 col-lg-4 wow fadeIn" data-wow-delay="0.5s">
+                            <div class="col-md-6 col-lg-4  wow fadeIn" data-wow-delay="0.5s">
                                 <div class="bg-light rounded p-3">
                                     <div class="d-flex align-items-center bg-white rounded p-3"
                                         style="border: 1px dashed rgba(0, 185, 142, .3)">
                                         <div class="icon me-3" style="width: 45px; height: 45px;">
-                                            <i class="fa fa-whatsapp-alt text-blue"></i>
+                                        <i class="bi bi-whatsapp text-blue"></i>
                                         </div>
                                         <span>+229 96 66 36 44</span>
                                     </div>

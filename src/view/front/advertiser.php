@@ -23,7 +23,7 @@
                     <div class="col-12 text-center">
                         <p>
                                 {{ detail.description }} 
-                                 <br> <i class="fa fa-phone-alt mt-2 text-blue"></i> {{ detail.phone }} 
+                                 <br> <i class="bi bi-phone text-blue"></i> {{ detail.phone }} 
                         </p>
                     </div>
                 </div>
