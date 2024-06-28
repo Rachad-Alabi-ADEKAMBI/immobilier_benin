@@ -13,16 +13,17 @@
                 <a class="btn btn-link text-white-50"  href="index.php?action=accountPage">
                          Mon compte
                 </a>
+
+                <a class="btn btn-link text-white-50"  href="index.php?action=faqPage">
+                         FAQ
+                </a>
              
                 <a class="btn btn-link text-white-50"  href="index.php?action=aboutPage">
-                         Qui sommes nous ?
+                         Qui sommes-nous ?
                 </a>
 
                 <a class="btn btn-link text-white-50"  href="index.php?action=contactPage">
                          Contact
-                </a>
-               <a class="btn btn-link text-white-50"  href="index.php?action=faqPage">
-                         FAQ
                 </a>
                 <a class="btn btn-link text-white-50" href="index.php?action=termsPage">Conditions générales</a>
                 <a class="btn btn-link text-white-50" href="index.php?action=policyPage">Politique de confidentialité</a>
@@ -34,7 +35,7 @@
                 <div class="row g-2 pt-2">
                     <div class="col-4">
                         <img class="img-fluid rounded bg-light p-1" src="public/img/magasin1.jpg"
-                            alt="immobilier benin">
+                            alt="Achat et vente immobilier au benin">
                     </div>
                     <div class="col-4">
                         <img class="img-fluid rounded bg-light p-1" src="public/img/home3.jpeg"
