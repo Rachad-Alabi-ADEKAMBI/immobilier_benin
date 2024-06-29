@@ -300,23 +300,25 @@ function getProperty() {
 
 function getSimilarProperties($id) {
     $pdo = getConnexion();
-    $id = isset($_GET['id']) ? (int) verifyInput($_GET['id']) : 0;
+    $id = isset($_GET['id']) ? (int) verifyInput($_GET['id']) : $id; // Use $id if $_GET['id'] is not set
 
     $req = $pdo->prepare('SELECT * FROM ads WHERE id = ?');
     $req->execute([$id]);
-    $datas = $req->fetchAll(PDO::FETCH_ASSOC);
-
-    $category = $datas['category'];
-    $location = $datas['location'];
-    $action = $datas['action'];
+    $data = $req->fetch();
+  
+    $category = $data['category'];
+    $location = $data['location'];
+    $action = $data['action'];
 
     $req = $pdo->prepare('SELECT * FROM ads WHERE category = ? AND location = ? AND action = ?
-        AND id != ? ORDER BY id DESC LIMIT 3 ');
-    $req->execute(array($category, $location, $action, $id));
+        AND id != ? ORDER BY id DESC LIMIT 3');
+    $req->execute([$category, $location, $action, $id]);
 
-    $datas = $req->fetchAll(PDO::FETCH_ASSOC);
-    sendJSON($datas);
+    $similarProperties = $req->fetchAll(PDO::FETCH_ASSOC);
+    sendJSON($similarProperties);
 }
+
+
 
 function getNeeds(){
     $pdo = getConnexion();

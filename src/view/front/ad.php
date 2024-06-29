@@ -188,8 +188,9 @@
                         console.error(error);
                       
                     });
-
-                    axios.get('api/script.php?action=availableDatas')
+                    
+                    //similar ads
+                    axios.get('api/script.php?action=similarProperties&id='+this.id)
                             .then((response) => {
                                 console.log(response.data);
                                 this.ads = response.data;

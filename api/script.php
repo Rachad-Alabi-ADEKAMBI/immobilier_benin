@@ -55,7 +55,7 @@ if($action == 'getProperty'){
     getProperty();
 }
 
-if($action == 'getSimilarProperties'){
+if($action == 'similarProperties'){
     getSimilarProperties($id);
 }
 
