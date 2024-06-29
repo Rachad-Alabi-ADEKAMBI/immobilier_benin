@@ -39,7 +39,7 @@
                                             <td data-label="Ville"> {{ detail.location }} </td>
                                             <td data-label="Client">{{ detail.user_name }} </td>
                                             <td data-label="Téléphone"> {{ detail.user_phone }} </td>
-                                            <td v-if="1>0">
+                                            <td v-if="detail.user_id === user_id">
                                                     <button class="btn btn-danger" @click='deleteMyNeed(detail.id)'>
                                                     <i class="fa fa-trash m1-3 text-white "> Supprimer
                                                     </button>
