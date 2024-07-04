@@ -1,37 +1,36 @@
-<!-- Navbar Start -->
-<div class="container-fluid nav-bar bg-transparent">
-    <nav class="navbar navbar-expand-lg bg-white navbar-light py-0 px-4">
-        <a href="index.php" class="navbar-brand d-flex align-items-center text-center">
-            <div class="icon p-2 me-2">
-                <img src="public/img/logo-immo-remove.png" 
-                     alt="agence immobiliere au Bénin" style="width: 130px; height: auto;">
-            </div>
-        </a>
-        <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarCollapse">
-            <div class="navbar-nav mx-auto">
-                <a href="index.php" class="nav-item nav-link active">Accueil</a>
-                <a href="index.php?action=adsPage" class="nav-item nav-link">Annonces</a>
-                <a href="index.php?action=advertisersPage" class="nav-item nav-link">Annonceurs</a>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="#">Navbar</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
 
-                <a href="index.php?action=aboutPage" class="nav-item nav-link">Qui sommes-nous ?</a>
-                <?php if (!isset($_SESSION['user']) || !$_SESSION['user']) { ?>
-                    <a href="index.php?action=loginPage" class="nav-item nav-link">Connexion</a>
-                <?php } else {  
-                    if($_SESSION['user']['role'] == 'admin') { ?>
-                        <a href="index.php?action=dashboard_adminPage" class="nav-item nav-link">Tableau de bord</a>
-                    <?php } else { ?>
-                        <a href="index.php?action=dashboardPage" class="nav-item nav-link">Tableau de bord</a>
-                    <?php } ?>
-                    <a href="api/script.php?action=logout" class="nav-item nav-link">Déconnexion</a>
-                <?php } ?>
-            </div>
-            <a class="btn btn-primary ml-lg-3 mt-2 mt-lg-0" href="index.php?action=newAdPage">
-                NOUVELLE ANNONCE
-            </a>
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mx-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Link</a>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Dropdown
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="#">Action</a>
+          <a class="dropdown-item" href="#">Another action</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="#">Something else here</a>
         </div>
-    </nav>
-</div>
-<!-- Navbar End -->
+      </li>
+      <li class="nav-item">
+        <a class="nav-link disabled" href="#">Disabled</a>
+      </li>
+    </ul>
+    <form class="form-inline mr-0 my-lg-0">
+      <button class="btn btn-primary">
+        Nouvelle annonce
+      </button>
+    </form>
+  </div>
+</nav>
