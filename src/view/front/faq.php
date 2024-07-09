@@ -10,10 +10,8 @@
                         <h1 class="mt-4">
                             FAQ
                         </h1> 
-
-                        
                         <div class="faq">
-                                                <div v-for="(item, index) in faqItems" :key="index">
+                                  <div v-for="(item, index) in faqItems" :key="index">
                             <button @click="toggle(index)" class="accordion-header">
                                 {{ item.question }}
                             </button>
@@ -47,8 +45,8 @@
             { question: 'Comment publier une annonce sur Immobilier Bénin ?', answer: 'Inscrivez-vous, connectez-vous, puis cliquez sur "Publier une annonce" et remplissez le formulaire.' },
             { question: 'Est-ce que la publication d\'annonces est gratuite ?', answer: 'Oui, la publication d\'annonces basiques est gratuite.' },
             { question: 'Comment puis-je modifier mon annonce ?', answer: "Connectez-vous à votre compte, allez dans 'Mes annonces', puis cliquez sur 'Modifier' sur la ligne de l'annonce concerné." },
-            { question: "Combien de temps mon annonce reste-t-elle en ligne ?", answer: "Votre annonce reste en ligne jusqu'à suppression de votre." },
-            { question: 'Puis-je ajouter des photos à mon annonce ?', answer: 'Oui, vous pouvez ajouter jusqu\'à 4 photos par annonce.' },
+            { question: "Combien de temps mon annonce reste-t-elle en ligne ?", answer: "Votre annonce reste en ligne jusqu'à suppression de votre part." },
+            { question: 'Puis-je ajouter des photos à mon annonce ?', answer: 'Oui, vous pouvez ajouter jusqu\'à 9 photos par annonce.' },
             { question: "Comment contacter un vendeur ?", answer: "Vous pouvez appelez le numéro fourni dans l'annonce." },
             { question: "Immobilier Bénin offre-t-il des services de mise en avant ?", answer: "Oui, nous proposons des options pour mettre en avant vos annonces et votre profil, allez dans 'Mon compte' depuis votre tableau de bord et cochez l'option de mise en avant." }
           ]

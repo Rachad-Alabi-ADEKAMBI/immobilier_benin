@@ -7,31 +7,6 @@ $datas = sixAds();
  ob_start(); ?>
     <section class='section' >
          <div class="app" id="app">
-            <!-- Header Start 
-         <div class="container-fluid header bg-white p-0" >
-            <div class="row g-0 align-items-center flex-column-reverse
-                flex-md-row pt-5">
-                <div class="col-md-6 p-5 mt-lg-5    ">
-                    <h1 class="display-4 animated fadeIn mb-4">Trouvez <span class="text-blue">l'endroit
-                            parfait</span>
-                        pour habiter avec votre famille</h1>
-                    <p class="animated fadeIn mb-4 pb-2">
-                        Marketplace d'annonces immobilières gratuites au Bénin
-                        </p>
-                    <a href="index.php?action=adsPage" class="btn btn-blue py-3 animated fadeIn">
-                    <i class="fas fa-list me-3"></i> Voir les annonces</a>
-                </div>
-                <div class="col-md-6 animated fadeIn">
-                    <div class="owl-carousel header-carousel">
-                        <div class="owl-carousel-item">
-                            <img class="img-fluid" src="public/img/home1.jpeg" alt="">
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        < Header End -->
-
         <!--new hero-->
         <div class="hero">
                 <div class="row">
@@ -56,9 +31,6 @@ $datas = sixAds();
 
         <!--end hero-->
         
-
-      <?php include 'search2.php'; ?>
-
 
         <!--category-->
        <div class="container">

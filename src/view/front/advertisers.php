@@ -3,13 +3,13 @@
 <?php ob_start(); ?>
 
     <div class="container" id="ap">
-    <div class="row g-0 gx-5 align-items-end">
+        <div class="row g-0 gx-5 align-items-end">
                         <div class="col-sm-6 ">
                             <div class="text-start mx-auto text-center mb-5 wow slideInLeft" data-wow-delay="0.1s">
                                 <h1 class="mx-auto mb-3">Liste des agents</h1>
                             </div>
                         </div>
-                    </div>
+        </div>
                     <div class="tab-content">
                         <div id="tab-1" class="tab-pane fade show p-0 active">
                             <div class="row g-2" >
