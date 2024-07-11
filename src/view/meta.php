@@ -33,7 +33,7 @@
 <link href="public/css/more_style.css" rel="stylesheet">
 
 <meta name="robots" content="index, follow" />
-<meta name="description" content="Marketplace pour annonces immobilières">
+<meta name="description" content="Marketplace pour annonces immobilières gratuites">
 <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 
