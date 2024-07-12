@@ -6,7 +6,7 @@
             <div class="container">
                 <div class="text-center mx-auto mb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 600px;">
                     <h1 class="mb-3">Contactez-nous</h1>
-                    <p>Immobilier Bénin, un service du groupe <strong>Orizon+</strong>
+                    <p>Immobilier Bénin, un service du groupe <strong>Orizon +</strong>
                     </p>
                 </div>
                 <div class="row g-4">
@@ -94,7 +94,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+</div>
         
 <?php $content = ob_get_clean(); ?>
 
