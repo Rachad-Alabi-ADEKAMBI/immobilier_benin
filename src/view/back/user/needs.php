@@ -69,7 +69,7 @@
                     details: '',
                     currentPage: 1,
                     itemsPerPage: 5,
-                    user_id: <?= json_encode($_SESSION['user']['id']) ?>
+                    user_id: 3
                 },
                 mounted(){
                     this.displayAll();

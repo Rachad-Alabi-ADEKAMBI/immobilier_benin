@@ -315,7 +315,7 @@
                         this.showToSell = false;
                         this.showToRent = false;
                         this.showFiltered = false;
-                        axios.get('api/script.php?action=availableDatas')
+                        axios.get('availableAdsApi')
                             .then((response) => {
                                 console.log(response.data);
                                 this.details = response.data;
@@ -361,7 +361,6 @@
                         this.showToRent = false;
                         this.showFiltered = true;
                     },
-
                     format(num){
                         let res = new Intl.NumberFormat('fr-FR', { maximumSignificantDigits: 3 }).format(num);
                             return res;
@@ -370,7 +369,7 @@
                         const [datePart, timePart] = da.split(' ');
                         const [year, month, day] = datePart.split('-');
                         return `${day}-${month}-${year}`;
-                        },
+                    },
                     getImgUrl(pic) {
                         return "public/img/" + pic;
                     },
@@ -384,19 +383,19 @@
                         if (this.currentPage > 1) {
                             this.currentPage--;
                         }
-                        },
+                    },
                     nextPage() {
                         if (this.currentPage < this.totalPages) {
                             this.currentPage++;
                         }
                     },
                     gotoPage(page) {
-                    this.currentPage = page;
+                       this.currentPage = page;
                     },
                     capitalizeFirstLetter(word) {
-                    if (!word) return '';
-                    return word.charAt(0).toUpperCase() + word.slice(1);
-                }
+                        if (!word) return '';
+                        return word.charAt(0).toUpperCase() + word.slice(1);
+                    }
                 }
             });
     </script>
