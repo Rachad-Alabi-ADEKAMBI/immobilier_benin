@@ -88,7 +88,7 @@
                             const end = start + this.itemsPerPage;
                             return this.details.slice(start, end);
                             }
-            },
+                },
                 methods: {
                     displayAll(){
                         axios.get('api/script.php?action=needs')
@@ -116,19 +116,19 @@
                     deleteMyNeed(id){
                         window.location.replace('api/script.php?action=deleteMyNeed&id='+id)
                     },
-                previousPage() {
-                        if (this.currentPage > 1) {
-                            this.currentPage--;
-                        }
+                    previousPage() {
+                            if (this.currentPage > 1) {
+                                this.currentPage--;
+                            }
+                            },
+                    nextPage() {
+                            if (this.currentPage < this.totalPages) {
+                                this.currentPage++;
+                            }
                         },
-                nextPage() {
-                        if (this.currentPage < this.totalPages) {
-                            this.currentPage++;
-                        }
+                    gotoPage(page) {
+                        this.currentPage = page;
                     },
-                gotoPage(page) {
-                    this.currentPage = page;
-                },
 
                 }
             });

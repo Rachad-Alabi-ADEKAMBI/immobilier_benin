@@ -1,4 +1,4 @@
-<?php $title = 'Immobilier Benin - Nouvelle recherche personnalisée'; ?>
+<?php $title = 'Immobilier Benin  Nouvelle recherche personnalisée'; ?>
 
 <?php ob_start(); ?>
 

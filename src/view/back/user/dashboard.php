@@ -64,7 +64,7 @@
                             const end = start + this.itemsPerPage;
                             return this.details.slice(start, end);
                             }
-            },
+                },
                 watch: {
                         category() {
                         if (this.category == 'Terrain' || this.category == 'Boutique') {
@@ -82,7 +82,7 @@
                             this.showMoreLocation = false;
                         }
                         }
-                    },  
+                },  
                 methods: {
                     displayAll(){
                         this.showNew = false;
