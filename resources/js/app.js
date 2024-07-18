@@ -21,8 +21,11 @@ import Ads from './components/front/Ads.vue';
 import MyAds from './components/back/user/MyAds.vue';
 import Needs from './components/back/user/Needs.vue';
 import NewAd from './components/back/user/NewAd.vue';
+
 import Users from './components/back/admin/Users.vue';
 import Needs_admin from './components/back/admin/Needs_admin.vue';
+import AllAds from './components/back/admin/AllAds.vue';
+
 
 app.component('welcome', Welcome);
 app.component('faq', Faq);
@@ -30,7 +33,9 @@ app.component('ads', Ads);
 app.component('myads', MyAds);
 app.component('needs', Needs);
 app.component('newad', NewAd);
-app.component('users', Users);
+
+app.component('AllAds', AllAds);
 app.component('needs_admin', Needs_admin);
+app.component('users', Users);
 
 app.mount('#app');

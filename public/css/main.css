@@ -8,15 +8,26 @@ html, body {
   padding: 0;
 }
 
-.app {
-  position: relative;
-}
-.app .back-to-top {
+.back-to-top {
   background-color: #8755F1;
+  width: 60px;
+  height: 60px;
   border-radius: 30px;
   position: fixed;
-  right: 20px;
+  right: 15px;
   bottom: 5px;
+  cursor: pointer;
+  text-align: center;
+  color: white;
+}
+
+.back-to-top:hover {
+  background-color: #778CFD;
+  animation: 500ms ease-in-out;
+}
+
+.app {
+  position: relative;
 }
 
 h1 {

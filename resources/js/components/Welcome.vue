@@ -41,6 +41,7 @@
         },
     methods:{
         getAds() {
+            alert('ok');
             axios.get('api/script.php?action=sixAds')
                         .then((response) => {
                             console.log(response.data);

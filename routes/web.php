@@ -71,6 +71,8 @@ Route::get('/availableToRentApi', [AdController::class, 'availableToRentApi']);
 
 Route::get('/availableToSellApi', [AdController::class, 'availableToSellApi']);
 
+Route::get('/allAdsApi', [AdController::class, 'allAdsApi']);
+
 Route::get('/needsApi', [NeedController::class, 'needsApi']);
 
 Route::post('/search', [AdController::class, 'search']);

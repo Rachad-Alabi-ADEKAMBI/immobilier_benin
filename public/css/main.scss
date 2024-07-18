@@ -19,6 +19,23 @@ html, body{
     padding: 0;
 }
 
+.back-to-top{
+    background-color: $primary;
+    width: 60px;
+    height: 60px;
+    border-radius: 30px;
+    position: fixed;
+    right: 15px;
+    bottom: 5px;
+    cursor: pointer;
+    text-align: center;
+    color: $white;
+}
+
+.back-to-top:hover{
+    background-color: $secondary;
+    animation: 500ms ease-in-out;
+}
 
 @mixin flex($flex-direction: row){
     display: flex;
@@ -29,14 +46,6 @@ html, body{
 
 .app{
     position: relative;
-
-    .back-to-top{
-        background-color: $primary;
-        border-radius: 30px;
-        position: fixed;
-        right: 20px;
-        bottom: 5px;
-    }
 }
 
 h1{
