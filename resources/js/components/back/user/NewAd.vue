@@ -2,8 +2,7 @@
     <section class="container xxl">
         <div class="col-sm-12 col-md-8 mt-4 mx-auto">
                <!--new add-->
-                   <div class="col-sm-12 col-md-8 mt-4 mx-auto">
-                            <div class="bg-white border mt-2 rounded p-2 wow">
+                <div class="bg-white border mt-2 rounded p-2 wow">
                                 <form action="api/script.php?action=newAd" method="POST" enctype='multipart/form-data'>
                                 <span class="ml-0">
                                     <a href="/dashboard">
@@ -14,29 +13,30 @@
                                     <h1 class="mx-auto text-center">Nouvelle annonce</h1>
                                         <p class="text-center">
                                             Si vous avez des questions concernant le formulaire <br> vous pouvez
-                                            consulter <a href="index.php?action=faqPage">la FAQ</a>
+                                            consulter <a href="/faqPage">la FAQ</a>
                                         </p>
                                     <div class="row g-3">
                                         <div class="col-sm-6 col-md-6">
+                                            <label for="name">Nom <span class="red">*</span> </label>
                                             <div class="form-floating">
                                                 <input type="text" class="form-control" required name='name' placeholder="Nom">
-                                                <label for="name">Nom <span class="red">*</span> </label>
+                                                
                                             </div>
                                         </div>
 
                                         <div class="col-sm-6 col-md-6">
+                                             <label for="price">Prix <span class="red">*</span></label>
                                             <div class="form-floating">
-                                            <input type="text" class="form-control" required name='price' 
-                                            id="price" placeholder="Prix"
-                                             oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');">
-
-                                                <label for="price">Prix <span class="red">*</span></label>
+                                                <input type="text" class="form-control" required name='price' 
+                                                id="price" placeholder="Prix"
+                                                oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');">
                                             </div>
                                         </div>
                                     </div>
 
                                 <div class="row g-3 mt-3">
-                                    <div class="col-sm-4 col-md-4">
+                                    <div class="col-sm-6 col-md-4">
+                                            <label for="category">Catégorie <span class="red">*</span></label>
                                         <div class="form-floating">
                                             <select class="form-select" id="category" name="category" v-model="category" required>
                                                 <option selected>Catégorie</option>
@@ -46,22 +46,24 @@
                                                 <option value="Maison">Maison</option>
                                                 <option value="Terrain">Terrain</option>
                                             </select>
-                                            <label for="category">Catégorie <span class="red">*</span></label>
                                         </div>
                                     </div>
 
-                                    <div class="col-sm-4 col-md-4">
+                                    <div class="col-sm-6 col-md-4">
+                                           <label for="action">Action <span class="red">*</span></label>
                                         <div class="form-floating">
                                             <select class="form-select" id="action" name="action" required>
                                             <option selected>Action</option>
                                             <option value="A louer">A louer</option>
                                             <option value="A vendre">A vendre</option>
                                             </select>
-                                            <label for="action">Action <span class="red">*</span></label>
+                                         
                                         </div>
                                     </div>
 
                                     <div class="col-sm-4 col-md-4">
+
+                                        <label for="location">Ville <span class="red">*</span></label>
                                     <div class="form-floating">
                                         <select class="form-select" id="location" name="location" 
                                             v-model='location' required>
@@ -83,7 +85,6 @@
                                                 <option value="Sèmè">Sèmè</option>
                                                 <option value="other">Autre</option>
                                         </select>
-                                        <label for="location">Ville <span class="red">*</span></label>
                                     </div>
                                 </div>
                                 </div>
@@ -115,6 +116,10 @@
                                                 <option value="4">4</option>
                                                 <option value="5">5</option>
                                                 <option value="6">6</option>
+                                                <option value="7">7</option>
+                                                <option value="8">8</option>
+                                                <option value="*">9</option>
+                                                <option value="10">10</option>
                                             </select>
                                             <label for="rooms">Chambres <span class="red">*</span></label>
                                         </div>
@@ -127,6 +132,12 @@
                                                 <option value="2">2</option>
                                                 <option value="3">3</option>
                                                 <option value="4">4</option>
+                                                <option value="5">5</option>
+                                                <option value="6">6</option>
+                                                <option value="7">7</option>
+                                                <option value="8">8</option>
+                                                  <option value="9">9</option>
+                                                <option value="10">10</option>
                                             </select>
                                         
                                         </div>
@@ -144,6 +155,8 @@
                                                 <option value="6">6</option>
                                                 <option value="7">7</option>
                                                 <option value="8">8</option>
+                                                <option value="9">9</option>
+                                                <option value="10">10</option>
                                             </select>
                                         
                                         </div>
@@ -153,43 +166,81 @@
                                 <div class="row g-3 mt-3">
                                     <div class="col-sm-12 col-md-12">
                                         <div class="form-floating">
+                                         <label for="description">Description <span class="red">*</span></label>
                                             <textarea class="form-control" name='description' 
                                             required id="description" placeholder="Description"></textarea>
-                                            <label for="description">Description <span class="red">*</span></label>
+                                           
                                         </div>
                                     </div>
                                 </div>
 
                                 <div class="row g-3 mt-3">
                                     <div class="col-sm-6 col-md-3">
+
+                                            <label for="pic1">Photo 1 <span class="red">*</span></label>
                                         <div class="form-floating">
                                             <input type="file" class="form-control"  accept=".jpg, .jpeg, .png, image/*"
                                             name='pic1' id="pic1" placeholder="Photo1" required>
-                                            <label for="pic1">Photo 1 <span class="red">*</span></label>
                                         </div>
                                     </div>
 
                                     <div class="col-sm-6 col-md-3">
                                         <div class="form-floating">
+                                            <label for="pic1">Photo 2 <span class="red">*</span></label>
                                             <input type="file" class="form-control" name='pic2'  accept=".jpg, .jpeg, .png, image/*"
                                              id="pic2" placeholder="Photo2">
-                                            <label for="pic2">Photo 2</label>
                                         </div>
                                     </div>
 
                                     <div class="col-sm-6 col-md-3">
                                         <div class="form-floating">
+                                            <label for="pic1">Photo 3 <span class="red">*</span></label>
                                             <input type="file" class="form-control" name='pic3'  accept=".jpg, .jpeg, .png, image/*"
                                              id="pic3" placeholder="Photo3">
-                                            <label for="pic3">Photo 3</label>
                                         </div>
                                     </div>
 
                                     <div class="col-sm-6 col-md-3">
+                                            <label for="pic1">Photo 4 <span class="red">*</span></label>
                                         <div class="form-floating">
                                             <input type="file" class="form-control" name='pic4'  accept=".jpg, .jpeg, .png, image/*"
                                              id="pic4" placeholder="Photo4">
-                                            <label for="pic4">Photo 4</label>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                                <div class="row g-3 mt-3">
+                                    <div class="col-sm-6 col-md-3">
+
+                                            <label for="pic1">Photo 1 <span class="red">*</span></label>
+                                        <div class="form-floating">
+                                            <input type="file" class="form-control"  accept=".jpg, .jpeg, .png, image/*"
+                                            name='pic1' id="pic1" placeholder="Photo1" required>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-sm-6 col-md-3">
+                                        <div class="form-floating">
+                                            <label for="pic1">Photo 8 <span class="red">*</span></label>
+                                            <input type="file" class="form-control" name='pic2'  accept=".jpg, .jpeg, .png, image/*"
+                                             id="pic2" placeholder="Photo2">
+                                        </div>
+                                    </div>
+
+                                    <div class="col-sm-6 col-md-3">
+                                        <div class="form-floating">
+                                            <label for="pic1">Photo 9 <span class="red">*</span></label>
+                                            <input type="file" class="form-control" name='pic3'  accept=".jpg, .jpeg, .png, image/*"
+                                             id="pic3" placeholder="Photo3">
+                                        </div>
+                                    </div>
+
+                                    <div class="col-sm-6 col-md-3">
+                                            <label for="pic1">Photo 8 <span class="red">*</span></label>
+                                        <div class="form-floating">
+                                            <input type="file" class="form-control" name='pic4'  accept=".jpg, .jpeg, .png, image/*"
+                                             id="pic4" placeholder="Photo4">
                                         </div>
                                     </div>
                                 </div>
@@ -200,8 +251,7 @@
                                     </div>
                                 </div>
                             </form>
-                        </div>
-                    </div>
+                </div>
         </div>
     </section>
 </template> 
