@@ -355,6 +355,11 @@ ul li {
   text-align: justify;
 }
 
+.table img {
+  width: 90px;
+  height: 50px;
+}
+
 .footer {
   background-color: #0E2E50;
   color: white;
