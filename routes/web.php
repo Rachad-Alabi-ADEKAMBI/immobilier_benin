@@ -36,8 +36,8 @@ Route::get('/newAd', function () {
     return view('pages/back/user/newAd');
 })->name('newAd');;
 
-Route::post('newAd', [AdController::class, 'create'])
-    ->name('newAd.create');
+Route::post('newAdApi', [AdController::class, 'create'])
+    ->name('newAdApi.create');
 
 Route::get('/needs', function () {
     return view('pages/back/user/needs');
@@ -78,6 +78,8 @@ Route::get('/needsApi', [NeedController::class, 'needsApi']);
 Route::post('/search', [AdController::class, 'search']);
 
 Route::get('/usersApi', [UserController::class, 'usersApi']);
+
+Route::get('/adApi/{id}', [AdController::class, 'adApi']);
 
 
 Route::middleware(['auth:sanctum', 'verified'])->group(function () {

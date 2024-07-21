@@ -24,7 +24,7 @@
                                     </thead>
                                     <tbody>
                                         <tr v-for='detail in paginatedData' :key='detail.id'>
-                                            <td data-label="Date"> {{ formatDate(detail.created_at) }} </td>
+                                            <td data-label="Date"> {{detail.created_at }} </td>
                                             <td data-label="Catégorie">{{ detail.category}}</td>
                                             <td data-label="Action">{{ detail.action }} </td>
                                             <td data-label="Ville"> {{ detail.location }} </td>

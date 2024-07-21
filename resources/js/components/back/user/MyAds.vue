@@ -40,15 +40,15 @@
                                 </td>
                                 <td data-label="Actions">
                                     <button class="btn btn-warning m-1 text-white" @click="displayEdit(detail.id)">
-                                        <i class="fa fa-pen m1-3 text-white"></i> Modifier
+                                        <i class="fa fa-pen m-1 text-white"></i> Modifier
                                     </button>
 
                                      <button class="btn btn-danger m-1 text-red" @click="displayDelete(detail.id)">
-                                        <i class="fa fa-pen m1-3 text-white"></i> Supprimer
+                                        <i class="fa fa-trash m-1 text-white"></i> Supprimer
                                     </button>
 
                                      <button class="btn btn-info m-1 text-white" @click="goToProperty(detail.id)">
-                                         <i class="fa fa-eye me-3 text-white"></i> Voir
+                                         <i class="fa fa-eye m-1 text-white"></i> Voir
                                     </button>
                                 </td>
                             </tr>
@@ -59,63 +59,65 @@
             </div>
 
             <div class="col-sm-12 col-md-8 mt-4 mx-auto" v-if='showEdit'>
-                <div class="bg-white border mt-2 rounded p-2 wow fadeInUp" data-wow-delay="0.5s"  v-for="detail in details" :key='detail.id'>
-                                    <form action="/editAd/" method="POST" >
-                                            <span class="mx-0" @click="displayAll()">
-                                                <i class="fa fa-times me-3 text-blue"></i>
-                                                </span>
+                <div class="bg-white border mt-2 rounded p-2 wow fadeInUp">
+                    <form @submit.prevent="editAd">
+                        <span class="mx-0" @click="displayAll()">
+                            <i class="fa fa-times me-3 text-blue"></i>
+                        </span>
 
-                                            <h1 class="mx-auto text-center">Modifier "{{ detail.name }}"</h1>
-                                            <div class="row g-3">
-                                                <div class="col-sm-6 col-md-6">
-                                                    <div class="form-floating">
-                                                    <input type="text" class="form-control" id="name" name="name" 
-                                                    placeholder="Nom">
-                                                        <label for="name">Nom</label>
-                                                    </div>
-                                                </div>
+                        <h1 class="mx-auto text-center">Modifier "{{ currentDetail.name }}"</h1>
+                        <div class="row g-3">
+                            <div class="col-sm-6 col-md-6">
+                                <div class="form-floating">
+                                    <input type="text" class="form-control" v-model="currentDetail.name" id="name" placeholder="Nom">
+                                    <label for="name">Nom</label>
+                                </div>
+                            </div>
 
-                                                <div class="col-sm-6 col-md-6">
-                                                    <div class="form-floating">
-                                                    <input type="text" class="form-control"  
-                                                    name='price' id="price" placeholder="Prix"
-                                                    oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');">
+                            <div class="col-sm-6 col-md-6">
+                                <div class="form-floating">
+                                    <input type="text" class="form-control" v-model="currentDetail.price" id="price" placeholder="Prix"
+                                        oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');">
+                                    <label for="price">Prix</label>
+                                </div>
+                            </div>
+                        </div>
 
-                                                        <label for="price">Prix</label>
-                                                    </div>
-                                                </div>
-                                            </div>
+                        <div class="row g-3 mt-3">
+                            <div class="col-sm-12 col-md-12">
+                                <div class="form-floating">
+                                    <textarea class="form-control" v-model="currentDetail.description" id="description" placeholder="Description"></textarea>
+                                    <label for="description">Description</label>
+                                </div>
+                            </div>
+                        </div>
 
-                                            <div class="row g-3 mt-3">
-                                                <div class="col-sm-12 col-md-12">
-                                                    <div class="form-floating">
-                                                        <textarea class="form-control" name='description' 
-                                                        id="description" placeholder="Description"></textarea>
-                                                        <label for="description">Description</label>
-                                                    </div>
-                                                </div>
-                                            </div>
+                        <div class="row g-3 mt-4">
+                            <div class="col-sm-12 col-md-4 mx-auto text-center">
+                                <button class="btn btn-blue w-100 py-3" type="submit">Valider</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
 
-                                            <div class="row g-3 mt-3">
-                                                @for($i = 0; $i < 11; $i++)
-                                                    <div class="col-sm-6 col-md-3">
-                                                        <div class="form-floating">
-                                                            <input type="file" class="form-control" accept=".jpg, .jpeg, .png, image/*"
-                                                                name="pic{{ $i }}" id="pic{{ $i }}" placeholder="Photo{{ $i }}">
-                                                            <label for="pic{{ $i }}">Photo {{ $i }}</label>
-                                                        </div>
-                                                    </div>
-                                                @endfor
-                                            </div>
+             <div class="col-sm-12 col-md-8 mt-4 mx-auto" v-if="showDelete">
+                <div class="bg-white border mt-2 rounded p-sm-3 m-3 p-3 wow">
+                    <form @submit.prevent="deleteAd">
+                        <h1 class="mx-auto text-center">Suppression de l'annonce</h1>
 
-                                            
+                        <div class="row g-3 mt-2">
+                            <p class="text text-grey">
+                               Souhaitez-vous réellement supprimer cette annonce ? <br>
+                               Attention, cette action est irréversible.
+                            </p>
+                        </div>
 
-                                            <div class="row g-3 mt-4">
-                                                <div class="col-sm-12 col-md-4 mx-auto text-center">
-                                                    <button class="btn btn-blue w-100 py-3" type="submit">Valider</button>
-                                                </div>
-                                            </div>
-                                        </form>
+                        <div class="row-sm-12 col-md-8 mx-auto text-center">
+                            <button class="btn btn-primary m-2" @click="displayAll">Non</button>
+                            <button class="btn btn-danger m-2" type="submit">Oui, supprimer</button>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>
@@ -134,11 +136,13 @@ export default {
         return {
             showNew: false,
             showAll: false,
-            details: [],
+            showDelete: false,
             showEdit: false,
-            location: '',
+            details: [],
+            currentDetail: {},
+            currentId: '',
             currentPage: 1,
-            itemsPerPage: 5
+            itemsPerPage: 5,
         };
     },
     mounted() {
@@ -158,26 +162,56 @@ export default {
         displayAll() {
             axios.get('/myAdsApi')
                 .then((response) => {
-                    console.log(response.data);
                     this.details = response.data;
                     this.showAll = true;
+                    this.showDelete = false;
+                    this.showEdit = false;
                 })
                 .catch((error) => {
                     console.error(error);
                     alert('Failed to fetch data');
                 });
         },
-        displayEdit(id) {
-            axios.get(`/adApi/${id}`)
+       displayEdit(id) {
+         this.currentId = id;
+         this.showEdit = true;
+         this.showDelete = false;
+         axios.get(`/adApi/${id}`)
+            .then((response) => {
+                this.currentDetail = response.data;
+                this.showAll = false;
+            })
+            .catch((error) => {
+                console.error(error);
+                alert('Failed to fetch data');
+            });
+        },
+        displayDelete(id) {
+            this.currentId = id;
+            this.showDelete = true;
+            this.showAll = false;
+            this.showEdit = false;
+        },
+        editAd() {
+            axios.put(`/adApi/${this.currentId}`, this.currentDetail)
                 .then((response) => {
-                    console.log(response.data);
-                    this.details = response.data;
-                    this.showAll = false;
-                    this.showEdit = true;
+                    alert('Annonce modifiée avec succès');
+                    this.displayAll();
                 })
                 .catch((error) => {
                     console.error(error);
-                    alert('Failed to fetch data');
+                    alert('Failed to update ad');
+                });
+        },
+        deleteAd() {
+            axios.delete(`/adApi/${this.currentId}`)
+                .then((response) => {
+                    alert('Annonce supprimée avec succès');
+                    this.displayAll();
+                })
+                .catch((error) => {
+                    console.error(error);
+                    alert('Failed to delete ad');
                 });
         },
         format(num) {
@@ -185,15 +219,6 @@ export default {
         },
         getImgUrl(pic) {
             return `img/ads/${pic}`;
-        },
-        pause(id) {
-            window.location.replace(`./api/script.php?action=pause&id=${id}`);
-        },
-        play(id) {
-            window.location.replace(`./api/script.php?action=play&id=${id}`);
-        },
-        remove(id) {
-            window.location.replace(`./api/script.php?action=delete&id=${id}`);
         },
         goToProperty(id) {
             window.location.replace(`ad/${id}`);
@@ -214,10 +239,11 @@ export default {
         capitalizeFirstLetter(word) {
             if (!word) return '';
             return word.charAt(0).toUpperCase() + word.slice(1);
-        },
-        manage(id) {
-            window.location.replace(`index.php?action=managePage&id=${id}`);
         }
     }
 };
 </script>
+
+<style scoped>
+/* Add your scoped styles here */
+</style>
