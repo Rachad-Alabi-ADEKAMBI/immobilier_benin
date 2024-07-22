@@ -19,6 +19,8 @@ import Welcome from './components/Welcome.vue';
 import Faq from './components/Faq.vue';
 import Ads from './components/front/Ads.vue';
 import MyAds from './components/back/user/MyAds.vue';
+import Advertisers from './components/front/advertisers.vue';
+
 import Needs from './components/back/user/Needs.vue';
 import NewAd from './components/back/user/NewAd.vue';
 
@@ -30,6 +32,8 @@ import AllAds from './components/back/admin/AllAds.vue';
 app.component('welcome', Welcome);
 app.component('faq', Faq);
 app.component('ads', Ads);
+app.component('advertisers', Advertisers);
+
 app.component('myads', MyAds);
 app.component('needs', Needs);
 app.component('newad', NewAd);
