@@ -74,7 +74,16 @@
                                         </div>
                                     </div>
 
-                                        <div class="col-sm-12 mt-5 text-center">
+                                    <div class="row-g-3">
+                                        <div class="col-12 text-center mt-4 ml-0">
+                                            <label for="terms">
+                                                <input type="checkbox" class="mr-1" id="terms" name="terms" required>
+                                                J'ai lu et j'accepte les <a href="{{ url('termsPage') }}">CGU</a>
+                                            </label>
+                                        </div>
+                                    </div>
+
+                                        <div class="col-sm-12 mt-2 text-center">
                                             <button class="btn btn-primary w-50 py-3 " type="submit">
                                                 Incription
                                             </button> 

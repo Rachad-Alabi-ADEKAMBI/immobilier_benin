@@ -9,18 +9,8 @@
                                 <p class="text text-left">Des dizaines d'annonces gratuites chaque jour</p>
                             </div>
 
-                            <div class="text-start mx-auto text-left mb-5 wow slideInLeft" data-wow-delay="0.1s" v-if='showToSell'>
-                                <h1 class="mx-auto mb-3">Annonces de vente</h1>
-                                <p class="text text-left">Des dizaines d'annonces gratuites chaque jour</p>
-                            </div>
-
-                            <div class="text-start mx-auto text-left mb-5 wow slideInLeft" data-wow-delay="0.1s" v-if='showToRent'>
-                                <h1 class="mx-auto mb-3">Annonces de location</h1>
-                                <p class="text text-left">Des dizaines d'annonces gratuites chaque jour</p>
-                            </div>
-
                             <div class="text-start mx-auto text-left mb-5 wow slideInLeft" data-wow-delay="0.1s" v-if='showFiltered'>
-                                <h1 class="mx-auto mb-3">Résultats du tri</h1>
+                                <h1 class="mx-auto mb-3">Annonceurs par ville</h1>
                                 <p class="text text-left">
                                     Annonces avec un prix inférieur à
                                     <strong>{{ format(rangeValue) }} XOF</strong>
@@ -45,40 +35,29 @@
                             </ul>
                         </div>
                     </div>
-
+                    
                     <div class="tab-content">
                         <div id="tab-1" class="tab-pane fade show p-0  active" v-if='showAll'>
                             <div class="row g-4" >
                                 <div class="col-lg-4 col-md-6 wow fadeInUp item ad" data-wow-delay="0.1s " v-for="detail in paginatedData"
                                     :key='detail.id'>
-                                    <div class="property-item rounded overflow-hidden" @click='goToProperty(detail.id)'>
-                                        <div class="position-relative overflow-hidden">
-                                                <img class="img-fluid" :src="getImg(detail.pic1)" alt="">
-                                            <div
-                                                class="bg-blue rounded text-white position-absolute start-0 top-0 m-4 py-1 px-3">
-                                                {{ detail.action }}    
-                                            </div>
-                                            <div
-                                                class="bg-white rounded-top text-blue position-absolute start-0 bottom-0 mx-4 pt-1 px-3">
-                                                {{ detail.category }}    
-                                            </div>
+                                     <div class="property-item rounded overflow-hidden" >
+                                        <div class="position-relative overflow-hidden text-center">
+                                                <img class="img-fluid image" src="" alt="annonces immobilieres au Benin">
+                                            
                                         </div>
                                         <div class="p-4 pb-0">
-                                            <h5 class="text-blue mb-3"> {{ format(detail.price) }} XOF </h5>
-                                            <a class="d-block h5 mb-2" href=""> {{ capitalizeFirstLetter(detail.name) }} </a>
-                                            <p><i class="fa fa-map-marker-alt text-blue me-2"></i> {{ detail.location}}</p>
-                                        </div>
-                                        <div class="d-flex border-top" v-if="detail.category != 'Terrain' && detail.category != 'Boutique'">
-                                            <small class="flex-fill text-center border-end py-2"><i class="fa fa-ruler-combined text-blue me-2"></i>{{detail.people}} ménage{{detail.people > 1 ? 's' : ''}}</small>
-                                            <small class="flex-fill text-center border-end py-2"><i class="fa fa-bed text-blue me-2"></i>{{detail.rooms}} chambre{{detail.rooms > 1 ? 's' : ''}}</small>
-                                            <small class="flex-fill text-center py-2"><i class="fa fa-bath text-blue me-2"></i>{{detail.bathrooms}} douche{{detail.bathrooms > 1 ? 's' : ''}}</small>
-                                        </div>
-
-                                        <div class="d-flex border-top" v-if="detail.category == 'Terrain' || detail.category == 'Boutique'">
-                                            <small class="flex-fill text-left border-end py-2"><i class="fa fa-ruler-combined text-blue me-2"></i>{{detail.size}}  m2</small>
+                                            <h5 class="text-blue mb-3">  {{ detail.first_name }}    {{ detail.last_name }}   </h5>
+                                            <p class="d-block h5 mb-2" >
+                                                {{ detail.ads }} annonce{{ detail.ads > 0 ? 's' : '' }}
+                                            </p>
+                                            <p>
+                                                {{ detail.description }} 
+                                                <br> <i class="bi bi-phone text-blue me-1"></i> {{ detail.phone }} 
+                                            </p>
                                         </div>
 
-                                    </div>
+                                     </div>
                                 </div>
                             </div>
                         </div>
@@ -101,7 +80,7 @@
                                         </div>
                                         <div class="p-4 pb-0">
                                             <h5 class="text-blue mb-3"> {{ format(detail.price) }} XOF </h5>
-                                            <a class="d-block h5 mb-2" href=""> {{ capitalizeFirstLetter(detail.name) }} </a>
+                                            <p class="d-block h5 mb-2" href=""> {{ capitalizeFirstLetter(detail.name) }} </p>
                                             <p><i class="fa fa-map-marker-alt text-blue me-2"></i> {{ detail.location}}</p>
                                         </div>
                                         <div class="d-flex border-top" v-if="detail.category != 'Terrain' && detail.category != 'Boutique'">
@@ -120,10 +99,9 @@
 
                             
                         </div>
-                    </div>
 
-                    <!--pagination-->
-                     <div class="row mt">
+                        <!--pagination-->
+                         <div class="row mt">
                                 <div class="col-12 text-center">
                                     <nav aria-label="Page navigation mx-auto">
                                         <ul class="pagination">
@@ -139,7 +117,8 @@
                                         </ul>
                                     </nav>
                                 </div>
-                            </div>
+                        </div>
+                    </div>
             </div>
     </div>
 </template> 

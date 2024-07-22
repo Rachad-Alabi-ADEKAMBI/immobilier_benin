@@ -27,9 +27,13 @@ class UserController extends Controller
 
     public function advertisersApi()
     {
-        $data = User::orderByDesc('id')->get();
+        $datas = User::orderByDesc('id')->get();
 
-        return response()->json($data);
+        $datas = User::where('featured', 'yes')
+        ->orderByDesc('id')
+        ->get();
+
+        return response()->json($datas);
     }
 }
 
