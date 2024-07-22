@@ -65,6 +65,8 @@ Route::get('/needs_admin', function () {
 
 Route::get('/myAdsApi', [AdController::class, 'myAdsApi']);
 
+Route::get('/advertisersApi', [UserController::class, 'advertisersApi']);
+
 Route::get('/availableAdsApi', [AdController::class, 'availableAdsApi']);
 
 Route::get('/availableToRentApi', [AdController::class, 'availableToRentApi']);

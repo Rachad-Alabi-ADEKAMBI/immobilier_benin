@@ -24,5 +24,12 @@ class UserController extends Controller
 
         return response()->json($data);
     }
+
+    public function advertisersApi()
+    {
+        $data = User::orderByDesc('id')->get();
+
+        return response()->json($data);
+    }
 }
 

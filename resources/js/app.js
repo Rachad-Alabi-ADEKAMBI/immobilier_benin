@@ -19,7 +19,7 @@ import Welcome from './components/Welcome.vue';
 import Faq from './components/Faq.vue';
 import Ads from './components/front/Ads.vue';
 import MyAds from './components/back/user/MyAds.vue';
-import Advertisers from './components/front/advertisers.vue';
+import Advertisers from './components/front/Advertisers.vue';
 
 import Needs from './components/back/user/Needs.vue';
 import NewAd from './components/back/user/NewAd.vue';
