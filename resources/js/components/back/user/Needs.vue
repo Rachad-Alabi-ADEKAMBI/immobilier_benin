@@ -10,7 +10,8 @@
                             Si oui, vous pouvez contacter les demandeurs.
                          </p>
 
-                        <div class="mt-2table-container" v-if='details.length > 0'>
+                       <div class="table mt-3 mx-auto">
+                             <div class="mt-2 table-container table-bordered mx-auto text-center" v-if='details.length > 0'>
                                 <table>
                                     <thead>
                                         <tr>
@@ -38,7 +39,8 @@
                                         </tr>
                                     </tbody>
                                 </table>
-                            </div>
+                        </div>
+                       </div>
             </div>
     </section>
 </template> 

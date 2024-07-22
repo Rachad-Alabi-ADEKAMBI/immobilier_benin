@@ -10,14 +10,15 @@
                     Vous n'avez publié aucune annonce pour l'instant
                 </p>
 
-               <div class="table mt-3">
-                     <div class="table-container" v-if='details.length > 0'>
+               <div class="table mt-3 mx-auto">
+                     <div class="table-container table-bordered mx-auto text-center" v-if='details.length > 0'>
                     <table>
                         <thead>
                             <tr>
                                 <th>Nom</th>
                                 <th>Image</th>
                                 <th>Statut</th>
+                                 <th>Vues</th>
                                 <th>Actions</th>
                             </tr>
                         </thead>
@@ -25,7 +26,7 @@
                             <tr v-for='detail in paginatedData' :key='detail.id'>
                                 <td data-label="Nom">{{ capitalizeFirstLetter(detail.name) }}</td>
                                 <td data-label="Image">
-                                    <img :src='getImgUrl(detail.pic1)' alt="">
+                                    <img :src='getImgUrl(detail.pic1)' alt="annonces immobilieres au benin">
                                 </td>
                                 <td data-label="Statut">
                                     <p class="text-success" v-if="detail.situation === 'Disponible'">
@@ -38,6 +39,8 @@
                                         {{ detail.situation }}
                                     </p>
                                 </td>
+                                   <td data-label="Nom">{{ capitalizeFirstLetter(detail.name) }}</td>
+                            
                                 <td data-label="Actions">
                                     <button class="btn btn-warning m-1 text-white" @click="displayEdit(detail.id)">
                                         <i class="fa fa-pen m-1 text-white"></i> Modifier
@@ -91,6 +94,25 @@
                                 </div>
                             </div>
                         </div>
+
+                                 <div class="row g-3 mt-3">
+            <!-- Only the first image is required -->
+            <div class="col-sm-6 col-md-3">
+              <label for="pic1">Photo<span class="red">*</span></label>
+              <div class="form-floating">
+                <input type="file" class="form-control" accept=".jpg, .jpeg, .png, image/*" name="pic1" id="pic1" placeholder="Photo1" required>
+              </div>
+            </div>
+            <!-- Start at the second image but not required -->
+            <div class="col-sm-6 col-md-3" v-for="i in 11" :key="i + 1">
+              <label :for="'pic' + (i + 1)">Photo {{ i + 1 }}</label>
+              <div class="form-floating">
+                <input type="file" class="form-control" accept=".jpg, .jpeg, .png, image/*" :name="'pic' + (i + 1)" :id="'pic' + (i + 1)" placeholder="Photo {{ i + 1 }}">
+              </div>
+            </div>
+          </div>
+
+                        
 
                         <div class="row g-3 mt-4">
                             <div class="col-sm-12 col-md-4 mx-auto text-center">
@@ -245,5 +267,7 @@ export default {
 </script>
 
 <style scoped>
-/* Add your scoped styles here */
+    .table{
+        margin: auto;
+    }
 </style>

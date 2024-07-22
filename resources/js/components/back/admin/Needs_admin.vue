@@ -10,7 +10,8 @@
                             Si oui, vous pouvez contacter les demandeurs.
                          </p>
 
-                        <div class="mt-2table-container" v-if='details.length > 0'>
+                       <div class="table mt-3 mx-auto">
+                             <div class="mt-2 table-container table-bordered mx-auto text-center" v-if='details.length > 0'>
                                 <table>
                                     <thead>
                                         <tr>
@@ -24,7 +25,7 @@
                                     </thead>
                                     <tbody>
                                         <tr v-for='detail in paginatedData' :key='detail.id'>
-                                            <td data-label="Date"> {{ formatDate(detail.date_of_insertion) }} </td>
+                                            <td data-label="Date"> {{detail.created_at }} </td>
                                             <td data-label="Catégorie">{{ detail.category}}</td>
                                             <td data-label="Action">{{ detail.action }} </td>
                                             <td data-label="Ville"> {{ detail.location }} </td>
@@ -38,7 +39,8 @@
                                         </tr>
                                     </tbody>
                                 </table>
-                            </div>
+                        </div>
+                       </div>
             </div>
     </section>
 </template> 
@@ -93,11 +95,17 @@
                         let res = new Intl.NumberFormat('fr-FR', { maximumSignificantDigits: 3 }).format(num);
                             return res;
                     },
-                    formatDate(da) {
-                        const [datePart, timePart] = da.split(' ');
-                        const [year, month, day] = datePart.split('-');
-                        return `${day}-${month}-${year}`;
-                        },
+                    formatDate(dateString) {
+                                // Split the date string to extract the date and time parts
+                                const [day, timeWithYear] = dateString.split('T');
+                                const [time, rest] = timeWithYear.split('Z');
+                                const [month, year] = rest.split('-');
+
+                                // Format the date as dd/mm/yy
+                                const formattedDate = `${day}/${month}/${year.slice(-2)}`;
+
+                                return formattedDate;
+                            },
                     deleteMyNeed(id){
                         window.location.replace('delete/'+id)
                     },

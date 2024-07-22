@@ -5,13 +5,9 @@
                          <h1 class="mx-auto text-center">
                             Utilisateurs ({{details.length}})
                          </h1>
-                        
-                         <div class="search">
-                            <label for="">
-                                <input type="search">
-                            </label>
-                         </div>
-                         <div class="table-container">
+                         
+                         <div class="table m-3 mx-auto">
+                            <div class="table-container table-boredered mx-auto">
                                <table>
                                     <thead>
                                                             <tr>
@@ -26,7 +22,7 @@
                                     </thead>    
                                                         <tbody>
                                                             <tr v-for='detail in paginatedData' :key='detail.id'>
-                                                            <td data-label="Date">{{ formatDate(detail.date_of_insertion) }}</td>
+                                                            <td data-label="Date">{{ formatDate(detail.created_at) }}</td>
                                                             <td data-label="Email">{{ detail.email }}  </td>
                                                             <td data-label="Phone">{{ detail.phone }}  </td>
                                                             <td data-label="Full name">{{ detail.first_name }} {{ detail.last_name}}  </td>
@@ -65,6 +61,7 @@
                                                             </tr>
                                                         </tbody>
                                 </table>
+                        </div> 
                         </div>
             </div>
             </div>

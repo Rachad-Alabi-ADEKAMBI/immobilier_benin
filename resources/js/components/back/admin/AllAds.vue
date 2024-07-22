@@ -3,65 +3,54 @@
          <div class="row" id='myads'>
             <div class='col-sm-12 col-md-12  mt-4 mx-auto' data-wow-delay="0.5s" v-if='showAll' >
                          <h1 class="mx-auto text-center">
-                            Mes annonces ({{ this.details.length}})
+                            Toutes les annonces ({{ this.details.length}})
                          </h1>
 
-                         <p class="text text-bold text-grey text-center" v-if='details.length == 0 '>
-                            Vous n'avez publié aucune annonce pour l'instant
-                         </p>
-
                         <div class="mt-2 table-container" v-if='details.length > 0'>
-                                <table>
-                                    <thead>
-                                        <tr>
-                                            <th>Date</th>
-                                            <th>Nom</th>
-                                            <th>Prix</th>
-                                            <th>Image</th>
-                                            <th>Statut</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr v-for='detail in paginatedData' :key='detail.id'>
-                                            <td data-label="Date"> {{ formatDate(detail.date_of_insertion) }} </td>
-                                            <td data-label="Nom">{{ capitalizeFirstLetter(detail.name) }}</td>
-                                            <td data-label="Prix"> {{ format(detail.price) }} XOF </td>
-                                            <td data-label="Image">
-                                                <img :src='getImgUrl(detail.pic1)' alt="">
-                                            </td>
-                                            <td data-label="Statut" > 
-                                                <p class="text-success" v-if="detail.situation =='Disponible'">
-                                                        {{ detail.situation }}
-                                                </p>  
-                                                
-                                                <p class="text-danger" v-if="detail.situation =='Stop'">
-                                                        Désactivé par l'administrateur
-                                                </p> 
-                                                
-                                                <p class="text-warning" v-if="detail.situation =='Non disponible'">
-                                                        {{ detail.situation }}
-                                                </p>   
-                                            </td>
-                                           
-                                            <td data-label="">
+                                <div class="table mt-3 mx-auto">
+                                    <div class="table-container table-bordered mx-auto text-center" v-if='details.length > 0'>
+                                            <table>
+                                                <thead>
+                                                    <tr>
+                                                        <th>Nom</th>
+                                                        <th>Image</th>
+                                                        <th>Statut</th>
+                                                        <th>Annonceur</th>
+                                                        <th>Actions</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr v-for='detail in paginatedData' :key='detail.id'>
+                                                        <td data-label="Nom">{{ capitalizeFirstLetter(detail.name) }}</td>
+                                                        <td data-label="Image">
+                                                            <img :src='getImgUrl(detail.pic1)' alt="annonces immobilieres au benin">
+                                                        </td>
+                                                        <td data-label="Statut">
+                                                            <p class="text-success" v-if="detail.situation === 'Disponible'">
+                                                                {{ detail.situation }}
+                                                            </p>
+                                                        </td>
+                                                        <td data-label="Annonceur">{{ capitalizeFirstLetter(detail.user_name) }}</td>
+                                                    
+                                                        <td data-label="Actions">
+                                                            <button class="btn btn-warning m-1 text-white" @click="displayEdit(detail.id)">
+                                                                <i class="fa fa-pause m-1 text-white"></i> Pause
+                                                            </button>
 
-                                                <button class="btn btn-warning m-1 text-white" @click="manage(detail.id)" 
-                                                    v-if="detail.situation == 'Disponible'">
-                                                    <i class="bi bi-building"></i> Gérer
-                                                </button>
+                                                            <button class="btn btn-danger m-1 text-red" @click="displayDelete(detail.id)">
+                                                                <i class="fa fa-trash m-1 text-white"></i> Supprimer
+                                                            </button>
 
-                                                <button class="btn btn-info m-1 text-white" @click="displayEdit(detail.id)">
-                                                <i class="fa fa-pen m1-3 text-white "></i> Modifier
-                                                </button>
-
-                                                <span @click="goToProperty(detail.id)">
-                                                <i class="fa fa-eye me-3 text-blue"></i>
-                                                </span>
-                                            </td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                        </div>
+                                                            <button class="btn btn-info m-1 text-white" @click="goToProperty(detail.id)">
+                                                                <i class="fa fa-eye m-1 text-white"></i> Voir
+                                                            </button>
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
             </div>
         </div>
     </section>
@@ -101,15 +90,13 @@
                 },  
                 methods: {
                     displayAll(){
-                        alert('ok');
-                        axios.get('/myAdsApi')
+                        axios.get('/allAdsApi')
                             .then((response) => {
                                 console.log(response.data);
                                 this.details = response.data;
                             })
                             .catch((error) => {
                                 console.error(error);
-                                alert('Failed to fetch datas');
                             });
                         
                             this.showAll = true;

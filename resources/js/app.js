@@ -38,7 +38,7 @@ app.component('myads', MyAds);
 app.component('needs', Needs);
 app.component('newad', NewAd);
 
-app.component('AllAds', AllAds);
+app.component('allads', AllAds);
 app.component('needs_admin', Needs_admin);
 app.component('users', Users);
 
