@@ -1,5 +1,5 @@
-<p class="text text-center">
-    Bonjourr <strong>
+<p class="text text-center pt-2">
+    Bonjour <strong>
         {{ ucfirst(auth()->user()->first_name) }}
     </strong> 
 </p>

@@ -13,13 +13,13 @@
             </div>
             <div class="row">
                 <div class="col-sm-12 col-md-12 mx-auto text-center main-img">
-                    <img src="{{ url('img/' . $datas_first->pic1) }}" alt="appartement a louer a cotonou">
+                    <img src="{{ asset('/img/ads/' . $datas_first->pic1) }}" alt="appartement a louer a cotonou">
                 </div>
             </div>
 
             <div class="row mt-4">
                 <div class="col-sm-12 col-md-4 mx-auto text-center image">
-                    <img src="{{ url('img/' . $datas_first->pic2) }}" alt="appartement a louer a cotonou">
+                    <img src="{{ url('img/ads/' . $datas_first->pic2) }}" alt="appartement a louer a cotonou">
                 </div>
                 <div class="col-sm-12 col-md-4 mx-auto text-center image">
                     <img src="{{ url('img/' . $datas_first->pic3) }}" alt="appartement a louer a cotonou">

@@ -1,5 +1,5 @@
 <template>
-  <section class="container">
+  <section class="container" if='top'>
     <div class="col-sm-12 col-md-8 mt-4 mx-auto">
       <!-- New Add -->
       <div class="bg-white border mt-2 rounded p-2 wow">
@@ -27,8 +27,8 @@
             <div class="col-sm-6 col-md-6">
               <label for="price">Prix <span class="red">*</span></label>
               <div class="form-floating">
-                <input type="number" class="form-control" required v-model="price" 
-                placeholder="Prix" @input="formatPrice">
+                  <input type="number" class="form-control" required v-model="price"
+                   placeholder="Prix" min="0" oninput="this.value = Math.abs(this.value)">
               </div>
             </div>
           </div>
@@ -97,7 +97,8 @@
           <div class="row g-3 mt-3" v-if="showLand">
             <div class="col-sm-6 col-md-6">
               <div class="form-floating">
-                <input type="number" class="form-control" v-model="size" id="size" placeholder="Superficie">
+                <input type="number" class="form-control" v-model="size" id="size" placeholder="Superficie"
+                  min="0" oninput="this.value = Math.abs(this.value)">
                 <label for="size">Superficie <span class="red">*</span></label>
               </div>
             </div>
@@ -215,7 +216,8 @@ export default {
       axios.post('/newAdApi', formData)
         .then(response => {
           //console.log('Form submitted successfully', response.data);
-          alert('Nouvelle annonce ajoutée avec succes !')
+          alert('Nouvelle annonce ajoutée avec succes !');
+          window.location.replace('#top')
         })
         .catch(error => {
           console.error('Form submission error', error);
@@ -238,7 +240,12 @@ export default {
                         if (this.category == 'Terrain') {
                             this.showLand = true;
                             this.showHouse = false;
-                        } else{
+                        } 
+                        else if(this.category == 'Boutique'){
+                             this.showLand = falses;
+                            this.showHouse = false;
+                        }
+                        else{
                             this.showLand = false;
                             this.showHouse = true;
                         }

@@ -169,7 +169,7 @@ export default {
                 })
                 .catch((error) => {
                     console.error(error);
-                    alert('Failed to fetch data');
+
                 });
         },
        displayEdit(id) {
