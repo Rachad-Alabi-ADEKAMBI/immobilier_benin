@@ -27,7 +27,8 @@
             <div class="col-sm-6 col-md-6">
               <label for="price">Prix <span class="red">*</span></label>
               <div class="form-floating">
-                <input type="number" class="form-control" required v-model="price" placeholder="Prix" @input="formatPrice">
+                <input type="number" class="form-control" required v-model="price" 
+                placeholder="Prix" @input="formatPrice">
               </div>
             </div>
           </div>
@@ -213,7 +214,8 @@ export default {
 
       axios.post('/newAdApi', formData)
         .then(response => {
-          console.log('Form submitted successfully', response.data);
+          //console.log('Form submitted successfully', response.data);
+          alert('Nouvelle annonce ajoutée avec succes !')
         })
         .catch(error => {
           console.error('Form submission error', error);
@@ -233,7 +235,7 @@ export default {
   },
   watch: {
     category() {
-                        if (this.category == 'Terrain' || this.category == 'Boutique') {
+                        if (this.category == 'Terrain') {
                             this.showLand = true;
                             this.showHouse = false;
                         } else{

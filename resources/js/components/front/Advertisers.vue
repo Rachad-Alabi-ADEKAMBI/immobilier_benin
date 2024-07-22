@@ -12,27 +12,32 @@
                             <div class="text-start mx-auto text-left mb-5 wow slideInLeft" data-wow-delay="0.1s" v-if='showFiltered'>
                                 <h1 class="mx-auto mb-3">Annonceurs par ville</h1>
                                 <p class="text text-left">
-                                    Annonces avec un prix inférieur à
-                                    <strong>{{ format(rangeValue) }} XOF</strong>
+                                    Ville de
+                                    <strong> uhble</strong>
                                 </p>
                             </div>
                         </div>
                         <div class="col-lg-6 text-start text-lg-end wow slideInRight" data-wow-delay="0.1s">
-                            <ul class="nav nav-pills d-inline-flex justify-content-end mb-5">
-                                <li class="nav-item me-2">
-                                    <p class="btn btn-blue active" data-bs-toggle="pill"
-                                       @click="displayAll()">Populaires
-                                    </p>
-                                </li>
-                                <li class="nav-item me-2">
-                                    <p class="btn btn-blue"  @click="displayToSell()"
-                                     data-bs-toggle="pill" >A vendre</p>
-                                </li>
-                                <li class="nav-item me-0">
-                                    <p class="btn btn-blue" data-bs-toggle="pill"
-                                     @click="displayToRent()">A louer</p>
-                                </li>
-                            </ul>
+                             <div class="col-md-3">
+                            <select class="form-select border-0 py-3"  name="location" required>
+                                                        <option value=''>Ville</option>
+                                                        <option value="Abomey">Abomey</option>
+                                                        <option value="Abomey-Calavi">Abomey-Calavi</option>
+                                                        <option value="Cotonou">Cotonou</option>
+                                                        <option value="Bohicon">Bohicon</option>
+                                                        <option value="Grand-popo">Grand-popo</option>
+                                                        <option value="Malanville">Malanville</option>
+                                                        <option value="Natitingou">Natitingou</option>
+                                                        <option value="N'dali">N'dali</option>
+                                                        <option value="Nikki">Nikki</option>
+                                                        <option value="Ouidah">Ouidah</option>
+                                                        <option value="Parakou">Parakou</option>
+                                                        <option value="Porto-Novo">Porto-Novo</option>
+                                                        <option value="Sakété">Sakété</option>
+                                                        <option value="Savè">Savè</option>
+                                                        <option value="Sèmè">Sèmè</option>
+                            </select>
+                        </div>
                         </div>
                     </div>
                     
