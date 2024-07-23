@@ -19,11 +19,14 @@ html, body {
   cursor: pointer;
   text-align: center;
   color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .back-to-top:hover {
   background-color: #778CFD;
-  animation: 500ms ease-in-out;
+  transition: 500ms ease-in-out;
 }
 
 .app {
@@ -42,10 +45,11 @@ h2 {
 a {
   color: #8755F1;
   font-weight: bold;
+  text-decoration: none;
 }
 
 a:hover {
-  text-decoration: none;
+  text-decoration: underline;
 }
 
 strong {
@@ -64,20 +68,21 @@ ul li {
 
 .btn-primary {
   background-color: #8755F1;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
 }
 
 .hero {
   height: 85vh;
   margin: 0 auto;
-  z-index: -9999;
   display: block;
   background-image: linear-gradient(rgba(177, 108, 223, 0.548), rgba(15, 35, 153, 0.589)), url("http://127.0.0.1/immo2/public/img/hero1.jpg");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  padding-bottom: 15px;
-  width: 100%;
-  padding-top: 50px;
+  padding: 50px 0;
 }
 .hero__content {
   width: 80%;
@@ -97,9 +102,9 @@ ul li {
 
 .search {
   width: 100%;
-  padding-top: 20px;
-  padding-bottom: 20px;
+  padding: 20px 0;
   background-color: #8755F1;
+  color: white;
 }
 
 .categories {
@@ -113,7 +118,6 @@ ul li {
   width: 200px;
   height: 120px;
   text-align: center;
-  display: block;
   background-color: white;
   padding-top: 20px;
   border-radius: 10px;
@@ -129,13 +133,11 @@ ul li {
 .categories .category:hover {
   background-color: #8755F1;
 }
-.categories .category:hover__icon i {
+.categories .category:hover__icon {
   color: white;
-  color: red;
 }
 .categories .category:hover__name {
   color: white;
-  color: red;
 }
 
 .services {
@@ -203,9 +205,7 @@ ul li {
   width: auto;
   background-color: #8755F1;
   color: white;
-  padding: 3px;
-  padding-right: 10px;
-  padding-left: 10px;
+  padding: 3px 10px;
 }
 .ads .ad__image .category {
   position: absolute;
@@ -213,26 +213,21 @@ ul li {
   left: 15px;
   background-color: white;
   color: #8755F1;
-  padding: 3px;
-  padding-right: 10px;
-  padding-left: 10px;
-  border-bottom-left-radius: 0;
-  border-bottom-right-radius: 0;
+  padding: 3px 10px;
+  border-radius: 0;
 }
 .ads .ad__infos .price {
   color: #8755F1;
   font-weight: bold;
   padding-left: 30px;
   font-size: 1.2em;
-  margin: 15px auto auto auto;
+  margin: 15px 0;
 }
 .ads .ad__infos .name {
   color: #0E2E50;
   font-size: 1.3em;
-  margin: 10px auto;
-  border-bottom: none;
+  margin: 10px 30px;
   font-weight: bold;
-  margin: 10px auto auto 30px;
 }
 .ads .ad__infos .more__details {
   display: flex;
@@ -260,9 +255,8 @@ ul li {
 }
 .ads .ad__infos .final__details .detail {
   border: 1px solid grey;
-  padding-left: 1px;
-  border-radius: 5px;
   padding: 1px;
+  border-radius: 5px;
 }
 .ads .ad__infos .final__details .detail i {
   margin-right: 2px;
@@ -291,11 +285,11 @@ ul li {
   margin: auto 0;
   background-color: #8755F1;
   position: absolute;
-  border-radius: 10px;
   top: 0;
   right: 0;
   z-index: -9999;
   height: 370px;
+  border-radius: 10px;
 }
 .about__text {
   margin: 15px auto;
@@ -307,27 +301,47 @@ ul li {
   color: #8755F1;
 }
 
-.testimony {
+.testimonials .testimonial {
   background-color: white;
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
   flex-direction: column;
-  color: #8755F1;
+  padding: 10px;
 }
-.testimony__details {
+.testimonials .testimonial .user {
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
   flex-direction: row;
+  justify-content: start;
 }
-.testimony__details__image img {
+.testimonials .testimonial .user__image img {
   width: 60px;
   height: 60px;
   border-radius: 30px;
 }
-.testimony__details__infos span {
+.testimonials .testimonial .user__name {
+  padding-top: 10px;
+  display: block;
+}
+.testimonials .testimonial .user__name span {
+  margin: 5px auto;
+}
+.testimonials .testimonial .user__infos {
+  padding-top: 10px;
+}
+.testimonials .testimonial .user__infos span {
   color: #8755F1;
+}
+
+.controllers {
+  height: 60px;
+  width: 60px;
+  background-color: #8755F1;
+  border: none;
+  border: 1px solid white;
+  display: none;
 }
 
 .vision__image {
@@ -370,125 +384,8 @@ ul li {
   padding-bottom: 30px;
 }
 .footer i {
-  color: #8755F1;
-  margin-right: 1px;
-}
-.footer__items {
-  display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  flex-direction: row;
-}
-.footer__items__item {
-  display: block;
-  padding-left: 30px;
-  flex: 1;
-}
-.footer__items__item h4 {
   color: white;
-  padding-right: 15px;
 }
-.footer__items__item ul {
-  margin: 20px auto;
-}
-.footer__items__item ul li {
-  margin: 15px auto;
-  color: rgba(255, 255, 255, 0.5);
-}
-.footer__items__item ul li a {
-  color: rgba(255, 255, 255, 0.5);
-}
-.footer__items__item ul li a:hover {
-  color: #8755F1;
-}
-.footer__items__item .footer__gallery {
-  display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  flex-direction: row;
-  padding-right: 15px;
-}
-.footer__items__item .footer__gallery img {
-  width: 80px;
-  height: 60px;
-  border-radius: 10px;
-  margin: 5px;
-  border: 5px white solid;
-}
-.footer hr {
-  width: 80%;
-  margin: 20px auto;
-  height: 1px;
-  background-color: white;
-}
-.footer__bottom {
-  margin: 25px auto;
-}
-.footer__bottom .text {
-  text-align: center;
-  color: rgba(255, 255, 255, 0.5);
-}
-.footer__bottom .text p {
-  text-align: center;
-}
-.footer__bottom .text p strong {
-  color: #8755F1;
-}
-
-/*responsive for 1024px*/
-@media screen and (min-width: 1024px) and (max-width: 1279px) {
-  .ads .ad {
-    width: 350px;
-    margin: 30px;
-  }
-}
-/*responsive for 767px*/
-@media screen and (min-width: 767px) and (max-width: 1023px) {
-  .hero {
-    height: 100vh;
-  }
-  .categories .category {
-    margin: 10px;
-    width: 250px;
-    height: 150pxs;
-  }
-  .services {
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    flex-direction: column-reverse;
-    text-align: center;
-    width: 100%;
-    margin: auto auto 30px auto;
-    padding-bottom: 20px;
-  }
-  .services__image {
-    text-align: center;
-    margin: auto;
-  }
-  .services__image .image {
-    width: 400px;
-    height: 280px;
-  }
-  .services__image__bg {
-    height: 350px;
-  }
-  .services__text {
-    margin: 15px auto;
-    width: 100%;
-  }
-  .ads {
-    margin: 20px;
-  }
-  .ads .ad {
-    width: 350px;
-    margin: 15px auto;
-  }
-  .about {
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    flex-direction: column;
-  }
-}
-/*responsive for 550px*//*# sourceMappingURL=main.css.map */
+.footer a {
+  color: white;
+}/*# sourceMappingURL=main.css.map */

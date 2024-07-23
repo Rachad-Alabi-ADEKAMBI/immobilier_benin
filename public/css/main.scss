@@ -7,11 +7,11 @@ $white: white;
 $black: black;
 $grey: #666565;
 $red: red;
-$grey-dark: rgba(255,255,255,0.5);
+$grey-dark: rgba(255, 255, 255, 0.5);
 $bg: #EFFDF5;
 
-html, body{
-    background-color:  $bg;
+html, body {
+    background-color: $bg;
     font-family: 'Poppins', sans-serif;
     font-weight: 500;
     line-height: 1.5em;
@@ -19,7 +19,7 @@ html, body{
     padding: 0;
 }
 
-.back-to-top{
+.back-to-top {
     background-color: $primary;
     width: 60px;
     height: 60px;
@@ -30,161 +30,156 @@ html, body{
     cursor: pointer;
     text-align: center;
     color: $white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-.back-to-top:hover{
+.back-to-top:hover {
     background-color: $secondary;
-    animation: 500ms ease-in-out;
+    transition: 500ms ease-in-out;
 }
 
-@mixin flex($flex-direction: row){
+@mixin flex($flex-direction: row) {
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
     flex-direction: $flex-direction;
 }
 
-.app{
+.app {
     position: relative;
 }
 
-h1{
+h1 {
     color: $primary;
     font-weight: bold;
 }
 
-h2{
+h2 {
     color: $tertiary;
 }
 
-a{
+a {
     color: $primary;
     font-weight: bold;
-}
-
-a:hover{
     text-decoration: none;
 }
 
-strong{
+a:hover {
+    text-decoration: underline;
+}
+
+strong {
     color: $primary;
     font-weight: bold;
 }
 
-.red{
+.red {
     color: $red;
     font-weight: bold;
 }
 
-ul{
-    li{
+ul {
+    li {
         list-style: none;
     }
 }
 
-.btn-primary{
+.btn-primary {
     background-color: $primary;
+    color: $white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
 }
 
-.hero{
+.hero {
     height: 85vh;
     margin: 0 auto;
-    z-index: -9999;
     display: block;
-    background-image: linear-gradient(rgba(177, 108, 223, 0.548), rgba(15, 35, 153, 0.589)),
-    url('http://127.0.0.1/immo2/public/img/hero1.jpg');
+    background-image: linear-gradient(rgba(177, 108, 223, 0.548), rgba(15, 35, 153, 0.589)), url('http://127.0.0.1/immo2/public/img/hero1.jpg');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    padding-bottom: 15px;
-    width: 100%;
-    padding-top: 50px;
+    padding: 50px 0;
 
-
-    &__content{
+    &__content {
         width: 80%;
         margin: auto;
         height: 100%;
         padding-top: 110px;
         text-align: center;
 
-        h1{
+        h1 {
             font-size: 3em;
-            color: white;
+            color: $white;
         }
 
-        p{
+        p {
             margin: 40px auto;
             font-weight: 800;
-
         }
     }
-
 }
 
-.search{
+.search {
     width: 100%;
-    padding-top: 20px;
-    padding-bottom: 20px;
+    padding: 20px 0;
     background-color: $primary;
-   
+    color: $white;
 }
 
-.categories{
+.categories {
     @include flex();
     margin: 40px auto;
 
-    .category{
+    .category {
         width: 200px;
         height: 120px;
         text-align: center;
-        display: block;
         background-color: $white;
         padding-top: 20px;
         border-radius: 10px;
         cursor: pointer;
 
-        &__icon{
+        &__icon {
             color: $primary;
         }
 
-        &__name{
+        &__name {
             color: $tertiary;
             font-weight: bold;
         }
     }
 
-    .category:hover{
+    .category:hover {
         background-color: $primary;
-        
-        &__icon{
-           i{
+
+        &__icon {
             color: $white;
-            color: red;
-           }
         }
 
-        &__name{
+        &__name {
             color: $white;
-            color: red;
         }
     }
-
 }
 
-.services{
+.services {
     @include flex();
-    &__image{
+    
+    &__image {
         position: relative;
 
-        .image{
+        .image {
             width: 450px;
             height: 300px;
             margin: 35px auto auto 15px;
             border-radius: 10px;
         }
 
-        &__bg{
+        &__bg {
             width: 55%;
             margin: auto 0;
             background-color: $primary;
@@ -197,7 +192,7 @@ ul{
         }
     }
 
-    &__text{
+    &__text {
         margin: 15px auto;
         padding-left: 10px;
         padding-top: 15px;
@@ -205,11 +200,10 @@ ul{
     }
 }
 
-.ads{
+.ads {
     @include flex();
 
-    .ad{
-        //flex: 1;
+    .ad {
         width: 347px;
         cursor: pointer;
         background-color: $white;
@@ -218,91 +212,81 @@ ul{
         color: $grey;
         margin: 5px;
 
-        &__image{
+        &__image {
             position: relative;
             margin: auto;
             border-radius: 10px;
 
-            img{
+            img {
                 border-radius: 10px;
                 width: 100%;
                 height: 250px;
             }
 
-            .action{
+            .action {
                 position: absolute;
                 top: 15px;
                 left: 15px;
                 width: auto;
                 background-color: $primary;
                 color: $white;
-                padding: 3px;
-                padding-right: 10px;
-                padding-left: 10px;
+                padding: 3px 10px;
             }
 
-            .category{
+            .category {
                 position: absolute;
                 bottom: 0;
                 left: 15px;
                 background-color: $white;
                 color: $primary;
-                padding: 3px;
-                padding-right: 10px;
-                padding-left: 10px;
-                border-bottom-left-radius: 0;
-                border-bottom-right-radius: 0;
+                padding: 3px 10px;
+                border-radius: 0;
             }
         }
 
-        &__infos{
-
-            .price{
+        &__infos {
+            .price {
                 color: $primary;
                 font-weight: bold;
                 padding-left: 30px;
                 font-size: 1.2em;
-                margin: 15px auto auto auto;
+                margin: 15px 0;
             }
 
-            .name{
+            .name {
                 color: $tertiary;
                 font-size: 1.3em;
-                margin: 10px auto;
-                border-bottom: none;
+                margin: 10px 30px;
                 font-weight: bold;
-                margin: 10px auto auto 30px;
             }
 
-            .more__details{
+            .more__details {
                 @include flex();
                 margin: 10px auto;
                 color: $grey;
                 width: 95%;
 
-
-                .location{
-                        padding-left: 10px
+                .location {
+                    padding-left: 10px;
                 }
 
-                .date{
-                    padding-right: 15px
+                .date {
+                    padding-right: 15px;
                 }
             }
 
-            .final__details{
+            .final__details {
                 @include flex();
                 margin: 10px auto;
                 color: $grey;
                 width: 100%;
 
-                .detail{
+                .detail {
                     border: 1px solid grey;
-                    padding-left: 1px;
-                    border-radius: 5px;
                     padding: 1px;
+                    border-radius: 5px;
 
-                    i{
+                    i {
                         margin-right: 2px;
                     }
                 }
@@ -310,90 +294,113 @@ ul{
         }
     }
 
-    .ad:hover{
-        &__image{
-            img{
+    .ad:hover {
+        &__image {
+            img {
                 width: 110%;
             }
         }
     }
 }
 
-.about{
+.about {
     @include flex();
-    &__image{
+    
+    &__image {
         position: relative;
 
-        .image{
+        .image {
             width: 450px;
             height: 300px;
             margin: 35px auto auto 15px;
             border-radius: 10px;
         }
 
-        &__bg{
+        &__bg {
             width: 55%;
             margin: auto 0;
             background-color: $primary;
             position: absolute;
-            border-radius: 10px;
             top: 0;
             right: 0;
             z-index: -9999;
             height: 370px;
+            border-radius: 10px;
         }
     }
 
-    &__text{
+    &__text {
         margin: 15px auto;
         padding-left: 10px;
         padding-top: 40px;
         text-align: justify;
-        
-        strong{
-            color: $primary
+
+        strong {
+            color: $primary;
         }
     }
 }
 
-.testimony{
-    background-color: $white;
-    @include flex(column);
-    color: $primary;
-        &__details{
-        @include flex();
+.testimonials {
+    .testimonial {
+        background-color: $white;
+        @include flex(column);
+        padding: 10px;
 
-        &__image{
-            img{
-                width: 60px;
-                height: 60px;
-                border-radius: 30px;
-            }
-        }  
+        .user {
+            @include flex();
+            justify-content: start;
 
-        &__infos{
-            span{
-                color: $primary;
+            &__image {
+                img {
+                    width: 60px;
+                    height: 60px;
+                    border-radius: 30px;
+                }
             }
 
+            &__name {
+                padding-top: 10px;
+                display: block;
 
+                span {
+                    margin: 5px auto;
+                }
+            }
+
+            &__infos {
+                padding-top: 10px;
+
+                span {
+                    color: $primary;
+                }
+            }
         }
     }
 }
 
-.vision{
-    &__image{
+.controllers {
+    height: 60px;
+    width: 60px;
+    background-color: $primary;
+    border: none;
+    border: 1px solid $white;
+    display: none;
+}
+
+.vision {
+    &__image {
         position: relative;
         padding-top: 20px;
 
-        .image{
+        .image {
             width: 450px;
             height: 300px;
             margin: 35px auto auto 15px;
             border-radius: 10px;
         }
 
-        &__bg{
+        &__bg {
             width: 55%;
             margin: auto 0;
             background-color: $primary;
@@ -406,7 +413,7 @@ ul{
         }
     }
 
-    &__text{
+    &__text {
         margin: 15px auto;
         padding-left: 10px;
         padding-top: 15px;
@@ -414,162 +421,24 @@ ul{
     }
 }
 
-.table{
-
-    img{
+.table {
+    img {
         width: 90px;
         height: 50px;
-
     }
 }
 
-.footer{
+.footer {
     background-color: $tertiary;
     color: $white;
     padding-top: 60px;
     padding-bottom: 30px;
 
-    i{
-        color: $primary;
-        margin-right: 1px
+    i {
+        color: $white;
     }
 
-    &__items{
-        @include flex();
-
-        &__item{
-            display: block;
-            padding-left: 30px;
-            flex: 1;
-
-            h4{
-                color: $white;
-                padding-right: 15px;
-            }
-
-            ul{
-                margin: 20px auto;
-                li{
-                    margin: 15px auto;
-                    color: $grey-dark;
-
-                     a{
-                        color: $grey-dark;
-                     }
-
-                     a:hover{
-                        color: $primary;
-                     }
-                }
-            }
-
-            .footer__gallery{
-                @include flex();
-                padding-right: 15px;
-
-                img{
-                    width: 80px;
-                    height: 60px;
-                    border-radius: 10px;
-                    margin: 5px;
-                    border: 5px $white solid;
-                }
-            }
-
-
-        }
-    }
-
-    hr{
-        width: 80%;
-        margin: 20px auto;
-        height: 1px;
-        background-color: $white;
-    }
-    &__bottom{
-        margin: 25px auto;
-        .text{
-            text-align: center;
-            color: $grey-dark;
-
-           p{
-            text-align: center;
-            strong{
-                color: $primary;
-            }
-           }
-        }
+    a {
+        color: $white;
     }
 }
-
-/*responsive for 1024px*/
-@media screen and (min-width: 1024px) and (max-width: 1279px) {
-    .ads{
-        .ad{
-            width: 350px;
-            margin: 30px;
-        }
-    }
-}
-
-/*responsive for 767px*/
-@media screen and (min-width: 767px) and (max-width: 1023px) {
-    .hero{
-        height: 100vh;
-    }
-
-    .categories{
-        .category{
-            margin: 10px;
-            width: 250px;
-            height: 150pxs;
-        }
-    }
-
-    .services{
-        @include flex(column-reverse);
-        text-align: center;
-        width: 100%;
-        margin: auto auto 30px auto;
-        padding-bottom: 20px;
-
-        &__image{
-            text-align: center;
-            margin: auto;
-
-            .image{
-                width: 400px;
-                height: 280px;
-            }
-
-            &__bg{
-                height: 350px;
-            }
-        }
-
-        &__text{
-            margin: 15px auto;
-            width: 100%;
-        }
-    }
-
-    .ads{
-        margin: 20px;
-
-        .ad{
-            width: 350px;
-            margin: 15px auto;
-
-        }
-    }
-
-    .about{
-        @include flex(column);
-    }
-}
-
-/*responsive for 550px*/
-@media screen and (min-width: 550px) and (max-width: 765px) {
- 
-}
-
