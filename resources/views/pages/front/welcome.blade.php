@@ -122,17 +122,20 @@
                                 </div>
                             </div>
 
-                            <div class="final__details">
-                                <div class="detail">
-                                <i class="bi bi-people"></i> {{ $data->people }} ménage{{ $data->people > 1 ? 's' : '' }}
+                            @if ($data->category != 'Terrain' && $data->category != 'Boutique')
+                                <div class="final__details">
+                                    <div class="detail">
+                                        <i class="fa-solid fa-users"></i>{{ $data->people }} ménage{{ $data->people > 1 ? 's' : '' }}
+                                    </div>
+                                    <div class="detail">
+                                        <i class="fa-solid fa-bed"></i>{{ $data->rooms }} chambre{{ $data->rooms > 1 ? 's' : '' }}
+                                    </div>
+                                    <div class="detail">
+                                        <i class="fa-solid fa-shower"></i>{{ $data->bathrooms }} douche{{ $data->bathrooms > 1 ? 's' : '' }}
+                                    </div>
                                 </div>
-                                <div class="detail">
-                                <i class="bi bi-room"></i> {{ $data->rooms }} chambre{{ $data->rooms > 1 ? 's' : '' }}
-                                </div>
-                                <div class="detail">
-                                <i class="bi bi-bathroom"></i> {{ $data->bathrooms }} douche{{ $data->bathrooms > 1 ? 's' : '' }}
-                                </div>
-                            </div>
+                            @endif
+
                         </div>
                     </a>
             @endforeach
@@ -143,7 +146,7 @@
         <!--end properties-->
 
 
-       <!--services-->
+        <!--services-->
         <div class="container mt-4">
             <div class="row services">
                 <div class="col-sm-12 col-md-6 services__image">
@@ -182,7 +185,7 @@
 
             <div class="row ads mt-3">
 
-            @foreach($datas_first as $data)
+            @foreach($datas_second as $data)
                     <a href="{{ url('/ad/' . $data->id) }}" class="ad">
 
                         <div class="ad__image">
@@ -215,17 +218,20 @@
                                 </div>
                             </div>
 
-                            <div class="final__details">
-                                <div class="detail">
-                                <i class="bi bi-people"></i> {{ $data->people }} ménage{{ $data->people > 1 ? 's' : '' }}
+                            @if ($data->category != 'Terrain' && $data->category != 'Boutique')
+                                <div class="final__details">
+                                    <div class="detail">
+                                        <i class="fa-solid fa-users"></i>{{ $data->people }} ménage{{ $data->people > 1 ? 's' : '' }}
+                                    </div>
+                                    <div class="detail">
+                                        <i class="fa-solid fa-bed"></i>{{ $data->rooms }} chambre{{ $data->rooms > 1 ? 's' : '' }}
+                                    </div>
+                                    <div class="detail">
+                                        <i class="fa-solid fa-shower"></i>{{ $data->bathrooms }} douche{{ $data->bathrooms > 1 ? 's' : '' }}
+                                    </div>
                                 </div>
-                                <div class="detail">
-                                <i class="bi bi-room"></i> {{ $data->rooms }} chambre{{ $data->rooms > 1 ? 's' : '' }}
-                                </div>
-                                <div class="detail">
-                                <i class="bi bi-bathroom"></i> {{ $data->bathrooms }} douche{{ $data->bathrooms > 1 ? 's' : '' }}
-                                </div>
-                            </div>
+                            @endif
+
                         </div>
                     </a>
             @endforeach

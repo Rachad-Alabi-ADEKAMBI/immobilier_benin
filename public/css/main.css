@@ -178,7 +178,7 @@ ul li {
   flex-direction: row;
 }
 .ads .ad {
-  width: 330px;
+  width: 347px;
   cursor: pointer;
   background-color: white;
   display: block;
@@ -256,13 +256,16 @@ ul li {
   flex-direction: row;
   margin: 10px auto;
   color: #666565;
-  width: 95%;
+  width: 100%;
 }
 .ads .ad__infos .final__details .detail {
-  flex: 1;
   border: 1px solid grey;
-  padding-left: 10px;
+  padding-left: 1px;
   border-radius: 5px;
+  padding: 1px;
+}
+.ads .ad__infos .final__details .detail i {
+  margin-right: 2px;
 }
 .ads .ad:hover__image img {
   width: 110%;
