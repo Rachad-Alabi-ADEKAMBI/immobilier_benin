@@ -106,6 +106,18 @@ ul li {
   background-color: #8755F1;
   color: white;
 }
+.search__content {
+  width: 80%;
+}
+.search__content__item {
+  flex: 1;
+}
+.search__content__item select {
+  width: 100%;
+  padding-left: 15px;
+  padding-right: 15px;
+  color: #666565;
+}
 
 .categories {
   display: flex;
@@ -116,27 +128,24 @@ ul li {
 }
 .categories .category {
   width: 200px;
-  height: 120px;
+  height: 100px;
   text-align: center;
   background-color: white;
   padding-top: 20px;
   border-radius: 10px;
+  margin: 10px auto;
   cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
-.categories .category__icon {
-  color: #8755F1;
-}
-.categories .category__name {
+.categories .category i, .categories .category p {
   color: #0E2E50;
   font-weight: bold;
+  transition: color 0.3s ease;
 }
 .categories .category:hover {
   background-color: #8755F1;
 }
-.categories .category:hover__icon {
-  color: white;
-}
-.categories .category:hover__name {
+.categories .category:hover i, .categories .category:hover p {
   color: white;
 }
 
@@ -178,25 +187,28 @@ ul li {
   justify-content: space-between;
   flex-wrap: wrap;
   flex-direction: row;
+  justify-content: flex-start;
 }
 .ads .ad {
-  width: 347px;
+  width: 340px;
   cursor: pointer;
   background-color: white;
   display: block;
   border-radius: 5px;
   color: #666565;
-  margin: 5px;
+  margin: 10px auto;
 }
 .ads .ad__image {
   position: relative;
   margin: auto;
   border-radius: 10px;
+  text-align: center;
 }
 .ads .ad__image img {
   border-radius: 10px;
-  width: 100%;
+  width: 95%;
   height: 250px;
+  margin: auto;
 }
 .ads .ad__image .action {
   position: absolute;
@@ -252,6 +264,7 @@ ul li {
   margin: 10px auto;
   color: #666565;
   width: 100%;
+  font-size: 0.9em;
 }
 .ads .ad__infos .final__details .detail {
   border: 1px solid grey;
@@ -368,24 +381,140 @@ ul li {
 .vision__text {
   margin: 15px auto;
   padding-left: 10px;
-  padding-top: 15px;
+  padding-top: 40px;
   text-align: justify;
 }
+.vision__text strong {
+  color: #8755F1;
+}
 
+.table {
+  text-align: center;
+}
 .table img {
   width: 90px;
-  height: 50px;
+  height: 60px;
+  border-radius: 10px;
 }
 
 .footer {
+  color: white;
+  text-align: left;
+  padding: 20px;
   background-color: #0E2E50;
-  color: white;
-  padding-top: 60px;
-  padding-bottom: 30px;
+  padding-top: 40px;
 }
-.footer i {
-  color: white;
+.footer__items__item h4 {
+  font-weight: bold;
 }
-.footer a {
+.footer__items__item ul li {
+  margin: 15px auto;
+}
+.footer__items__item ul li i, .footer__items__item ul li a {
   color: white;
+  text-decoration: none;
+}
+.footer__items__item ul li a:hover {
+  color: #778CFD;
+}
+.footer__items__item .footer__gallery img {
+  width: 80px;
+  height: 60px;
+  border-radius: 10px;
+  margin: 5px;
+  border: 5px white solid;
+}
+.footer__items__item ul li a {
+  color: rgba(255, 255, 255, 0.5);
+}
+.footer hr {
+  background-color: white;
+  height: 1px;
+  width: 90%;
+  margin: 40px auto 40px auto;
+}
+
+@media (max-width: 1200px) {
+  .hero__content h1 {
+    font-size: 2.5em;
+  }
+  .services__image .image,
+  .vision__image .image,
+  .about__image .image {
+    width: 100%;
+    height: auto;
+  }
+}
+@media (max-width: 992px) {
+  .categories {
+    justify-content: center;
+  }
+  .categories .category {
+    width: 100%;
+    max-width: 300px;
+  }
+  .services__image .image,
+  .vision__image .image,
+  .about__image .image {
+    width: 100%;
+    height: auto;
+  }
+}
+@media (max-width: 768px) {
+  .hero__content h1 {
+    font-size: 2em;
+  }
+  .categories .category {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+  .services,
+  .ads,
+  .about,
+  .testimonials,
+  .vision {
+    flex-direction: column;
+  }
+  .services__image .image,
+  .vision__image .image,
+  .about__image .image {
+    width: 100%;
+    height: auto;
+    margin: 0 auto;
+  }
+  .services__text,
+  .about__text,
+  .vision__text {
+    padding: 0;
+    text-align: center;
+  }
+}
+@media (max-width: 576px) {
+  .hero__content h1 {
+    font-size: 1.5em;
+  }
+  .categories .category {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+  .services,
+  .ads,
+  .about,
+  .testimonials,
+  .vision {
+    flex-direction: column;
+  }
+  .services__image .image,
+  .vision__image .image,
+  .about__image .image {
+    width: 100%;
+    height: auto;
+    margin: 0 auto;
+  }
+  .services__text,
+  .about__text,
+  .vision__text {
+    padding: 0;
+    text-align: center;
+  }
 }/*# sourceMappingURL=main.css.map */

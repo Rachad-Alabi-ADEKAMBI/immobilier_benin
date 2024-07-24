@@ -1,15 +1,16 @@
 <template>
-    <section class="container xxl">
+    <section class="container xxl mt-0">
          <div class="row" id='myads'>
-            <div class='col-sm-12 col-md-12  mt-4 mx-auto' data-wow-delay="0.5s" v-if='showAll' >
+            <div class='col-sm-12 col-md-12 pt-4 mx-auto' data-wow-delay="0.5s" v-if='showAll' >
                          <h1 class="mx-auto text-center">
                             Toutes les annonces ({{ this.details.length}})
                          </h1>
 
                         <div class="mt-2 table-container" v-if='details.length > 0'>
-                                <div class="table mt-3 mx-auto">
-                                    <div class="table-container table-bordered mx-auto text-center" v-if='details.length > 0'>
-                                            <table>
+                                <div class=" mt-3 mx-auto">
+                                     <div class="table-responsive-sm mt-2" v-if='details.length > 0'>
+                                            <table class="table table-bordered table-striped table-hover mx-auto text-center">
+                                           
                                                 <thead>
                                                     <tr>
                                                         <th>Nom</th>
@@ -50,7 +51,7 @@
                                             </table>
                                         </div>
                                     </div>
-                                </div>
+                        </div>
             </div>
         </div>
     </section>
@@ -164,3 +165,9 @@
                 }
     };
 </script>
+
+<style scoped>
+    .table{
+        margin: auto;
+    }
+</style>

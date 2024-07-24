@@ -11,8 +11,12 @@
                 </p>
 
                <div class="table mt-3 mx-auto">
-                     <div class="table-container table-bordered mx-auto text-center" v-if='details.length > 0'>
-                    <table>
+                        <a href="/newAdPage" class="btn btn-primary ml-0">
+                                                Nouvel ajout
+                        </a>
+
+                     <div class="table-responsive-sm mt-2" v-if='details.length > 0'>
+                    <table class="table table-bordered table-striped table-hover mx-auto text-center" ">
                         <thead>
                             <tr>
                                 <th>Nom</th>

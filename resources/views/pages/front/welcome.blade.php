@@ -27,43 +27,37 @@
         <!--end search-->
 
         <!--category-->
-        <div class="container">
-            <div class="row categories">
-                <div class="col-sm-12 col-md-3 category">
-                    <div class="category__icon">
-                        <i class="bi bi-house"></i>
-                    </div>
-                    <p class="category__name">
-                        Maison
-                    </p>
-                </div>
-                <div class="col-sm-12 col-md-3 category">
-                    <div class="category__icon">
-                        <i class="bi bi-building"></i>
-                    </div>
-                    <p class="category__name">
-                        Appartement
-                    </p>
-                </div>
-                <div class="col-sm-12 col-md-3 category">
-                    <div class="category__icon">
-                        <i class="bi bi-bag"></i>
-                    </div>
-                    <p class="category__name">
-                        Boutiques
-                    </p>
-                </div>
-                <div class="col-sm-12 col-md-3 category">
-                    <div class="category__icon">
-                        <i class="bi bi-geo"></i>
-                    </div>
-                    <p class="category__name">
-                        Terrain
-                    </p>
-                </div>
-            </div>
+<div class="container">
+    <div class="row categories">
+        <div class="col-sm-12 col-md-3 category">
+                <i class="bi bi-house"></i>
+            <p class="category__name">
+                Maison
+            </p>
         </div>
-        <!--end category-->
+        <div class="col-sm-12 col-md-3 category">
+                <i class="bi bi-building"></i>
+            <p class="category__name">
+                Appartement
+            </p>
+        </div>
+        <div class="col-sm-12 col-md-3 category">
+                <i class="bi bi-bag"></i>
+            <p class="category__name">
+                Boutiques
+            </p>
+        </div>
+        <div class="col-sm-12 col-md-3 category">
+                <i class="bi bi-geo"></i>
+            <p class="category__name">
+                Terrain
+            </p>
+        </div>
+    </div>
+</div>
+<!--end category-->
+
+
 
         <!--properties 1-->
         <div class="container mt-2 mb-3">
@@ -122,7 +116,7 @@
         <!--end properties-->
 
         <!--services-->
-        <div class="container mt-4">
+        <div class="container mt-4" id="services">
             <div class="row services">
                 <div class="col-sm-12 col-md-6 services__image">
                     <img src="{{ asset('img/hero1.jpg') }}" alt="" class="image">

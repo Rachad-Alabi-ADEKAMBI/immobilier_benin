@@ -6,9 +6,9 @@
                             Utilisateurs ({{details.length}})
                          </h1>
                          
-                         <div class="table m-3 mx-auto">
-                            <div class="table-container table-boredered mx-auto">
-                               <table>
+                         <div class="table mx-auto">
+                            <div class="table-responsive">
+                               <table class="table table-bordered table-striped table-hover mx-auto text-center">
                                     <thead>
                                                             <tr>
                                                             <th scope="col">Date</th>
@@ -17,7 +17,6 @@
                                                             <th scope="col">Nom complet</th>
                                                             <th scope='col'>Photo</th>
                                                             <th scope='col'>Annonces</th>
-                                                            <th scope='col'>Statut</th>
                                                             </tr>
                                     </thead>    
                                                         <tbody>
@@ -27,35 +26,17 @@
                                                             <td data-label="Phone">{{ detail.phone }}  </td>
                                                             <td data-label="Full name">{{ detail.first_name }} {{ detail.last_name}}  </td>
                                                              <td data-label="Photo">
-                                                            <img :src='getImgUrl(detail.pic)'  v-if="detail.pic" alt="utilisateur immobilier benin">
-                                                            <p class="text-danger" v-if="!detail.pic">
+                                                            <img :src='getImgUrl(detail.profile_photo_path)'  v-if="detail.profile_photo_path" alt="utilisateur immobilier benin">
+                                                            <p class="text-danger" v-if="!detail.profile_photo_path">
                                                                 Non renseigné
                                                             </p>
                                                             </td>
                                                             <td data-label="Annonces" >{{ detail.ads }}</td>
-                                                            <td data-label="Statut" > 
-                                                                    <p class="text-success" v-if="detail.situation =='Disponible'">
-                                                                            Validé
-                                                                    </p>   
-                                                                    
-                                                                    <p class="text-warning" v-if="detail.situation =='Non disponible'">
-                                                                           En pause
-                                                                    </p>   
-                                                                </td>
+                                                           
                                                             <td data-label="">
 
-                                                <button class="btn btn-warning m-1 text-white" @click="pauseUser(detail.id)" 
-                                                    v-if="detail.situation == 'Disponible'">
-                                                    <i class="fa fa-pause m1-3 text-white "></i> Pause
-                                                </button>
-
-                                                <button class="btn btn-success  m-1" @click="authorizeUser(detail.id)"
-                                                      v-if="detail.situation == 'Non disponible'" >
-                                                      <i class="fa fa-play m1-3 text-white "></i> Autoriser
-                                                </button>
-
                                                 <button class="btn btn-danger m-1 text-white" @click="deleteUser(detail.id)">
-                                                    <i class="fa fa-trash m1-3 text-white "></i> Supprimer
+                                                    <i class="fa fa-trash m1-3 text-white "></i> Bannir
                                                 </button>
                                             </td>
                                                             </tr>
@@ -119,11 +100,13 @@
                         let res = new Intl.NumberFormat('fr-FR', { maximumSignificantDigits: 3 }).format(num);
                             return res;
                     },
-                    formatDate(da) {
-                        const [datePart, timePart] = da.split(' ');
-                        const [year, month, day] = datePart.split('-');
-                        return `${day}-${month}-${year}`;
-                        },
+    formatDate(dateString) {
+            const date = new Date(dateString);
+            const day = String(date.getDate()).padStart(2, '0');
+            const month = String(date.getMonth() + 1).padStart(2, '0'); // Months are zero-based in JavaScript
+            const year = date.getFullYear();
+            return `${day}-${month}-${year}`;
+        },
                     getImgUrl(pic) {
                         return "img/users/" + pic;
                     },
@@ -133,8 +116,8 @@
                     play(id){
                             window.location.replace('./api/script.php?action=play&id='+id);
                     },
-                    remove(id){
-                        window.location.replace('./api/script.php?action=delete&id='+id);
+                    deleteUser(id){
+                        window.location.replace('deleteUserApi/'+id);
                     },
                     goToProperty(id){
                         window.location.replace('ad/'+id);

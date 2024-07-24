@@ -11,7 +11,7 @@
             {{ session('success') }}
         </div>
     <!--my ads-->
-    <div class="allads" id="allads">
+    <div class="allads mb-0 pt-0" id="allads">
         <AllAds/>
     </div>
 </x-app-layout>

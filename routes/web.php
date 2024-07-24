@@ -83,6 +83,8 @@ Route::get('/usersApi', [UserController::class, 'usersApi']);
 
 Route::get('/adApi/{id}', [AdController::class, 'adApi']);
 
+Route::get('/deleteUserApi/{id}', [UserController::class, 'deleteUserApi']);
+
 
 Route::middleware(['auth:sanctum', 'verified'])->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');

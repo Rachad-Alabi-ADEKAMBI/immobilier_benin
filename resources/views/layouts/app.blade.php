@@ -50,8 +50,8 @@
 
             <!-- Footer Start -->
             <footer class="footer mt-5">
-                <div class="footer__items">
-                    <div class="footer__items__item">
+                <div class="footer__items row">
+                    <div class="footer__items__item col-sm-12 col-md-3">
                         <h4>Contact</h4>
                         <ul>
                             <li><i class="bi bi-phone"></i> +229 96 66 36 44</li>
@@ -60,7 +60,7 @@
                             <li><i class="bi bi-facebook"></i> Immobilier Bénin</li>
                         </ul>
                     </div>
-                    <div class="footer__items__item">
+                    <div class="footer__items__item col-sm-12 col-md-3">
                         <h4>Liens</h4>
                         <ul>
                             <li><a href="{{ url('/') }}">Accueil</a></li>
@@ -70,17 +70,17 @@
                             <li><a href="{{ url('/faq') }}">FAQ</a></li>
                         </ul>
                     </div>
-                    <div class="footer__items__item">
+                    <div class="footer__items__item col-sm-12 col-md-3">
                         <h4>Notre entreprise</h4>
                         <ul>
                             <li><a href="{{ url('/contact') }}">Contact</a></li>
                             <li><a href="{{ url('/about') }}">Qui sommes nous ?</a></li>
-                            <li><a href="{{ url('/home#about') }}">Nos services</a></li>
+                            <li><a href="{{ url('/home#services') }}">Nos services</a></li>
                             <li><a href="{{ url('/cgu') }}">Conditions générales</a></li>
                             <li><a href="{{ url('/terms') }}">Politique de confidentialité</a></li>
                         </ul>
                     </div>
-                    <div class="footer__items__item">
+                    <div class="footer__items__item col-sm-12 col-md-3">
                         <h4>Galerie</h4>
                         <div class="footer__gallery">
                             <img src="{{ url('img/bureaux1.jpeg') }}" alt="annonces gratuites au Bénin">
@@ -97,8 +97,8 @@
                 <div class="footer__bottom">
                     <div class="text text-center">
                         <p class="text-center">
-                            © Immobilier Bénin, 2024, Tous droits réservés <br>
-                            Built with blood, sweat and tears by <strong><i class="bi bi-heart"></i> Codeur Créatif</strong>
+                            © Immobilier Bénin, 2024, all rights reserved <br>
+                            Built with blood, sweat and tears by <a href="https://rachad-alabi-adekambi.github.io/portfolio/#/" class="m-1"><strong><i class="bi bi-heart m-1"></i> Codeur Créatif</strong></a>
                         </p>
                     </div>
                 </div>

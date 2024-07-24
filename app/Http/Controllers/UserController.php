@@ -35,5 +35,16 @@ class UserController extends Controller
 
         return response()->json($datas);
     }
+    
+    public function deleteUserApi($id, Request $request)
+    {
+        $user = User::find($id);
+
+        $user->situation = 'Deleted';
+
+        $user->save();
+
+        return response()->json('success');
+    }
 }
 
