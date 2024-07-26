@@ -1,6 +1,6 @@
 <template>
     <section class="container xxl">
-            <div class='col-sm-12 col-md-12  mt-4 mx-auto' data-wow-delay="0.5s" >
+            <div class='col-sm-12 col-md-12  mt-4 mx-auto' data-wow-delay="0.5s" v-if='showAll'>
                             <div class='col-12 mt-4 mx-auto data-wow-delay="0.5s"' >
                          <h1 class="mx-auto text-center">
                             Utilisateurs ({{details.length}})
@@ -35,7 +35,7 @@
                                                            
                                                             <td data-label="">
 
-                                                <button class="btn btn-danger m-1 text-white" @click="deleteUser(detail.id)">
+                                                <button class="btn btn-danger m-1 text-white" @click="displayBan(detail.id)">
                                                     <i class="fa fa-trash m1-3 text-white "></i> Bannir
                                                 </button>
                                             </td>
@@ -45,6 +45,38 @@
                         </div> 
                         </div>
             </div>
+            </div>
+
+            <div class="col-12 text-center" v-if="showAll">
+                <nav aria-label="Page navigation mx-auto">
+                    <ul class="pagination">
+                        <li class="page-item" :class="{ 'disabled': currentPage === 1 }">
+                            <a class="page-link" href="#" @click.prevent="previousPage">Précédent</a>
+                        </li>
+                        <li class="page-item" v-for="page in totalPages" :key="page" :class="{ 'active': page === currentPage }">
+                            <a class="page-link" href="#" @click.prevent="gotoPage(page)">{{ page }}</a>
+                        </li>
+                        <li class="page-item" :class="{ 'disabled': currentPage === totalPages }">
+                            <a class="page-link" href="#" @click.prevent="nextPage">Suivant</a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+
+            <div class="col-sm-12 col-md-8 mx-auto" v-if="showBan">
+                <div class="card p-3">
+                    <form @submit.prevent="submit">
+                        <span class="mx-auto bold" @click="displayAll()">
+                                <i class="fa fa-times me-3 mx-auto text-blue"></i>
+                        </span>
+
+                        <h2>Bannir un utilisateur</h2>
+                        <p>{{ capitalizeFirstLetter(selectedDetail.first_name) }} {{ capitalizeFirstLetter(selectedDetail.last_name) }}</p>
+                        <label for="reason">Motif <span class="red">*</span></label>
+                        <textarea class="form-control" v-model="reason" id="reason" placeholder="Motif" required></textarea>
+                        <button class="btn btn-success mt-3" type="submit">Bannir</button>
+                    </form>
+                </div>
             </div>
     </section>
 </template> 
@@ -62,7 +94,9 @@
              showNew: false,
                     showAll: false,
                     details: [],
-                    showEdit: false,
+                    showBan: false,
+                    reason: '',
+                    selectedDetail: null,
                     location: '',
                     currentPage: 1,
                     itemsPerPage: 5,
@@ -90,11 +124,10 @@
                             })
                             .catch((error) => {
                                 console.error(error);
-                                alert('Failed to fetch datas');
                             });
                         
                             this.showAll = true;
-                            this.showEdit = false;
+                            this.showBan = false;
                     },
                     format(num){
                         let res = new Intl.NumberFormat('fr-FR', { maximumSignificantDigits: 3 }).format(num);
@@ -110,37 +143,45 @@
                     getImgUrl(pic) {
                         return "img/users/" + pic;
                     },
-                    pause(id){
-                            window.location.replace('./api/script.php?action=pause&id='+id);
+                    displayBan(id){
+                        this.selectedDetail = this.details.find(detail => detail.id === id);
+                       this.showBan = true;
+                       this.showAll = false;
                     },
-                    play(id){
-                            window.location.replace('./api/script.php?action=play&id='+id);
-                    },
-                    deleteUser(id){
-                        window.location.replace('deleteUserApi/'+id);
-                    },
-                    goToProperty(id){
-                        window.location.replace('ad/'+id);
-                    },
+                     submit() {
+            if (!this.selectedDetail) return; // Ensure there's a selected detail
+            const formData = new FormData();
+            formData.append('reason', this.reason);
+            formData.append('id', this.selectedDetail.id);
+
+            axios.post('/ban', formData)
+                .then(response => {
+                    alert('Annonce mise en pause !');
+                    this.displayAll();
+                })
+                .catch(error => {
+                    console.error('Form submission error', error);
+                });
+        },
                     previousPage() {
-                            if (this.currentPage > 1) {
-                                this.currentPage--;
-                            }
-                            },
-                    nextPage() {
-                            if (this.currentPage < this.totalPages) {
-                                this.currentPage++;
-                            }
-                        },
-                    gotoPage(page) {
-                        this.currentPage = page;
-                    },
+            if (this.currentPage > 1) {
+                this.currentPage--;
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
+        },
+        nextPage() {
+            if (this.currentPage < this.totalPages) {
+                this.currentPage++;
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
+        },
+        gotoPage(page) {
+            this.currentPage = page;
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        },
                     capitalizeFirstLetter(word) {
                         if (!word) return '';
                         return word.charAt(0).toUpperCase() + word.slice(1);
-                    },
-                    manage(id){
-                        window.location.replace('index.php?action=managePage&id='+id);
                     }
 
                 }

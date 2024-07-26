@@ -180,10 +180,15 @@ class AdController extends Controller
 
     public function allAdsApi()
     {
-        $data = Ad::orderByDesc('id')->get();
-
+        $data = Ad::orderByDesc('id')
+            ->leftJoin('users', 'ads.user_id', '=', 'users.id')
+            ->select('ads.*', 'users.first_name as user_first_name', 'users.last_name as user_last_name') // Combine columns in a single select
+            ->get();
+    
         return response()->json($data);
     }
+    
+    
 
     public function availableAdsApi()
     {
