@@ -1,6 +1,7 @@
 <p class="text text-center pt-2">
     Bonjour <strong>
         {{ ucfirst(auth()->user()->first_name) }}
+        {{ ucfirst(auth()->user()->last_name) }}
     </strong> 
 </p>
 
@@ -15,11 +16,6 @@
 
 <div class="col-sm-12 text-center">
                     <div class="menu">
-    
-                    <a class="btn btn-primary m-2" href="{{ url('/newAd')}}">
-                         <i class="bi bi-plus-circle"></i> Nouvelle annonce
-                    </a>
-
                     <a class="btn btn-primary m-2" href="{{ url('/dashboard') }}">
                     <i class="bi bi-card-list"></i> Mes annonces
                     </a>

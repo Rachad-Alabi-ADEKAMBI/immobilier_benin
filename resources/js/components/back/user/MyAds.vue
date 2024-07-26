@@ -1,7 +1,7 @@
 <template>
     <section class="container xxl">
         <div class="row" id='myads'>
-            <div class='col-sm-12 col-md-10 mx-auto' data-wow-delay="0.5s" v-if='showAll'>
+            <div class='col-sm-12 col-md-12 mx-auto' data-wow-delay="0.5s" v-if='showAll'>
                 <h1 class="mx-auto text-center">
                     Mes annonces ({{ details.length }})
                 </h1>
@@ -10,19 +10,19 @@
                     Vous n'avez publié aucune annonce pour l'instant
                 </p>
 
-               <div class="table mt-3 mx-auto">
-                        <a href="/newAdPage" class="btn btn-primary ml-0">
-                                                Nouvel ajout
-                        </a>
+               <div class="table mt-3 mx-auto text-left">
+                         <a class="btn btn-success ml-0" href="{{ url('/newAd')}}">
+                         <i class="bi bi-plus-circle"></i> Nouvelle annonce
+                    </a>
 
-                     <div class="table-responsive-sm mt-2" v-if='details.length > 0'>
-                    <table class="table table-bordered table-striped table-hover mx-auto text-center" ">
+
+                     <div class="table-responsive-sm mt-1" v-if='details.length > 0'>
+                    <table class="table table-bordered table-striped table-hover mx-auto text-center">
                         <thead>
                             <tr>
                                 <th>Nom</th>
                                 <th>Image</th>
                                 <th>Statut</th>
-                                 <th>Vues</th>
                                 <th>Actions</th>
                             </tr>
                         </thead>
@@ -43,8 +43,6 @@
                                         {{ detail.situation }}
                                     </p>
                                 </td>
-                                   <td data-label="Nom">{{ capitalizeFirstLetter(detail.name) }}</td>
-                            
                                 <td data-label="Actions">
                                     <button class="btn btn-warning m-1 text-white" @click="displayEdit(detail.id)">
                                         <i class="fa fa-pen m-1 text-white"></i> Modifier
@@ -63,6 +61,22 @@
                     </table>
                 </div>
                </div>
+            </div>
+
+             <div class="col-12 text-center" v-if="showAll">
+                <nav aria-label="Page navigation mx-auto">
+                    <ul class="pagination">
+                        <li class="page-item" :class="{ 'disabled': currentPage === 1 }">
+                            <a class="page-link" href="#" @click.prevent="previousPage">Précédent</a>
+                        </li>
+                        <li class="page-item" v-for="page in totalPages" :key="page" :class="{ 'active': page === currentPage }">
+                            <a class="page-link" href="#" @click.prevent="gotoPage(page)">{{ page }}</a>
+                        </li>
+                        <li class="page-item" :class="{ 'disabled': currentPage === totalPages }">
+                            <a class="page-link" href="#" @click.prevent="nextPage">Suivant</a>
+                        </li>
+                    </ul>
+                </nav>
             </div>
 
             <div class="col-sm-12 col-md-8 mt-4 mx-auto" v-if='showEdit'>
@@ -209,7 +223,6 @@ export default {
             })
             .catch((error) => {
                 console.error(error);
-                alert('Failed to fetch data');
             });
         },
         displayDelete(id) {
@@ -249,18 +262,21 @@ export default {
         goToProperty(id) {
             window.location.replace(`ad/${id}`);
         },
-        previousPage() {
+          previousPage() {
             if (this.currentPage > 1) {
                 this.currentPage--;
+                window.scrollTo({ top: 0, behavior: 'smooth' });
             }
         },
         nextPage() {
             if (this.currentPage < this.totalPages) {
                 this.currentPage++;
+                window.scrollTo({ top: 0, behavior: 'smooth' });
             }
         },
         gotoPage(page) {
             this.currentPage = page;
+            window.scrollTo({ top: 0, behavior: 'smooth' });
         },
         capitalizeFirstLetter(word) {
             if (!word) return '';

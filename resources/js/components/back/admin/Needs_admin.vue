@@ -24,8 +24,9 @@
                                             <td data-label="Catégorie">{{ detail.category}}</td>
                                             <td data-label="Action">{{ detail.action }} </td>
                                             <td data-label="Ville"> {{ detail.location }} </td>
-                                            <td data-label="Client">rrrrr</td>
-                                            <td data-label="Téléphone"> 0000 </td>
+                                            <td data-label="Client">{{ capitalizeFirstLetter(detail.user_first_name) }}
+                                                {{ capitalizeFirstLetter(detail.user_last_name) }} </td>
+                                            <td data-label="Téléphone"> {{ (detail.user_phone) }} </td>
                                             <td v-if="detail.user_id === user_id">
                                                     <button class="btn btn-danger" @click='deleteMyNeed(detail.id)'>
                                                         <i class="fa fa-trash m1-3 text-white "></i> Supprimer
@@ -132,6 +133,10 @@
             this.currentPage = page;
             window.scrollTo({ top: 0, behavior: 'smooth' });
         },
+         capitalizeFirstLetter(word) {
+            if (!word) return '';
+            return word.charAt(0).toUpperCase() + word.slice(1);
+        }
 
                 }
 

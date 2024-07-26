@@ -15,7 +15,10 @@ class NeedController extends Controller
      */
     public function needsApi()
     {
-        $data = Need::orderByDesc('id')->get();
+        $data = Need::orderByDesc('id')
+        ->leftJoin('users', 'needs.user_id', '=', 'users.id')
+        ->select('needs.*', 'users.first_name as user_first_name', 'users.last_name as user_last_name', 'users.phone as user_phone')
+        ->get();
 
         return response()->json($data);
     }

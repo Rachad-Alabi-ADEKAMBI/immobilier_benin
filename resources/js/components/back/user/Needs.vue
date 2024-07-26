@@ -25,12 +25,13 @@
                                     </thead>
                                     <tbody>
                                         <tr v-for='detail in paginatedData' :key='detail.id'>
-                                            <td data-label="Date"> {{detail.created_at }} </td>
+                                            <td data-label="Date"> {{formatDate(detail.created_at) }} </td>
                                             <td data-label="Catégorie">{{ detail.category}}</td>
                                             <td data-label="Action">{{ detail.action }} </td>
                                             <td data-label="Ville"> {{ detail.location }} </td>
-                                            <td data-label="Client">rrrrr</td>
-                                            <td data-label="Téléphone"> 0000 </td>
+                                            <td data-label="Client">{{ capitalizeFirstLetter(detail.user_first_name) }}
+                                                {{ capitalizeFirstLetter(detail.user_last_name) }} </td>
+                                            <td data-label="Téléphone"> {{ (detail.user_phone) }} </td>
                                             <td v-if="detail.user_id === user_id">
                                                     <button class="btn btn-danger" @click='deleteMyNeed(detail.id)'>
                                                         <i class="fa fa-trash m1-3 text-white "></i> Supprimer
@@ -42,13 +43,29 @@
                         </div>
                        </div>
             </div>
+
+            <div class="col-12 text-center">
+                <nav aria-label="Page navigation mx-auto">
+                    <ul class="pagination">
+                        <li class="page-item" :class="{ 'disabled': currentPage === 1 }">
+                            <a class="page-link" href="#" @click.prevent="previousPage">Précédent</a>
+                        </li>
+                        <li class="page-item" v-for="page in totalPages" :key="page" :class="{ 'active': page === currentPage }">
+                            <a class="page-link" href="#" @click.prevent="gotoPage(page)">{{ page }}</a>
+                        </li>
+                        <li class="page-item" :class="{ 'disabled': currentPage === totalPages }">
+                            <a class="page-link" href="#" @click.prevent="nextPage">Suivant</a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
     </section>
 </template> 
  
 
  <script>
     export default {
-        name: 'Needs',
+        name: 'Needs_admin',
         props: {
         img_url: String
         }
@@ -58,7 +75,7 @@
              details: '',
                     currentPage: 1,
                     itemsPerPage: 5,
-                    user_id: 3
+                   user_id: 4
         };
       },
         mounted(){
@@ -95,33 +112,36 @@
                         let res = new Intl.NumberFormat('fr-FR', { maximumSignificantDigits: 3 }).format(num);
                             return res;
                     },
-                    formatDate(dateString) {
-                                // Split the date string to extract the date and time parts
-                                const [day, timeWithYear] = dateString.split('T');
-                                const [time, rest] = timeWithYear.split('Z');
-                                const [month, year] = rest.split('-');
-
-                                // Format the date as dd/mm/yy
-                                const formattedDate = `${day}/${month}/${year.slice(-2)}`;
-
-                                return formattedDate;
-                            },
+                       formatDate(dateString) {
+            const date = new Date(dateString);
+            const day = String(date.getDate()).padStart(2, '0');
+            const month = String(date.getMonth() + 1).padStart(2, '0'); // Months are zero-based in JavaScript
+            const year = date.getFullYear();
+            return `${day}-${month}-${year}`;
+        },
                     deleteMyNeed(id){
                         window.location.replace('delete/'+id)
                     },
-                    previousPage() {
-                            if (this.currentPage > 1) {
-                                this.currentPage--;
-                            }
-                            },
-                    nextPage() {
-                            if (this.currentPage < this.totalPages) {
-                                this.currentPage++;
-                            }
-                        },
-                    gotoPage(page) {
-                        this.currentPage = page;
-                    },
+                       previousPage() {
+            if (this.currentPage > 1) {
+                this.currentPage--;
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
+        },
+        nextPage() {
+            if (this.currentPage < this.totalPages) {
+                this.currentPage++;
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
+        },
+        gotoPage(page) {
+            this.currentPage = page;
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        },
+         capitalizeFirstLetter(word) {
+            if (!word) return '';
+            return word.charAt(0).toUpperCase() + word.slice(1);
+        }
 
                 }
 

@@ -1,6 +1,6 @@
 <template>
     <section class="container xxl mt-0">
-        <div class="row " id='myads'>
+        <div class="row pt-4" id='myads'>
             <div class='col-sm-12 col-md-12 mx-auto' id='pageTop' data-wow-delay="0.5s" v-if='showAll'>
                 <h1 class="mx-auto text-center">
                     Toutes les annonces ({{ details.length }})
