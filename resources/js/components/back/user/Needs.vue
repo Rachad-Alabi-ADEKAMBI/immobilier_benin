@@ -75,7 +75,7 @@
              details: '',
                     currentPage: 1,
                     itemsPerPage: 5,
-                   user_id: 3
+                   user_id: 9
         };
       },
         mounted(){
