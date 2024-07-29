@@ -26,11 +26,17 @@ Route::get('/ad/{id}', [AdController::class, 'adView']);
 
 Route::get('/advertisers', function () {
     return view('pages/front/advertisers');
-})->name('advertisers');;
+})->name('advertisers');
+
+Route::get('/advertiser', function () {
+    return view('pages/front/advertiser');
+})->name('advertiser');
+
+Route::get('/advertiserApi/{id}', [UserController::class, 'advertiserApi']);
 
 Route::get('/contact', function () {
     return view('pages/front/contact');
-})->name('contact');;
+})->name('contact');
 
 Route::get('/newAd', function () {
     return view('pages/back/user/newAd');

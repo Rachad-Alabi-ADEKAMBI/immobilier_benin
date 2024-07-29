@@ -1,7 +1,7 @@
 <p class="text text-center pt-2">
     Bonjour <strong>
         {{ ucfirst(auth()->user()->first_name) }}
-        {{ ucfirst(auth()->user()->last_name) }}
+        {{ strtoupper(auth()->user()->last_name) }}
     </strong> 
 </p>
 

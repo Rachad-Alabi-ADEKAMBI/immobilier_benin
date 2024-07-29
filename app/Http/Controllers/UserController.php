@@ -6,6 +6,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
+use Illuminate\Support\Facades\DB;
 
 class UserController extends Controller
 {
@@ -45,6 +46,24 @@ class UserController extends Controller
         $user->save();
 
         return response()->json('success');
+    }
+
+    public function advertiserApi($id)
+    {
+        $datas = User::find($id);
+
+        $datas = DB::table('users')
+            ->select(
+                'users.*',
+                'users.first_name as first_name',
+                'users.last_name as last_name',
+                'users.phone as phone'
+            )
+            ->leftJoin('ads', 'ads.user_id', '=', 'users.id')
+            ->where('ads.user_id', '=', $id)
+            ->get();
+
+       return response()->json($datas);
     }
 }
 

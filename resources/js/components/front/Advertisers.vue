@@ -43,7 +43,7 @@
                         <div id="tab-1" class="tab-pane fade show p-0  active" v-if='showAll'>
                             <div class="row g-4" >
                                 <div class="col-sm-12 col-md-6 wow fadeInUp item ad" data-wow-delay="0.1s " v-for="detail in paginatedData"
-                                    :key='detail.id'>
+                                    :key='detail.id' @click="goToAdvertiser(detail.id)">
                                      <div class="property-item rounded overflow-hidden" >
                                         <div class="position-relative overflow-hidden text-center">
                                                 <img class="user_image" :src='getImgUrl(detail.profile_photo_path)' alt="annonces immobilieres au Benin">
@@ -143,7 +143,7 @@
                             const start = (this.currentPage - 1) * this.itemsPerPage;
                             const end = start + this.itemsPerPage;
                             return this.details.slice(start, end);
-                            }
+                    }
                 },
             
         mounted(){
@@ -175,8 +175,8 @@
                     getImgUrl(pic) {
                         return "img/users/" + pic;
                     },
-                    goToProperty(id){
-                        window.location.replace('ad/'+id);
+                    goToAdvertiser(id){
+                        window.location.replace('advertiser/'+id);
                     },
                     previousPage() {
                         if (this.currentPage > 1) {
@@ -204,5 +204,9 @@
         width: 120px;
         height: 120px;
         border-radius: 90px;
+    }
+
+    .item{
+        cursor: pointer;
     }
 </style>
