@@ -147,19 +147,22 @@
                     </div>
                 </div>
             </div>
-            <nav aria-label="Page navigation" class="d-flex justify-content-center mt-4 wow fadeIn">
-                <ul class="pagination">
-                    <li class="page-item">
-                        <button class="page-link" @click="changePage(1)" :disabled="currentPage === 1">Précédent</button>
-                    </li>
-                    <li class="page-item" v-for="page in totalPages" :key="page">
-                        <button class="page-link" @click="changePage(page)" :class="{ active: currentPage === page }">{{ page }}</button>
-                    </li>
-                    <li class="page-item">
-                        <button class="page-link" @click="changePage(totalPages)" :disabled="currentPage === totalPages">Suivant</button>
-                    </li>
-                </ul>
-            </nav>
+            
+             <div class="col-12 text-center">
+                <nav aria-label="Page navigation mx-auto">
+                    <ul class="pagination">
+                        <li class="page-item" :class="{ 'disabled': currentPage === 1 }">
+                            <a class="page-link" href="#" @click.prevent="previousPage">Précédent</a>
+                        </li>
+                        <li class="page-item" v-for="page in totalPages" :key="page" :class="{ 'active': page === currentPage }">
+                            <a class="page-link" href="#" @click.prevent="gotoPage(page)">{{ page }}</a>
+                        </li>
+                        <li class="page-item" :class="{ 'disabled': currentPage === totalPages }">
+                            <a class="page-link" href="#" @click.prevent="nextPage">Suivant</a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
         </div>
         <!-- Property List End -->
     </div>
@@ -270,6 +273,22 @@ export default {
             const month = String(date.getMonth() + 1).padStart(2, '0'); // Months are zero-based in JavaScript
             const year = date.getFullYear();
             return `${day}-${month}-${year}`;
+        },
+         previousPage() {
+            if (this.currentPage > 1) {
+                this.currentPage--;
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
+        },
+        nextPage() {
+            if (this.currentPage < this.totalPages) {
+                this.currentPage++;
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
+        },
+        gotoPage(page) {
+            this.currentPage = page;
+            window.scrollTo({ top: 0, behavior: 'smooth' });
         }
     },
     mounted() {
