@@ -84,8 +84,7 @@
                     </div>
                 </div>
             </div>
-
-</div>
+        
 </template> 
  
 
@@ -100,7 +99,7 @@
         return {
              details: [],
                 ads: [],
-               id: 11,
+               id: 3,
             showAll: false,
             showFilterd: false,
             currentPage: 1,
@@ -131,7 +130,7 @@
                     displayAll(){
                         this.showAll = true;
                         this.showFiltered = false;
-                        axios.get('advertiserApi/'+id)
+                        axios.get('/advertiserApi/3')
                             .then((response) => {
                                 console.log(response.data);
                                 this.details = response.data;

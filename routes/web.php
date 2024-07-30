@@ -28,7 +28,7 @@ Route::get('/advertisers', function () {
     return view('pages/front/advertisers');
 })->name('advertisers');
 
-Route::get('/advertiser', function () {
+Route::get('/advertiser/{id}', function () {
     return view('pages/front/advertiser');
 })->name('advertiser');
 
