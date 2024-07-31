@@ -90,16 +90,18 @@
                         <div class="row g-3">
                             <div class="col-sm-6 col-md-6">
                                 <div class="form-floating">
+                                 <label for="name">Nom</label>
                                     <input type="text" class="form-control" v-model="currentDetail.name" id="name" placeholder="Nom">
-                                    <label for="name">Nom</label>
+                                   
                                 </div>
                             </div>
 
                             <div class="col-sm-6 col-md-6">
                                 <div class="form-floating">
+                                <label for="price">Prix</label>
                                     <input type="text" class="form-control" v-model="currentDetail.price" id="price" placeholder="Prix"
                                         oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');">
-                                    <label for="price">Prix</label>
+                                    
                                 </div>
                             </div>
                         </div>
@@ -107,28 +109,34 @@
                         <div class="row g-3 mt-3">
                             <div class="col-sm-12 col-md-12">
                                 <div class="form-floating">
+                                 <label for="description">Description</label>
                                     <textarea class="form-control" v-model="currentDetail.description" id="description" placeholder="Description"></textarea>
-                                    <label for="description">Description</label>
+                                   
                                 </div>
                             </div>
                         </div>
 
-                                 <div class="row g-3 mt-3">
-            <!-- Only the first image is required -->
-            <div class="col-sm-6 col-md-3">
-              <label for="pic1">Photo<span class="red">*</span></label>
-              <div class="form-floating">
-                <input type="file" class="form-control" accept=".jpg, .jpeg, .png, image/*" name="pic1" id="pic1" placeholder="Photo1" required>
-              </div>
-            </div>
-            <!-- Start at the second image but not required -->
-            <div class="col-sm-6 col-md-3" v-for="i in 11" :key="i + 1">
-              <label :for="'pic' + (i + 1)">Photo {{ i + 1 }}</label>
-              <div class="form-floating">
-                <input type="file" class="form-control" accept=".jpg, .jpeg, .png, image/*" :name="'pic' + (i + 1)" :id="'pic' + (i + 1)" placeholder="Photo {{ i + 1 }}">
-              </div>
-            </div>
-          </div>
+                        <div class="row g-3 mt-3">
+                                        <!-- Only the first image is required -->
+                                        <div class="col-sm-6 col-md-3">
+                                        <label for="pic1">Photo 1</label>
+                                        <div class="form-floating">
+                                            <input type="file" class="form-control" accept=".jpg, .jpeg, .png, image/*" name="pic1" id="pic1" placeholder="Photo1" required>
+                                        </div>
+                                        </div>
+                                        <!-- Start at the second image but not required -->
+                                        <div class="col-sm-6 col-md-3" v-for="i in 9" :key="i + 1">
+                                        <label :for="'pic' + (i + 1)">Photo {{ i + 1 }}</label>
+                                        <div class="form-floating">
+                                            <input type="file" class="form-control" accept=".jpg, .jpeg, .png, image/*" :name="'pic' + (i + 1)" :id="'pic' + (i + 1)" placeholder="Photo {{ i + 1 }}">
+                                        </div>
+                                        </div>
+                        </div>
+
+                        <div class="row g-3 mt-3">
+                            .col-sm-12
+                            
+                        </div>
 
                         
 
@@ -143,7 +151,7 @@
 
              <div class="col-sm-12 col-md-8 mt-4 mx-auto" v-if="showDelete">
                 <div class="bg-white border mt-2 rounded p-sm-3 m-3 p-3 wow">
-                    <form @submit.prevent="deleteAd">
+                    <form @submit.prevent="deleteAd" class="p-3">
                         <h1 class="mx-auto text-center">Suppression de l'annonce</h1>
 
                         <div class="row g-3 mt-2">
