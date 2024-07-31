@@ -30,11 +30,24 @@
                                             <p class="text-success" v-if="detail.situation === 'Disponible'">
                                                 {{ detail.situation }}
                                             </p>
+
+                                             <p class="text-danger" v-if="detail.situation === 'Stop'">
+                                                {{ detail.situation }}
+                                            </p>
                                         </td>
                                         <td data-label="Actions">
-                                            <button class="btn btn-warning m-1 text-white" @click="displayStop(detail.id)">
-                                                <i class="fa fa-Stop m-1 text-white"></i> Stop
+                                           <button class="btn btn-warning m-1 text-white" 
+                                                    @click="displayStop(detail.id)"
+                                                    v-if="detail.situation === 'Disponible' || detail.situation === 'Non Disponible'">
+                                                <i class="fa fa-stop m-1 text-white"></i> Stop
                                             </button>
+
+
+                                             <button class="btn btn-success m-1 text-white" @click="authorizeAd(detail.id)"
+                                                v-if="detail.situation === 'Stop'">
+                                                <i class="fa fa-play m-1 text-white"></i> Autoriser
+                                            </button>
+
                                             <button class="btn btn-info m-1 text-white" @click="goToProperty(detail.id)">
                                                 <i class="fa fa-eye m-1 text-white"></i> Voir
                                             </button>
@@ -49,7 +62,7 @@
 
             <div class="col-sm-12 col-md-8 mx-auto" v-if="showStop">
                 <div class="card p-3">
-                    <form @submit.prevent="submit">
+                    <form @submit.prevent="stop">
                         <span class="mx-auto bold" @click="displayAll()">
                                 <i class="fa fa-times me-3 mx-auto text-blue"></i>
                         </span>
@@ -131,21 +144,32 @@ export default {
             this.showAll = false;
             this.showStop = true;
         },
-        submit() {
+        stop() {
             if (!this.selectedDetail) return; // Ensure there's a selected detail
             const formData = new FormData();
             formData.append('reason', this.reason);
             formData.append('id', this.selectedDetail.id);
 
-            axios.post('/StopAdApi', formData)
+            axios.post('/stopAdApi', formData)
                 .then(response => {
-                    alert('Annonce mise en Stop !');
+                    alert('Annonce mise en stop !');
                     this.displayAll();
                 })
                 .catch(error => {
                     console.error('Form submission error', error);
                 });
         },
+        authorizeAd(id){
+             axios.post('/authorizeAdApi', formData)
+                .then(response => {
+                    alert('Annonce mise en ligne !');
+                    this.displayAll();
+                })
+                .catch(error => {
+                    console.error('Form submission error', error);
+                });
+        },
+
         format(num) {
             return new Intl.NumberFormat('fr-FR', { maximumSignificantDigits: 3 }).format(num);
         },
