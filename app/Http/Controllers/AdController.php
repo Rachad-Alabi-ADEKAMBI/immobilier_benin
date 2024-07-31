@@ -85,32 +85,25 @@ class AdController extends Controller
     }
 
 
-    public function editAd($id, Request $request)
+    public function updateAdApi(Request $request)
     {
-        $ad = Ad::find($id);
+         // Validate the request input
+         $request->validate([
+            'id' => 'required|integer|exists:ads,id',
+            'reason' => 'required|string|max:255',
+        ]);
+
+        // Find the ad by id
+        $ad = Ad::find($request->input('id'));
+
+        // Check if the ad exists
+        if (!$ad) {
+            return response()->json(['error' => 'Ad not found'], 404);
+        }
 
         $ad->name = $request->input('name');
         $ad->price = $request->input('price');
         $ad->description = $request->input('description');
-        $ad->rooms = $request->input('rooms');
-        $ad->bathrooms = $request->input('bathrooms');
-        $ad->kitchens = $request->input('kitchens');
-        $ad->parkings = $request->input('parkings');
-        $ad->living_rooms = $request->input('living_rooms');
-        $ad->warehouses = $request->input('warehouses');
-        $ad->location = $request->input('location');
-
-        $ad->area = $request->input('area');
-        $ad->size = $request->input('size');
-        $ad->offices = $request->input('offices');
-        $ad->action = $request->input('action');
-        $ad->category = $request->input('category');
-        $ad->seller_id = auth()->id();
-
-        $ad->status = 'Disponible';
-        $ad->views = 0;
-        $ad->shares = 0;
-
         $pic1 = $request->file('pic1');
         if ($pic1) {
             $imagename = time() . '.' . $pic1->getClientOriginalExtension();
@@ -118,7 +111,7 @@ class AdController extends Controller
             $ad->pic1 = $imagename;
         }
 
-        for ($i = 2; $i < 8; $i++) {
+        for ($i = 2; $i < 11; $i++) {
             $pic = 'pic' . $i;
             $file = $request->file($pic);
 
@@ -131,7 +124,7 @@ class AdController extends Controller
 
         $ad->save();
 
-        return redirect('/dashboard')->with('success', 'Annonce modifiée !!!');
+        return response()->json(['message' => 'Annonce modifiée !']);
     }
 
 

@@ -37,7 +37,8 @@
                                         {{ detail.situation }}
                                     </p>
                                     <p class="text-danger" v-if="detail.situation === 'Stop'">
-                                        Désactivé par l'administrateur
+                                        Désactivé par l'administrateur <br>
+                                        Motif: <span>{{detail.reason    }}</span>
                                     </p>
                                     <p class="text-warning" v-if="detail.situation === 'Non disponible'">
                                         {{ detail.situation }}
@@ -81,12 +82,12 @@
 
             <div class="col-sm-12 col-md-8 mt-4 mx-auto" v-if='showEdit'>
                 <div class="bg-white border mt-2 rounded p-2 wow fadeInUp">
-                    <form @submit.prevent="editAd">
+                    <form @submit.prevent="updateAd">
                         <span class="mx-0" @click="displayAll()">
                             <i class="fa fa-times me-3 text-blue"></i>
                         </span>
 
-                        <h1 class="mx-auto text-center">Modifier "{{ currentDetail.name }}"</h1>
+                        <h1 class="mx-auto text-center">Modifier annonce</h1>
                         <div class="row g-3">
                             <div class="col-sm-6 col-md-6">
                                 <div class="form-floating">
@@ -121,21 +122,33 @@
                                         <div class="col-sm-6 col-md-3">
                                         <label for="pic1">Photo 1</label>
                                         <div class="form-floating">
-                                            <input type="file" class="form-control" accept=".jpg, .jpeg, .png, image/*" name="pic1" id="pic1" placeholder="Photo1" required>
+                                            <input type="file" class="form-control" 
+                                            accept=".jpg, .jpeg, .png, image/*" name="pic1" id="pic1" 
+                                            placeholder="Photo1">
                                         </div>
                                         </div>
                                         <!-- Start at the second image but not required -->
                                         <div class="col-sm-6 col-md-3" v-for="i in 9" :key="i + 1">
                                         <label :for="'pic' + (i + 1)">Photo {{ i + 1 }}</label>
                                         <div class="form-floating">
-                                            <input type="file" class="form-control" accept=".jpg, .jpeg, .png, image/*" :name="'pic' + (i + 1)" :id="'pic' + (i + 1)" placeholder="Photo {{ i + 1 }}">
+                                            <input type="file" class="form-control" 
+                                            accept=".jpg, .jpeg, .png, image/*" :name="'pic' + (i + 1)" :id="'pic' + (i + 1)" placeholder="Photo {{ i + 1 }}">
                                         </div>
                                         </div>
                         </div>
 
                         <div class="row g-3 mt-3">
-                            .col-sm-12
-                            
+                            <div class="col-sm-4 col-md-6">
+                                <label for="location">Le bien est'il disponible actuellement ?</label>
+                                    <div class="form-floating">
+                                        <select class="form-select" id="availability"
+                                                 v-model="availability" >
+                                            <option >Veuillez sélectionner</option>
+                                            <option value="yes">Oui</option>
+                                            <option value="no">Non</option>
+                                        </select>
+                                    </div>
+                            </div>
                         </div>
 
                         
@@ -191,6 +204,7 @@ export default {
             currentId: '',
             currentPage: 1,
             itemsPerPage: 5,
+            availability: ''
         };
     },
     mounted() {
@@ -239,19 +253,32 @@ export default {
             this.showAll = false;
             this.showEdit = false;
         },
-        editAd() {
-            axios.put(`/adApi/${this.currentId}`, this.currentDetail)
-                .then((response) => {
-                    alert('Annonce modifiée avec succès');
-                    this.displayAll();
-                })
-                .catch((error) => {
-                    console.error(error);
-                    alert('Failed to update ad');
-                });
-        },
+       updateAd() {
+        if (!this.selectedDetail) return; // Ensure there's a selected detail
+      const formData = new FormData();
+      formData.append('name', this.name);
+      formData.append('price', this.price);
+      formData.append('description', this.description);
+
+      for (let i = 1; i <= 11; i++) {
+        const fileInput = document.getElementById('pic' + i);
+        if (fileInput && fileInput.files.length > 0) {
+          formData.append('pic' + i, fileInput.files[0]);
+        }
+      }
+
+      axios.post('/updateAdApi', formData)
+        .then(response => {
+          alert('Annonce mise à jour !');
+          this.displayAll();
+          window.location.replace('#top')
+        })
+        .catch(error => {
+          console.error('Form submission error', error);
+        });
+    },
         deleteAd() {
-            axios.delete(`/adApi/${this.currentId}`)
+            axios.delete(`/deleteAdApi/${this.currentId}`)
                 .then((response) => {
                     alert('Annonce supprimée avec succès');
                     this.displayAll();
