@@ -12,9 +12,7 @@
                                     <thead>
                                                             <tr>
                                                             <th scope="col">Date</th>
-                                                            <th scope="col">Email</th>
-                                                            <th scope="col">Téléphone</th>
-                                                            <th scope="col">Nom complet</th>
+                                                             <th scope="col">Nom</th>
                                                             <th scope='col'>Photo</th>
                                                             <th scope='col'>Annonces</th>
                                                             </tr>
@@ -22,9 +20,7 @@
                                                         <tbody>
                                                             <tr v-for='detail in paginatedData' :key='detail.id'>
                                                             <td data-label="Date">{{ formatDate(detail.created_at) }}</td>
-                                                            <td data-label="Email">{{ detail.email }}  </td>
-                                                            <td data-label="Phone">{{ detail.phone }}  </td>
-                                                            <td data-label="Full name">{{ detail.first_name }} {{ detail.last_name}}  </td>
+                                                            <td data-label="Full name">{{ capitalizeFirstLetter(detail.first_name) }} {{ capitalize(detail.last_name) }}  </td>
                                                              <td data-label="Photo">
                                                             <img :src='getImgUrl(detail.profile_photo_path)'  v-if="detail.profile_photo_path" alt="utilisateur immobilier benin">
                                                             <p class="text-danger" v-if="!detail.profile_photo_path">
@@ -65,7 +61,7 @@
 
             <div class="col-sm-12 col-md-8 mx-auto" v-if="showBan">
                 <div class="card p-3">
-                    <form @submit.prevent="submit">
+                    <form @submit.prevent="ban">
                         <span class="mx-auto bold" @click="displayAll()">
                                 <i class="fa fa-times me-3 mx-auto text-blue"></i>
                         </span>
@@ -148,15 +144,15 @@
                        this.showBan = true;
                        this.showAll = false;
                     },
-                     submit() {
+                     ban() {
             if (!this.selectedDetail) return; // Ensure there's a selected detail
             const formData = new FormData();
             formData.append('reason', this.reason);
             formData.append('id', this.selectedDetail.id);
 
-            axios.post('/ban', formData)
+            axios.post('/banUserApi', formData)
                 .then(response => {
-                    alert('Annonce mise en pause !');
+                    alert('Cet utilisateur a été banni !');
                     this.displayAll();
                 })
                 .catch(error => {
@@ -182,6 +178,10 @@
                     capitalizeFirstLetter(word) {
                         if (!word) return '';
                         return word.charAt(0).toUpperCase() + word.slice(1);
+                    },
+                    capitalize(word){
+                        if(!word) return '';
+                        return word.toUpperCase();
                     }
 
                 }

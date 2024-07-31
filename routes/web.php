@@ -97,6 +97,10 @@ Route::get('/deleteUserApi/{id}', [UserController::class, 'deleteUserApi']);
 
 Route::post('/stopAdApi', [AdController::class, 'stopAdApi']);
 
+Route::post('/authorizeAdApi/{id}', [AdController::class, 'authorizeAdApi']);
+
+Route::post('/banUserApi', [UserController::class, 'banUserApi']);
+
 Route::middleware(['auth:sanctum', 'verified'])->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
     Route::get('/dashboard_admin', [DashboardAdminController::class, 'index'])->name('dashboard_admin');

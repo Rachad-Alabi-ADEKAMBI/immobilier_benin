@@ -136,15 +136,34 @@ class AdController extends Controller
 
 
     public function stopAdApi(Request $request)
-{
-    // Validate the request input
-    $request->validate([
-        'id' => 'required|integer|exists:ads,id',
-        'reason' => 'required|string|max:255',
-    ]);
+    {
+        // Validate the request input
+        $request->validate([
+            'id' => 'required|integer|exists:ads,id',
+            'reason' => 'required|string|max:255',
+        ]);
 
+        // Find the ad by id
+        $ad = Ad::find($request->input('id'));
+
+        // Check if the ad exists
+        if (!$ad) {
+            return response()->json(['error' => 'Ad not found'], 404);
+        }
+
+        // Update the ad
+        $ad->reason = $request->input('reason');
+        $ad->situation = 'Stop';
+        $ad->save();
+
+        // Return a success response
+        return response()->json(['message' => 'Annonce mise en stop']);
+    }
+
+public function authorizeAdApi($id)
+{
     // Find the ad by id
-    $ad = Ad::find($request->input('id'));
+    $ad = Ad::find($id);
 
     // Check if the ad exists
     if (!$ad) {
@@ -152,12 +171,11 @@ class AdController extends Controller
     }
 
     // Update the ad
-    $ad->reason = $request->input('reason');
-    $ad->situation = 'Stop';
+    $ad->situation = 'Disponible';
     $ad->save();
 
     // Return a success response
-    return response()->json(['message' => 'Annonce mise en stop']);
+    return response()->json(['message' => 'Annonce mise en ligne']);
 }
 
     

@@ -159,17 +159,24 @@ export default {
                     console.error('Form submission error', error);
                 });
         },
-        authorizeAd(id){
-             axios.post('/authorizeAdApi', formData)
-                .then(response => {
-                    alert('Annonce mise en ligne !');
-                    this.displayAll();
-                })
-                .catch(error => {
-                    console.error('Form submission error', error);
-                });
-        },
+       authorizeAd(id) {
+            // Construct the URL for the API endpoint
+            const url = `/authorizeAdApi/${id}`;
 
+            // Send the POST request
+            axios.post(url)
+                .then(response => {
+                    // Display success message
+                    alert('Annonce mise en ligne !');
+
+                            // Refresh the list of ads
+                            this.displayAll();
+                        })
+                        .catch(error => {
+                            // Handle any errors
+                            console.error('Error during the request:', error);
+                        });
+        },
         format(num) {
             return new Intl.NumberFormat('fr-FR', { maximumSignificantDigits: 3 }).format(num);
         },

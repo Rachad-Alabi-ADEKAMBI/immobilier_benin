@@ -21,10 +21,16 @@ class UserController extends Controller
 
     public function usersApi()
     {
-        $data = User::orderByDesc('id')->get();
-
+        // Fetch users who are not banned and order by ID in descending order
+        $data = User::where('situation', '!=', 'Banned')
+                    ->where('role', '!=', 'admin')
+                    ->orderBy('id', 'desc')
+                    ->get();
+    
+        // Return the data as JSON
         return response()->json($data);
     }
+    
 
     public function advertisersApi()
     {
@@ -46,6 +52,31 @@ class UserController extends Controller
         $user->save();
 
         return response()->json('success');
+    }
+
+    public function banUserApi(Request $request)
+    {
+        // Validate the request input
+        $request->validate([
+            'id' => 'required|integer|exists:ads,id',
+            'reason' => 'required|string|max:255',
+        ]);
+
+        // Find the ad by id
+        $user = User::find($request->input('id'));
+
+        // Check if the ad exists
+        if (!$user) {
+            return response()->json(['error' => 'Ad not found'], 404);
+        }
+
+        // Update the ad
+        $user->reason = $request->input('reason');
+        $user->situation = 'Banned';
+        $user->save();
+
+        // Return a success response
+        return response()->json(['message' => 'Utilisateur banni']);
     }
 
     public function advertiserApi($id)
