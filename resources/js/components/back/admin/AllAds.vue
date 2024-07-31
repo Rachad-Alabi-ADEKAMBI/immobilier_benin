@@ -32,8 +32,8 @@
                                             </p>
                                         </td>
                                         <td data-label="Actions">
-                                            <button class="btn btn-warning m-1 text-white" @click="displayPause(detail.id)">
-                                                <i class="fa fa-pause m-1 text-white"></i> Pause
+                                            <button class="btn btn-warning m-1 text-white" @click="displayStop(detail.id)">
+                                                <i class="fa fa-Stop m-1 text-white"></i> Stop
                                             </button>
                                             <button class="btn btn-info m-1 text-white" @click="goToProperty(detail.id)">
                                                 <i class="fa fa-eye m-1 text-white"></i> Voir
@@ -47,18 +47,18 @@
                 </div>
             </div>
 
-            <div class="col-sm-12 col-md-8 mx-auto" v-if="showPause">
+            <div class="col-sm-12 col-md-8 mx-auto" v-if="showStop">
                 <div class="card p-3">
                     <form @submit.prevent="submit">
                         <span class="mx-auto bold" @click="displayAll()">
                                 <i class="fa fa-times me-3 mx-auto text-blue"></i>
                         </span>
 
-                        <h2>Mise en pause de l'annonce</h2>
+                        <h2>Mise en Stop de l'annonce</h2>
                         <p>{{ selectedDetail.name }}</p>
                         <label for="reason">Motif <span class="red">*</span></label>
                         <textarea class="form-control" v-model="reason" id="reason" placeholder="Motif" required></textarea>
-                        <button class="btn btn-success mt-3" type="submit">Mettre en pause</button>
+                        <button class="btn btn-success mt-3" type="submit">Mettre en Stop</button>
                     </form>
                 </div>
             </div>
@@ -93,7 +93,7 @@ export default {
     data() {
         return {
             showAll: false,
-            showPause: false,
+            showStop: false,
             reason: '',
             details: [],
             selectedDetail: null,
@@ -120,16 +120,16 @@ export default {
                 .then((response) => {
                     this.details = response.data;
                     this.showAll = true;
-                    this.showPause = false;
+                    this.showStop = false;
                 })
                 .catch((error) => {
                     console.error(error);
                 });
         },
-        displayPause(id) {
+        displayStop(id) {
             this.selectedDetail = this.details.find(detail => detail.id === id);
             this.showAll = false;
-            this.showPause = true;
+            this.showStop = true;
         },
         submit() {
             if (!this.selectedDetail) return; // Ensure there's a selected detail
@@ -137,9 +137,9 @@ export default {
             formData.append('reason', this.reason);
             formData.append('id', this.selectedDetail.id);
 
-            axios.post('/pauseAdApi', formData)
+            axios.post('/StopAdApi', formData)
                 .then(response => {
-                    alert('Annonce mise en pause !');
+                    alert('Annonce mise en Stop !');
                     this.displayAll();
                 })
                 .catch(error => {

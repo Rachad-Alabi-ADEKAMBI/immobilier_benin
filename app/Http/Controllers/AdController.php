@@ -134,6 +134,32 @@ class AdController extends Controller
         return redirect('/dashboard')->with('success', 'Annonce modifiée !!!');
     }
 
+
+    public function stopAd($id, Request $request)
+    {
+        // Find the ad by id
+        $ad = Ad::find($id);
+    
+        // Check if the ad exists
+        if (!$ad) {
+            return response()->json(['error' => 'Ad not found'], 404);
+        }
+    
+        // Validate the request input
+        $request->validate([
+            'reason' => 'required|string|max:255',
+        ]);
+    
+        // Update the ad
+        $ad->reason = $request->input('reason');
+        $ad->situation = 'Stop';
+        $ad->save();
+    
+        // Return a success response
+        return response()->json(['message' => 'Annonce mise en stop']);
+    }
+    
+
     /**
      * Store a newly created resource in storage.
      */
