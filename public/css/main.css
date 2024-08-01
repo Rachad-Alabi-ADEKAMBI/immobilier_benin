@@ -187,7 +187,7 @@ ul li {
   justify-content: space-between;
   flex-wrap: wrap;
   flex-direction: row;
-  justify-content: flex-start;
+  justify-content: baseline;
 }
 .ads .ad {
   width: 340px;
@@ -250,6 +250,9 @@ ul li {
   color: #666565;
   width: 95%;
 }
+.ads .ad__infos .more__details i {
+  color: #8755F1;
+}
 .ads .ad__infos .more__details .location {
   padding-left: 10px;
 }
@@ -265,14 +268,17 @@ ul li {
   color: #666565;
   width: 100%;
   font-size: 0.9em;
+  padding-left: 5px;
+  padding-right: 5px;
+  justify-content: center;
 }
 .ads .ad__infos .final__details .detail {
-  border: 1px solid grey;
-  padding: 1px;
-  border-radius: 5px;
+  border: 1px solid #8755F1;
+  padding: 2px;
 }
 .ads .ad__infos .final__details .detail i {
   margin-right: 2px;
+  color: #8755F1;
 }
 .ads .ad:hover__image img {
   width: 110%;

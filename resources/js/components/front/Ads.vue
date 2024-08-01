@@ -57,7 +57,7 @@
                             </div>
                             <div class="ad__infos">
                                 <div class="price">{{ format(detail.price) }} XOF</div>
-                                <div class="name">{{ detail.name }}</div>
+                                <div class="name">{{ capitalizeFirstLetter(detail.name) }}</div>
                                 <div class="more__details">
                                     <div class="location"><i class="bi bi-geo-alt"></i> {{ detail.location }}</div>
                                     <div class="date"><i class="bi bi-calendar"></i> {{ formatDate(detail.created_at) }}</div>
@@ -107,7 +107,7 @@
                             </div>
                             <div class="ad__infos">
                                 <div class="price">{{ format(detail.price) }} XOF</div>
-                                <div class="name">{{ detail.name }}</div>
+                                <div class="name">{{ capitalizeFirstLetter(detail.name) }}</div>
                                 <div class="more__details">
                                     <div class="location"><i class="bi bi-geo-alt"></i> {{ detail.location }}</div>
                                     <div class="date"><i class="bi bi-calendar"></i> {{ formatDate(detail.created_at) }}</div>
@@ -133,7 +133,7 @@
                                 </div>
                                 <div class="p-4 pb-0">
                                     <h5 class="text-blue mb-3">{{ format(detail.price) }} XOF</h5>
-                                    <a class="d-block h5 mb-2">{{ detail.name }}</a>
+                                    <a class="d-block h5 mb-2">{{ capitalizeFirstLetter(detail.name) }}</a>
                                     <p><i class="fa fa-map-marker-alt text-blue me-2"></i>{{ detail.location }}</p>
                                      <div class="date"><i class="bi bi-calendar"></i> {{ formatDate(detail.created_at) }}</div>
                                 </div>

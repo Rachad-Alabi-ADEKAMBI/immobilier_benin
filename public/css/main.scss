@@ -211,7 +211,7 @@ ul {
 
 .ads {
     @include flex();
-    justify-content: flex-start;
+    justify-content: baseline;
 
     .ad {
         width: 340px;
@@ -278,6 +278,10 @@ ul {
                 color: $grey;
                 width: 95%;
 
+                i{
+                    color: $primary;
+                }
+
                 .location {
                     padding-left: 10px;
                 }
@@ -293,14 +297,17 @@ ul {
                 color: $grey;
                 width: 100%;
                 font-size: 0.9em;
+                padding-left: 5px;
+                padding-right: 5px;
+                justify-content: center;
 
                 .detail {
-                    border: 1px solid grey;
-                    padding: 1px;
-                    border-radius: 5px;
+                    border: 1px solid $primary;;
+                    padding: 2px;
 
                     i {
                         margin-right: 2px;
+                        color: $primary;
                     }
                 }
             }
