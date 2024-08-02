@@ -1,36 +1,108 @@
 <template>
     <section class="container xxl">
         <div class="row" id='myads'>
-            <div class='col-sm-12 col-md-12 mx-auto' data-wow-delay="0.5s" v-if='showAll'>
-                <h1 class="mx-auto text-center">
+            <div class='col-sm-12 col-md-12 mx-auto' data-wow-delay="0.5s" >
+                <h1 class="mx-auto text-center" v-if='showAll'>
                     Mes annonces ({{ details.length }})
                 </h1>
 
-                <p class="text text-bold text-grey text-center" v-if='details.length === 0'>
+                 <h1 class="mx-auto text-center" v-if='showFiltered'>
+                   Résultas de la recherche ({{ filteredResults.length }})
+                </h1>
+
+                
+
+                <div class="table-top">
+                    <a class="btn btn-success new" href="/newAd">
+                        <i class="bi bi-plus-circle"></i> Nouvelle annonce
+                    </a>
+                    <div class="search-menu">
+                        <input type="search" v-model="searchKey" @input="handleInput">
+                        <span class="ml-2 open" v-if="!isSearching">
+                            <i class="bi bi-search"></i>
+                        </span>
+                        <span @click="clearSearch" class="close" v-if="isSearching">
+                            <i class="bi bi-x"></i>
+                        </span>
+                    </div>
+                </div>
+
+                <p class="text text-bold text-grey text-center" v-if='showAll && details.length === 0'>
                     Vous n'avez publié aucune annonce pour l'instant
                 </p>
 
-               <div class="table mt-3 mx-auto text-left">
-                         <a class="btn btn-success ml-0"   href="/newAd">
-                         <i class="bi bi-plus-circle"></i> Nouvelle annonce
-                    </a>
-
-
+                 <p class="text text-bold text-grey text-center" v-if='showFiltered && filteredResults.length === 0'>
+                    Aucun résultat
+                </p>
+   
+               <div class="table mt-0 mx-auto text-left" v-if="showAll">
                      <div class="table-responsive-sm mt-1" v-if='details.length > 0'>
                     <table class="table table-bordered table-striped table-hover mx-auto text-center">
                         <thead>
                             <tr>
+                                <th>Id</th>
                                 <th>Nom</th>
-                                <th>Image</th>
+                                <th>Prix</th>
                                 <th>Statut</th>
                                 <th>Actions</th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr v-for='detail in paginatedData' :key='detail.id'>
+                                <td data-label='Id'>{{detail.id }}</td>
                                 <td data-label="Nom">{{ capitalizeFirstLetter(detail.name) }}</td>
-                                <td data-label="Image">
-                                    <img :src='getImgUrl(detail.pic1)' alt="annonces immobilieres au benin">
+                                <td data-label="Prix">
+                                    {{ format(detail.price) }} XOF
+                                </td>
+                                <td data-label="Statut">
+                                    <p class="text-success" v-if="detail.situation === 'Disponible'">
+                                        {{ detail.situation }}
+                                    </p>
+                                    <p class="text-danger" v-if="detail.situation === 'Stop'">
+                                        Désactivé par l'administrateur <br>
+                                        Motif: <span>{{detail.reason    }}</span>
+                                    </p>
+                                    <p class="text-warning" v-if="detail.situation === 'Non disponible'">
+                                        {{ detail.situation }}
+                                    </p>
+                                </td>
+                                <td data-label="Actions">
+                                    <button class="btn btn-warning m-1 text-white" @click="displayEdit(detail.id)">
+                                        <i class="fa fa-pen m-1 text-white"></i> Modifier
+                                    </button>
+
+                                     <button class="btn btn-danger m-1 text-red" @click="displayDelete(detail.id)">
+                                        <i class="fa fa-trash m-1 text-white"></i> Supprimer
+                                    </button>
+
+                                     <button class="btn btn-info m-1 text-white" @click="goToProperty(detail.id)">
+                                         <i class="fa fa-eye m-1 text-white"></i> Voir
+                                    </button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+               </div>
+
+                <div class="table mt-0 mx-auto text-left" v-if="showFiltered && filteredResults.length > 0 ">
+                     <div class="table-responsive-sm mt-1" >
+                    <table class="table table-bordered table-striped table-hover mx-auto text-center">
+                        <thead>
+                            <tr>
+                                <th>Id</th>
+                                <th>Nom</th>
+                                <th>Prix</th>
+                                <th>Statut</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr v-for='detail in filteredResults' :key='detail.id'>
+                                <td data-label='Id'>{{detail.id }}</td>
+                                <td data-label="Nom">{{ capitalizeFirstLetter(detail.name) }}</td>
+                                <td data-label="Prix">
+                                    {{ format(detail.price) }} XOF
                                 </td>
                                 <td data-label="Statut">
                                     <p class="text-success" v-if="detail.situation === 'Disponible'">
@@ -204,8 +276,11 @@ export default {
             currentId: '',
             currentPage: 1,
             itemsPerPage: 5,
-            availability: ''
-        };
+            availability: '',
+            searchKey: '',
+            isSearching: false,
+            showFiltered: false
+            };
     },
     mounted() {
         this.displayAll();
@@ -218,8 +293,28 @@ export default {
             const start = (this.currentPage - 1) * this.itemsPerPage;
             const end = start + this.itemsPerPage;
             return this.details.slice(start, end);
+        },
+        filteredResults() {
+            if (!this.searchKey) {
+                return [];
+            }
+            return this.details.filter(detail => 
+                detail.name.toLowerCase().includes(this.searchKey.toLowerCase())
+            );
         }
     },
+   watch: {
+    searchKey: function (newVal) {
+        if (newVal === '') {
+            this.showAll = true;
+            this.showFiltered = false;
+        } else {
+            this.showAll = false;
+            this.showFiltered = true;
+        }
+    }
+},
+
     methods: {
         displayAll() {
             axios.get('/myAdsApi')
@@ -228,6 +323,7 @@ export default {
                     this.showAll = true;
                     this.showDelete = false;
                     this.showEdit = false;
+                     this.showFiltered = false;
                 })
                 .catch((error) => {
                     console.error(error);
@@ -237,6 +333,8 @@ export default {
        displayEdit(id) {
          this.currentId = id;
          this.showEdit = true;
+         this.showFiltered = false;
+         this.showAll = false;
          this.showDelete = false;
          axios.get(`/adApi/${id}`)
             .then((response) => {
@@ -252,6 +350,7 @@ export default {
             this.showDelete = true;
             this.showAll = false;
             this.showEdit = false;
+            this.showFiltered = false;
         },
        updateAd() {
         if (!this.selectedDetail) return; // Ensure there's a selected detail
@@ -285,7 +384,6 @@ export default {
                 })
                 .catch((error) => {
                     console.error(error);
-                    alert('Failed to delete ad');
                 });
         },
         format(num) {
@@ -316,6 +414,17 @@ export default {
         capitalizeFirstLetter(word) {
             if (!word) return '';
             return word.charAt(0).toUpperCase() + word.slice(1);
+        },
+         handleInput() {
+            this.isSearching = !!this.searchKey;
+            this.showAll = false;
+            this.showFiltered = true;
+        },
+        clearSearch() {
+            this.searchKey = '';
+            this.isSearching = false;
+             this.showAll = true;
+            this.showFiltered = false;
         }
     }
 };

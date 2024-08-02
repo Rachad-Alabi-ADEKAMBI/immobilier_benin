@@ -453,6 +453,67 @@ ul {
         border-radius: 10px;
     }
 }
+.table-top {
+    height: auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+    margin: 0;
+
+    .new {
+        margin-left: 0;
+        left: 0;
+    }
+
+    .search-menu {
+        margin-right: 0;
+        width: 250px;
+        position: relative;
+        text-align: center;
+        height: 15px;
+        padding-top: 0;
+        float: right;
+        
+
+        input {
+            width: 100%;
+            margin: 0;
+            top: 0;
+        }
+
+        .open {
+            position: absolute;
+            right: 5px;
+            top: 5px;
+            color: $secondary;
+            font-weight: bold;
+        }
+
+        .close {
+            position: absolute;
+            right: 5px;
+            top: 5px;
+            color: $secondary;
+            font-weight: bold;
+        }
+    }
+}
+
+.search-results {
+    margin-top: 10px;
+    ul {
+        list-style-type: none;
+        padding: 0;
+        li {
+            padding: 5px;
+            border-bottom: 1px solid #ddd;
+        }
+    }
+}
+
+
+
 
 .footer {
     color: $white;;
