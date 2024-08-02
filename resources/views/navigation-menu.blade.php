@@ -32,9 +32,21 @@
                     @endauth
             </div>
 
-                <a class="btn btn-success"  href="{{ url('/newAd')}}">
-                <i class="bi bi-plus-circle"></i> NOUVELLE ANNONCE
-                </a>
+            @guest
+                    <a class="btn btn-success" href="{{ url('/newAd') }}">
+                        <i class="bi bi-plus-circle"></i> NOUVELLE ANNONCE
+                    </a>
+                @endguest
+
+                @auth
+                    @if(auth()->user()->role !== 'admin')
+                        <a class="btn btn-success" href="{{ url('/newAd') }}">
+                            <i class="bi bi-plus-circle"></i> NOUVELLE ANNONCE
+                        </a>
+                    @endif
+                @endauth
+
+            
             </form>
         </div>
     </nav>

@@ -28,8 +28,9 @@
               <table class="table table-bordered table-striped table-hover mx-auto text-center">
                 <thead>
                   <tr>
+                    <th>Date</th>
                     <th>Nom</th>
-                    <th>Image</th>
+                    <th>Prix</th>
                     <th>Annonceur</th>
                     <th>Statut</th>
                     <th>Actions</th>
@@ -37,11 +38,10 @@
                 </thead>
                 <tbody>
                   <tr v-for="detail in paginatedData" :key="detail.id">
+                  <td data-label="Date"> {{ formatDate(detail.created_at) }} </td>
                     <td data-label="Nom">{{ capitalizeFirstLetter(detail.name) }}</td>
-                    <td data-label="Image">
-                      <img :src="getImgUrl(detail.pic1)" alt="annonces immobilieres au benin">
-                    </td>
-                    <td data-label="Annonceur">{{ capitalizeFirstLetter(detail.user_first_name) }} {{ capitalizeFirstLetter(detail.user_last_name) }}</td>
+                    <td data-label="Prix"> {{ format(detail.price) }} XOF </td>
+                     <td data-label="Annonceur">{{ capitalizeFirstLetter(detail.user_first_name) }} {{ capitalizeFirstLetter(detail.user_last_name) }}</td>
                     <td data-label="Statut">
                       <p class="text-success" v-if="detail.situation === 'Disponible'">
                         {{ detail.situation }}
@@ -74,8 +74,9 @@
               <table class="table table-bordered table-striped table-hover mx-auto text-center">
                 <thead>
                   <tr>
+                    <th>Date</th>
                     <th>Nom</th>
-                    <th>Image</th>
+                    <th>Prix</th>
                     <th>Annonceur</th>
                     <th>Statut</th>
                     <th>Actions</th>
@@ -83,11 +84,11 @@
                 </thead>
                 <tbody>
                   <tr v-for="detail in filteredResults" :key="detail.id">
+                    <td data-label="Date"> {{formatDate(detail.created_at)}} </td>
                     <td data-label="Nom">{{ capitalizeFirstLetter(detail.name) }}</td>
-                    <td data-label="Image">
-                      <img :src="getImgUrl(detail.pic1)" alt="annonces immobilieres au benin">
-                    </td>
-                    <td data-label="Annonceur">{{ capitalizeFirstLetter(detail.user_first_name) }} {{ capitalizeFirstLetter(detail.user_last_name) }}</td>
+                    <td data-label="Prix"> {{ format(detail.price) }} XOF </td>
+                   
+                          <td data-label="Annonceur">{{ capitalizeFirstLetter(detail.user_first_name) }} {{ capitalizeFirstLetter(detail.user_last_name) }}</td>
                     <td data-label="Statut">
                       <p class="text-success" v-if="detail.situation === 'Disponible'">
                         {{ detail.situation }}
@@ -258,15 +259,29 @@ export default {
     capitalizeFirstLetter(string) {
       return string.charAt(0).toUpperCase() + string.slice(1);
     },
+     capitalize(string) {
+      return string.toUpperCase();
+    },
     goToProperty(id) {
       window.location.href = `/property/${id}`;
     },
+     format(value) {
+            return value.toLocaleString('fr-FR');
+        },
+         formatDate(dateString) {
+            const date = new Date(dateString);
+            const day = String(date.getDate()).padStart(2, '0');
+            const month = String(date.getMonth() + 1).padStart(2, '0'); // Months are zero-based in JavaScript
+            const year = date.getFullYear();
+            return `${day}-${month}-${year}`;
+        },
     clearSearch() {
       this.searchKey = "";
       this.isSearching = false;
     },
     handleInput() {
       this.isSearching = !!this.searchKey;
+      this.showStop = false;
     },
     previousPage() {
       if (this.currentPage > 1) {
