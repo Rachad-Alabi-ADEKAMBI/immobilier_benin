@@ -11,7 +11,7 @@
                 </p>
 
                <div class="table mt-3 mx-auto text-left">
-                         <a class="btn btn-success ml-0" href="{{ url('/newAd')}}">
+                         <a class="btn btn-success ml-0"   href="/newAd">
                          <i class="bi bi-plus-circle"></i> Nouvelle annonce
                     </a>
 

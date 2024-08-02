@@ -33,7 +33,7 @@
             </div>
 
                 <a class="btn btn-success"  href="{{ url('/newAd')}}">
-                    NOUVELLE ANNONCE
+                <i class="bi bi-plus-circle"></i> NOUVELLE ANNONCE
                 </a>
             </form>
         </div>

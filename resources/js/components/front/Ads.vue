@@ -274,7 +274,7 @@ export default {
             const year = date.getFullYear();
             return `${day}-${month}-${year}`;
         },
-         previousPage() {
+        previousPage() {
             if (this.currentPage > 1) {
                 this.currentPage--;
                 window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -289,7 +289,7 @@ export default {
         gotoPage(page) {
             this.currentPage = page;
             window.scrollTo({ top: 0, behavior: 'smooth' });
-        }
+        },
     },
     mounted() {
         this.displayAll();
