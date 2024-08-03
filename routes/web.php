@@ -42,6 +42,7 @@ Route::get('/newAd', function () {
     return view('pages/back/user/newAd');
 })->name('newAd');;
 
+
 Route::post('newAdApi', [AdController::class, 'create'])
     ->name('newAdApi.create');
 
