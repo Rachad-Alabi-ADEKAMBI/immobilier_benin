@@ -133,7 +133,7 @@ Route::post('/login', function (Request $request) {
     }
 
     return back()->withErrors([
-        'email' => 'The provided credentials do not match our records.',
+        'email' => 'Identifiant ou mot de passe incorrect',
     ]);
 })->name('login');
 
