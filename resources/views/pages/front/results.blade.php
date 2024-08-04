@@ -64,40 +64,44 @@
                             <div class="col-sm-12 col-md-8 mx-auto">
                                 <div class="bg-white border rounded p-3 wow">
                                 <form action="{{ url('/newNeed') }}" method="POST">
-                                        <h1 class="mx-auto text-center">
-                                            Nouvelle recherche personnalisée
-                                        </h1>
-                                        <div class="row g-3 mt-2">
-                                            <p class="text text-grey p-2">
-                                                Malheureusement nous n'avons trouvé aucun résultat pour cette recherche, mais vous pouvez en faire une recherche 
-                                                personnalisée, les annonceurs de Immobilier Bénin seront alors
-                                                informés que vous avez ce besoin. <br>
-                                                <span class="text text-danger">*</span> Il est nécessaire de 
-                                                posséder un compte gratuit Immobilier Bénin pour cette option. <br>
-                                                <span class="text text-danger">*</span> Votre numéro de téléphone
-                                                sera partagé afin que vous soyez contacté.
-                                            </p>
-                                        </div>
-                                        <div class="row-sm-12 col-md-8 mx-auto text-center">
-                                            @if(isset($_SESSION['user']['id']))
-                                               
-                                                        <input type="text" name='category' value="{{ $category }}">
-                                                        <input type="text" name='action' value="{{ $action }}">
-                                                        <input type="text" name='location' value="{{ $location }}">
-                                                    
-                                                        <button class="btn btn-success m-2" type='submit'>
-                                                            Oui, créer la demande
-                                                        </button>
-                                            @else
-                                                <a class="btn btn-blue m-2" href="{{ url('/login') }}">
-                                                    Connexion
-                                                </a>
+                                    @csrf
+                                    <h1 class="mx-auto text-center">
+                                        Nouvelle recherche personnalisée
+                                    </h1>
+                                    <div class="row g-3 mt-2">
+                                        <p class="text text-grey p-2">
+                                            Malheureusement nous n'avons trouvé aucun résultat pour cette recherche, mais vous pouvez en faire une recherche 
+                                            personnalisée, les annonceurs de Immobilier Bénin seront alors
+                                            informés que vous avez ce besoin. <br>
+                                            <span class="text text-danger">*</span> Il est nécessaire de 
+                                            posséder un compte gratuit Immobilier Bénin pour cette option. <br>
+                                            <span class="text text-danger">*</span> Votre numéro de téléphone
+                                            sera partagé afin que vous soyez contacté.
+                                        </p>
+                                    </div>
+                                    <div class="row-sm-12 col-md-8 mx-auto text-center">
+                                        @auth 
+                                            @if(Auth::user()->role == 'user')
+                                                <input type="hidden" name="category" value="{{ $category }}">
+                                                <input type="hidden" name="action" value="{{ $action }}">
+                                                <input type="hidden" name="location" value="{{ $location }}">
+                                                <button class="btn btn-success m-2" type="submit">
+                                                    Oui, créer la demande
+                                                </button>
                                             @endif
-                                            <button type="button" class="btn btn-danger m-2" onclick="window.history.back()">
-                                                Non, merci
-                                            </button>
-                                        </div>
-                                    </form>
+                                        @endauth
+
+                                        @guest
+                                            <a class="btn btn-blue m-2" href="{{ url('/login') }}">
+                                                Connexion
+                                            </a>
+                                        @endguest
+                                        <a class="btn btn-danger m-2" href="{{ url('/home') }}">
+                                            Non, merci
+                                        </a>
+                                    </div>
+                                </form>
+
                                 </div>
                             </div>
                         </div>

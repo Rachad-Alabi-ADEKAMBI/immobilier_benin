@@ -13,6 +13,23 @@ class NeedController extends Controller
     /**
      * Display a listing of the resource.
      */
+
+     public function create(Request $request)
+     {
+         $need = new Need();
+ 
+         $need->category = $request->input('category');
+         $need->action = $request->input('action');
+         $need->location = $request->input('location');
+         $need->user_id = @auth->id;
+         $need->save();
+ 
+         return redirect('/home')->with(
+             'success',
+             'Nouvelle demande personnlisée publiée !!!'
+         );
+     }
+
     public function needsApi()
     {
         $data = Need::orderByDesc('id')
