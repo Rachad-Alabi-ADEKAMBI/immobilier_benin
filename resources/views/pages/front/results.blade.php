@@ -2,12 +2,13 @@
     <section class='section'>
         <div class="">
 
+
             <!--search-->
             @include('pages.front.search')
             <!--search-->
 
             <!--properties-->
-            <div class="container mt-2 mb-3">
+            <div class="container mt-2 mb-3">   
                 <div class="row">
                     <div class="col-12 mt-4">
                         <h2 class="mx-auto text-center">
@@ -62,7 +63,7 @@
                         <div class="row align-items-end" id='app'>
                             <div class="col-sm-12 col-md-8 mx-auto">
                                 <div class="bg-white border rounded p-3 wow">
-                                    <form action="" method="POST">
+                                <form action="{{ url('/newNeed') }}" method="POST">
                                         <h1 class="mx-auto text-center">
                                             Nouvelle recherche personnalisée
                                         </h1>
@@ -79,9 +80,14 @@
                                         </div>
                                         <div class="row-sm-12 col-md-8 mx-auto text-center">
                                             @if(isset($_SESSION['user']['id']))
-                                                <button class="btn btn-success m-2" href="{{ url('/newNeed')}}">
-                                                    Oui, créer la demande
-                                                </button>
+                                               
+                                                        <input type="text" name='category' value="{{ $category }}">
+                                                        <input type="text" name='action' value="{{ $action }}">
+                                                        <input type="text" name='location' value="{{ $location }}">
+                                                    
+                                                        <button class="btn btn-success m-2" type='submit'>
+                                                            Oui, créer la demande
+                                                        </button>
                                             @else
                                                 <a class="btn btn-blue m-2" href="{{ url('/login') }}">
                                                     Connexion

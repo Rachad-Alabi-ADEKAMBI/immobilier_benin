@@ -80,8 +80,8 @@ class AdController extends Controller
         ->orderByDesc('id')
         ->get();
 
-        return view('pages/front/results', compact('datas'));
-        //return response()->json($datas);
+        return view('pages/front/results', compact('datas', 'category', 'action', 'location'));
+
     }
 
 
