@@ -8,6 +8,10 @@ html, body {
   padding: 0;
 }
 
+.bg-secondary {
+  background-color: #778CFD !important;
+}
+
 .back-to-top {
   background-color: #8755F1;
   width: 60px;

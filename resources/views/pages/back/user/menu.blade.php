@@ -1,3 +1,5 @@
+<?php use Illuminate\Support\Facades\Request; ?>
+
 <p class="text text-center pt-2">
     Bonjour <strong>
         {{ ucfirst(auth()->user()->first_name) }}
@@ -12,21 +14,20 @@
     </p>
 @endif
 
-
-
 <div class="col-sm-12 text-center">
-                    <div class="menu">
-                    <a class="btn btn-primary m-2" href="{{ url('/dashboard') }}">
-                    <i class="bi bi-card-list"></i> Mes annonces
-                    </a>
+    <div class="menu">
+        <a class="btn btn-primary m-2 {{ Request::is('dashboard') ? 'bg-secondary' : '' }}" href="{{ url('/dashboard') }}">
+            <i class="bi bi-card-list"></i> Mes annonces
+        </a>
 
-                    <a class="btn btn-primary m-2" href="{{ url('/needs') }}">
-                    <i class="bi bi-question-circle-fill"></i> Demandes clients
-                    </a>
+        <a class="btn btn-primary m-2 {{ Request::is('needs') ? 'bg-secondary' : '' }}" href="{{ url('/needs') }}">
+            <i class="bi bi-question-circle-fill"></i> Demandes clients
+        </a>
 
-                    <a class="btn btn-primary m-2" href="{{ url('/profile') }}">
-                        <i class="bi bi-gear"></i> Paramètres
-                    </a>
-            </div>
+        <a class="btn btn-primary m-2 {{ Request::is('profile') ? 'bg-secondary' : '' }}" href="{{ url('/profile') }}">
+            <i class="bi bi-gear"></i> Paramètres
+        </a>
+    </div>
+</div>
 
-        </div>
+

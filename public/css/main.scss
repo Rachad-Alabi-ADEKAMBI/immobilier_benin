@@ -19,6 +19,10 @@ html, body {
     padding: 0;
 }
 
+.bg-secondary {
+    background-color: $secondary !important;
+}
+
 .back-to-top {
     background-color: $primary;
     width: 60px;

@@ -21,7 +21,7 @@ class NeedController extends Controller
          $need->category = $request->input('category');
          $need->action = $request->input('action');
          $need->location = $request->input('location');
-         $need->user_id = @auth->id;
+         $need->user_id = Auth::id();
          $need->save();
  
          return redirect('/home')->with(

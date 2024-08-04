@@ -74,6 +74,8 @@ Route::get('/needs_admin', function () {
     return view('pages/back/admin/needs_admin');
 })->name('needs_admin');
 
+Route::post('/newNeed', [NeedController::class, 'create']);
+
 Route::get('/myAdsApi', [AdController::class, 'myAdsApi']);
 
 Route::get('/advertisersApi', [UserController::class, 'advertisersApi']);
@@ -132,7 +134,7 @@ Route::post('/login', function (Request $request) {
             return redirect()->route('dashboard');
         }
     }
-
+    
     return back()->withErrors([
         'email' => 'Identifiant ou mot de passe incorrect',
     ]);
