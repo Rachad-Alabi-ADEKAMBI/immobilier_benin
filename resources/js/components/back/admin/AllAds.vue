@@ -88,7 +88,7 @@
                     <td data-label="Nom">{{ capitalizeFirstLetter(detail.name) }}</td>
                     <td data-label="Prix"> {{ format(detail.price) }} XOF </td>
                    
-                          <td data-label="Annonceur">{{ capitalizeFirstLetter(detail.user_first_name) }} {{ capitalizeFirstLetter(detail.user_last_name) }}</td>
+                          <td data-label="Annonceur">{{ capitalizeFirstLetter(detail.user_first_name) }} {{ capitalize(detail.user_last_name) }}</td>
                     <td data-label="Statut">
                       <p class="text-success" v-if="detail.situation === 'Disponible'">
                         {{ detail.situation }}
