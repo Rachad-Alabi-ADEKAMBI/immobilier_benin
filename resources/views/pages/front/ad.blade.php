@@ -13,31 +13,43 @@
             </div>
             <div class="row">
                 <div class="col-sm-12 col-md-12 mx-auto text-center main-img">
-                    <img src="{{ asset('/img/ads/' . $datas_first->pic1) }}" alt="appartement a louer a cotonou">
+                    <img src="{{ asset('/img/ads/' . $datas_first->pic1) }}" alt="louer ou venre un bien immobilier au Bénin">
                 </div>
             </div>
 
             <div class="row mt-4">
                 <div class="col-sm-12 col-md-4 mx-auto text-center image">
-                    <img src="{{ url('img/ads/' . $datas_first->pic2) }}" alt="appartement a louer a cotonou">
+                    <img src="{{ url('img/ads/' . $datas_first->pic2) }}" alt="louer ou venre un bien immobilier au Bénin">
                 </div>
                 <div class="col-sm-12 col-md-4 mx-auto text-center image">
-                    <img src="{{ url('img/ads/' . $datas_first->pic3) }}" alt="appartement a louer a cotonou">
+                    <img src="{{ url('img/ads/' . $datas_first->pic3) }}" alt="louer ou venre un bien immobilier au Bénin">
                 </div>
                 <div class="col-sm-12 col-md-4 mx-auto text-center image">
-                    <img src="{{ url('img/ads/' . $datas_first->pic4) }}" alt="appartement a louer a cotonou">
+                    <img src="{{ url('img/ads/' . $datas_first->pic4) }}" alt="louer ou venre un bien immobilier au Bénin">
                 </div>
             </div>
 
             <div class="row mt-4">
                 <div class="col-sm-12 col-md-4 mx-auto text-center image">
-                    <img src="{{ url('img/ads/' . $datas_first->pic5) }}" alt="appartement a louer a cotonou">
+                    <img src="{{ url('img/ads/' . $datas_first->pic5) }}" alt="louer ou venre un bien immobilier au Bénin">
                 </div>
                 <div class="col-sm-12 col-md-4 mx-auto text-center image">
-                    <img src="{{ url('img/ads/' . $datas_first->pic6) }}" alt="appartement a louer a cotonou">
+                    <img src="{{ url('img/ads/' . $datas_first->pic6) }}" alt="louer ou venre un bien immobilier au Bénin">
                 </div>
                 <div class="col-sm-12 col-md-4 mx-auto text-center image">
-                    <img src="{{ url('img/ads/' . $datas_first->pic7) }}" alt="appartement a louer a cotonou">
+                    <img src="{{ url('img/ads/' . $datas_first->pic7) }}" alt="louer ou venre un bien immobilier au Bénin">
+                </div>
+            </div>
+
+            <div class="row mt-4">
+                <div class="col-sm-12 col-md-4 mx-auto text-center image">
+                    <img src="{{ url('img/ads/' . $datas_first->pic8) }}" alt="louer ou venre un bien immobilier au Bénin">
+                </div>
+                <div class="col-sm-12 col-md-4 mx-auto text-center image">
+                    <img src="{{ url('img/ads/' . $datas_first->pic9) }}" alt="louer ou venre un bien immobilier au Bénin">
+                </div>
+                <div class="col-sm-12 col-md-4 mx-auto text-center image">
+                    <img src="{{ url('img/ads/' . $datas_first->pic10) }}" alt="louer ou venre un bien immobilier au Bénin">
                 </div>
             </div>
 
@@ -77,7 +89,7 @@
                     </p>
 
                     <div class="d-flex border-top">
-                        <h5 class="text-blue mt-3 mb-2">{{ $datas_first->price }} F CFA</h5>
+                        <h5 class="text-blue mt-3 mb-2">{{ number_format($data->price, 0, '', ' ') }} F CFA</h5>
                     </div>
                 </div>
             </div>
@@ -144,7 +156,7 @@
                         </div>
                     </div>
                     <div class="p-4 pb-0">
-                        <h5 class="text-blue mb-3">{{ $data->price }} XOF</h5>
+                        <h5 class="text-blue mb-3">{{ number_format($data->price, 0, '', ' ') }} XOF</h5>
                         <a class="d-block h5 mb-2" href="">{{ ucwords(strtolower($data->name)) }}</a>
                         <p><i class="fa fa-map-marker-alt text-blue me-2"></i> {{ $data->location }}</p>
                     </div>
