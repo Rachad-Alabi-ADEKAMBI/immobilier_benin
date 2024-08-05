@@ -122,25 +122,25 @@
                     </div>
                 </div>
 
-                <div id="tab-0" class="" v-if="showFiltered">
-                    <div class="row g-4 ads">
-                        <div class="ad" data-wow-delay="0.1s" v-for="detail in filteredItems" :key="detail.id" @click="goToProperty(detail.id)">
-                            <div class="property-item rounded overflow-hidden" @click="goToProperty(detail.id)">
-                                <div class="position-relative overflow-hidden">
-                                    <img class="img-fluid" :src="getImg(detail.pic1)" alt="">
-                                    <div class="bg-blue rounded text-white position-absolute start-0 top-0 m-4 py-1 px-3">{{ detail.action }}</div>
-                                    <div class="bg-white rounded-top text-blue position-absolute start-0 bottom-0 mx-4 pt-1 px-3">{{ detail.category }}</div>
+                <div id="tab-3" class="" v-if="showFiltered">
+                    <div class="row ads mt-3">
+                        <div class="ad" v-for="detail in filteredItems" :key="detail.id" @click="goToProperty(detail.id)">
+                            <div class="ad__image">
+                                <img :src="getImg(detail.pic1)" alt="appartement a louer a cotonou">
+                                <div class="action">{{ detail.action }}</div>
+                                <div class="category">{{ detail.category }}</div>
+                            </div>
+                            <div class="ad__infos">
+                                <div class="price">{{ format(detail.price) }} XOF</div>
+                                <div class="name">{{ capitalizeFirstLetter(detail.name) }}</div>
+                                <div class="more__details">
+                                    <div class="location"><i class="bi bi-geo-alt"></i> {{ detail.location }}</div>
+                                    <div class="date"><i class="bi bi-calendar"></i> {{ formatDate(detail.created_at) }}</div>
                                 </div>
-                                <div class="p-4 pb-0">
-                                    <h5 class="text-blue mb-3">{{ format(detail.price) }} XOF</h5>
-                                    <a class="d-block h5 mb-2">{{ capitalizeFirstLetter(detail.name) }}</a>
-                                    <p><i class="fa fa-map-marker-alt text-blue me-2"></i>{{ detail.location }}</p>
-                                     <div class="date"><i class="bi bi-calendar"></i> {{ formatDate(detail.created_at) }}</div>
-                                </div>
-                                <div class="d-flex border-top">
-                                    <small class="flex-fill text-center border-end py-2"><i class="fa fa-ruler-combined text-blue me-2"></i>{{ detail.surface }}</small>
-                                    <small class="flex-fill text-center border-end py-2"><i class="fa fa-bed text-blue me-2"></i>{{ detail.rooms }}</small>
-                                    <small class="flex-fill text-center py-2"><i class="fa fa-shower text-blue me-2"></i>{{ detail.bathrooms }}</small>
+                                <div class="final__details" v-if="detail.category !== 'Terrain' && detail.category !== 'Boutique'">
+                                    <div class="detail"><i class="fa-solid fa-users"></i> {{ detail.people }} ménage{{ detail.people > 1 ? 's' : '' }}</div>
+                                    <div class="detail"><i class="fa-solid fa-bed"></i> {{ detail.rooms }} chambre{{ detail.rooms > 1 ? 's' : '' }}</div>
+                                    <div class="detail"><i class="fa-solid fa-shower"></i> {{ detail.bathrooms }} douche{{ detail.bathrooms > 1 ? 's' : '' }}</div>
                                 </div>
                             </div>
                         </div>

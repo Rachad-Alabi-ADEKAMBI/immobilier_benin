@@ -72,25 +72,34 @@
                     <div class="icon">
                         <small class="flex-fill text-left border-end py-2">
                             <i class="fa fa-ruler-combined text-left me-2"></i>
-                            {{ $datas_first->size }} m2
+                            {{ number_format($datas_first->size, 0, '', ' ') }} m2
                         </small>
                     </div>
                 </div>
             </div>
 
             <div class="row">
-                <div class="col-12">
+                <div class="col-sm-12 col-md-6">
                     <p><i class="fa fa-list-alt text-blue me-2"></i> 
                         {{ $datas_first->category }} <br>
-                        <i class="fa fa-map-marker-alt text-blue me-2"></i> 
+                        <i class="bi bi-geo-alt"></i>
                         {{ $datas_first->location }}, {{ $datas_first->action }} <br>
                         <i class="far fa-clock text-blue"></i>
                         {{ $datas_first->created_at }}
                     </p>
 
                     <div class="d-flex border-top">
-                        <h5 class="text-blue mt-3 mb-2">{{ number_format($data->price, 0, '', ' ') }} F CFA</h5>
+                        <h5 class="text-blue mt-3 mb-2">{{ number_format($datas_first->price, 0, '', ' ') }} XOF</h5>
                     </div>
+                </div>
+                <div class="col-sm-12 col-md-6 ml-0">
+                    @if($datas_first->category != 'Terrain' && $datas_first->category != 'Boutique' )
+                        <div class="final__details" >
+                                    <div class="detail"><i class="fa-solid fa-users text-blue"></i> {{ $datas_first->people }} ménage{{ $datas_first->people > 1 ? 's' : '' }}</div>
+                                    <div class="detail"><i class="fa-solid fa-bed text-blue"></i> {{ $datas_first->rooms }} chambre{{ $datas_first->rooms > 1 ? 's' : '' }}</div>
+                                    <div class="detail"><i class="fa-solid fa-shower text-blue"></i> {{ $datas_first->bathrooms }} douche{{ $datas_first->bathrooms > 1 ? 's' : '' }}</div>
+                        </div>
+                    @endif
                 </div>
             </div>
 
@@ -105,7 +114,7 @@
                     <p class="text-left">
                         <i class="fas fa-exclamation text-danger"></i> N'envoyez jamais de l'argent à une personne que vous n'avez jamais vue.<br>
                         <i class="fas fa-exclamation text-danger"></i> Assurez-vous que le bien appartient réellement au vendeur lors d'un achat.<br>
-                        <i class="fas fa-exclamation text-danger"></i> <a href="index.php?action=contactPage">Contactez-nous </a> si vous ne savez pas comment procéder.
+                        <i class="fas fa-exclamation text-danger"></i> <a href="/contacT">Contactez-nous </a> si vous ne savez pas comment procéder.
                     </p>
                     
                 </div>
