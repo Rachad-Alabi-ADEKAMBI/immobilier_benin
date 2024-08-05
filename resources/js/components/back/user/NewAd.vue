@@ -13,7 +13,7 @@
           <h1 class="mx-auto text-center">Nouvelle annonce</h1>
           <p class="text-center">
             Si vous avez des questions concernant le formulaire <br> vous pouvez
-            consulter <a href="/faqPage">la FAQ</a>
+            consulter <a href="/faq">la FAQ</a>
           </p>
 
           <div class="row g-3">
@@ -88,8 +88,9 @@
           <div class="row g-3 mt-3" v-if="showMoreLocation">
             <div class="col-sm-6 col-md-6">
               <div class="form-floating">
+                  <label for="more_location">Ville <span class="red">*</span></label>
                 <input type="text" class="form-control" v-model="moreLocation" id="more_location" placeholder="Ville">
-                <label for="more_location">Ville <span class="red">*</span></label>
+              
               </div>
             </div>
           </div>
@@ -97,39 +98,40 @@
           <div class="row g-3 mt-3" v-if="showLand">
             <div class="col-sm-6 col-md-6">
               <div class="form-floating">
+                <label for="size">Superficie <span class="red">*</span></label>
                 <input type="number" class="form-control" v-model="size" id="size" placeholder="Superficie"
                   min="0" oninput="this.value = Math.abs(this.value)">
-                <label for="size">Superficie <span class="red">*</span></label>
               </div>
             </div>
           </div>
 
           <div class="row g-3 mt-3" v-if="showHouse">
             <div class="col-sm-4 col-md-4">
+               <label for="rooms">Chambres <span class="red">*</span></label>
               <div class="form-floating">
                 <select class="form-select" v-model="rooms">
                   <option v-for="n in 10" :key="n" :value="n">{{ n }}</option>
                 </select>
-                <label for="rooms">Chambres <span class="red">*</span></label>
+                
               </div>
             </div>
 
             <div class="col-sm-4 col-md-4">
+               <label for="bathrooms">Douches <span class="red">*</span></label>
               <div class="form-floating">
                 <select class="form-select" v-model="bathrooms">
                   <option v-for="n in 10" :key="n" :value="n">{{ n }}</option>
                 </select>
-                <label for="bathrooms">Douches <span class="red">*</span></label>
               </div>
             </div>
 
             <div class="col-sm-4 col-md-4">
+              <label for="people">Ménages: <span class="red">*</span></label>
               <div class="form-floating">
-                <select class="form-select" v-model="people">
+                <select class="" v-model="people">
                   <option v-for="n in 10" :key="n" :value="n">{{ n }}</option>
                 </select>
-                <label for="people">Ménages <span class="red">*</span></label>
-              </div>
+               </div>
             </div>
           </div>
 
@@ -151,7 +153,7 @@
               </div>
             </div>
             <!-- Start at the second image but not required -->
-            <div class="col-sm-6 col-md-3" v-for="i in 11" :key="i + 1">
+            <div class="col-sm-6 col-md-3" v-for="i in 9 " :key="i + 1">
               <label :for="'pic' + (i + 1)">Photo {{ i + 1 }}</label>
               <div class="form-floating">
                 <input type="file" class="form-control" accept=".jpg, .jpeg, .png, image/*" :name="'pic' + (i + 1)" :id="'pic' + (i + 1)" placeholder="Photo {{ i + 1 }}">
