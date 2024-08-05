@@ -82,7 +82,7 @@
                 <div class="col-sm-12 col-md-6">
                     <p><i class="fa fa-list-alt text-blue me-2"></i> 
                         {{ $datas_first->category }} <br>
-                        <i class="bi bi-geo-alt"></i>
+                        <i class="bi bi-geo-alt text-blue"></i>
                         {{ $datas_first->location }}, {{ $datas_first->action }} <br>
                         <i class="far fa-clock text-blue"></i>
                         {{ $datas_first->created_at }}
@@ -151,38 +151,31 @@
             </div>
         </div>
 
-        <div class="row content mt-1">
-            @foreach($datas_second as $data)
-            <div class="col-lg-4 col-md-6 wow fadeInUp item ad" data-wow-delay="0.1s">
-                <div class="property-item rounded overflow-hidden">
-                    <div class="position-relative overflow-hidden">
-                        <img class="img-fluid" src="{{ url('img/' . $data->pic1) }}" alt="">
-                        <div class="bg-blue rounded text-white position-absolute start-0 top-0 m-4 py-1 px-3">
-                            {{ $data->action }}
-                        </div>
-                        <div class="bg-white rounded-top text-blue position-absolute start-0 bottom-0 mx-4 pt-1 px-3">
-                            {{ $data->category }}
-                        </div>
+        <div class="row ads mt-1">
+            @foreach($datas_second as $datas)
+            <div class="ad">
+                <div class="ad__image">
+                    <img src="{{ $datas->pic1 }}" alt="Immobilier Benin">
+                    <div class="action">{{ $datas->action }}</div>
+                    <div class="category">{{ $datas->category }}</div>
+                </div>
+                <div class="ad__infos">
+                    <div class="price">{{ number_format($datas->price, 0, '', ' ') }} XOF</div>
+                    <div class="name">{{ ucfirst($datas->name) }}</div>
+                    <div class="more__details">
+                        <div class="location"><i class="bi bi-geo-alt"></i> {{ $datas->location }}</div>
+                        <div class="date"><i class="bi bi-calendar"></i> {{ $datas->created_at->format('d/m/Y') }}</div>
                     </div>
-                    <div class="p-4 pb-0">
-                        <h5 class="text-blue mb-3">{{ number_format($data->price, 0, '', ' ') }} XOF</h5>
-                        <a class="d-block h5 mb-2" href="">{{ ucwords(strtolower($data->name)) }}</a>
-                        <p><i class="fa fa-map-marker-alt text-blue me-2"></i> {{ $data->location }}</p>
+                    <div class="final__details" v-if="$datas->category !== 'Terrain' && $datas->category !== 'Boutique'">
+                        <div class="detail"><i class="fa-solid fa-users"></i> {{ $datas->people }} ménage{{ $datas->people > 1 ? 's' : '' }}</div>
+                        <div class="detail"><i class="fa-solid fa-bed"></i> {{ $datas->rooms }} chambre{{ $datas->rooms > 1 ? 's' : '' }}</div>
+                        <div class="detail"><i class="fa-solid fa-shower"></i> {{ $datas->bathrooms }} douche{{ $datas->bathrooms > 1 ? 's' : '' }}</div>
                     </div>
-                    <div class="d-flex border-top">
-                        <small class="flex-fill text-center border-end py-2"><i class="fa fa-ruler-combined text-blue me-2"></i>{{ $data->people }} ménage{{ $data->people > 1 ? 's' : '' }}</small>
-                        <small class="flex-fill text-center border-end py-2"><i class="fa fa-bed text-blue me-2"></i>{{ $data->rooms }} chambre{{ $data->rooms > 1 ? 's' : '' }}</small>
-                        <small class="flex-fill text-center py-2"><i class="fa fa-bath text-blue me-2"></i>{{ $data->bathrooms }} douche{{ $data->bathrooms > 1 ? 's' : '' }}</small>
-                    </div>
-
-                    <div class="d-flex border-top">
-                        <small class="flex-fill text-left border-end py-2"><i class="fa fa-ruler-combined text-blue me-2"></i>{{ $data->size }} m2</small>
-                    </div>
-
                 </div>
             </div>
             @endforeach
         </div>
+
     </div>
     </section>
 
