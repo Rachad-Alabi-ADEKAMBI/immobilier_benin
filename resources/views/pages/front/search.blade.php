@@ -2,7 +2,7 @@
                 <form action="{{ url('/search') }}" method="POST" class="container mx-auto">
                     @csrf 
                     <div class="row search__content mx-auto" >
-                        <div class="col-sm-12 col-md-3 search__content__item">
+                        <div class=" search__content__item">
                             <select class="form-select border-0 py-3" name='category' required>
                                         <option >Type de bien</option>
                                         <option value="Appartement meublé">Appartement meublé</option>
@@ -13,7 +13,7 @@
                             </select>
                         </div>
 
-                        <div class="col-sm-12 col-md-3 search__content__item">
+                        <div class=" search__content__item">
                             <select class="form-select border-0 py-3" name='action'>
                                     <option >Action</option>
                                     <option value="A louer">A louer</option>
@@ -21,7 +21,7 @@
                             </select> 
                         </div>
 
-                        <div class="col-sm-12 col-md-3 search__content__item">
+                        <div class=" search__content__item">
                             <select class="form-select border-0 py-3"  name="location" required>
                                                         <option value=''>Ville</option>
                                                         <option value="Abomey">Abomey</option>
@@ -42,7 +42,7 @@
                                 </select>
                         </div>
 
-                        <div class="col-sm-12 col-md-3 search__content__item">
+                        <div class=" search__content__item">
                             <button type="submit" class="btn btn-dark border-0 w-100 py-3">
                                 <i class="bi bi-search"></i> Chercher
                             </button>

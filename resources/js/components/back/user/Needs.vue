@@ -11,8 +11,9 @@
                          </p>
 
                        <div class="table mt-3 mx-auto">
-                             <div class="mt-2 table-container table-bordered mx-auto text-center" v-if='details.length > 0'>
-                                <table>
+                            <div class="mt-2 table-container table-bordered mx-auto text-center" v-if='details.length > 0'>
+                                <div class="table-responsive">
+                                    <table>
                                     <thead>
                                         <tr>
                                             <th>Date</th>
@@ -40,7 +41,8 @@
                                         </tr>
                                     </tbody>
                                 </table>
-                        </div>
+                                </div>
+                            </div>
                        </div>
             </div>
 

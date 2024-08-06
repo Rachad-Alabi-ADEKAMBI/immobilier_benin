@@ -80,7 +80,8 @@ ul li {
 
 .hero {
   height: 85vh;
-  margin: 0 auto;
+  margin: 0;
+  width: 100%;
   display: block;
   background-image: linear-gradient(rgba(177, 108, 223, 0.548), rgba(15, 35, 153, 0.589)), url("http://127.0.0.1/immo2/public/img/hero1.jpg");
   background-size: cover;
@@ -109,12 +110,19 @@ ul li {
   padding: 20px 0;
   background-color: #8755F1;
   color: white;
+  height: auto;
 }
 .search__content {
-  width: 80%;
+  width: 90%;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  flex-direction: row;
 }
 .search__content__item {
   flex: 1;
+  width: 100%;
+  margin: 10px;
 }
 .search__content__item select {
   width: 100%;
@@ -354,12 +362,13 @@ ul li {
 }
 .testimonials .testimonial .user__name span {
   margin: 5px auto;
+  font-weight: bold;
+  color: #8755F1;
 }
 .testimonials .testimonial .user__name strong {
   margin: 5px auto;
   font-weight: bold;
-  color: #333;
-  color: red;
+  color: #0E2E50;
 }
 
 .controllers {
@@ -501,6 +510,68 @@ ul li {
   margin: 40px auto 40px auto;
 }
 
+.table-responsive {
+  width: 100%;
+  overflow-x: auto;
+}
+
+.table-responsive table {
+  width: 100%;
+  margin-bottom: 1rem;
+  background-color: transparent;
+  border-collapse: collapse;
+}
+
+.table-responsive th,
+.table-responsive td {
+  padding: 0.75rem;
+  vertical-align: top;
+  border-top: 1px solid #dee2e6;
+}
+
+.table-responsive thead th {
+  vertical-align: bottom;
+  border-bottom: 2px solid #dee2e6;
+}
+
+.table-responsive tbody + tbody {
+  border-top: 2px solid #dee2e6;
+}
+
+.table-responsive table-sm td,
+.table-responsive table-sm th {
+  padding: 0.3rem;
+}
+
+@media (max-width: 767.98px) {
+  .table-responsive {
+    border: 0;
+  }
+  .table-responsive thead {
+    display: none;
+  }
+  .table-responsive tr {
+    display: block;
+    margin-bottom: 0.625rem;
+  }
+  .table-responsive td {
+    display: block;
+    text-align: right;
+    border-top: 1px solid #dee2e6;
+    position: relative;
+    padding-left: 50%;
+  }
+  .table-responsive td::before {
+    content: attr(data-label);
+    font-weight: bold;
+    position: absolute;
+    left: 0;
+    width: 50%;
+    padding-left: 0.75rem;
+    white-space: nowrap;
+    text-align: left;
+  }
+}
 @media (max-width: 1200px) {
   .hero__content h1 {
     font-size: 2.5em;
@@ -555,6 +626,9 @@ ul li {
     padding: 0;
     text-align: center;
   }
+  .search__content {
+    width: 100%;
+  }
 }
 @media (max-width: 576px) {
   .hero__content h1 {
@@ -583,5 +657,14 @@ ul li {
   .vision__text {
     padding: 0;
     text-align: center;
+  }
+  .search__content {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    flex-direction: column;
+  }
+  .search__content__item {
+    margin: 5px auto;
   }
 }/*# sourceMappingURL=main.css.map */

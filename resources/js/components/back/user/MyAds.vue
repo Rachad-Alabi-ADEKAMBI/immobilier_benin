@@ -10,8 +10,6 @@
                    Résultas de la recherche ({{ filteredResults.length }})
                 </h1>
 
-                
-
                 <div class="table-top">
                     <a class="btn btn-success new" href="/newAd">
                         <i class="bi bi-plus-circle"></i> Nouvelle annonce
@@ -36,57 +34,54 @@
                 </p>
    
                <div class="table mt-0 mx-auto text-left" v-if="showAll">
-                     <div class="table-responsive-sm mt-1" v-if='details.length > 0'>
-                    <table class="table table-bordered table-striped table-hover mx-auto text-center">
-                        <thead>
-                            <tr>
-                                <th>Id</th>
-                                <th>Nom</th>
-                                <th>Prix</th>
-                                <th>Statut</th>
-                                <th>Actions</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr v-for='detail in paginatedData' :key='detail.id'>
-                                <td data-label='Id'>{{detail.id }}</td>
-                                <td data-label="Nom">{{ capitalizeFirstLetter(detail.name) }}</td>
-                                <td data-label="Prix">
-                                    {{ format(detail.price) }} XOF
-                                </td>
-                                <td data-label="Statut">
-                                    <p class="text-success" v-if="detail.situation === 'Disponible'">
-                                        {{ detail.situation }}
-                                    </p>
-                                    <p class="text-danger" v-if="detail.situation === 'Stop'">
-                                        Désactivé par l'administrateur <br>
-                                        Motif: <span>{{detail.reason    }}</span>
-                                    </p>
-                                    <p class="text-warning" v-if="detail.situation === 'Non disponible'">
-                                        {{ detail.situation }}
-                                    </p>
-                                </td>
-                                <td data-label="Actions">
-                                    <button class="btn btn-warning m-1 text-white" @click="displayEdit(detail.id)">
-                                        <i class="fa fa-pen m-1 text-white"></i> Modifier
-                                    </button>
-
-                                     <button class="btn btn-danger m-1 text-red" @click="displayDelete(detail.id)">
-                                        <i class="fa fa-trash m-1 text-white"></i> Supprimer
-                                    </button>
-
-                                     <button class="btn btn-info m-1 text-white" @click="goToProperty(detail.id)">
-                                         <i class="fa fa-eye m-1 text-white"></i> Voir
-                                    </button>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
+                    <div class="table-responsive mt-1" v-if="details.length > 0">
+                        <table class="table table-bordered table-striped table-hover text-center">
+                            <thead>
+                                <tr>
+                                    <th>Id</th>
+                                    <th>Nom</th>
+                                    <th>Prix</th>
+                                    <th>Statut</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr v-for="detail in paginatedData" :key="detail.id">
+                                    <td data-label="Id">{{ detail.id }}</td>
+                                    <td data-label="Nom">{{ capitalizeFirstLetter(detail.name) }}</td>
+                                    <td data-label="Prix">{{ format(detail.price) }} XOF</td>
+                                    <td data-label="Statut">
+                                        <p class="text-success" v-if="detail.situation === 'Disponible'">
+                                            {{ detail.situation }}
+                                        </p>
+                                        <p class="text-danger" v-if="detail.situation === 'Stop'">
+                                            Désactivé par l'administrateur <br>
+                                            Motif: <span>{{ detail.reason }}</span>
+                                        </p>
+                                        <p class="text-warning" v-if="detail.situation === 'Non disponible'">
+                                            {{ detail.situation }}
+                                        </p>
+                                    </td>
+                                    <td data-label="Actions">
+                                        <button class="btn btn-warning m-1 text-white" @click="displayEdit(detail.id)">
+                                            <i class="fa fa-pen m-1 text-white"></i> Modifier
+                                        </button>
+                                        <button class="btn btn-danger m-1" @click="displayDelete(detail.id)">
+                                            <i class="fa fa-trash m-1 text-white"></i> Supprimer
+                                        </button>
+                                        <button class="btn btn-info m-1 text-white" @click="goToProperty(detail.id)">
+                                            <i class="fa fa-eye m-1 text-white"></i> Voir
+                                        </button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
-               </div>
+
 
                 <div class="table mt-0 mx-auto text-left" v-if="showFiltered && filteredResults.length > 0 ">
-                     <div class="table-responsive-sm mt-1" >
+                     <div class="table-responsive mt-1" >
                     <table class="table table-bordered table-striped table-hover mx-auto text-center">
                         <thead>
                             <tr>
