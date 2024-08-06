@@ -437,8 +437,8 @@ ul li {
   width: 250px;
   position: relative;
   text-align: center;
-  height: 15px;
-  padding-top: 0;
+  height: 20px;
+  padding-top: 10px;
   float: right;
 }
 .table-top .search-menu input {
@@ -449,14 +449,14 @@ ul li {
 .table-top .search-menu .open {
   position: absolute;
   right: 5px;
-  top: 5px;
+  top: 15px;
   color: #778CFD;
   font-weight: bold;
 }
 .table-top .search-menu .close {
   position: absolute;
   right: 5px;
-  top: 5px;
+  top: 15px;
   color: #778CFD;
   font-weight: bold;
 }
@@ -666,5 +666,11 @@ ul li {
   }
   .search__content__item {
     margin: 5px auto;
+  }
+  .table-top {
+    flex-direction: column;
+  }
+  .table-top .search-menu {
+    margin: 10px auto 15px 0;
   }
 }/*# sourceMappingURL=main.css.map */

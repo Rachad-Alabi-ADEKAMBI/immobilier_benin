@@ -489,8 +489,8 @@ ul {
         width: 250px;
         position: relative;
         text-align: center;
-        height: 15px;
-        padding-top: 0;
+        height: 20px;
+        padding-top: 10px;
         float: right;
         
 
@@ -503,7 +503,7 @@ ul {
         .open {
             position: absolute;
             right: 5px;
-            top: 5px;
+            top: 15px;
             color: $secondary;
             font-weight: bold;
         }
@@ -511,7 +511,7 @@ ul {
         .close {
             position: absolute;
             right: 5px;
-            top: 5px;
+            top: 15px;
             color: $secondary;
             font-weight: bold;
         }
@@ -779,6 +779,14 @@ ul {
             &__item{
                 margin: 5px auto;
             }
+        }
+    }
+
+    .table-top{
+        flex-direction: column;
+
+        .search-menu{
+            margin: 10px auto 15px 0;
         }
     }
 
