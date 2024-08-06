@@ -206,8 +206,8 @@ public function authorizeAdApi($id)
             ->take(3)
             ->get();
     
-        return view('pages/front/ad', compact('datas_first', 'datas_second'));
-       //return response()->json($datas_first);
+       return view('pages/front/ad', compact('datas_first', 'datas_second'));
+      // return response()->json($datas_second);
     }
     
 

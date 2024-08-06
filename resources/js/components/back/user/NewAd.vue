@@ -126,7 +126,7 @@
             </div>
 
             <div class="col-sm-4 col-md-4">
-              <label for="people">Ménages: <span class="red">*</span></label>
+              <label for="people">Ménages <span class="red">*</span></label>
               <div class="form-floating">
                 <select class="" v-model="people">
                   <option v-for="n in 10" :key="n" :value="n">{{ n }}</option>

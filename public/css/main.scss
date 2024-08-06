@@ -366,42 +366,50 @@ ul {
 }
 
 .testimonials {
-    .testimonial {
-        background-color: $white;
-        @include flex(column);
-        padding: 10px;
+        .testimonial {
+            background-color: #fff; // Adjusted color
+            display: flex;
+            padding: 10px;
 
-        .user {
-            @include flex();
-            justify-content: start;
-
-            &__image {
-                img {
-                    width: 60px;
-                    height: 60px;
-                    border-radius: 30px;
-                }
+            .text{
+                width: 65%;
             }
 
-            &__name {
-                padding-top: 10px;
-                display: block;
+            .user {
+                @include flex(column);
+                justify-content: start;
+                width: 30%;
+                text-align: center;
 
-                span {
-                    margin: 5px auto;
+                &__image {
+                    img {
+                        width: 60px;
+                        height: 60px;
+                        border-radius: 30px;
+                    }
                 }
-            }
 
-            &__infos {
-                padding-top: 10px;
+                &__name {
+                    padding-top: 0px;
+                    display: flex;
+                    flex-direction: column;
+                    margin: auto 10px;
 
-                span {
-                    color: $primary;
+                    span {
+                        margin: 5px auto;
+                    }
+
+                    strong {
+                        margin: 5px auto;
+                        font-weight: bold;
+                        color: #333;
+                        color: red; // Adjusted color
+                    }
                 }
             }
         }
-    }
 }
+
 
 .controllers {
     height: 60px;

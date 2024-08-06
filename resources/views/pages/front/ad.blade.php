@@ -151,11 +151,12 @@
             </div>
         </div>
 
+        
         <div class="row ads mt-1">
             @foreach($datas_second as $datas)
             <div class="ad">
                 <div class="ad__image">
-                    <img src="{{ $datas->pic1 }}" alt="Immobilier Benin">
+                    <img src="{{ url('img/ads/' . $datas->pic1) }}" alt="Immobilier Benin">
                     <div class="action">{{ $datas->action }}</div>
                     <div class="category">{{ $datas->category }}</div>
                 </div>
@@ -166,7 +167,7 @@
                         <div class="location"><i class="bi bi-geo-alt"></i> {{ $datas->location }}</div>
                         <div class="date"><i class="bi bi-calendar"></i> {{ $datas->created_at->format('d/m/Y') }}</div>
                     </div>
-                    <div class="final__details" v-if="$datas->category !== 'Terrain' && $datas->category !== 'Boutique'">
+                    <div class="final__details" >
                         <div class="detail"><i class="fa-solid fa-users"></i> {{ $datas->people }} ménage{{ $datas->people > 1 ? 's' : '' }}</div>
                         <div class="detail"><i class="fa-solid fa-bed"></i> {{ $datas->rooms }} chambre{{ $datas->rooms > 1 ? 's' : '' }}</div>
                         <div class="detail"><i class="fa-solid fa-shower"></i> {{ $datas->bathrooms }} douche{{ $datas->bathrooms > 1 ? 's' : '' }}</div>
@@ -175,6 +176,7 @@
             </div>
             @endforeach
         </div>
+
 
     </div>
     </section>

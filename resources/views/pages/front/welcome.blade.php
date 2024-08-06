@@ -27,35 +27,35 @@
         <!--end search-->
 
         <!--category-->
-<div class="container">
-    <div class="row categories">
-        <div class="col-sm-12 col-md-3 category">
-                <i class="bi bi-house"></i>
-            <p class="category__name">
-                Maison
-            </p>
+        <div class="container">
+            <div class="row categories">
+                <div class="col-sm-12 col-md-3 category">
+                        <i class="bi bi-house"></i>
+                    <p class="category__name">
+                        Maison
+                    </p>
+                </div>
+                <div class="col-sm-12 col-md-3 category">
+                        <i class="bi bi-building"></i>
+                    <p class="category__name">
+                        Appartement
+                    </p>
+                </div>
+                <div class="col-sm-12 col-md-3 category">
+                        <i class="bi bi-bag"></i>
+                    <p class="category__name">
+                        Boutiques
+                    </p>
+                </div>
+                <div class="col-sm-12 col-md-3 category">
+                        <i class="bi bi-geo"></i>
+                    <p class="category__name">
+                        Terrain
+                    </p>
+                </div>
+            </div>
         </div>
-        <div class="col-sm-12 col-md-3 category">
-                <i class="bi bi-building"></i>
-            <p class="category__name">
-                Appartement
-            </p>
-        </div>
-        <div class="col-sm-12 col-md-3 category">
-                <i class="bi bi-bag"></i>
-            <p class="category__name">
-                Boutiques
-            </p>
-        </div>
-        <div class="col-sm-12 col-md-3 category">
-                <i class="bi bi-geo"></i>
-            <p class="category__name">
-                Terrain
-            </p>
-        </div>
-    </div>
-</div>
-<!--end category-->
+        <!--end category-->
 
 
 
@@ -85,7 +85,7 @@
                             {{ number_format($data->price, 0, '', ' ') }} XOF
                         </div>
                         <div class="name">
-                            {{ $data->name }}
+                            {{ ucwords($data->name) }}
                         </div>
                         <div class="more__details">
                             <div class="location">
@@ -166,7 +166,7 @@
                             {{ number_format($data->price, 0, '', ' ') }} XOF
                         </div>
                         <div class="name">
-                            {{ $data->name }}
+                            {{ ucwords($data->name) }}
                         </div>
                         <div class="more__details">
                             <div class="location">
@@ -222,50 +222,143 @@
         <!--end about-->
 
         <!--testimonial-->
-        <div class="container mt-5 mb-3">
-            <div class="row">
-                <div class="col-12">
-                    <h2 class="mx-auto text-center">
-                        Témoignages
-                    </h2>
-                </div>
-            </div>
-            <div class="row mt-3 mb-3 testimonials">
-                <div class="col-sm-12 col-md-6 testimonial">
-                    <p class="text">
-                        "J'ai eu recours à Immobilier Benin pour vendre ma maison à Porto-Novo. Ils m'ont accompagné à
-                        toutes les étapes et ont réussi à trouver un acheteur en moins de deux semaines. Service de
-                        qualité et personnel très compétent. Je recommande vivement !"
-                    </p>
-                    <div class="user">
-                        <div class="user__image">
-                            <img src="{{ asset('img/hero1.jpg') }}" alt="">
+<div class="container mt-5 mb-3 testimonials">
+    <div class="row">
+        <div class="col-12">
+            <h2 class="mx-auto text-center">Témoignages</h2>
+        </div>
+    </div>
+
+    <!-- Bootstrap Carousel -->
+    <div id="carouselExample" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-inner">
+            <!-- First Carousel Item -->
+            <div class="carousel-item active">
+                <div class="row">
+                    <div class="col-sm-12 col-md-6 testimonial">
+                        <p class="text">
+                            "Immobilier Benin nous a aidé à trouver le terrain idéal pour notre projet d'hôtel à Cotonou.
+                            Leur connaissance du marché et leurs conseils nous ont été précieux. Merci à toute l'équipe pour
+                            leur professionnalisme."
+                        </p>
+                        <div class="user">
+                            <div class="user__image">
+                                <img src="{{ asset('img/hero1.jpg') }}" alt="Amina Diop">
+                            </div>
+                            <div class="user__name">
+                                <span>Amina Diop</span>
+                                <strong>Cotonou</strong>
+                            </div>
                         </div>
-                        <div class="user__name">
-                            <span>Jean Dupont</span>
-                            <span>Porto-Novo</span>
+                    </div>
+                    <div class="col-sm-12 col-md-6 testimonial">
+                        <p class="text">
+                            "Immobilier Benin nous a aidé à trouver le terrain idéal pour notre projet d'hôtel à Cotonou.
+                            Leur connaissance du marché et leurs conseils nous ont été précieux. Merci à toute l'équipe pour
+                            leur professionnalisme."
+                        </p>
+                        <div class="user">
+                            <div class="user__image">
+                                <img src="{{ asset('img/hero1.jpg') }}" alt="Amina Diop">
+                            </div>
+                            <div class="user__name">
+                                <span>Amina Diop</span>
+                                <strong>Cotonou</strong>
+                            </div>
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-12 col-md-6 testimonial">
-                    <p class="text">
-                        "Immobilier Benin nous a aidé à trouver le terrain idéal pour notre projet d'hôtel à Cotonou.
-                        Leur connaissance du marché et leurs conseils nous ont été précieux. Merci à toute l'équipe pour
-                        leur professionnalisme."
-                    </p>
-                    <div class="user">
-                        <div class="user__image">
-                            <img src="{{ asset('img/hero1.jpg') }}" alt="">
+            </div>
+
+            <!-- Second Carousel Item -->
+            <div class="carousel-item">
+                <div class="row">
+                    <div class="col-sm-12 col-md-6 testimonial">
+                        <p class="text">
+                            "Immobilier Benin nous a aidé à trouver le terrain idéal pour notre projet d'hôtel à Cotonou.
+                            Leur connaissance du marché et leurs conseils nous ont été précieux. Merci à toute l'équipe pour
+                            leur professionnalisme."
+                        </p>
+                        <div class="user">
+                            <div class="user__image">
+                                <img src="{{ asset('img/hero1.jpg') }}" alt="Amina Diop">
+                            </div>
+                            <div class="user__name">
+                                <span>Amina Diop</span>
+                                <strong>Cotonou</strong>
+                            </div>
                         </div>
-                        <div class="user__name">
-                            <span>Amina Diop</span>
-                            <span>Cotonou</span>
+                    </div>
+                    <div class="col-sm-12 col-md-6 testimonial">
+                        <p class="text">
+                            "Immobilier Benin nous a aidé à trouver le terrain idéal pour notre projet d'hôtel à Cotonou.
+                            Leur connaissance du marché et leurs conseils nous ont été précieux. Merci à toute l'équipe pour
+                            leur professionnalisme."
+                        </p>
+                        <div class="user">
+                            <div class="user__image">
+                                <img src="{{ asset('img/hero1.jpg') }}" alt="Amina Diop">
+                            </div>
+                            <div class="user__name">
+                                <span>Amina Diop</span>
+                                <strong>Cotonou</strong>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Third Carousel Item -->
+            <div class="carousel-item">
+                <div class="row">
+                    <div class="col-sm-12 col-md-6 testimonial">
+                        <p class="text">
+                            "Immobilier Benin nous a aidé à trouver le terrain idéal pour notre projet d'hôtel à Cotonou.
+                            Leur connaissance du marché et leurs conseils nous ont été précieux. Merci à toute l'équipe pour
+                            leur professionnalisme."
+                        </p>
+                        <div class="user">
+                            <div class="user__image">
+                                <img src="{{ asset('img/hero1.jpg') }}" alt="Amina Diop">
+                            </div>
+                            <div class="user__name">
+                                <span>Amina Diop</span>
+                                <strong>Cotonou</strong>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-12 col-md-6 testimonial">
+                        <p class="text">
+                            "Immobilier Benin nous a aidé à trouver le terrain idéal pour notre projet d'hôtel à Cotonou.
+                            Leur connaissance du marché et leurs conseils nous ont été précieux. Merci à toute l'équipe pour
+                            leur professionnalisme."
+                        </p>
+                        <div class="user">
+                            <div class="user__image">
+                                <img src="{{ asset('img/hero1.jpg') }}" alt="Amina Diop">
+                            </div>
+                            <div class="user__name">
+                                <span>Amina Diop</span>
+                                <strong>Cotonou</strong>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        <!--end testimonial-->
+        <!-- Carousel Controls -->
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Précédent</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Suivant</span>
+        </button>
+    </div>
+</div>
+<!--end testimonial-->
+
     </div>
 </section>
 
