@@ -94,6 +94,8 @@ Route::post('/search', [AdController::class, 'search']);
 
 Route::get('/usersApi', [UserController::class, 'usersApi']);
 
+Route::get('/userApi/{id}', [UserController::class, 'userApi']);
+
 Route::get('/adApi/{id}', [AdController::class, 'adApi']);
 
 Route::get('/deleteUserApi/{id}', [UserController::class, 'deleteUserApi']);

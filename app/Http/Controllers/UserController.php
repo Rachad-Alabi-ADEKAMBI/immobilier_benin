@@ -30,6 +30,13 @@ class UserController extends Controller
         // Return the data as JSON
         return response()->json($data);
     }
+
+    public function userApi($id)
+    {
+        $user = User::find($id);
+
+        return response()->json($user);
+    }
     
 
     public function advertisersApi()

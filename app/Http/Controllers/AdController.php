@@ -87,45 +87,67 @@ class AdController extends Controller
 
     public function updateAdApi(Request $request)
     {
-         // Validate the request input
-         $request->validate([
+        // Validate the request input
+        $request->validate([
             'id' => 'required|integer|exists:ads,id',
-            'reason' => 'required|string|max:255',
+            'name' => 'required|string|max:255',
+            'price' => 'required|numeric',
+            'description' => 'required|string',
+            'availability' => 'required|string|in:yes,no',
+            'pic1' => 'nullable|file|image',
+            'pic2' => 'nullable|file|image',
+            'pic3' => 'nullable|file|image',
+            'pic4' => 'nullable|file|image',
+            'pic5' => 'nullable|file|image',
+            'pic6' => 'nullable|file|image',
+            'pic7' => 'nullable|file|image',
+            'pic8' => 'nullable|file|image',
+            'pic9' => 'nullable|file|image',
+            'pic10' => 'nullable|file|image',
         ]);
-
+    
         // Find the ad by id
         $ad = Ad::find($request->input('id'));
-
+    
         // Check if the ad exists
         if (!$ad) {
             return response()->json(['error' => 'Ad not found'], 404);
         }
-
+    
+        // Update ad details
         $ad->name = $request->input('name');
         $ad->price = $request->input('price');
         $ad->description = $request->input('description');
+    
+        // Handle picture uploads
         $pic1 = $request->file('pic1');
         if ($pic1) {
             $imagename = time() . '.' . $pic1->getClientOriginalExtension();
             $pic1->move(public_path('img/ads'), $imagename);
             $ad->pic1 = $imagename;
         }
-
-        for ($i = 2; $i < 11; $i++) {
+    
+        for ($i = 2; $i <= 10; $i++) {
             $pic = 'pic' . $i;
             $file = $request->file($pic);
-
+    
             if ($file) {
                 $imagename = time() . '.' . $file->getClientOriginalExtension();
                 $file->move(public_path('img/ads'), $imagename);
                 $ad->$pic = $imagename;
             }
         }
-
+    
+        // Update availability
+        $ad->situation = $request->input('availability') === 'yes' ? 'Disponible' : 'Non disponible';
+    
+        // Save the ad
         $ad->save();
-
+    
+        // Return success response
         return response()->json(['message' => 'Annonce modifiée !']);
     }
+    
 
 
     public function stopAdApi(Request $request)

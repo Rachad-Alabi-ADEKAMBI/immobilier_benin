@@ -149,7 +149,7 @@
 
             <div class="col-sm-12 col-md-8 mt-4 mx-auto" v-if='showEdit'>
                 <div class="bg-white border mt-2 rounded p-2 wow fadeInUp">
-                    <form @submit.prevent="updateAd">
+                    <form @submit.prevent="updateAd" enctype="multipart/form-data">
                         <span class="mx-0" @click="displayAll()">
                             <i class="fa fa-times me-3 text-blue"></i>
                         </span>
@@ -158,6 +158,9 @@
                         <div class="row g-3">
                             <div class="col-sm-6 col-md-6">
                                 <div class="form-floating">
+
+                                <input type="hidden" v-model="currentDetail.id">
+
                                  <label for="name">Nom</label>
                                     <input type="text" class="form-control" v-model="currentDetail.name" id="name" placeholder="Nom">
                                    
@@ -207,11 +210,10 @@
                         <div class="row g-3 mt-3">
                             <div class="col-sm-4 col-md-6">
                                 <label for="location">Le bien est'il disponible actuellement ?</label>
-                                    <div class="form-floating">
-                                        <select class="form-select" id="availability"
+                                    <div class="">
+                                        <select class="" id="availability"
                                                  v-model="availability" >
-                                            <option >Veuillez sélectionner</option>
-                                            <option value="yes">Oui</option>
+                                            <option selected value="yes">Oui</option>
                                             <option value="no">Non</option>
                                         </select>
                                     </div>
@@ -271,11 +273,11 @@ export default {
             currentId: '',
             currentPage: 1,
             itemsPerPage: 5,
-            availability: '',
             searchKey: '',
             isSearching: false,
-            showFiltered: false
-            };
+            showFiltered: false,
+            availability: 'yes'
+        };
     },
     mounted() {
         this.displayAll();
@@ -293,23 +295,22 @@ export default {
             if (!this.searchKey) {
                 return [];
             }
-            return this.details.filter(detail => 
+            return this.details.filter(detail =>
                 detail.name.toLowerCase().includes(this.searchKey.toLowerCase())
             );
         }
     },
-   watch: {
-    searchKey: function (newVal) {
-        if (newVal === '') {
-            this.showAll = true;
-            this.showFiltered = false;
-        } else {
-            this.showAll = false;
-            this.showFiltered = true;
+    watch: {
+        searchKey(newVal) {
+            if (newVal === '') {
+                this.showAll = true;
+                this.showFiltered = false;
+            } else {
+                this.showAll = false;
+                this.showFiltered = true;
+            }
         }
-    }
-},
-
+    },
     methods: {
         displayAll() {
             axios.get('/myAdsApi')
@@ -318,27 +319,26 @@ export default {
                     this.showAll = true;
                     this.showDelete = false;
                     this.showEdit = false;
-                     this.showFiltered = false;
+                    this.showFiltered = false;
                 })
                 .catch((error) => {
                     console.error(error);
-
                 });
         },
-       displayEdit(id) {
-         this.currentId = id;
-         this.showEdit = true;
-         this.showFiltered = false;
-         this.showAll = false;
-         this.showDelete = false;
-         axios.get(`/adApi/${id}`)
-            .then((response) => {
-                this.currentDetail = response.data;
-                this.showAll = false;
-            })
-            .catch((error) => {
-                console.error(error);
-            });
+        displayEdit(id) {
+            this.currentId = id;
+            this.showEdit = true;
+            this.showFiltered = false;
+            this.showAll = false;
+            this.showDelete = false;
+            axios.get(`/adApi/${id}`)
+                .then((response) => {
+                    this.currentDetail = response.data;
+                    this.showAll = false;
+                })
+                .catch((error) => {
+                    console.error(error);
+                });
         },
         displayDelete(id) {
             this.currentId = id;
@@ -347,30 +347,33 @@ export default {
             this.showEdit = false;
             this.showFiltered = false;
         },
-       updateAd() {
-        if (!this.selectedDetail) return; // Ensure there's a selected detail
-      const formData = new FormData();
-      formData.append('name', this.name);
-      formData.append('price', this.price);
-      formData.append('description', this.description);
+        updateAd() {
+            if (!this.currentDetail) return;
 
-      for (let i = 1; i <= 11; i++) {
-        const fileInput = document.getElementById('pic' + i);
-        if (fileInput && fileInput.files.length > 0) {
-          formData.append('pic' + i, fileInput.files[0]);
-        }
-      }
+            const formData = new FormData();
+            formData.append('name', this.currentDetail.name);
+            formData.append('price', this.currentDetail.price);
+            formData.append('description', this.currentDetail.description);
+            formData.append('id', this.currentDetail.id);
+            formData.append('availability', this.availability);
 
-      axios.post('/updateAdApi', formData)
-        .then(response => {
-          alert('Annonce mise à jour !');
-          this.displayAll();
-          window.location.replace('#top')
-        })
-        .catch(error => {
-          console.error('Form submission error', error);
-        });
-    },
+            for (let i = 1; i <= 11; i++) {
+                const fileInput = document.getElementById('pic' + i);
+                if (fileInput && fileInput.files.length > 0) {
+                    formData.append('pic' + i, fileInput.files[0]);
+                }
+            }
+
+            axios.post('/updateAdApi', formData)
+                .then(response => {
+                    alert('Annonce mise à jour !');
+                    this.displayAll();
+                    window.location.replace('#top');
+                })
+                .catch(error => {
+                    console.error('Form submission error', error);
+                });
+        },
         deleteAd() {
             axios.delete(`/deleteAdApi/${this.currentId}`)
                 .then((response) => {
@@ -390,7 +393,7 @@ export default {
         goToProperty(id) {
             window.location.replace(`ad/${id}`);
         },
-          previousPage() {
+        previousPage() {
             if (this.currentPage > 1) {
                 this.currentPage--;
                 window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -410,7 +413,7 @@ export default {
             if (!word) return '';
             return word.charAt(0).toUpperCase() + word.slice(1);
         },
-         handleInput() {
+        handleInput() {
             this.isSearching = !!this.searchKey;
             this.showAll = false;
             this.showFiltered = true;
@@ -418,12 +421,13 @@ export default {
         clearSearch() {
             this.searchKey = '';
             this.isSearching = false;
-             this.showAll = true;
+            this.showAll = true;
             this.showFiltered = false;
         }
     }
 };
 </script>
+
 
 <style scoped>
     .table{
