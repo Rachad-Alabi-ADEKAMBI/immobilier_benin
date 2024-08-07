@@ -217,7 +217,6 @@ export default {
 
       axios.post('/newAdApi', formData)
         .then(response => {
-          //console.log('Form submitted successfully', response.data);
           alert('Nouvelle annonce ajoutée avec succes !');
           window.location.replace('#top')
         })
@@ -227,7 +226,6 @@ export default {
     },
     formatPrice(event) {
       const value = event.target.value;
-      // Add formatting logic for price if needed
     },
     checkLocation(event) {
       if (event.target.value === 'other') {

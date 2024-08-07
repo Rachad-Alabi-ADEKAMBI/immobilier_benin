@@ -1,7 +1,6 @@
 <template>
-   <div class="container-xxl p">
-        <div class="container" v-for='detail in details' :key='detail.user_id'>
-
+    <div class="container-xxl">
+        <div class="container" v-for="detail in details" :key="detail.id">
             <div class="row">
                 <div class="col">
                     <h1 class="text-center">
@@ -11,10 +10,9 @@
             </div>
             <div class="row">
                 <div class="col-sm-12 col-md-12 mx-auto text-center">
-                    <img :src="getImgUrl(detail.pic1)" alt="annonceur immobilier benin" class="image">
+                    <img :src="getImgUrl(detail.profile_photo_url)" alt="annonceur immobilier benin" class="image">
                 </div>
             </div>
-
             <div class="row">
                 <div class="col-12 text-center">
                     <p>
@@ -23,17 +21,18 @@
                     </p>
                 </div>
             </div>
-
             <div class="row">
-                <div class="col-sm-12 col-md-8 mx-auto ">
+                <div class="col-sm-12 col-md-8 mx-auto">
                     <p class="text text-blue text-bold text-center">
                         {{ detail.ads.length }} annonce{{ detail.ads.length > 1 ? 's' : '' }}
                     </p>
                 </div>
             </div>
+        </div>
 
+         <div class="container" v-for="ad in ads" :key='ad.id'>
             <div class="row mt-2">
-                <div class="col-lg-4 col-md-6 wow fadeInUp item ad" v-for="ad in detail.ads" :key='ad.id'>
+                <div class="col-lg-4 col-md-6 wow fadeInUp item ad">
                     <div class="property-item rounded overflow-hidden" @click='goToProperty(ad.id)'>
                         <div class="position-relative overflow-hidden">
                             <img class="img-fluid" :src="getImgUrl(ad.pic1)" alt="">
@@ -60,15 +59,14 @@
                     </div>
                 </div>
             </div>
-
             <div class="row">
                 <div class="col-sm-12 col-md-8 mt-3 mx-auto text-center">
                     <p>
                         Partager: <br>
-                        <a :href="'https://wa.me/?text=bitly.com?action=advertiserPage&id=' + id">
+                        <a :href="'https://wa.me/?text=bitly.com?action=advertiserPage&id=' + detail.id">
                             <i class="fab fa-whatsapp text-whatsapp m-1"></i>
                         </a>
-                        <a :href="'https://www.facebook.com/share.php?u=bitly.com?action=advertiserPage&id=' + id" target="_blank">
+                        <a :href="'https://www.facebook.com/share.php?u=bitly.com?action=advertiserPage&id=' + detail.id" target="_blank">
                             <i class="fab fa-facebook text-facebook m-1"></i>
                         </a>
                     </p>
@@ -88,76 +86,35 @@ export default {
     },
     data() {
         return {
-            details: [],
-            ads: [],
-            id: 3,
-            showAll: false,
-            showFiltered: false,
-            currentPage: 1,
-            itemsPerPage: 5,
+            details: [], // Changed from '' to [] for consistency
+            id: 3, 
+            ads: []
         };
     },
-    computed: {
-        filteredItems() {
-            return this.details.filter(detail => {
-                return detail.price <= this.rangeValue;
-            });
-        },
-        totalPages() {
-            return Math.ceil(this.details.length / this.itemsPerPage);
-        },
-        paginatedData() {
-            const start = (this.currentPage - 1) * this.itemsPerPage;
-            const end = start + this.itemsPerPage;
-            return this.details.slice(start, end);
-        }
-    },
     mounted() {
-        this.displayAll();
+        this.fetchDetails();
     },
     methods: {
-        displayAll() {
-            this.showAll = true;
-            this.showFiltered = false;
+        fetchDetails() {
+            axios.get(`/userApi/${this.id}`)
+                .then((response) => {
+                    this.details = response.data;
+                    console.log(this.details);
+                })
+                .catch((error) => {
+                    console.error(error);
+                });
             axios.get(`/advertiserApi/${this.id}`)
                 .then((response) => {
-                    console.log(response.data);
-                    this.details = response.data;
+                    this.ads = response.data;
+                    console.log(this.ads);
                 })
                 .catch((error) => {
                     console.error(error);
                 });
         },
-        format(num) {
-            let res = new Intl.NumberFormat('fr-FR', { maximumSignificantDigits: 3 }).format(num);
-            return res;
-        },
-        formatDate(da) {
-            const [datePart, timePart] = da.split(' ');
-            const [year, month, day] = datePart.split('-');
-            return `${day}-${month}-${year}`;
-        },
         getImgUrl(pic) {
-            return "img/users/" + pic;
-        },
-        goToProperty(id) {
-            window.location.replace('ad/' + id);
-        },
-        previousPage() {
-            if (this.currentPage > 1) {
-                this.currentPage--;
-                window.scrollTo({ top: 0, behavior: 'smooth' });
-            }
-        },
-        nextPage() {
-            if (this.currentPage < this.totalPages) {
-                this.currentPage++;
-                window.scrollTo({ top: 0, behavior: 'smooth' });
-            }
-        },
-        gotoPage(page) {
-            this.currentPage = page;
-            window.scrollTo({ top: 0, behavior: 'smooth' });
+            return `img/users/${pic}`;
         },
         capitalizeFirstLetter(word) {
             if (!word) return '';
@@ -172,5 +129,9 @@ export default {
         width: 120px;
         height: 120px;
         border-radius: 90px;
+    }
+    .image {
+        max-width: 100%;
+        height: auto;
     }
 </style>

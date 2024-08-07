@@ -33,10 +33,19 @@ class UserController extends Controller
 
     public function userApi($id)
     {
+        // Find the user by ID
         $user = User::find($id);
-
+    
+        // Check if the user was found
+        if (!$user) {
+            // Return a 404 response if the user was not found
+            return response()->json(['message' => 'User not found'], 404);
+        }
+    
+        // Return the user data as a JSON response
         return response()->json($user);
     }
+    
     
 
     public function advertisersApi()
