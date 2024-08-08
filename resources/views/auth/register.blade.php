@@ -25,12 +25,21 @@
 
                                         <div class="col-sm-12 col-md-6">
                                             <div class="form-floating">
-                                                <x-label for="name" />Numéro: <span class="red">*</span>
-                                                <x-input type="number" class="form-control" 
-                                                required name='phone' value="{{ __('phone') }}"  placeholder=""
-                                                :value="old('phone')" required autocomplete="phone"    />
+                                                <x-label for="phone" value="Numéro:" />
+                                                <x-input 
+                                                    type="number" 
+                                                    class="form-control" 
+                                                    name="phone" 
+                                                    value="{{ old('phone') }}"  
+                                                    placeholder=""
+                                                    min="0" 
+                                                    step="1"
+                                                    required 
+                                                    autocomplete="phone" 
+                                                />
                                             </div>
                                         </div>
+
                                     </div>
 
                                     <div class="row g-3 mt-4">
@@ -53,6 +62,44 @@
                                             </div>
                                         </div>
                                     </div>
+
+                                    <div class="row g-3 mt-4">
+    <div class="col-sm-12 col-md-6">
+        <div class="form-floating">
+            <x-label for="location" value="Ville:"/>
+            <select class="form-control" name="location" required autofocus autocomplete="location">
+                <option value="" disabled selected>-- Sélectionner une ville --</option>
+                                                         <option value="Abomey">Abomey</option>
+                                                        <option value="Abomey-Calavi">Abomey-Calavi</option>
+                                                        <option value="Cotonou">Cotonou</option>
+                                                        <option value="Bohicon">Bohicon</option>
+                                                        <option value="Grand-popo">Grand-popo</option>
+                                                        <option value="Malanville">Malanville</option>
+                                                        <option value="Natitingou">Natitingou</option>
+                                                        <option value="N'dali">N'dali</option>
+                                                        <option value="Nikki">Nikki</option>
+                                                        <option value="Ouidah">Ouidah</option>
+                                                        <option value="Parakou">Parakou</option>
+                                                        <option value="Porto-Novo">Porto-Novo</option>
+                                                        <option value="Sakété">Sakété</option>
+                                                        <option value="Savè">Savè</option>
+                                                        <option value="Sèmè">Sèmè</option>
+            </select>
+        </div>
+    </div>
+
+    <div class="col-sm-12 col-md-6">
+        <div class="form-floating">
+            <x-label for="featured" value="Je suis agent immobilier:"/>
+            <select class="form-control" name="featured" required autofocus autocomplete="featured">
+                <option value="" disabled selected>-- Sélectionner une option --</option>
+                <option value="yes">Oui</option>
+                <option value="no">Non</option>
+            </select>
+        </div>
+    </div>
+</div>
+
 
                                     <div class="row g-3 mt-4">
                                         <div class="col-sm-12 col-md-6">
