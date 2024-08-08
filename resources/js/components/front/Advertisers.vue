@@ -6,14 +6,14 @@
                         <div class="col-sm-6 ">
                             <div class="text-start mx-auto text-left mb-5 wow slideInLeft" data-wow-delay="0.1s" v-if='showAll'>
                                 <h1 class="mx-auto mb-3">Annonceurs</h1>
-                                <p class="text text-left">Des dizaines d'annonces gratuites chaque jour</p>
+                                <p class="text text-left">Liste des agents immobiliers</p>
                             </div>
 
                             <div class="text-start mx-auto text-left mb-5 wow slideInLeft" data-wow-delay="0.1s" v-if='showFiltered'>
-                                <h1 class="mx-auto mb-3">Annonceurs par ville</h1>
+                                <h1 class="mx-auto mb-3">Annonceurs</h1>
                                 <p class="text text-left">
                                     Ville de
-                                    <strong> uhble</strong>
+                                    <strong> {{ location }}</strong>
                                 </p>
                             </div>
                         </div>
@@ -46,22 +46,22 @@
                                     :key='detail.id' @click="goToAdvertiser(detail.id)">
                                      <div class="property-item rounded overflow-hidden p-3" >
                                         <div class="position-relative overflow-hidden text-center">
-                                                <img class="user_image" :src='getImgUrl(detail.profile_photo_path)' alt="annonces immobilieres au Benin">
-                                            
+                                                <img class="user_image"
+                                                    :src="getImgUrl(detail.profile_photo_path)"
+                                                    alt="annonces immobilières au Bénin"
+                                                    onerror="this.onerror=null; this.src='img/logo-immo.png';">
                                         </div>
                                         <div class="p-4 pb-0">
-                                            <h5 class="text-blue mb-3"> <i class="fa-solid fa-users text-primary"></i> {{ detail.first_name }}    {{ detail.last_name }}   </h5>
-                                            <p class="d-block h5 mb-2" >
+                                            <h5 class="mb-3"> <i class="fa-solid fa-user "></i> 
+                                            {{ capitalizeFirstLetter(detail.first_name) }}   
+                                             {{ capitalize(detail.last_name) }}   </h5>
                                             <ul>
-                                                <li>  <i class="bi bi-geo-alt text-blue"></i> {{ detail.location}} </li>
-                                                <li><i class="bi bi-card-list"></i> </li>  {{ detail.ads }} annonce{{ detail.ads > 0 ? 's' : '' }}
-                                                <li> <i class="bi bi-phone text-blue me-1"></i> {{ detail.phone }} </li>
+                                                <li>  <i class="bi bi-geo-alt"></i> {{ detail.location}} </li>
+                                                <li><i class="bi bi-card-list"></i>   {{ detail.ads }} annonce{{ detail.ads > 0 ? 's' : '' }} </li>
+                                                <li> <i class="bi bi-phone"></i> {{ detail.phone }} </li>
                                             </ul>
-                                               
-                                            </p>
                                             <p class="text-center">
-                                                {{ detail.description }} 
-                                                <br> <i class="bi bi-phone text-blue me-1"></i> {{ detail.phone }} 
+                                                {{ truncateText(detail.description )}} 
                                             </p>
                                         </div>
 
@@ -85,7 +85,7 @@
                                                 {{ detail.ads }} annonce{{ detail.ads > 0 ? 's' : '' }}
                                             </p>
                                             <p>
-                                                {{ detail.description }} 
+                                                {{ truncateText(detail.description) }} 
                                                 <br> <i class="bi bi-phone text-blue me-1"></i> {{ detail.phone }} 
                                             </p>
                                         </div>
@@ -199,7 +199,15 @@
                     capitalizeFirstLetter(word) {
                         if (!word) return '';
                         return word.charAt(0).toUpperCase() + word.slice(1);
-                    }
+                    },
+                     capitalize(word) {
+                        if (!word) return '';
+                        return word.toUpperCase();
+                    },
+                     truncateText(text, length = 75) {
+                        if (!text) return '';
+                        return text.length > length ? text.substring(0, length) + '...' : text;
+                        }
                 }
     };
 </script>

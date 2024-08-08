@@ -343,6 +343,19 @@ ul {
         background-color: $white;
         cursor: pointer;
 
+        i{
+            color: $secondary;
+        }
+
+    }
+    
+    .advertiser:hover{
+        background-color: $primary;
+        color: $white;
+
+        i{
+            color: $white;
+        }
     }
 }
 

@@ -305,6 +305,16 @@ ul li {
   background-color: white;
   cursor: pointer;
 }
+.advertisers .advertiser i {
+  color: #778CFD;
+}
+.advertisers .advertiser:hover {
+  background-color: #8755F1;
+  color: white;
+}
+.advertisers .advertiser:hover i {
+  color: white;
+}
 
 .about {
   display: flex;
