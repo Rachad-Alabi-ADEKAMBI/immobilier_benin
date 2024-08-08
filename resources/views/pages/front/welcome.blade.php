@@ -14,7 +14,7 @@
                             Annonces gratuites vente et location de biens immobiliers
                         </p>
                         <a class="btn btn-primary" href="{{ url('/ads') }}">
-                            Voir les annonces
+                        <i class="bi bi-card-list"></i> Voir les annonces
                         </a>
                     </div>
                 </div>
@@ -206,10 +206,15 @@
                     <div class="mt-4">
                         <p>
                             Immobilier Bénin est un service du groupe <strong>Orizon +</strong>. Nous intervenons à toutes
-                            les étapes de votre projet d'entreprise et d'investissement. <br> <br> Notre plus grande réussite se
+                            les étapes de votre projet d'entreprise et d'investissement.<br> Notre plus grande réussite se
                             trouve au niveau des membres de la diaspora que nous accompagnons à concrétiser leurs projets
                             d'investissement grâce à notre équipe d'experts en gestion juridique, fiscale et sociale.
                         </p>
+
+                        <a href="contact" class="btn btn-primary">
+                        <i class="bi bi-envelope"></i>
+                            Contact
+                        </a>
                     </div>
                 </div>
                 <div class="col-sm-12 col-md-6 about__image">

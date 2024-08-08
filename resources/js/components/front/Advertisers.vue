@@ -41,20 +41,25 @@
                     
                     <div class="tab-content">
                         <div id="tab-1" class="tab-pane fade show p-0  active" v-if='showAll'>
-                            <div class="row g-4" >
-                                <div class="col-sm-12 col-md-6 wow fadeInUp item ad" data-wow-delay="0.1s " v-for="detail in paginatedData"
+                            <div class="row g-3 advertisers" >
+                                <div class="fadeInUp advertiser " data-wow-delay="0.1s " v-for="detail in paginatedData"
                                     :key='detail.id' @click="goToAdvertiser(detail.id)">
-                                     <div class="property-item rounded overflow-hidden" >
+                                     <div class="property-item rounded overflow-hidden p-3" >
                                         <div class="position-relative overflow-hidden text-center">
                                                 <img class="user_image" :src='getImgUrl(detail.profile_photo_path)' alt="annonces immobilieres au Benin">
                                             
                                         </div>
                                         <div class="p-4 pb-0">
-                                            <h5 class="text-blue mb-3">  {{ detail.first_name }}    {{ detail.last_name }}   </h5>
+                                            <h5 class="text-blue mb-3"> <i class="fa-solid fa-users text-primary"></i> {{ detail.first_name }}    {{ detail.last_name }}   </h5>
                                             <p class="d-block h5 mb-2" >
-                                                {{ detail.ads }} annonce{{ detail.ads > 0 ? 's' : '' }}
+                                            <ul>
+                                                <li>  <i class="bi bi-geo-alt text-blue"></i> {{ detail.location}} </li>
+                                                <li><i class="bi bi-card-list"></i> </li>  {{ detail.ads }} annonce{{ detail.ads > 0 ? 's' : '' }}
+                                                <li> <i class="bi bi-phone text-blue me-1"></i> {{ detail.phone }} </li>
+                                            </ul>
+                                               
                                             </p>
-                                            <p>
+                                            <p class="text-center">
                                                 {{ detail.description }} 
                                                 <br> <i class="bi bi-phone text-blue me-1"></i> {{ detail.phone }} 
                                             </p>

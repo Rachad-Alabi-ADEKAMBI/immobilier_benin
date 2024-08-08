@@ -6,6 +6,7 @@ html, body {
   line-height: 1.5em;
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
 }
 
 .bg-secondary {
@@ -88,6 +89,7 @@ ul li {
   background-position: center;
   background-repeat: no-repeat;
   padding: 50px 0;
+  overflow: hidden;
 }
 .hero__content {
   width: 80%;
@@ -294,6 +296,14 @@ ul li {
 }
 .ads .ad:hover__image img {
   width: 110%;
+}
+
+.advertisers .advertiser {
+  border-radius: 15px;
+  margin: 10px;
+  width: 340px;
+  background-color: white;
+  cursor: pointer;
 }
 
 .about {
