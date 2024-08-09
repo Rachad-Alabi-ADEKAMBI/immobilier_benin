@@ -131,7 +131,7 @@
                </div>
             </div>
 
-             <div class="col-12 text-center" v-if="showAll">
+             <div class="col-12 text-center" v-if="showAll && details.length > 0">
                 <nav aria-label="Page navigation mx-auto">
                     <ul class="pagination">
                         <li class="page-item" :class="{ 'disabled': currentPage === 1 }">

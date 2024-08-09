@@ -14,7 +14,7 @@
     <div class="profile" id="profile">
         <div class="col-sm-12 col-md-8 mx-auto">
         <h3 class="text-primary"><i class="bi bi-arrow-right m-1"></i> Informations générales</h3>
-                    <form action="api/script.php?action=updateAccount" method="POST" enctype="multipart/form-data">
+                    <form action="updateUser" method="POST" enctype="multipart/form-data">
                         <div class="row g-3 mt-2">
                             <div class="col-sm-6">
                                 <div class="form-floating">
