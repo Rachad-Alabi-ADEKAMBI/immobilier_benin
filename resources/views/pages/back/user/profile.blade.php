@@ -15,6 +15,7 @@
         <div class="col-sm-12 col-md-8 mx-auto">
         <h3 class="text-primary"><i class="bi bi-arrow-right m-1"></i> Informations générales</h3>
                     <form action="updateUser" method="POST" enctype="multipart/form-data">
+                        @csfr
                         <div class="row g-3 mt-2">
                             <div class="col-sm-6">
                                 <div class="form-floating">
@@ -62,7 +63,8 @@
 
                     <hr class="mt-5">
                     <h3> <i class="bi bi-arrow-right m-1"></i> Photo de profil</h3>
-                    <form id="uploadForm" action="api/script.php?action=uploadImage" method="POST" enctype="multipart/form-data">
+                    <form id="uploadForm" action="updateUserPicture" method="POST" enctype="multipart/form-data">
+                        @csfr
                         <div class="form-group">
                             <label for="profileImage">
                                 1- Selectionnez l'image: <br>
