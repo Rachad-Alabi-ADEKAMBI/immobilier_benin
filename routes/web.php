@@ -108,6 +108,8 @@ Route::post('/updateAdApi', [AdController::class, 'updateAdApi']);
 
 Route::post('/banUserApi', [UserController::class, 'banUserApi']);
 
+Route::post('/updateUserApi', [UserController::class, 'updateUserApi']);
+
 Route::middleware(['auth:sanctum', 'verified'])->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
     Route::get('/dashboard_admin', [DashboardAdminController::class, 'index'])->name('dashboard_admin');
