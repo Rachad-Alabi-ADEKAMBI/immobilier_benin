@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Route;
 
 class UserController extends Controller
 {
@@ -70,6 +71,17 @@ class UserController extends Controller
         return response()->json('success');
     }
 
+    public function profile(){
+        if (!Auth::check()) {
+            return redirect()->route('login')->with('error', 'Vous devez être connecté pour accéder à cette page.');
+        }
+
+        $user = Auth::user();
+        return view('pages.back.user.profile', ['user' => $user]);
+    
+    }
+
+
     public function banUserApi(Request $request)
     {
         // Validate the request input
@@ -89,6 +101,31 @@ class UserController extends Controller
         // Update the ad
         $user->reason = $request->input('reason');
         $user->situation = 'Banned';
+        $user->save();
+
+        // Return a success response
+        return response()->json(['message' => 'Utilisateur banni']);
+    }
+
+    public function updateUserApi(Request $request)
+    {
+        // Validate the request input
+        $request->validate([
+            'id' => 'required|integer|exists:ads,id',
+            '' => 'required|string|max:255',
+        ]);
+
+        // Find the ad by id
+        $user = User::find($request->input('id'));
+
+        // Check if the ad exists
+        if (!$user) {
+            return response()->json(['error' => 'Ad not found'], 404);
+        }
+
+        // Update the ad
+        $user->reason = $request->input('reason');
+        $user->description = 'Banned';
         $user->save();
 
         // Return a success response

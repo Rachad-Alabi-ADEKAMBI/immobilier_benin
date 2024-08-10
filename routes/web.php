@@ -106,7 +106,11 @@ Route::post('/updateAdApi', [AdController::class, 'updateAdApi']);
 
 Route::post('/banUserApi', [UserController::class, 'banUserApi']);
 
-Route::post('/updateUserApi', [UserController::class, 'updateUserApi']);
+Route::post('/updateUserApi', [UserController::class, 'updateUserApi'])->name('updateUserApi');
+
+Route::post('/updateUserPicture', [UserController::class, 'updateUserApi'])->name('updateUserPicture');
+
+Route::post('/deleteAccount', [UserController::class, 'updateUserApi'])->name('deleteAccount');
 
 Route::middleware(['auth:sanctum', 'verified'])->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
