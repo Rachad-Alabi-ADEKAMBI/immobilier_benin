@@ -7,9 +7,11 @@
 
     @include('pages/back/user/menu')
 
-    <div class="alert alert-success" role="alert">
-        {{ session('success') }}
-    </div>
+    @if(session('message'))
+        <div class="alert alert-success" role="alert">
+            {{ session('message') }}
+        </div>
+    @endif
 
     <!--my ads-->
     <div class="profile" id="profile">
@@ -65,7 +67,7 @@
 
             <hr class="mt-5">
             <h3> <i class="bi bi-arrow-right m-1"></i> Photo de profil</h3>
-            <form id="uploadForm" action="{{ route('updateUserPicture') }}" method="POST" enctype="multipart/form-data">
+            <form id="uploadForm" action="{{ route('updateUserPictureApi') }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 <div class="form-group">
                     <label for="profileImage">
@@ -95,7 +97,7 @@
                 Suppression de compte
             </h3>
 
-            <form action="{{ route('deleteAccount') }}" method="POST" class="text-center">
+            <form action="{{ route('deleteAccountApi') }}" method="POST" class="text-center">
                 @csrf
                 @method('DELETE')
                 <button class="btn btn-danger mt-2" id='deleteBtn'>Supprimer mon compte</button>

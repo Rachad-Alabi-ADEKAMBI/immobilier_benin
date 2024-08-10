@@ -108,9 +108,9 @@ Route::post('/banUserApi', [UserController::class, 'banUserApi']);
 
 Route::post('/updateUserApi', [UserController::class, 'updateUserApi'])->name('updateUserApi');
 
-Route::post('/updateUserPicture', [UserController::class, 'updateUserApi'])->name('updateUserPicture');
+Route::post('/updateUserPictureApi', [UserController::class, 'updateUserPictureApi'])->name('updateUserPictureApi');
 
-Route::post('/deleteAccount', [UserController::class, 'updateUserApi'])->name('deleteAccount');
+Route::post('/deleteAccountApi', [UserController::class, 'deleteAccountApi'])->name('deleteAccountApi');
 
 Route::middleware(['auth:sanctum', 'verified'])->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');

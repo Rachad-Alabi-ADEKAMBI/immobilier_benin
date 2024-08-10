@@ -109,6 +109,28 @@ class UserController extends Controller
 
     public function updateUserApi(Request $request)
     {
+        // Validation des données
+        $request->validate([
+            'phone' => 'required|string',
+            'description' => 'nullable|string',
+            'featured' => 'required|in:yes,no',
+        ]);
+
+        // Récupération de l'utilisateur actuel
+        $user = Auth::user();
+
+        // Mise à jour des informations de l'utilisateur
+        $user->phone = $request->input('phone');
+        $user->description = $request->input('description');
+        $user->featured = $request->input('featured');
+        $user->save();
+
+        // Réponse API
+        return view('pages.back.user.profile')->with('message', 'Profil mis à jour avec succès');   
+    }
+
+    public function updateUserPictureApi(Request $request)
+    {
         // Validate the request input
         $request->validate([
             'id' => 'required|integer|exists:ads,id',
@@ -131,6 +153,32 @@ class UserController extends Controller
         // Return a success response
         return response()->json(['message' => 'Utilisateur banni']);
     }
+
+    public function deleteAccountApi(Request $request)
+    {
+        // Validate the request input
+        $request->validate([
+            'id' => 'required|integer|exists:ads,id',
+            '' => 'required|string|max:255',
+        ]);
+
+        // Find the ad by id
+        $user = User::find($request->input('id'));
+
+        // Check if the ad exists
+        if (!$user) {
+            return response()->json(['error' => 'Ad not found'], 404);
+        }
+
+        // Update the ad
+        $user->reason = $request->input('reason');
+        $user->description = 'Banned';
+        $user->save();
+
+        // Return a success response
+        return response()->json(['message' => 'Utilisateur banni']);
+    }
+
 
     public function advertiserApi($id)
     {
