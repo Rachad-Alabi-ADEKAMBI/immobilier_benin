@@ -50,9 +50,7 @@ Route::get('/needs', function () {
     return view('pages/back/user/needs');
 })->name('needs');
 
-Route::get('/profile', function () {
-    return view('pages/back/user/profile');
-})->name('profile');
+Route::get('/profile', [UserController::class, 'profile']);
 
 Route::get('/cgu', function () {
     return view('pages/front/cgu');
