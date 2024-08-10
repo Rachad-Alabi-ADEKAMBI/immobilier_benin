@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Models\User;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Storage;
 
 class UserController extends Controller
 {
@@ -125,34 +126,54 @@ class UserController extends Controller
         $user->featured = $request->input('featured');
         $user->save();
 
+        $user = Auth::user();
+
         // Réponse API
-        return view('pages.back.user.profile')->with('message', 'Profil mis à jour avec succès');   
+        return view('pages.back.user.profile', ['user' => $user])->with('success', 'Profil mis à jour avec succès');
     }
 
     public function updateUserPictureApi(Request $request)
-    {
-        // Validate the request input
-        $request->validate([
-            'id' => 'required|integer|exists:ads,id',
-            '' => 'required|string|max:255',
-        ]);
+{
+    // Validate the request
+    $request->validate([
+        'profileImage' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+        'croppedImage' => 'required|string', // Assuming cropped image is base64 encoded
+    ]);
 
-        // Find the ad by id
-        $user = User::find($request->input('id'));
+    $user = auth()->user(); // Retrieve the authenticated user
 
-        // Check if the ad exists
-        if (!$user) {
-            return response()->json(['error' => 'Ad not found'], 404);
+    // Handle cropped image (base64 to file)
+    if ($request->has('croppedImage')) {
+        $croppedImage = $request->input('croppedImage');
+        
+        // Remove the data URL part (base64 header) if it exists
+        if (preg_match('/^data:image\/(\w+);base64,/', $croppedImage, $type)) {
+            $croppedImage = substr($croppedImage, strpos($croppedImage, ',') + 1);
+            $type = strtolower($type[1]); // jpeg, png, jpg, gif
+
+            // Validate image type
+            if (!in_array($type, ['jpeg', 'png', 'jpg', 'gif'])) {
+                return response()->json(['error' => 'Invalid image type'], 400);
+            }
+
+            $croppedImage = base64_decode($croppedImage);
+            if ($croppedImage === false) {
+                return response()->json(['error' => 'Base64 decode failed'], 400);
+            }
+
+            // Store the cropped image
+            $imageName = 'profile_' . $user->id . '.' . $type;
+            $path = 'public/img/users/' . $imageName;
+            Storage::put($path, $croppedImage);
+
+            // Update user's profile picture path in the database
+            $user->profile_picture = $path;
+            $user->save();
         }
-
-        // Update the ad
-        $user->reason = $request->input('reason');
-        $user->description = 'Banned';
-        $user->save();
-
-        // Return a success response
-        return response()->json(['message' => 'Utilisateur banni']);
     }
+
+    return response()->json(['message' => 'Profile picture updated successfully'], 200);
+}
 
     public function deleteAccountApi(Request $request)
     {
