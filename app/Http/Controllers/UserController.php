@@ -167,7 +167,7 @@ class UserController extends Controller
             Storage::put($path, $croppedImage);
 
             // Update user's profile picture path in the database
-            $user->profile_picture = $path;
+            $user->profile_picture_path = $path;
             $user->save();
         }
     }

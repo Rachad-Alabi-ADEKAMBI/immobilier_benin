@@ -75,27 +75,27 @@
             <hr class="mt-5">
             <h3> <i class="bi bi-arrow-right m-1"></i> Photo de profil</h3>
             <form id="uploadForm" action="{{ route('updateUserPictureApi') }}" method="POST" enctype="multipart/form-data">
-    @csrf
-    <div class="form-group">
-        <label for="profileImage">
-            1- Selectionnez l'image: <br>
-            2- Rognez l'image et cliquez sur <strong>"Rogner image"</strong> <br>
-            3- Enregistrez l'image en cliquant sur <strong>"Enregistrer"</strong> <br>
-        </label>
-        <input type="file" class="form-control mt-3" id="profileImage" name="profileImage" accept="image/*" required>
-    </div>
-    <div class="form-group">
-        <div class="img-container" style="width: 300px; height: 300px; margin: 10px auto;">
-            <img id="imageToCrop" style="display: none;">
-        </div>
-    </div>
-    <div class="form-group">
-        <button type="button" class="btn btn-primary" id="cropButton">Rogner image</button>
-    </div>
-    <div class="form-group preview mt-5" id="preview"></div>
-    <input type="hidden" name="croppedImage" id="croppedImage">
-    <button type="submit" class="btn btn-blue w-45 py-3 mt-3" id="submitButton" disabled>Enregistrer</button>
-</form>
+            @csrf
+            <div class="form-group">
+                <label for="profileImage">
+                    1- Selectionnez l'image: <br>
+                    2- Rognez l'image et cliquez sur <strong>"Rogner image"</strong> <br>
+                    3- Enregistrez l'image en cliquant sur <strong>"Enregistrer"</strong> <br>
+                </label>
+                <input type="file" class="form-control mt-3" id="profileImage" name="profileImage" accept="image/*" required>
+            </div>
+            <div class="form-group">
+                <div class="img-container" style="width: 300px; height: 300px; margin: 10px auto;">
+                    <img id="imageToCrop" style="display: none;">
+                </div>
+            </div>
+            <div class="form-group">
+                <button type="button" class="btn btn-primary" id="cropButton">Rogner image</button>
+            </div>
+            <div class="form-group preview mt-5" id="preview"></div>
+            <input type="hidden" name="croppedImage" id="croppedImage">
+            <button type="submit" class="btn btn-blue w-45 py-3 mt-3" id="submitButton" disabled>Enregistrer</button>
+        </form>
 
 <!-- JavaScript for image cropping -->
 <script>

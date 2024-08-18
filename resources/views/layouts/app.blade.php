@@ -24,6 +24,11 @@
 
         <link href="{{ asset('css/more_style.css') }}" rel="stylesheet" />
         <link href="{{ asset('css/main.css') }}" rel="stylesheet" />
+
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.12/cropper.min.css">
+
+<!-- Include Cropper.js library -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.12/cropper.min.js"></script>
      
         @vite(['resources/js/app.js'])
         @livewireStyles
@@ -64,7 +69,7 @@
                         <h4>Liens</h4>
                         <ul>
                             <li><a href="{{ url('/') }}">Accueil</a></li>
-                            <li><a href="{{ url('/account') }}">Mon compte</a></li>
+                            <li><a href="{{ url('/profile') }}">Mon compte</a></li>
                             <li><a href="{{ url('/ads') }}">Annonces</a></li>
                             <li><a href="{{ url('/advertisers') }}">Annonceurs</a></li>
                             <li><a href="{{ url('/faq') }}">FAQ</a></li>
