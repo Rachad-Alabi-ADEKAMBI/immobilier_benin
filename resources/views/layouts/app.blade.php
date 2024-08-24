@@ -69,7 +69,7 @@
                         <h4>Liens</h4>
                         <ul>
                             <li><a href="{{ url('/') }}">Accueil</a></li>
-                            <li><a href="{{ url('/profile') }}">Mon compte</a></li>
+                            <li><a href="{{ url('/profile') }}">Tableau de bord</a></li>
                             <li><a href="{{ url('/ads') }}">Annonces</a></li>
                             <li><a href="{{ url('/advertisers') }}">Annonceurs</a></li>
                             <li><a href="{{ url('/faq') }}">FAQ</a></li>
