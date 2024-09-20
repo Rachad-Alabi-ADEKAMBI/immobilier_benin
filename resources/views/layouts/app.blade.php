@@ -89,7 +89,7 @@
                         <h4>Galerie</h4>
                         <div class="footer__gallery">
                             <img src="{{ url('img/bureaux1.jpeg') }}" alt="annonces gratuites au Bénin">
-                            <img src="{{ url('img/home2.jpeg') }}" alt="Immobilier Bénin">
+                            <img src="{{ url('img/home2.jpeg') }}" alt="Immobilier Bénin, marketplace immobiliere">
                             <img src="{{ url('img/home3.jpeg') }}" alt="Louer et vendre au Bénin">
                             <img src="{{ url('img/terrain.jpg') }}" alt="Acheter maison au Bénin">
                             <img src="{{ url('img/magasin3.jpg') }}" alt="Louer appartement au Bénin">
