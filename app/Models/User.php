@@ -25,7 +25,7 @@ class User extends Authenticatable
         'password',
         'phone',
         'location', // Ajout du champ location
-        'featured', // Ajout du champ featured
+     //   'featured', // Ajout du champ featured
     ];
 
     /**

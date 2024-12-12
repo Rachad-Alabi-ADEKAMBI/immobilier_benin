@@ -88,6 +88,7 @@
         </div>
     </div>
 
+    <!--
     <div class="col-sm-12 col-md-6">
         <div class="form-floating">
             <x-label for="featured" value="Je suis agent immobilier:"/>
@@ -98,6 +99,7 @@
             </select>
         </div>
     </div>
+-->
 </div>
 
 
