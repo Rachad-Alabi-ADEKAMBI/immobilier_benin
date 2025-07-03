@@ -21,10 +21,10 @@
         <div class="hero-container">
             <h1 class="hero-title">
                 Trouvez votre <span class="highlight">propriété idéale</span><br class="desktop-break">
-                en Afrique
+                au Bénin
             </h1>
             <p class="hero-subtitle">
-                Découvrez les meilleures opportunités immobilières au Bénin et dans toute l'Afrique.
+                Découvrez les meilleures opportunités immobilières au Bénin.
                 Maisons, appartements, terrains - tout ce dont vous avez besoin pour votre projet immobilier.
             </p>
 

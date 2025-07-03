@@ -19,8 +19,7 @@
     <nav class="navbar" id="navbar">
         <div class="nav-container">
             <a href="/home" class="logo">
-                <i class="fas fa-home"></i>
-                <span class="logo-text">ImmobilierBenin</span>
+                <img src="{{ asset('images/logo.png') }}" alt="ImmobilierBenin" width="150">
             </a>
 
             <!-- Mobile Menu Button -->
@@ -46,7 +45,7 @@
     </nav>
 
 
-    <main>
+    <main style="height: 100vh; overflow-y: auto; padding: 20px;">
         @yield('content')
     </main>
 
@@ -94,6 +93,9 @@
             <p>&copy; 2024 ImmobilierBenin. Tous droits réservés. | Conçu avec ❤️ pour l'Afrique</p>
         </div>
     </footer>
+
+
+
 
     <script src="{{ asset('js/app.js') }}"></script>
 </body>
