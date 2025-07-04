@@ -8,7 +8,7 @@
     <section class="page-header">
         <div class="container">
             <div class="breadcrumb">
-                <a href="index.html"><i class="fas fa-home"></i> Accueil</a>
+                <a href="/"><i class="fas fa-home"></i> Accueil</a>
                 <span class="separator">/</span>
                 <span class="current">Propriétés</span>
             </div>
