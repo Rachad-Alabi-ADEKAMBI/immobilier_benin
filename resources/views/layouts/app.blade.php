@@ -62,9 +62,9 @@
             <div class="footer-section">
                 <h3><i class="fas fa-cogs"></i> Services</h3>
                 <ul>
-                    <li><a href="ads.html"><i class="fas fa-shopping-cart"></i> Achat</a></li>
-                    <li><a href="ads.html"><i class="fas fa-tag"></i> Vente</a></li>
-                    <li><a href="ads.html"><i class="fas fa-home"></i> Location</a></li>
+                    <li><a href="/ads"><i class="fas fa-shopping-cart"></i> Achat</a></li>
+                    <li><a href="/ads"><i class="fas fa-tag"></i> Vente</a></li>
+                    <li><a href="/ads"><i class="fas fa-home"></i> Location</a></li>
                     <li><a href="#contact"><i class="fas fa-calculator"></i> Évaluation</a></li>
                 </ul>
             </div>
@@ -72,10 +72,10 @@
             <div class="footer-section">
                 <h3><i class="fas fa-map-marker-alt"></i> Zones</h3>
                 <ul>
-                    <li><a href="ads.html">Cotonou</a></li>
-                    <li><a href="ads.html">Porto-Novo</a></li>
-                    <li><a href="ads.html">Parakou</a></li>
-                    <li><a href="ads.html">Abomey-Calavi</a></li>
+                    <li><a href="/ads">Cotonou</a></li>
+                    <li><a href="/ads">Porto-Novo</a></li>
+                    <li><a href="/ads">Parakou</a></li>
+                    <li><a href="/ads">Abomey-Calavi</a></li>
                 </ul>
             </div>
 
