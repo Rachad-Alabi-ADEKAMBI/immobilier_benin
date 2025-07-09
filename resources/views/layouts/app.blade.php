@@ -56,7 +56,7 @@
                     <i class="fas fa-home"></i>
                     <h3>ImmobilierBenin</h3>
                 </div>
-                <p>Votre partenaire de confiance pour l'immobilier en Afrique de l'Ouest. Nous vous accompagnons dans tous vos projets immobiliers.</p>
+                <p>Votre partenaire de confiance pour l'immobilier au Bénin. Nous vous accompagnons dans tous vos projets immobiliers.</p>
             </div>
 
             <div class="footer-section">
@@ -65,7 +65,6 @@
                     <li><a href="/ads"><i class="fas fa-shopping-cart"></i> Achat</a></li>
                     <li><a href="/ads"><i class="fas fa-tag"></i> Vente</a></li>
                     <li><a href="/ads"><i class="fas fa-home"></i> Location</a></li>
-                    <li><a href="#contact"><i class="fas fa-calculator"></i> Évaluation</a></li>
                 </ul>
             </div>
 
