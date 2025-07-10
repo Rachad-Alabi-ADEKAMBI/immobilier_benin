@@ -81,7 +81,7 @@
             <div class="footer-section">
                 <h3><i class="fas fa-phone"></i> Contact</h3>
                 <ul class="contact-list">
-                    <li><i class="fas fa-phone"></i> +229 XX XX XX XX</li>
+                    <li><i class="fas fa-phone"></i> +229 01 41 59 76 42</li>
                     <li><i class="fas fa-envelope"></i> contact@immobilierbenin.com</li>
                     <li><i class="fas fa-map-marker-alt"></i> Cotonou, Bénin</li>
                 </ul>
