@@ -9,20 +9,21 @@
 
     <link rel="stylesheet" href="{{ asset('fontawesome/css/all.css') }}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
 
 
 </head>
 
-<body>
-
+<body class="dark-theme">
+    <!-- Navigation -->
     <nav class="navbar" id="navbar">
         <div class="nav-container">
-            <a href="/home" class="logo">
-                <img src="{{ asset('images/logo.png') }}" alt="ImmobilierBenin" width="150">
+            <a class="logo" onclick="showPage('home')">
+                <i class="fas fa-home"></i>
+                <span>ImmobilierBenin</span>
             </a>
 
-            <!-- Mobile Menu Button -->
             <button class="mobile-menu-btn" id="mobileMenuBtn">
                 <span></span>
                 <span></span>
@@ -30,17 +31,26 @@
             </button>
 
             <ul class="nav-links" id="navLinks">
-                <li><a href="/home" class="active">Accueil</a></li>
-                <li><a href="/ads">Propriétés</a></li>
-                <li><a href="/home#about">À propos</a></li>
-                <li><a href="/home#contact">Contact</a></li>
-                <li><a href="/login" class="login-link"><i class="fas fa-user"></i> Connexion</a></li>
+                <li><a onclick="showPage('home')" class="active">Accueil</a></li>
+                <li><a onclick="showPage('properties')">Mes Annonces</a></li>
+                <li><a onclick="showPage('dashboard')">Tableau de bord</a></li>
+                <li><a onclick="showPage('users')">Utilisateurs</a></li>
+                <li><a onclick="showPage('profile')">Mon compte</a></li>
             </ul>
 
-            <a href="login.html" class="cta-button">
-                <i class="fas fa-plus"></i>
-                <span class="btn-text">Publier une annonce</span>
-            </a>
+            <div class="nav-actions">
+                <button class="theme-toggle" id="themeToggle" aria-label="Basculer le thème">
+                    <i class="fas fa-sun"></i>
+                    <i class="fas fa-moon"></i>
+                </button>
+                <a class="login-link" onclick="showPage('login')">
+                    <i class="fas fa-user"></i> Connexion
+                </a>
+                <button class="cta-button" onclick="openModal('addProperty')">
+                    <i class="fas fa-plus"></i>
+                    <span class="btn-text">Publier une annonce</span>
+                </button>
+            </div>
         </div>
     </nav>
 
@@ -56,7 +66,8 @@
                     <i class="fas fa-home"></i>
                     <h3>ImmobilierBenin</h3>
                 </div>
-                <p>Votre partenaire de confiance pour l'immobilier au Bénin. Nous vous accompagnons dans tous vos projets immobiliers.</p>
+                <p>Votre partenaire de confiance pour l'immobilier au Bénin. Nous vous accompagnons dans tous vos
+                    projets immobiliers.</p>
             </div>
 
             <div class="footer-section">
