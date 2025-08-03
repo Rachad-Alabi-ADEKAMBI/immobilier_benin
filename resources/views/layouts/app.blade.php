@@ -1,113 +1,266 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 
 <head>
-    <meta charset="UTF-8">
-    <title>@yield('title', 'Immobilier Bénin')</title>
-    <link rel="stylesheet" href="{{ asset('css/dashboard.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/styles.css') }}">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+
+    <title>{{ config('app.name', 'ImmobilierBenin') }}</title>
+
+    <link rel="preconnect" href="https://fonts.bunny.net">
+    <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
+
+    <!-- Scripts -->
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
 
     <link rel="stylesheet" href="{{ asset('fontawesome/css/all.css') }}">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap"
-        rel="stylesheet">
-
-
+    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
 </head>
 
-<body class="dark-theme">
-    <!-- Navigation -->
-    <nav class="navbar" id="navbar">
-        <div class="nav-container">
-            <a class="logo" onclick="showPage('home')">
-                <i class="fas fa-home"></i>
-                <span>ImmobilierBenin</span>
-            </a>
+<body class="font-sans antialiased">
+    <div class="min-h-screen bg-gray-100">
+        @include('layouts.navigation')
 
-            <button class="mobile-menu-btn" id="mobileMenuBtn">
-                <span></span>
-                <span></span>
-                <span></span>
-            </button>
-
-            <ul class="nav-links" id="navLinks">
-                <li><a onclick="showPage('home')" class="active">Accueil</a></li>
-                <li><a onclick="showPage('properties')">Mes Annonces</a></li>
-                <li><a onclick="showPage('dashboard')">Tableau de bord</a></li>
-                <li><a onclick="showPage('users')">Utilisateurs</a></li>
-                <li><a onclick="showPage('profile')">Mon compte</a></li>
-            </ul>
-
-            <div class="nav-actions">
-                <button class="theme-toggle" id="themeToggle" aria-label="Basculer le thème">
-                    <i class="fas fa-sun"></i>
-                    <i class="fas fa-moon"></i>
-                </button>
-                <a class="login-link" onclick="showPage('login')">
-                    <i class="fas fa-user"></i> Connexion
-                </a>
-                <button class="cta-button" onclick="openModal('addProperty')">
-                    <i class="fas fa-plus"></i>
-                    <span class="btn-text">Publier une annonce</span>
-                </button>
-            </div>
-        </div>
-    </nav>
-
-
-    <main style="height: 100vh; overflow-y: auto; padding: 20px;">
-        @yield('content')
-    </main>
-
-    <footer class="footer">
-        <div class="footer-content">
-            <div class="footer-section">
-                <div class="footer-logo">
-                    <i class="fas fa-home"></i>
-                    <h3>ImmobilierBenin</h3>
+        <!-- Page Heading -->
+        @isset($header)
+            <header class="bg-white shadow">
+                <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
+                    {{ $header }}
                 </div>
-                <p>Votre partenaire de confiance pour l'immobilier au Bénin. Nous vous accompagnons dans tous vos
-                    projets immobiliers.</p>
+            </header>
+        @endisset
+
+        <!-- Page Content -->
+        <main>
+            @yield('content')
+        </main>
+
+
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="container">
+                <div class="footer-content">
+                    <div class="footer-section">
+                        <div class="logo" style="margin-bottom: 1rem;">
+                            <i class="fas fa-home"></i>
+                            ImmobilierBenin
+                        </div>
+                        <p style="color: rgba(255,255,255,0.7); margin-bottom: 1rem;">
+                            Votre partenaire immobilier de confiance au Bénin
+                        </p>
+                    </div>
+                    <div class="footer-section">
+                        <h3><i class="fas fa-cogs"></i> Services</h3>
+                        <ul>
+                            <li><a href="#"><i class="fas fa-home"></i> Vente de propriétés</a></li>
+                            <li><a href="#"><i class="fas fa-key"></i> Location</a></li>
+                            <li><a href="#"><i class="fas fa-calculator"></i> Évaluation</a></li>
+                            <li><a href="#"><i class="fas fa-handshake"></i> Conseil immobilier</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-section">
+                        <h3><i class="fas fa-link"></i> Liens utiles</h3>
+                        <ul>
+                            <li><a href="#" onclick="showPage('about')"><i class="fas fa-info-circle"></i> À
+                                    propos</a></li>
+                            <li><a href="#" onclick="showPage('contact')"><i class="fas fa-envelope"></i>
+                                    Contact</a></li>
+                            <li><a href="#"><i class="fas fa-question-circle"></i> FAQ</a></li>
+                            <li><a href="#"><i class="fas fa-file-contract"></i> Conditions</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-section">
+                        <h3><i class="fas fa-phone"></i> Contact</h3>
+                        <ul>
+                            <li><a href="tel:+229"><i class="fas fa-phone"></i> +229 XX XX XX XX</a></li>
+                            <li><a href="mailto:contact@immobilierbenin.com"><i class="fas fa-envelope"></i>
+                                    contact@immobilierbenin.com</a></li>
+                            <li><a href="#"><i class="fas fa-map-marker-alt"></i> Cotonou, Bénin</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="footer-bottom">
+                    <p>&copy; 2024 ImmobilierBenin. Tous droits réservés.</p>
+                </div>
             </div>
+        </footer>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue@3.4.21/dist/vue.global.prod.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 
-            <div class="footer-section">
-                <h3><i class="fas fa-cogs"></i> Services</h3>
-                <ul>
-                    <li><a href="/ads"><i class="fas fa-shopping-cart"></i> Achat</a></li>
-                    <li><a href="/ads"><i class="fas fa-tag"></i> Vente</a></li>
-                    <li><a href="/ads"><i class="fas fa-home"></i> Location</a></li>
-                </ul>
-            </div>
+    <script>
+        // Theme Management
+        function toggleTheme() {
+            const body = document.body;
+            const themeIcon = document.getElementById('themeIcon');
 
-            <div class="footer-section">
-                <h3><i class="fas fa-map-marker-alt"></i> Zones</h3>
-                <ul>
-                    <li><a href="/ads">Cotonou</a></li>
-                    <li><a href="/ads">Porto-Novo</a></li>
-                    <li><a href="/ads">Parakou</a></li>
-                    <li><a href="/ads">Abomey-Calavi</a></li>
-                </ul>
-            </div>
+            if (body.getAttribute('data-theme') === 'dark') {
+                body.removeAttribute('data-theme');
+                themeIcon.className = 'fas fa-moon';
+                localStorage.setItem('theme', 'light');
+            } else {
+                body.setAttribute('data-theme', 'dark');
+                themeIcon.className = 'fas fa-sun';
+                localStorage.setItem('theme', 'dark');
+            }
+        }
 
-            <div class="footer-section">
-                <h3><i class="fas fa-phone"></i> Contact</h3>
-                <ul class="contact-list">
-                    <li><i class="fas fa-phone"></i> +229 01 41 59 76 42</li>
-                    <li><i class="fas fa-envelope"></i> contact@immobilierbenin.com</li>
-                    <li><i class="fas fa-map-marker-alt"></i> Cotonou, Bénin</li>
-                </ul>
-            </div>
-        </div>
+        // Load saved theme
+        document.addEventListener('DOMContentLoaded', function() {
+            const savedTheme = localStorage.getItem('theme');
+            const themeIcon = document.getElementById('themeIcon');
 
-        <div class="footer-bottom">
-            <p>&copy; 2024 ImmobilierBenin. Tous droits réservés. | Conçu avec ❤️ pour l'Afrique</p>
-        </div>
-    </footer>
+            if (savedTheme === 'dark') {
+                document.body.setAttribute('data-theme', 'dark');
+                themeIcon.className = 'fas fa-sun';
+            }
+        });
 
+        // Page Management
+        function showPage(pageName) {
+            // Hide all pages
+            document.querySelectorAll('.page').forEach(page => {
+                page.classList.remove('active');
+            });
 
+            // Show selected page
+            const targetPage = document.getElementById(`page-${pageName}`);
+            if (targetPage) {
+                targetPage.classList.add('active');
 
+                // Update active nav link
+                updateActiveNavLink(pageName);
 
-    <script src="{{ asset('js/app.js') }}"></script>
+                // Close mobile menu
+                document.getElementById('mobileMenuBtn').classList.remove('active');
+                document.getElementById('navLinks').classList.remove('active');
+
+                // Scroll to top
+                window.scrollTo(0, 0);
+
+                // Trigger animations
+                setTimeout(() => {
+                    targetPage.querySelectorAll('.fade-in').forEach(el => {
+                        el.classList.add('visible');
+                    });
+                }, 100);
+            }
+        }
+
+        function updateActiveNavLink(pageName) {
+            document.querySelectorAll('.nav-links a').forEach(link => {
+                link.classList.remove('active');
+            });
+
+            // Find and activate the correct nav link
+            document.querySelectorAll('.nav-links a').forEach(link => {
+                if (link.getAttribute('onclick') && link.getAttribute('onclick').includes(pageName)) {
+                    link.classList.add('active');
+                }
+            });
+        }
+
+        // Mobile menu functionality
+        document.getElementById('mobileMenuBtn').addEventListener('click', function() {
+            this.classList.toggle('active');
+            document.getElementById('navLinks').classList.toggle('active');
+        });
+
+        // Navbar scroll effect
+        window.addEventListener('scroll', () => {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 100) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Intersection Observer for animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        // Observe all fade-in elements
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Counter animation for stats
+        const animateCounters = () => {
+            const counters = document.querySelectorAll('.stat-number');
+            counters.forEach(counter => {
+                const target = parseInt(counter.textContent.replace(/\D/g, ''));
+                const increment = target / 100;
+                let current = 0;
+
+                const updateCounter = () => {
+                    if (current < target) {
+                        current += increment;
+                        counter.textContent = Math.ceil(current) + (counter.textContent.includes('+') ?
+                            '+' : '');
+                        requestAnimationFrame(updateCounter);
+                    } else {
+                        counter.textContent = counter.textContent;
+                    }
+                };
+
+                updateCounter();
+            });
+        };
+
+        // Trigger counter animation when stats section is visible
+        const statsSection = document.querySelector('.stats');
+        const statsObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    animateCounters();
+                    statsObserver.unobserve(entry.target);
+                }
+            });
+        });
+
+        if (statsSection) {
+            statsObserver.observe(statsSection);
+        }
+
+        // Initialize page
+        document.addEventListener('DOMContentLoaded', function() {
+            // Trigger initial animations
+            setTimeout(() => {
+                document.querySelectorAll('.fade-in').forEach(el => {
+                    el.classList.add('visible');
+                });
+            }, 100);
+        });
+    </script>
+
 </body>
+
 
 </html>

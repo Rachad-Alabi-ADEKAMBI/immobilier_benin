@@ -5,19 +5,18 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('pages/front/home');
-});
+})->name('home');
 
 Route::get('/home', function () {
-    return view('pages/front/home');
-});
+    return view('pages.front.home');
+})->name('home');
 
 Route::get('/ads', function () {
-    return view('pages/front/ads');
-});
-
+    return view('pages.front.ads');
+})->name('ads');
 
 Route::get('/dashboard', function () {
-    return view('dashboard');
+    return view('pages/front/dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
@@ -26,4 +25,4 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-require __DIR__ . '/auth.php';
+require __DIR__.'/auth.php';
