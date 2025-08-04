@@ -1,7 +1,14 @@
-import './bootstrap';
+import { createApp } from 'vue';
+import HomePageComponent from './components/HomePageComponent.vue';
+import AdsPageComponent from './components/AdsPageComponent.vue';
 
-import Alpine from 'alpinejs';
 
-window.Alpine = Alpine;
+// Crée une instance de l'application Vue
+const app = createApp({});
 
-Alpine.start();
+// Enregistre le composant pour cette page
+app.component('home-page-component', HomePageComponent);
+app.component('ads-page-component', AdsPageComponent);
+
+// Monte l'application Vue sur l'élément avec l'ID 'app-home'
+app.mount('#app');

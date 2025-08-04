@@ -3,11 +3,13 @@
        <i class="fas fa-moon" id="themeIcon"></i>
    </button>
 
-   <nav class="navbar" id="navbar">
+   <nav class="navbar" id="navbar" style="margin-bottom: 150px;">
        <div class="nav-container">
-           <div class="logo" onclick="showPage('home')">
-               <i class="fas fa-home"></i>
-               ImmobilierBenin
+           <div class="logo" >
+                <a href=" {{ url(route: home) }}">
+                       <i class="fas fa-home"></i>
+               Immo
+                </a>
            </div>
 
            <button class="mobile-menu-btn" id="mobileMenuBtn">

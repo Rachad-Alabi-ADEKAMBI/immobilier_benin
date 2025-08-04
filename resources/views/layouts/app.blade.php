@@ -17,6 +17,8 @@
     <link rel="stylesheet" href="{{ asset('fontawesome/css/all.css') }}">
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
     <link rel="icon" type="image/x-icon" href="/favicon.ico">
+
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 
 <body class="font-sans antialiased">
@@ -33,9 +35,9 @@
         @endisset
 
         <!-- Page Content -->
-        <main>
+      <div id="app">
             @yield('content')
-        </main>
+        </div>
 
 
         <!-- Footer -->
@@ -87,9 +89,7 @@
             </div>
         </footer>
     </div>
-    <script src="https://cdn.jsdelivr.net/npm/vue@3.4.21/dist/vue.global.prod.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-
+  
     <script>
         // Theme Management
         function toggleTheme() {
@@ -259,6 +259,8 @@
             }, 100);
         });
     </script>
+
+     <script src="{{ mix('js/app.js') }}"></script>
 
 </body>
 
