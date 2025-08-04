@@ -6,7 +6,7 @@
    <nav class="navbar" id="navbar" style="margin-bottom: 150px;">
        <div class="nav-container">
            <div class="logo" >
-                <a href=" {{ url(route: home) }}">
+                <a href=" {{ url('home') }}">
                        <i class="fas fa-home"></i>
                Immo
                 </a>
@@ -25,14 +25,14 @@
                <li><a href=" {{ url('/ads') }}">
                        <i class="fas fa-building"></i> Propriétés
                    </a></li>
-               <li><a onclick="showPage('about')">
+               <li><a href=" {{ url('home#about') }}"">
                        <i class="fas fa-info-circle"></i> À propos
                    </a></li>
-               <li><a onclick="showPage('contact')">
+               <li><a href=" {{ url('home#contact') }}">
                        <i class="fas fa-envelope"></i> Contact
                    </a></li>
                <li>
-                   <a href="{{ route('login') }}" class="login-link">
+                   <a href=" {{ url('login') }}" class="login-link">
                        <i class="fas fa-sign-in-alt"></i> Connexion
                    </a>
                </li>
