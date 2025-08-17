@@ -16,6 +16,9 @@
 
     <link rel="stylesheet" href="{{ asset('fontawesome/css/all.css') }}">
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+
+    <link rel="stylesheet" href="{{ asset('css/dashboard_style.css') }}">
+
     <link rel="icon" type="image/x-icon" href="/favicon.ico">
 
     @vite(['resources/css/app.css', 'resources/js/app.js'])

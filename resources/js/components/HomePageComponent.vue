@@ -77,19 +77,6 @@
                                 placeholder="Ville, quartier..."
                             />
                         </div>
-                        <div class="form-group">
-                            <label
-                                ><i class="fas fa-dollar-sign"></i>
-                                Budget</label
-                            >
-                            <select class="form-control">
-                                <option>Tous les budgets</option>
-                                <option>< 10M FCFA</option>
-                                <option>10M - 50M FCFA</option>
-                                <option>50M - 100M FCFA</option>
-                                <option>> 100M FCFA</option>
-                            </select>
-                        </div>
                     </div>
                     <button class="search-btn">
                         <i class="fas fa-search"></i>
@@ -119,16 +106,6 @@
                             Trouvez exactement ce que vous cherchez avec nos
                             filtres intelligents et notre système de recherche
                             avancé.
-                        </p>
-                    </div>
-                    <div class="feature-card fade-in">
-                        <div class="feature-icon">
-                            <i class="fas fa-shield-alt"></i>
-                        </div>
-                        <h3 class="feature-title">Transactions sécurisées</h3>
-                        <p class="feature-description">
-                            Toutes nos transactions sont sécurisées et vérifiées
-                            pour votre tranquillité d'esprit.
                         </p>
                     </div>
                     <div class="feature-card fade-in">
@@ -310,30 +287,6 @@
                         <i class="fas fa-th-large"></i>
                         Voir toutes les propriétés
                     </a>
-                </div>
-            </div>
-        </section>
-
-        <!-- Stats Section -->
-        <section class="stats">
-            <div class="container">
-                <div class="stats-grid">
-                    <div class="stat-item fade-in">
-                        <span class="stat-number">500+</span>
-                        <span class="stat-label">Propriétés actives</span>
-                    </div>
-                    <div class="stat-item fade-in">
-                        <span class="stat-number">1000+</span>
-                        <span class="stat-label">Clients satisfaits</span>
-                    </div>
-                    <div class="stat-item fade-in">
-                        <span class="stat-number">50+</span>
-                        <span class="stat-label">Agents experts</span>
-                    </div>
-                    <div class="stat-item fade-in">
-                        <span class="stat-number">12</span>
-                        <span class="stat-label">Villes couvertes</span>
-                    </div>
                 </div>
             </div>
         </section>
