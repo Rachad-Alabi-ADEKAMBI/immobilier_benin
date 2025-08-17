@@ -501,45 +501,43 @@
                 </div>
             </div>
         </section>
-</div>
+    </div>
 </template>
 
 <script>
-    export default {
-        name: 'HomePageComponent',
+export default {
+    name: "HomePageComponent",
 
-        data() {
-            return {
-               message: 'ok',
+    data() {
+        return {
+            message: "ok",
+        };
+    },
+
+    mounted() {
+        //  this.alert();
+    },
+    computed: {},
+
+    methods: {
+        alert() {
+            alert("ok");
+        },
+        formatAmount(value) {
+            return Number(value).toLocaleString("fr-FR");
+        },
+
+        formatDateTime(datetime) {
+            const date = new Date(datetime);
+            const options = {
+                day: "2-digit",
+                month: "2-digit",
+                year: "numeric",
+                hour: "2-digit",
+                minute: "2-digit",
             };
+            return date.toLocaleString("fr-FR", options);
         },
-
-        mounted() {
-          //  this.alert();
-        },
-        computed: {
-
-        },
-
-        methods: {
-            alert(){
-                alert('ok');
-            },
-            formatAmount(value) {
-                return Number(value).toLocaleString('fr-FR');
-            },
-
-            formatDateTime(datetime) {
-                const date = new Date(datetime);
-                const options = {
-                    day: '2-digit',
-                    month: '2-digit',
-                    year: 'numeric',
-                    hour: '2-digit',
-                    minute: '2-digit',
-                };
-                return date.toLocaleString('fr-FR', options);
-            }
-        },
-    };
+    },
+};
 </script>
