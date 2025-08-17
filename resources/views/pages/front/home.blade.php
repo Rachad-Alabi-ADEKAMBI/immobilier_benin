@@ -6,7 +6,7 @@
 <nav class="navbar" id="navbar" style="margin-bottom: 150px;">
     <div class="nav-container">
         <div class="logo">
-            <a href=" {{ url('home') }}">
+            <a href=" {{ route('home') }}">
                 <i class="fas fa-home"></i>
                 Immo
             </a>
@@ -42,10 +42,6 @@
             @auth
                 <li>
                     @if (auth()->user()->role === 'admin')
-                        <a href="{{ route('dashboardAdmin') }}" class="login-link">
-                            <i class="fas fa-tachometer-alt"></i> Tableau de bord
-                        </a>
-                    @elseif(auth()->user()->role === 'seller')
                         <a href="{{ route('dashboardAdmin') }}" class="login-link">
                             <i class="fas fa-tachometer-alt"></i> Tableau de bord
                         </a>

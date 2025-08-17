@@ -1,15 +1,10 @@
-<!DOCTYPE html>
-<html lang="fr">
+@extends('layouts.app')
+
+@section('title', 'Tableau de bord')
+
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard - ImmobilierBenin</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap"
-        rel="stylesheet">
+
     <style>
         * {
             margin: 0;
@@ -941,7 +936,8 @@
     </style>
 </head>
 
-<body>
+@section('content')
+
     <!-- Theme Toggle -->
     <button class="theme-toggle" onclick="toggleTheme()" title="Changer de thème">
         <i class="fas fa-moon" id="themeIcon"></i>
@@ -964,7 +960,7 @@
 
     <div class="dashboard-container">
         <!-- Sidebar -->
-        @include('pages.back.admin.sidebar')
+        @include('pages.back.user.sidebar')
 
 
         <!-- Main Content -->
@@ -1009,18 +1005,7 @@
                             </div>
                         </div>
 
-                        <div class="stat-card">
-                            <div class="stat-header">
-                                <div class="stat-icon">
-                                    <i class="fas fa-users"></i>
-                                </div>
-                            </div>
-                            <div class="stat-number">1,234</div>
-                            <div class="stat-label">Utilisateurs inscrits</div>
-                            <div class="stat-change positive">
-                                <i class="fas fa-arrow-up"></i> +8% ce mois
-                            </div>
-                        </div>
+
 
                         <div class="stat-card">
                             <div class="stat-header">
@@ -1035,41 +1020,20 @@
                             </div>
                         </div>
 
-                        <div class="stat-card">
-                            <div class="stat-header">
-                                <div class="stat-icon">
-                                    <i class="fas fa-handshake"></i>
-                                </div>
-                            </div>
-                            <div class="stat-number">89</div>
-                            <div class="stat-label">Transactions</div>
-                            <div class="stat-change negative">
-                                <i class="fas fa-arrow-down"></i> -3% ce mois
-                            </div>
-                        </div>
+
                     </div>
 
                     <!-- Quick Actions -->
                     <div class="quick-actions fade-in">
-                        <a href="#" class="quick-action" onclick="showSection('properties')">
+                        <a href="{{ url('newAd') }}" class="quick-action" onclick="showSection('properties')">
                             <i class="fas fa-plus"></i>
                             <h4>Ajouter une propriété</h4>
                             <p>Publier une nouvelle annonce</p>
                         </a>
-                        <a href="#" class="quick-action" onclick="showSection('users')">
-                            <i class="fas fa-user-plus"></i>
-                            <h4>Nouvel utilisateur</h4>
-                            <p>Créer un compte utilisateur</p>
-                        </a>
                         <a href="#" class="quick-action" onclick="showSection('messages')">
                             <i class="fas fa-envelope"></i>
                             <h4>Messages</h4>
-                            <p>Consulter les messages</p>
-                        </a>
-                        <a href="#" class="quick-action" onclick="showSection('analytics')">
-                            <i class="fas fa-chart-bar"></i>
-                            <h4>Rapports</h4>
-                            <p>Voir les statistiques</p>
+                            <p>Consulter les notifications</p>
                         </a>
                     </div>
 
@@ -1104,16 +1068,16 @@
                                             <td data-label="Propriété">Villa moderne à Cotonou</td>
                                             <td data-label="Type">Vente</td>
                                             <td data-label="Prix">85,000,000 FCFA</td>
-                                            <td data-label="Statut"><span
-                                                    class="status-badge status-active">Actif</span></td>
+                                            <td data-label="Statut"><span class="status-badge status-active">Actif</span>
+                                            </td>
                                             <td data-label="Date">Il y a 2 jours</td>
                                         </tr>
                                         <tr>
                                             <td data-label="Propriété">Appartement de luxe</td>
                                             <td data-label="Type">Location</td>
                                             <td data-label="Prix">450,000 FCFA/mois</td>
-                                            <td data-label="Statut"><span
-                                                    class="status-badge status-active">Actif</span></td>
+                                            <td data-label="Statut"><span class="status-badge status-active">Actif</span>
+                                            </td>
                                             <td data-label="Date">Il y a 1 jour</td>
                                         </tr>
                                         <tr>
@@ -1207,8 +1171,8 @@
                                             <td data-label="Type">Vente</td>
                                             <td data-label="Prix">85,000,000 FCFA</td>
                                             <td data-label="Ville">Cotonou</td>
-                                            <td data-label="Statut"><span
-                                                    class="status-badge status-active">Actif</span></td>
+                                            <td data-label="Statut"><span class="status-badge status-active">Actif</span>
+                                            </td>
                                             <td data-label="Actions">
                                                 <button class="card-btn card-btn-secondary"
                                                     style="padding: 0.25rem 0.5rem; margin-right: 0.5rem;"
@@ -1232,8 +1196,8 @@
                                             <td data-label="Type">Location</td>
                                             <td data-label="Prix">450,000 FCFA/mois</td>
                                             <td data-label="Ville">Porto-Novo</td>
-                                            <td data-label="Statut"><span
-                                                    class="status-badge status-active">Actif</span></td>
+                                            <td data-label="Statut"><span class="status-badge status-active">Actif</span>
+                                            </td>
                                             <td data-label="Actions">
                                                 <button class="card-btn card-btn-secondary"
                                                     style="padding: 0.25rem 0.5rem; margin-right: 0.5rem;"
@@ -1372,8 +1336,8 @@
                                             <td data-label="Utilisateur">Jean Kouassi</td>
                                             <td data-label="Email">jean.kouassi@email.com</td>
                                             <td data-label="Rôle">Administrateur</td>
-                                            <td data-label="Statut"><span
-                                                    class="status-badge status-active">Actif</span></td>
+                                            <td data-label="Statut"><span class="status-badge status-active">Actif</span>
+                                            </td>
                                             <td data-label="Inscription">15 Jan 2024</td>
                                             <td data-label="Actions">
                                                 <button class="card-btn card-btn-secondary"
@@ -1396,8 +1360,8 @@
                                             <td data-label="Utilisateur">Marie Adjovi</td>
                                             <td data-label="Email">marie.adjovi@email.com</td>
                                             <td data-label="Rôle">Agent</td>
-                                            <td data-label="Statut"><span
-                                                    class="status-badge status-active">Actif</span></td>
+                                            <td data-label="Statut"><span class="status-badge status-active">Actif</span>
+                                            </td>
                                             <td data-label="Inscription">12 Jan 2024</td>
                                             <td data-label="Actions">
                                                 <button class="card-btn card-btn-secondary"
@@ -1647,8 +1611,7 @@
                                             <td data-label="Statut"><span class="status-badge status-pending">Non
                                                     lu</span></td>
                                             <td data-label="Actions">
-                                                <button class="card-btn card-btn-primary"
-                                                    style="padding: 0.25rem 0.5rem;"
+                                                <button class="card-btn card-btn-primary" style="padding: 0.25rem 0.5rem;"
                                                     onclick="openModal('viewMessageModal')">
                                                     <i class="fas fa-eye"></i>
                                                 </button>
@@ -1661,8 +1624,7 @@
                                             <td data-label="Statut"><span class="status-badge status-active">Lu</span>
                                             </td>
                                             <td data-label="Actions">
-                                                <button class="card-btn card-btn-primary"
-                                                    style="padding: 0.25rem 0.5rem;"
+                                                <button class="card-btn card-btn-primary" style="padding: 0.25rem 0.5rem;"
                                                     onclick="openModal('viewMessageModal')">
                                                     <i class="fas fa-eye"></i>
                                                 </button>
@@ -1794,371 +1756,6 @@
         </main>
     </div>
 
-    <!-- Modals -->
-    <!-- Add Property Modal -->
-    <div class="modal" id="addPropertyModal">
-        <div class="modal-content">
-            <div class="modal-header">
-                <div class="modal-title">
-                    <i class="fas fa-plus"></i> Ajouter une propriété
-                </div>
-                <button class="modal-close" onclick="closeModal('addPropertyModal')">
-                    <i class="fas fa-times"></i>
-                </button>
-            </div>
-            <div class="modal-body">
-                <div class="form-grid">
-                    <div class="form-group">
-                        <label class="form-label">
-                            <i class="fas fa-home"></i> Titre
-                        </label>
-                        <input type="text" class="form-control" placeholder="Titre de la propriété">
-                    </div>
-                    <div class="form-group">
-                        <label class="form-label">
-                            <i class="fas fa-tag"></i> Type
-                        </label>
-                        <select class="form-control">
-                            <option>Vente</option>
-                            <option>Location</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label class="form-label">
-                            <i class="fas fa-dollar-sign"></i> Prix
-                        </label>
-                        <input type="number" class="form-control" placeholder="Prix en FCFA">
-                    </div>
-                    <div class="form-group">
-                        <label class="form-label">
-                            <i class="fas fa-map-marker-alt"></i> Ville
-                        </label>
-                        <select class="form-control">
-                            <option>Cotonou</option>
-                            <option>Porto-Novo</option>
-                            <option>Parakou</option>
-                        </select>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label class="form-label">
-                        <i class="fas fa-align-left"></i> Description
-                    </label>
-                    <textarea class="form-control" rows="4" placeholder="Description de la propriété"></textarea>
-                </div>
-            </div>
-            <div class="modal-footer">
-                <button class="card-btn card-btn-secondary" onclick="closeModal('addPropertyModal')">
-                    Annuler
-                </button>
-                <button class="card-btn card-btn-primary">
-                    <i class="fas fa-save"></i> Sauvegarder
-                </button>
-            </div>
-        </div>
-    </div>
-
-    <!-- View Property Modal -->
-    <div class="modal" id="viewPropertyModal">
-        <div class="modal-content">
-            <div class="modal-header">
-                <div class="modal-title">
-                    <i class="fas fa-eye"></i> Détails de la propriété
-                </div>
-                <button class="modal-close" onclick="closeModal('viewPropertyModal')">
-                    <i class="fas fa-times"></i>
-                </button>
-            </div>
-            <div class="modal-body">
-                <h3>Villa moderne à Cotonou</h3>
-                <p><strong>Type:</strong> Vente</p>
-                <p><strong>Prix:</strong> 85,000,000 FCFA</p>
-                <p><strong>Ville:</strong> Cotonou</p>
-                <p><strong>Statut:</strong> <span class="status-badge status-active">Actif</span></p>
-                <p><strong>Description:</strong> Magnifique villa moderne située dans un quartier résidentiel calme...
-                </p>
-            </div>
-            <div class="modal-footer">
-                <button class="card-btn card-btn-secondary" onclick="closeModal('viewPropertyModal')">
-                    Fermer
-                </button>
-            </div>
-        </div>
-    </div>
-
-    <!-- Edit Property Modal -->
-    <div class="modal" id="editPropertyModal">
-        <div class="modal-content">
-            <div class="modal-header">
-                <div class="modal-title">
-                    <i class="fas fa-edit"></i> Modifier la propriété
-                </div>
-                <button class="modal-close" onclick="closeModal('editPropertyModal')">
-                    <i class="fas fa-times"></i>
-                </button>
-            </div>
-            <div class="modal-body">
-                <div class="form-grid">
-                    <div class="form-group">
-                        <label class="form-label">
-                            <i class="fas fa-home"></i> Titre
-                        </label>
-                        <input type="text" class="form-control" value="Villa moderne à Cotonou">
-                    </div>
-                    <div class="form-group">
-                        <label class="form-label">
-                            <i class="fas fa-tag"></i> Type
-                        </label>
-                        <select class="form-control">
-                            <option selected>Vente</option>
-                            <option>Location</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label class="form-label">
-                            <i class="fas fa-dollar-sign"></i> Prix
-                        </label>
-                        <input type="number" class="form-control" value="85000000">
-                    </div>
-                    <div class="form-group">
-                        <label class="form-label">
-                            <i class="fas fa-map-marker-alt"></i> Ville
-                        </label>
-                        <select class="form-control">
-                            <option selected>Cotonou</option>
-                            <option>Porto-Novo</option>
-                            <option>Parakou</option>
-                        </select>
-                    </div>
-                </div>
-            </div>
-            <div class="modal-footer">
-                <button class="card-btn card-btn-secondary" onclick="closeModal('editPropertyModal')">
-                    Annuler
-                </button>
-                <button class="card-btn card-btn-primary">
-                    <i class="fas fa-save"></i> Sauvegarder
-                </button>
-            </div>
-        </div>
-    </div>
-
-    <!-- Delete Property Modal -->
-    <div class="modal" id="deletePropertyModal">
-        <div class="modal-content">
-            <div class="modal-header">
-                <div class="modal-title">
-                    <i class="fas fa-trash"></i> Supprimer la propriété
-                </div>
-                <button class="modal-close" onclick="closeModal('deletePropertyModal')">
-                    <i class="fas fa-times"></i>
-                </button>
-            </div>
-            <div class="modal-body">
-                <p>Êtes-vous sûr de vouloir supprimer cette propriété ? Cette action est irréversible.</p>
-                <div style="background: var(--bg-gray); padding: 1rem; border-radius: 10px; margin-top: 1rem;">
-                    <strong>Villa moderne à Cotonou</strong><br>
-                    Prix: 85,000,000 FCFA
-                </div>
-            </div>
-            <div class="modal-footer">
-                <button class="card-btn card-btn-secondary" onclick="closeModal('deletePropertyModal')">
-                    Annuler
-                </button>
-                <button class="card-btn" style="background: var(--danger-gradient); color: white;">
-                    <i class="fas fa-trash"></i> Supprimer
-                </button>
-            </div>
-        </div>
-    </div>
-
-    <!-- Add User Modal -->
-    <div class="modal" id="addUserModal">
-        <div class="modal-content">
-            <div class="modal-header">
-                <div class="modal-title">
-                    <i class="fas fa-user-plus"></i> Ajouter un utilisateur
-                </div>
-                <button class="modal-close" onclick="closeModal('addUserModal')">
-                    <i class="fas fa-times"></i>
-                </button>
-            </div>
-            <div class="modal-body">
-                <div class="form-grid">
-                    <div class="form-group">
-                        <label class="form-label">
-                            <i class="fas fa-user"></i> Nom complet
-                        </label>
-                        <input type="text" class="form-control" placeholder="Nom complet">
-                    </div>
-                    <div class="form-group">
-                        <label class="form-label">
-                            <i class="fas fa-envelope"></i> Email
-                        </label>
-                        <input type="email" class="form-control" placeholder="Email">
-                    </div>
-                    <div class="form-group">
-                        <label class="form-label">
-                            <i class="fas fa-user-tag"></i> Rôle
-                        </label>
-                        <select class="form-control">
-                            <option>Utilisateur</option>
-                            <option>Agent</option>
-                            <option>Administrateur</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label class="form-label">
-                            <i class="fas fa-lock"></i> Mot de passe
-                        </label>
-                        <input type="password" class="form-control" placeholder="Mot de passe">
-                    </div>
-                </div>
-            </div>
-            <div class="modal-footer">
-                <button class="card-btn card-btn-secondary" onclick="closeModal('addUserModal')">
-                    Annuler
-                </button>
-                <button class="card-btn card-btn-primary">
-                    <i class="fas fa-save"></i> Créer
-                </button>
-            </div>
-        </div>
-    </div>
-
-    <!-- View User Modal -->
-    <div class="modal" id="viewUserModal">
-        <div class="modal-content">
-            <div class="modal-header">
-                <div class="modal-title">
-                    <i class="fas fa-eye"></i> Détails de l'utilisateur
-                </div>
-                <button class="modal-close" onclick="closeModal('viewUserModal')">
-                    <i class="fas fa-times"></i>
-                </button>
-            </div>
-            <div class="modal-body">
-                <h3>Jean Kouassi</h3>
-                <p><strong>Email:</strong> jean.kouassi@email.com</p>
-                <p><strong>Rôle:</strong> Administrateur</p>
-                <p><strong>Statut:</strong> <span class="status-badge status-active">Actif</span></p>
-                <p><strong>Date d'inscription:</strong> 15 Jan 2024</p>
-                <p><strong>Dernière connexion:</strong> Il y a 2 heures</p>
-            </div>
-            <div class="modal-footer">
-                <button class="card-btn card-btn-secondary" onclick="closeModal('viewUserModal')">
-                    Fermer
-                </button>
-            </div>
-        </div>
-    </div>
-
-    <!-- Edit User Modal -->
-    <div class="modal" id="editUserModal">
-        <div class="modal-content">
-            <div class="modal-header">
-                <div class="modal-title">
-                    <i class="fas fa-edit"></i> Modifier l'utilisateur
-                </div>
-                <button class="modal-close" onclick="closeModal('editUserModal')">
-                    <i class="fas fa-times"></i>
-                </button>
-            </div>
-            <div class="modal-body">
-                <div class="form-grid">
-                    <div class="form-group">
-                        <label class="form-label">
-                            <i class="fas fa-user"></i> Nom complet
-                        </label>
-                        <input type="text" class="form-control" value="Jean Kouassi">
-                    </div>
-                    <div class="form-group">
-                        <label class="form-label">
-                            <i class="fas fa-envelope"></i> Email
-                        </label>
-                        <input type="email" class="form-control" value="jean.kouassi@email.com">
-                    </div>
-                    <div class="form-group">
-                        <label class="form-label">
-                            <i class="fas fa-user-tag"></i> Rôle
-                        </label>
-                        <select class="form-control">
-                            <option>Utilisateur</option>
-                            <option selected>Agent</option>
-                            <option>Administrateur</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label class="form-label">
-                            <i class="fas fa-lock"></i> Nouveau mot de passe
-                        </label>
-                        <input type="password" class="form-control" placeholder="Laisser vide pour ne pas changer">
-                    </div>
-                </div>
-            </div>
-            <div class="modal-footer">
-                <button class="card-btn card-btn-secondary" onclick="closeModal('editUserModal')">
-                    Annuler
-                </button>
-                <button class="card-btn card-btn-primary">
-                    <i class="fas fa-save"></i> Sauvegarder
-                </button>
-            </div>
-        </div>
-    </div>
-
-    <!-- View Transaction Modal -->
-    <div class="modal" id="viewTransactionModal">
-        <div class="modal-content">
-            <div class="modal-header">
-                <div class="modal-title">
-                    <i class="fas fa-eye"></i> Détails de la transaction
-                </div>
-                <button class="modal-close" onclick="closeModal('viewTransactionModal')">
-                    <i class="fas fa-times"></i>
-                </button>
-            </div>
-            <div class="modal-body">
-                <h3>Transaction #TXN001</h3>
-                <p><strong>Propriété:</strong> Villa moderne à Cotonou</p>
-                <p><strong>Client:</strong> Koffi Mensah</p>
-                <p><strong>Agent:</strong> Jean Kouassi</p>
-                <p><strong>Montant:</strong> 85,000,000 FCFA</p>
-                <p><strong>Statut:</strong> <span class="status-badge status-active">Complétée</span></p>
-                <p><strong>Date:</strong> 20 Jan 2024</p>
-            </div>
-            <div class="modal-footer">
-                <button class="card-btn card-btn-secondary" onclick="closeModal('viewTransactionModal')">
-                    Fermer
-                </button>
-            </div>
-        </div>
-    </div>
-
-    <!-- View Message Modal -->
-    <div class="modal" id="viewMessageModal">
-        <div class="modal-content">
-            <div class="modal-header">
-                <div class="modal-title">
-                    <i class="fas fa-envelope"></i> Message
-                </div>
-                <button class="modal-close" onclick="closeModal('viewMessageModal')">
-                    <i class="fas fa-times"></i>
-                </button>
-            </div>
-            <div class="modal-body">
-                <h3>Demande d'information - Villa Cotonou</h3>
-                <p><strong>Expéditeur:</strong> client@email.com</p>
-                <p><strong>Date:</strong> Il y a 2h</p>
-                <p><strong>Message:</strong> Bonjour, je suis intéressé par la villa moderne à Cotonou...</p>
-            </div>
-            <div class="modal-footer">
-                <button class="card-btn card-btn-secondary" onclick="closeModal('viewMessageModal')">
-                    Fermer
-                </button>
-            </div>
-        </div>
-    </div>
 
     <script>
         // Theme Management
@@ -2345,8 +1942,4 @@
         });
     </script>
 
-    <!-- Font Awesome -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
-</body>
-
-</html>
+@endsection

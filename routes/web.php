@@ -31,6 +31,22 @@ Route::get('/newAd', function () {
     return view('pages/back/user/newAd');
 })->middleware(['auth', 'verified'])->name('newAd');
 
+Route::get('/myAds', function () {
+    if (!Auth::check() || Auth::user()->role !== 'user') {
+        return redirect()->route('login');
+    }
+
+    return view('pages/back/user/myAds');
+})->middleware(['auth', 'verified'])->name('myAds');
+
+Route::get('/myNotifications', function () {
+    if (!Auth::check() || Auth::user()->role !== 'user') {
+        return redirect()->route('login');
+    }
+
+    return view('pages/back/user/myNotifications');
+})->middleware(['auth', 'verified'])->name('myNotifications');
+
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
