@@ -3,17 +3,14 @@
 @section('title', 'Tableau de bord')
 
 
-<head>
-</head>
-
 @section('content')
 
     <div class="dashboard-wrapper">
-        <!-- Mobile Menu -->
+
         @include('pages.back.user.mobile_menu')
 
         <div class="dashboard-container">
-            <!-- Sidebar -->
+
             @include('pages.back.user.sidebar')
 
 
@@ -25,19 +22,7 @@
                         <i class="fas fa-tachometer-alt"></i>
                         <span id="pageTitle">Vue d'ensemble</span>
                     </div>
-                    <div class="header-actions">
-                        <a href="#" class="header-btn">
-                            <i class="fas fa-plus"></i>
-                            Nouvelle propriété
-                        </a>
-                        <div class="user-profile">
-                            <div class="user-avatar">JK</div>
-                            <div class="user-info">
-                                <div class="user-name">Jean Kouassi</div>
-                                <div class="user-role">Administrateur</div>
-                            </div>
-                        </div>
-                    </div>
+                    @include('pages.back.user.user_profile')
                 </header>
 
                 <!-- Dashboard Content -->
@@ -818,190 +803,5 @@
             </main>
         </div>
 
-
-        <script>
-            // Theme Management
-            function toggleTheme() {
-                const body = document.body;
-                const themeIcon = document.getElementById('themeIcon');
-
-                if (body.getAttribute('data-theme') === 'dark') {
-                    body.removeAttribute('data-theme');
-                    themeIcon.className = 'fas fa-moon';
-                    localStorage.setItem('theme', 'light');
-                } else {
-                    body.setAttribute('data-theme', 'dark');
-                    themeIcon.className = 'fas fa-sun';
-                    localStorage.setItem('theme', 'dark');
-                }
-            }
-
-            // Load saved theme
-            document.addEventListener('DOMContentLoaded', function() {
-                const savedTheme = localStorage.getItem('theme');
-                const themeIcon = document.getElementById('themeIcon');
-
-                if (savedTheme === 'dark') {
-                    document.body.setAttribute('data-theme', 'dark');
-                    themeIcon.className = 'fas fa-sun';
-                }
-            });
-
-            // Sidebar functionality
-            function toggleSidebar() {
-                const sidebar = document.getElementById('sidebar');
-                const toggleBtn = sidebar.querySelector('.sidebar-toggle i');
-
-                sidebar.classList.toggle('collapsed');
-
-                if (sidebar.classList.contains('collapsed')) {
-                    toggleBtn.className = 'fas fa-chevron-right';
-                } else {
-                    toggleBtn.className = 'fas fa-chevron-left';
-                }
-            }
-
-            // Mobile sidebar functionality
-            function toggleMobileSidebar() {
-                const sidebar = document.getElementById('sidebar');
-                const overlay = document.getElementById('mobileOverlay');
-
-                sidebar.classList.add('mobile-open');
-                overlay.classList.add('active');
-            }
-
-            function closeMobileSidebar() {
-                const sidebar = document.getElementById('sidebar');
-                const overlay = document.getElementById('mobileOverlay');
-
-                sidebar.classList.remove('mobile-open');
-                overlay.classList.remove('active');
-            }
-
-            // Section navigation
-            function showSection(sectionName) {
-                // Hide all sections
-                document.querySelectorAll('.page-section').forEach(section => {
-                    section.classList.remove('active');
-                });
-
-                // Show selected section
-                const targetSection = document.getElementById(`section-${sectionName}`);
-                if (targetSection) {
-                    targetSection.classList.add('active');
-                }
-
-                // Update active nav link
-                document.querySelectorAll('.nav-link').forEach(link => {
-                    link.classList.remove('active');
-                });
-
-                // Find and activate the correct nav link
-                document.querySelectorAll('.nav-link').forEach(link => {
-                    if (link.getAttribute('onclick') && link.getAttribute('onclick').includes(sectionName)) {
-                        link.classList.add('active');
-                    }
-                });
-
-                // Update page title
-                const titles = {
-                    'overview': 'Vue d\'ensemble',
-                    'properties': 'Propriétés',
-                    'users': 'Utilisateurs',
-                    'transactions': 'Transactions',
-                    'analytics': 'Analytiques',
-                    'messages': 'Messages',
-                    'settings': 'Paramètres',
-                    'profile': 'Mon profil'
-                };
-
-                const pageTitle = document.getElementById('pageTitle');
-                if (pageTitle && titles[sectionName]) {
-                    pageTitle.textContent = titles[sectionName];
-                }
-
-                // Close mobile sidebar if open
-                closeMobileSidebar();
-
-                // Trigger fade-in animations
-                setTimeout(() => {
-                    const elements = targetSection.querySelectorAll('.fade-in');
-                    elements.forEach(el => {
-                        el.classList.add('visible');
-                    });
-                }, 100);
-            }
-
-            // Logout functionality
-            function logout() {
-                if (confirm('Êtes-vous sûr de vouloir vous déconnecter ?')) {
-                    window.location.href = 'index.html';
-                }
-            }
-
-            // Modal functionality
-            function openModal(modalId) {
-                const modal = document.getElementById(modalId);
-                modal.classList.add('active');
-            }
-
-            function closeModal(modalId) {
-                const modal = document.getElementById(modalId);
-                modal.classList.remove('active');
-            }
-
-            // Initialize dashboard
-            document.addEventListener('DOMContentLoaded', function() {
-                // Trigger initial animations
-                setTimeout(() => {
-                    document.querySelectorAll('.fade-in').forEach(el => {
-                        el.classList.add('visible');
-                    });
-                }, 100);
-
-                // Add click handlers for form interactions
-                document.querySelectorAll('.form-control').forEach(input => {
-                    input.addEventListener('focus', function() {
-                        this.style.transform = 'translateY(-2px)';
-                        this.style.boxShadow = '0 4px 15px rgba(102, 126, 234, 0.2)';
-                    });
-
-                    input.addEventListener('blur', function() {
-                        this.style.transform = 'translateY(0)';
-                        this.style.boxShadow = '';
-                    });
-                });
-
-                // Add hover effects to cards
-                document.querySelectorAll('.stat-card, .content-card, .quick-action').forEach(card => {
-                    card.addEventListener('mouseenter', function() {
-                        this.style.transform = 'translateY(-5px)';
-                    });
-
-                    card.addEventListener('mouseleave', function() {
-                        this.style.transform = 'translateY(0)';
-                    });
-                });
-
-                // Simulate real-time updates
-                setInterval(() => {
-                    const statNumbers = document.querySelectorAll('.stat-number');
-                    statNumbers.forEach(stat => {
-                        const currentValue = parseInt(stat.textContent.replace(/\D/g, ''));
-                        const change = Math.floor(Math.random() * 3) - 1; // -1, 0, or 1
-                        if (change !== 0) {
-                            stat.textContent = (currentValue + change).toLocaleString();
-                        }
-                    });
-                }, 30000); // Update every 30 seconds
-            });
-
-            // Handle window resize
-            window.addEventListener('resize', function() {
-                if (window.innerWidth > 768) {
-                    closeMobileSidebar();
-                }
-            });
-        </script>
-
-    @endsection
+    </div>
+@endsection

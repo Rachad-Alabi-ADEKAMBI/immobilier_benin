@@ -1,3 +1,8 @@
+ <a href="{{ route('newAd') }}" class="header-btn">
+     <i class="fas fa-plus"></i>
+     Nouvelle annonce
+ </a>
+
  <div class="user-profile">
      <div class="user-avatar">
          {{ strtoupper(substr(auth()->user()->first_name, 0, 1)) }}
