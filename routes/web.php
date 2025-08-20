@@ -31,6 +31,15 @@ Route::get('/newAd', function () {
     return view('pages/back/user/newAd');
 })->middleware(['auth', 'verified'])->name('newAd');
 
+Route::get('/settingsUser', function () {
+    if (!Auth::check() || Auth::user()->role !== 'user') {
+        return redirect()->route('login');
+    }
+
+    return view('pages/back/user/settingsUser');
+})->middleware(['auth', 'verified'])->name('settingsUser');
+
+
 Route::get('/myAds', function () {
     if (!Auth::check() || Auth::user()->role !== 'user') {
         return redirect()->route('login');

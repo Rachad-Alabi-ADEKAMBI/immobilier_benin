@@ -226,7 +226,8 @@
                  </a>
              </div>
              <div class="nav-item">
-                 <a class="nav-link" onclick="showSection('settings')">
+                 <a class="nav-link {{ request()->routeIs('settingsUser') ? 'active' : '' }}"
+                     href="{{ route('settingsUser') }}">
                      <i class="fas fa-cog"></i>
                      <span class="nav-text">Paramètres</span>
                  </a>
@@ -236,23 +237,18 @@
          <div class="nav-section">
              <div class="nav-section-title">Compte</div>
              <div class="nav-item">
-                 <a class="nav-link" onclick="showSection('profile')">
-                     <i class="fas fa-user"></i>
-                     <span class="nav-text">Mon profil</span>
-                 </a>
-             </div>
-             <div class="nav-item">
-                 <a class="nav-link" href="index.html">
+                 <a class="nav-link {{ request()->routeIs('home') ? 'active' : '' }}" href="{{ route('home') }}">
                      <i class="fas fa-arrow-left"></i>
                      <span class="nav-text">Retour au site</span>
                  </a>
              </div>
              <div class="nav-item">
-                 <a class="nav-link" onclick="logout()">
+                 <a class="nav-link {{ request()->routeIs('logout') ? 'active' : '' }}" href="{{ route('logout') }}">
                      <i class="fas fa-sign-out-alt"></i>
                      <span class="nav-text">Déconnexion</span>
                  </a>
              </div>
          </div>
      </nav>
+
  </aside>
