@@ -7,11 +7,11 @@
 
     <div class="dashboard-wrapper">
 
-        @include('pages.back.user.mobile_menu')
+        @include('pages.back.admin.mobile_menu')
 
         <div class="dashboard-container">
 
-            @include('pages.back.user.sidebar')
+            @include('pages.back.admin.sidebar')
 
 
             <!-- Main Content -->
@@ -22,7 +22,7 @@
                         <i class="fas fa-tachometer-alt"></i>
                         <span id="pageTitle">Vue d'ensemble</span>
                     </div>
-                    @include('pages.back.user.user_profile')
+                    @include('pages.back.admin.user_profile')
                 </header>
 
                 <!-- Dashboard Content -->
@@ -44,6 +44,8 @@
                                 </div>
                             </div>
 
+
+
                             <div class="stat-card">
                                 <div class="stat-header">
                                     <div class="stat-icon">
@@ -56,6 +58,8 @@
                                     <i class="fas fa-arrow-up"></i> +23% ce mois
                                 </div>
                             </div>
+
+
                         </div>
 
                         <!-- Quick Actions -->

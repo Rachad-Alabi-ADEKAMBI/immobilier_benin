@@ -243,11 +243,15 @@
                  </a>
              </div>
              <div class="nav-item">
-                 <a class="nav-link {{ request()->routeIs('logout') ? 'active' : '' }}" href="{{ route('logout') }}">
-                     <i class="fas fa-sign-out-alt"></i>
-                     <span class="nav-text">Déconnexion</span>
-                 </a>
+                 <form method="POST" action="{{ route('logout') }}">
+                     @csrf
+                     <button type="submit">
+                         Déconnexion
+                     </button>
+                 </form>
              </div>
+
+
          </div>
      </nav>
 
